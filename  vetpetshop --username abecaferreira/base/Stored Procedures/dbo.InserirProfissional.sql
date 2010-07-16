@@ -9,6 +9,6 @@ CREATE PROCEDURE [dbo].[InserirProfissional]
 @matr int
 AS
 
-select nome from dbo.tabelateste where codigo = @matr
+select nome, codigo from dbo.tabelateste where codigo = @matr
 
 GO
