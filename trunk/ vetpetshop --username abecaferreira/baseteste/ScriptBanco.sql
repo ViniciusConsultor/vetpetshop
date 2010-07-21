@@ -17,7 +17,8 @@ Nome				VARCHAR(50)			NULL,
 CONSTRAINT  		PK_Grupo			PRIMARY KEY(Id)
 )
 
-CREATE TABLE Financeiro (
+CREATE TABLE Financeiro 
+(
 Id					INT IDENTITY(1,1)	NOT NULL,
 ValorTotal			DECIMAL				NULL,
 TipoPagamento 		INT					NOT NULL, -- Cheque Dinheiro Cartão
@@ -99,7 +100,7 @@ Valor			DECIMAL							NULL,
 Data			DATETIME						NOT NULL,
 [Status]		INT								NOT NULL, --Agendada Realizada Não Realizada
 CONSTRAINT  PK_ConsultaVeterinaria				PRIMARY KEY(Id),
-CONSTRAINT  FK_ConsultaVeterinaria_Financeiro	FOREIGN KEY(IdFinanceiro)  REFERENCES  Estoque(Id),
+CONSTRAINT  FK_ConsultaVeterinaria_Financeiro	FOREIGN KEY(IdFinanceiro)  REFERENCES  Financeiro(Id),
 CONSTRAINT  FK_ConsultaVeterinaria_Usuario		FOREIGN KEY(IdUsuario)     REFERENCES  Usuario(Id)
 )
 
