@@ -50,7 +50,7 @@ CREATE TABLE EstoqueProduto
 Id					INT IDENTITY(1,1)	NOT NULL,	
 IdEstoque			INT					NOT NULL,
 IdProduto 			INT					NOT NULL,
-CONSTRAINT  PK_EstoqueProduto			PRIMARY KEY(Id, IdEstoque, IdProduto),
+CONSTRAINT  PK_EstoqueProduto			PRIMARY KEY(Id),
 CONSTRAINT  FK_EstoqueProduto_Estoque	FOREIGN KEY(IdEstoque)     REFERENCES  Estoque(Id),
 CONSTRAINT  FK_EstoqueProduto_Produto	FOREIGN KEY(IdProduto)     REFERENCES  Produto(Id)
 )
@@ -141,7 +141,7 @@ CREATE TABLE ConsultaAnimal
 Id					INT IDENTITY(1,1)				NOT NULL,
 IdConsulta			INT								NOT NULL,
 IdAnimal			INT								NOT NULL,
-CONSTRAINT  PK_ConsultaAnimal						PRIMARY KEY(Id, IdConsulta, IdAnimal),
+CONSTRAINT  PK_ConsultaAnimal						PRIMARY KEY(Id),
 CONSTRAINT  FK_ConsultaAnimal_ConsultaVeterinaria	FOREIGN KEY(IdConsulta)  REFERENCES  ConsultaVeterinaria(Id),
 CONSTRAINT  FK_ConsultaAnimal_Animal				FOREIGN KEY(IdAnimal)	 REFERENCES  Animal(Id)
 )
@@ -179,21 +179,21 @@ CREATE TABLE Transacao
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdUsuario			INT							NOT NULL,
 IdFinanceiro		INT							NOT NULL,
-CONSTRAINT  PK_Transacao						PRIMARY KEY(Id, IdUsuario, IdFinanceiro),
+CONSTRAINT  PK_Transacao						PRIMARY KEY(Id),
 CONSTRAINT  FK_Transacao_Usuario				FOREIGN KEY(IdUsuario)			REFERENCES  Usuario(Id),
 CONSTRAINT  FK_Transacao_Financeiro				FOREIGN KEY(IdFinanceiro)		REFERENCES  Financeiro(Id)
 )
 
-CREATE TABLE ClienteUsuario --Bruno Verificar
+CREATE TABLE VeterinarioCliente --Bruno Verificar
 (
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdCliente			INT							NOT NULL,
 IdVeterinario		INT							NOT NULL,
 CPF					VARCHAR(11)					NOT NULL,
 Telefone			VARCHAR(8)					NULL,
-CONSTRAINT  PK_ClienteUsuario					PRIMARY KEY(Id),
-CONSTRAINT  FK_ClienteUsuario_Cliente			FOREIGN KEY(IdCliente)			REFERENCES  Cliente(Id),
-CONSTRAINT  FK_ClienteUsuario_Veterinario		FOREIGN KEY(IdVeterinario)		REFERENCES  Veterinario(Id)
+CONSTRAINT  PK_VeterinarioCliente					PRIMARY KEY(Id),
+CONSTRAINT  FK_VeterinarioCliente_Cliente			FOREIGN KEY(IdCliente)			REFERENCES  Cliente(Id),
+CONSTRAINT  FK_VeterinarioCliente_Veterinario		FOREIGN KEY(IdVeterinario)		REFERENCES  Veterinario(Id)
 )
 
 CREATE TABLE ProdutoNotaFiscal 
@@ -201,7 +201,7 @@ CREATE TABLE ProdutoNotaFiscal
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdProduto			INT							NOT NULL,
 IdNotaFiscal		INT							NOT NULL,
-CONSTRAINT  PK_ProdutoNotaFiscal				PRIMARY KEY(Id, IdProduto, IdNotaFiscal),
+CONSTRAINT  PK_ProdutoNotaFiscal				PRIMARY KEY(Id),
 CONSTRAINT  FK_ProdutoNotaFiscal_Produto		FOREIGN KEY(IdProduto)			REFERENCES  Produto(Id),
 CONSTRAINT  FK_ProdutoNotaFiscal_NotaFiscal		FOREIGN KEY(IdNotaFiscal)		REFERENCES  NotaFiscal(Id)
 )
