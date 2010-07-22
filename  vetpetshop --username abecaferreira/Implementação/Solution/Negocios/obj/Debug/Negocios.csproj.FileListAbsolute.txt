@@ -1,0 +1,9 @@
+C:\projetoII\Implementação\Solution\Negocios\bin\Debug\Negocios.dll
+C:\projetoII\Implementação\Solution\Negocios\bin\Debug\Negocios.pdb
+C:\projetoII\Implementação\Solution\Negocios\bin\Debug\DAO.dll
+C:\projetoII\Implementação\Solution\Negocios\bin\Debug\Entidade.dll
+C:\projetoII\Implementação\Solution\Negocios\bin\Debug\Entidade.pdb
+C:\projetoII\Implementação\Solution\Negocios\bin\Debug\DAO.pdb
+C:\projetoII\Implementação\Solution\Negocios\obj\Debug\ResolveAssemblyReference.cache
+C:\projetoII\Implementação\Solution\Negocios\obj\Debug\Negocios.dll
+C:\projetoII\Implementação\Solution\Negocios\obj\Debug\Negocios.pdb
