@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="" title="Administrador"  description="">
+        <siteMapNode url="~/DefaultAdmin.aspx" title="Principal"  description="Pagina inicial do admin" />
+        <siteMapNode url="~/ManterUsuario.aspx" title="Manter Usuário"  description="" />
+        <siteMapNode url="~/CadastroProduto.aspx" title="Manter Cadastro Produto"  description="" />
+        <siteMapNode url="~/CadastroNotaFiscal.aspx" title="Cadastrar Nota Fiscal"  description="" />
+        <siteMapNode url="~/ListaNotaFiscal.aspx" title="Listar Nota Fiscal"  description="" />
+        <siteMapNode url="~/ListaEstoque.aspx" title="Listar Estoque"  description="" />
+        <siteMapNode url="~/ConsultaEstatistica.aspx" title="Consultar Estatísticas"  description="" />
+        <siteMapNode url="~/ControlaFinancas.aspx" title="Controlar Finanças"  description="" />
+    </siteMapNode>
+</siteMap>
