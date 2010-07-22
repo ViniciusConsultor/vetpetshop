@@ -1,0 +1,5 @@
+C:\projetoII\Implementação\Solution\Entidade\bin\Debug\Entidade.dll
+C:\projetoII\Implementação\Solution\Entidade\bin\Debug\Entidade.pdb
+C:\projetoII\Implementação\Solution\Entidade\obj\Debug\ResolveAssemblyReference.cache
+C:\projetoII\Implementação\Solution\Entidade\obj\Debug\Entidade.dll
+C:\projetoII\Implementação\Solution\Entidade\obj\Debug\Entidade.pdb

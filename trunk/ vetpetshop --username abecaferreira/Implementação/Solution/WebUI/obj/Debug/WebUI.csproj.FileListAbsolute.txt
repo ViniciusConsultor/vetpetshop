@@ -1,0 +1,9 @@
+C:\projetoII\Implementação\Solution\WebUI\bin\WebUI.dll
+C:\projetoII\Implementação\Solution\WebUI\bin\WebUI.pdb
+C:\projetoII\Implementação\Solution\WebUI\bin\Entidade.dll
+C:\projetoII\Implementação\Solution\WebUI\bin\Negocios.dll
+C:\projetoII\Implementação\Solution\WebUI\bin\Negocios.pdb
+C:\projetoII\Implementação\Solution\WebUI\bin\Entidade.pdb
+C:\projetoII\Implementação\Solution\WebUI\obj\Debug\ResolveAssemblyReference.cache
+C:\projetoII\Implementação\Solution\WebUI\obj\Debug\WebUI.dll
+C:\projetoII\Implementação\Solution\WebUI\obj\Debug\WebUI.pdb
