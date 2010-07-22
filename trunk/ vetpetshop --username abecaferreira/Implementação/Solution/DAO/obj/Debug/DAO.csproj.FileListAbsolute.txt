@@ -1,7 +1,0 @@
-C:\projetoII\Implementação\Solution\DAO\bin\Debug\DAO.dll
-C:\projetoII\Implementação\Solution\DAO\bin\Debug\DAO.pdb
-C:\projetoII\Implementação\Solution\DAO\bin\Debug\Entidade.dll
-C:\projetoII\Implementação\Solution\DAO\bin\Debug\Entidade.pdb
-C:\projetoII\Implementação\Solution\DAO\obj\Debug\ResolveAssemblyReference.cache
-C:\projetoII\Implementação\Solution\DAO\obj\Debug\DAO.dll
-C:\projetoII\Implementação\Solution\DAO\obj\Debug\DAO.pdb
