@@ -22,14 +22,16 @@ namespace Negocios
             return executou;
         }
 
-        public void InserirUsuarioVendedor(Vendedor vendedor, Usuario usuario)
-        { 
-            
+        public bool InserirUsuarioVendedor(Vendedor vendedor, Usuario usuario)
+        {
+            bool executou = this.usuarioDAO.InserirUsuarioVendedor(vendedor, usuario);
+            return executou;
         }
 
-        public void InserirUsuarioVeterinario(Veterinario veterinario, Usuario usuario)
-        { 
-            
+        public bool InserirUsuarioVeterinario(Veterinario veterinario, Usuario usuario)
+        {
+            bool executou = this.usuarioDAO.InserirUsuarioVeterinario(veterinario, usuario);
+            return executou;
         }
     }
 }
