@@ -49,7 +49,8 @@
   </tr>
 </table>    
  
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="height: 463px">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" 
+    style="height: 406px">
   <tr>
     <td valign="top" bgcolor="#6666ff" class="style2">
       <table width="150" border="0" cellspacing="0" cellpadding="0">
@@ -80,10 +81,10 @@
   </tr>
 </table>  
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#6666ff" 
-        style="height: 26px">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#000066"
+        style="height: 17px">
 <tr>
-<td></td>
+<td align="center"><asp:Label ID="direitos" runat="server" ForeColor="White" Font-Size="X-Small" Text="2010 Vetpetshop - Todos os direitos reservados"></asp:Label></td>
 </tr>
 </table>
  </form>
