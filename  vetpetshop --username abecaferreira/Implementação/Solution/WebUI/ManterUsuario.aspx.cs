@@ -20,17 +20,14 @@ namespace WebUI
             menu.DataBind();
 
             if(!IsPostBack)
-            { 
-                txtNomeUsu.Text = "";
-                txtNomePro.Text = "";
-                txtSenha.Text = "";
-                CarregarTipoUsuario();
-            }         
+            {
+                CarregarTipoUsuario();                
+            }            
+      
         }
 
         private void CarregarTipoUsuario()
-        {
-        
+        {        
             ListItem liSelecione = new ListItem("Selecione", "");
             ListItem _li = new ListItem("Administrador", "Admin");
             ListItem _li1 = new ListItem("Vendedor", "Vend");
@@ -44,6 +41,8 @@ namespace WebUI
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
+            bool executou = false;
+            UsuarioBuss usuarioBus = new UsuarioBuss();
             Usuario usuario = new Usuario();
             Administrador admin = new Administrador();
             Veterinario vet = new Veterinario();
@@ -55,6 +54,7 @@ namespace WebUI
                 usuario.TipoUsuario = 1;
                 usuario.Senha = txtSenha.Text;               
                 admin.Nome = txtNomePro.Text;
+                executou = usuarioBus.InserirUsuarioAdmin(admin, usuario);
             }
 
             else if (ddlTipoUsu.SelectedItem.Value == "Vet")
@@ -63,6 +63,7 @@ namespace WebUI
                 usuario.TipoUsuario = 2;
                 usuario.Senha = txtSenha.Text;                
                 vet.Nome = txtNomePro.Text;
+                executou = usuarioBus.InserirUsuarioVeterinario(vet, usuario);
             }
 
             else
@@ -71,18 +72,21 @@ namespace WebUI
                 usuario.TipoUsuario = 3;
                 usuario.Senha = txtSenha.Text;                
                 vend.Nome = txtNomePro.Text;
+                executou = usuarioBus.InserirUsuarioVendedor(vend, usuario);
             }
 
-            UsuarioBuss usuarioBus = new UsuarioBuss();
-            bool executou = usuarioBus.InserirUsuarioAdmin(admin, usuario);
             if (executou)
             {
                 lblMsg.Text = "Cadastro efetuado com sucesso";
                 txtSenha.Text = "";
                 txtNomeUsu.Text = "";
-                txtNomePro.Text = "";
-                ddlTipoUsu.SelectedItem.Value = "";
-            }            
+                txtNomePro.Text = "";         
+            }
+
+            else
+            {
+                lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
+            }           
         }        
     }
 }

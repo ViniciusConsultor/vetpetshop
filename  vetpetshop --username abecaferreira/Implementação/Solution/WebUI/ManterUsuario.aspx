@@ -1,4 +1,4 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ManterUsuario.aspx.cs" Inherits="WebUI.ManterUsuario" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ManterUsuario.aspx.cs" Inherits="WebUI.ManterUsuario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   
@@ -18,10 +18,10 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 163px">
-                            Tipo de Usu√°rio</td>
+                        <td style="height: 23px; width: 383px">
+                            Tipo de Usu·rio</td>
                         <td style="height: 23px; width: 392px">
-                        <asp:DropDownList ID="ddlTipoUsu" runat="server" Width="170px">
+                        <asp:DropDownList ID="ddlTipoUsu" runat="server" Width="170px" AutoPostBack="true">
                 </asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 518px">
@@ -30,8 +30,8 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 163px">
-                            Nome de Usu√°rio</td>
+                        <td style="height: 23px; width: 383px">
+                            Nome de Usu·rio</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeUsu" runat="server" Width="170px"></asp:TextBox>
                         </td>
@@ -41,7 +41,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 163px">
+                        <td style="height: 23px; width: 383px">
                             Nome do Profissional</td>
                         <td style="height: 23px; width: 392px">
                         <asp:TextBox ID="txtNomePro" runat="server" Width="350px"></asp:TextBox>
@@ -52,7 +52,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 163px">
+                        <td style="height: 23px; width: 383px">
                             Senha</td>
                         <td style="height: 23px; width: 392px">
                             <asp:TextBox ID="txtSenha" runat="server" Width="170px"></asp:TextBox>
@@ -63,7 +63,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 163px">
+                        <td style="height: 23px; width: 383px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 392px">
                             <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
@@ -74,7 +74,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 163px">
+                        <td style="height: 23px; width: 383px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 392px">
                             &nbsp;</td>
@@ -84,7 +84,19 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 163px">
+                        <td colspan="3" style="height: 23px; width: 163px">
+                        <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" HeaderStyle-BackColor="DarkBlue">
+                        <Columns>
+                        <asp:TemplateField>                        
+                        <ItemTemplate>
+                        <asp:LinkButton ID="lkExcluir" runat="server" Text="Excluir"></asp:LinkButton>
+                        </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField HeaderText="CÛdigo de Usu·rio" DataField="Cd_Usuario" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" HeaderStyle-Width="100" />
+                        <asp:BoundField HeaderText="Nome do Profissional" DataField="Nm_prof" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" HeaderStyle-Width="100" />
+                        <asp:BoundField HeaderText="Tipo de Usu·rio" DataField="Tipo_prof" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" HeaderStyle-Width="100" />
+                        </Columns>
+                        </asp:GridView>
                             &nbsp;</td>
                         <td style="height: 23px; width: 392px">
                             &nbsp;</td>
@@ -94,7 +106,7 @@
                     <tr>
                         <td style="width: 58px">
                             &nbsp;</td>
-                        <td style="width: 163px">
+                        <td style="width: 383px">
                             &nbsp;</td>
                         <td style="width: 392px">
                             &nbsp;</td>
