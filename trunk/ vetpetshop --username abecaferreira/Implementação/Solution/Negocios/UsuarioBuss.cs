@@ -33,5 +33,10 @@ namespace Negocios
             bool executou = this.usuarioDAO.InserirUsuarioVeterinario(veterinario, usuario);
             return executou;
         }
+
+        //public List<Usuario> ListarUsuarios()
+        //{
+        //    this.usuarioDAO.ListarUsuarios();                     
+        //}
     }
 }
