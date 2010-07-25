@@ -29,7 +29,6 @@ namespace DAO
             string stringConexao = databaseHelper.GetConnectionString("conexao");
              SqlConnection conn = new SqlConnection(stringConexao);
            
-            //PERSITE TABELA ADMINISTRADOR E USUARIO
                 try               
                 {                    
                     SqlCommand cmd = new SqlCommand();
@@ -76,7 +75,7 @@ namespace DAO
 
 
         /// <summary>
-        /// PERSITE TABELA VETERINARIO E USUARIO
+        /// PERSISTE TABELA VETERINARIO E USUARIO
         /// </summary>
         /// <param name="veterinario"></param>
         /// <param name="usuario"></param>
@@ -142,12 +141,10 @@ namespace DAO
         /// <returns></returns>
         public bool InserirUsuarioVendedor(Vendedor vendedor, Usuario usuario)
         {
-
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
 
-            //PERSITE TABELA VETERINARIO E USUARIO
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -192,6 +189,17 @@ namespace DAO
             return executou;
         }
 
+
+        //public List<Usuario> ListarUsuarios()
+        //{
+        //    string stringConexao = databaseHelper.GetConnectionString("conexao");
+        //    SqlConnection conn = new SqlConnection(stringConexao);
+
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = conn;
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.CommandText = "spiInserirVendedor";               
+        //}
            
      }
 

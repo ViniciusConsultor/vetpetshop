@@ -20,10 +20,7 @@ namespace WebUI
             menu.DataBind();
 
             if(!IsPostBack)
-            {
-                CarregarTipoUsuario();                
-            }            
-      
+              CarregarTipoUsuario();      
         }
 
         private void CarregarTipoUsuario()
