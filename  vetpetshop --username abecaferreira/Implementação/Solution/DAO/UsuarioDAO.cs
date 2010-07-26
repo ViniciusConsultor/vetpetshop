@@ -5,6 +5,7 @@ using System.Text;
 using Entidade;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.Common;
 
 namespace DAO
 {
@@ -190,16 +191,51 @@ namespace DAO
         }
 
 
-        //public List<Usuario> ListarUsuarios()
-        //{
-        //    string stringConexao = databaseHelper.GetConnectionString("conexao");
-        //    SqlConnection conn = new SqlConnection(stringConexao);
+        public DataTable ListarUsuarios(DataTable tabela)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
 
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.Connection = conn;
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.CommandText = "spiInserirVendedor";               
-        //}
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaUsuariosProfissionais";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_usuario"] = dr.GetInt32(0);
+
+
+                if (dr.GetInt32(1).Equals(1))
+                {
+                    _linhaTabela["tipo_prof"] = "Administrador";
+                    _linhaTabela["nm_prof"] = dr.GetString(4);
+                }
+
+                if (dr.GetInt32(1).Equals(2))
+                {
+                    _linhaTabela["tipo_prof"] = "Veterinário";
+                    _linhaTabela["nm_prof"] = dr.GetString(8);
+                }
+
+                if (dr.GetInt32(1).Equals(3))
+                {
+                    _linhaTabela["tipo_prof"] = "Vendedor";
+                    _linhaTabela["nm_prof"] = dr.GetString(11);
+                }
+                
+                _linhaTabela["nm_usuario"] = dr.GetString(5);
+                
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            return tabela;
+        }
            
      }
 

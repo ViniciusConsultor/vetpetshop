@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Entidade;
 using DAO;
+using System.Data;
 
 namespace Negocios
 {
@@ -34,9 +35,12 @@ namespace Negocios
             return executou;
         }
 
-        //public List<Usuario> ListarUsuarios()
-        //{
-        //    this.usuarioDAO.ListarUsuarios();                     
-        //}
+        public DataTable ListarUsuarios(DataTable tabela)
+        {
+            DataTable _tabelapreenchida = new DataTable();
+            _tabelapreenchida = this.usuarioDAO.ListarUsuarios(tabela);
+
+            return _tabelapreenchida;              
+        }
     }
 }
