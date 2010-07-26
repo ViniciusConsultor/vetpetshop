@@ -5,7 +5,7 @@
     <table style="width:100%;">
         <tr>
             <td style="width: 863px">
-                <asp:Label ID="lblMsg" runat="server" Text="" forecolor="Red"></asp:Label>
+                <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
             </td>
             <td style="width: 80px">
                 &nbsp;</td>
@@ -55,7 +55,9 @@
                         <td style="height: 23px; width: 383px">
                             Senha</td>
                         <td style="height: 23px; width: 392px">
-                            <asp:TextBox ID="txtSenha" runat="server" Width="170px"></asp:TextBox>
+                            <asp:TextBox ID="txtSenha" runat="server" Width="170px"></asp:TextBox>&nbsp;&nbsp;
+                            <asp:LinkButton id="lkGera" runat="server" Text="Gerar senha" 
+                                onclick="lkGera_Click"></asp:LinkButton>
                         </td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>
@@ -85,16 +87,41 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td colspan="3" style="height: 23px; width: 163px">
-                        <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" HeaderStyle-BackColor="DarkBlue">
+                            <asp:Label ID="lblCadastrados" runat="server" Font-Bold="true" Text="Lista de usuários cadastrados"></asp:Label>
+                        </td>
+                        <td style="height: 23px; width: 392px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td colspan="3" style="height: 23px; width: 163px">
+                        <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
+                                HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" PageSize="15">
                         <Columns>
-                        <asp:TemplateField>                        
+                        <asp:TemplateField>  
+                        <HeaderStyle  Width="10%"/>                      
                         <ItemTemplate>
                         <asp:LinkButton ID="lkExcluir" runat="server" Text="Excluir"></asp:LinkButton>
                         </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText="Código de Usuário" DataField="Cd_Usuario" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" HeaderStyle-Width="100" />
-                        <asp:BoundField HeaderText="Nome do Profissional" DataField="Nm_prof" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" HeaderStyle-Width="100" />
-                        <asp:BoundField HeaderText="Tipo de Usuário" DataField="Tipo_prof" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" HeaderStyle-Width="100" />
+                        <asp:BoundField DataField="id_usuario" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Nome de Usuário" DataField="nm_usuario" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Nome do Profissional" DataField="nm_prof" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="50%" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Tipo de Usuário" DataField="tipo_prof" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>
                         </Columns>
                         </asp:GridView>
                             &nbsp;</td>
