@@ -1,3 +1,5 @@
+
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -9,6 +11,7 @@ AS
 BEGIN
 
 SELECT
+u.Id,
 u.TipoUsuario,
 a.Id AS idAdministrador,
 u.IdAdministrador AS idUsuarioAdministrador,
@@ -23,6 +26,7 @@ vend.Nome
 FROM Usuario u LEFT JOIN Administrador a ON u.IdAdministrador = a.Id 
 LEFT JOIN Veterinario vet ON u.IdVeterinario = vet.Id
 LEFT JOIN Vendedor vend ON u.IdVendedor = vend.Id	
+ORDER BY u.TipoUsuario
 	
 END
 GO
