@@ -17,6 +17,14 @@ namespace Negocios
             this.usuarioDAO = new UsuarioDAO();
         }
 
+        public Usuario EfetuarLogin(string usuario, string senha)
+        {
+            Usuario usuarioEncontrado = new Usuario();
+            usuarioEncontrado = this.usuarioDAO.EfetuarSenha(usuario, senha);
+            return usuarioEncontrado;
+
+        }
+
         public bool InserirUsuarioAdmin(Administrador administrador, Usuario usuario)
         {
             bool executou = this.usuarioDAO.InserirUsuarioAdmin(administrador, usuario);
@@ -41,6 +49,12 @@ namespace Negocios
             _tabelapreenchida = this.usuarioDAO.ListarUsuarios(tabela);
 
             return _tabelapreenchida;              
+        }
+
+        public bool ExcluirUsuario(int id)
+        {
+            bool executou = this.usuarioDAO.ExcluirUsuario(id);
+            return executou;
         }
     }
 }

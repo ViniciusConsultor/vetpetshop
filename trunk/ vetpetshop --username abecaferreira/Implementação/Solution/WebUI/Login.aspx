@@ -62,10 +62,11 @@
                         </td>
                     </tr>  
                     <tr>
-                            <td class="style1" align="right">
+                            <td class="style1" align="right"  bgcolor="White">
                                 &nbsp;</td>
-                            <td align="left">
-                                &nbsp;</td>                           
+                            <td align="left"  bgcolor="White">
+                                    <asp:Label ID="lblAviso" runat="server" Font-Bold="true" ForeColor="Red"></asp:Label>
+                            </td>                           
                         </tr>
                     <tr>
                             <td class="style1" align="right">
@@ -83,16 +84,16 @@
                                     ForeColor="White" Font-Size="XX-Large" Font-Names="Colonna MT"></asp:Label>                               
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="txtSenha" runat="server"></asp:TextBox> 
+                                <asp:TextBox ID="txtSenha" runat="server" TextMode="Password"></asp:TextBox> 
                             </td>                            
                         </tr>                                          
                         <tr>
                             <td class="style1" align="right">
                                 &nbsp;</td>
                             <td align="left">
-                                <asp:Button ID="btnOk" runat="server" CssClass="botao3d" Text="Autenticar" Height="35px" 
-                                    onclick="Button1_Click" Width="155px" ForeColor="White" />
-                            </td>                            
+                                <asp:Button ID="btnOk" runat="server" Text="Entrar" Height="27px" 
+                                    onclick="Button1_Click" Width="132px" />&nbsp;&nbsp;
+                                    </td>                            
                         </tr>                                          
                     </table>
                 </td>
