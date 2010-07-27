@@ -71,12 +71,26 @@
     <Compile Include="DefaultAdmin.aspx.designer.cs">
       <DependentUpon>DefaultAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DefaultVeterinario.aspx.cs">
+      <DependentUpon>DefaultVeterinario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultVeterinario.aspx.designer.cs">
+      <DependentUpon>DefaultVeterinario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManterCadastroCliente.aspx.cs">
+      <DependentUpon>ManterCadastroCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManterCadastroCliente.aspx.designer.cs">
+      <DependentUpon>ManterCadastroCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManterUsuario.aspx.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
@@ -130,8 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DefaultAdmin.aspx" />
+    <Content Include="DefaultVeterinario.aspx" />
     <Content Include="images\bannercreator-nu %282%29.gif" />
     <Content Include="Login.aspx" />
+    <Content Include="ManterCadastroCliente.aspx" />
     <Content Include="ManterUsuario.aspx" />
     <Content Include="MenuAdmin.sitemap" />
   </ItemGroup>

@@ -18,6 +18,54 @@ namespace DAO
             databaseHelper = new DatabaseHelper();    
         }
 
+        public Usuario EfetuarSenha(string usuario, string senha)
+        {
+            Usuario usuarioEncontrado = new Usuario();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsLogin";
+
+                SqlParameter pnomeUsu = new SqlParameter("@Usuario", SqlDbType.VarChar, 15);
+                SqlParameter pSenha = new SqlParameter("@Senha", SqlDbType.VarChar, 30);
+
+                pnomeUsu.Value = usuario;
+                pSenha.Value = senha;
+                cmd.Parameters.Add(pnomeUsu);
+                cmd.Parameters.Add(pSenha);
+             
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);                
+                if (dr.HasRows)
+                {
+                    usuarioEncontrado.TipoUsuario = dr.GetInt32(0);
+                }
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return usuarioEncontrado;
+        
+        }
+
         /// <summary>
         /// //PERSITE TABELA ADMINISTRADOR E USUARIO
         /// </summary>
@@ -236,7 +284,50 @@ namespace DAO
 
             return tabela;
         }
-           
+
+
+        public bool ExcluirUsuario(int id)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spdExcluirUsuario";
+
+                SqlParameter pId = new SqlParameter("@Id", SqlDbType.Int, 4);
+
+                pId.Value = id;                
+                cmd.Parameters.Add(pId);
+               
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return executou;
+        }           
      }
 
 }

@@ -99,12 +99,13 @@
                             &nbsp;</td>
                         <td colspan="3" style="height: 23px; width: 163px">
                         <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
-                                HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" PageSize="15">
+                                HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
+                                PageSize="15" onrowcommand="grUsuarios_RowCommand">
                         <Columns>
                         <asp:TemplateField>  
                         <HeaderStyle  Width="10%"/>                      
                         <ItemTemplate>
-                        <asp:LinkButton ID="lkExcluir" runat="server" Text="Excluir"></asp:LinkButton>
+                        <asp:LinkButton ID="lkExcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_usuario") %>'></asp:LinkButton>
                         </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="id_usuario" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">

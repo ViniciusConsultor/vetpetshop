@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mail;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -193,5 +194,26 @@ namespace WebUI
 
             txtSenha.Text = senha;            
         }
+
+        protected void grUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "excluir")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                UsuarioBuss usuarioBus = new UsuarioBuss();
+                bool executou = usuarioBus.ExcluirUsuario(Convert.ToInt32(id));
+
+                if (executou)
+                {
+                    lblMsg.Text = "Usuário excluído com sucesso";
+                    ExibeGrid();
+                }
+
+                else
+                {
+                    lblMsg.Text = "Não foi possível excluir o usuário selecionado. Falha de conexão com banco de dados";
+                }                
+            }
+        }      
     }
 }
