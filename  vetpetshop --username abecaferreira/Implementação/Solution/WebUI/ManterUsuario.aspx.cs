@@ -139,7 +139,7 @@ namespace WebUI
             }    
         }
 
-        public DataTable MontarTabela()
+        private DataTable MontarTabela()
         {
             DataTable _tabela = new DataTable("Usuarios");
             DataColumn _coluna0;

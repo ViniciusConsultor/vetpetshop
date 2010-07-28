@@ -58,9 +58,6 @@ namespace WebUI
                     lblAviso.Text = "Usuário e/ou senha inválidos";
                 }
             }
-
-            txtSenha.Text = "";
-            txtUsu.Text = "";
         }
     }
 }
