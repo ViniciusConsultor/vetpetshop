@@ -8,7 +8,7 @@
     <style type="text/css">
         .style1
         {
-            width: 577px;
+            width: 530px;
         }
         .botao3d	{
 		display: block;
@@ -38,11 +38,11 @@
 		}
     </style>
 </head>
-<body background="#3399FF">
+<body>
     <form id="form1" runat="server">
     <div>
     
-        <table bgcolor="#3399FF" style="width: 100%; height: 541px;">
+        <table style="width: 100%; height: 529px;">
             <tr>
                 <td>
                     &nbsp;</td>
@@ -58,33 +58,32 @@
                     <table style="width: 100%; height: 305px;" align="center">
                     <tr>
                         <td colspan="2" align="center"> 
-                        <img src="images/bannercreator-nu (2).gif"</img>                       
+                        <img src="images/bannercreator-nu (4).gif"</img>                       
                         </td>
                     </tr>  
                     <tr>
-                            <td class="style1" align="right"  bgcolor="White">
-                                &nbsp;</td>
-                            <td align="left"  bgcolor="White">
-                                    <asp:Label ID="lblAviso" runat="server" Font-Bold="true" ForeColor="Red"></asp:Label>
-                            </td>                           
+                            <td align="center"  bgcolor="White" colspan="2">
+                                    <asp:Label ID="lblAviso" runat="server" Font-Bold="True" ForeColor="Red" 
+                                        Font-Size="Small"></asp:Label>
+                            </td>                          
                         </tr>
                     <tr>
                             <td class="style1" align="right">
                                 &nbsp;
                                 <asp:Label ID="lblUsu" Text="Usuário" runat="server" Font-Bold="True" 
-                                    ForeColor="White" Font-Size="XX-Large" Font-Names="Colonna MT"></asp:Label>
+                                    ForeColor="#000066" Font-Size="XX-Large" Font-Names="Colonna MT"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="txtUsu" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtUsu" runat="server" Width="153px"></asp:TextBox>
                             </td>                           
                         </tr>
                         <tr>
                             <td class="style1" align="right">
                                 <asp:Label ID="lblSenha" runat="server" Text="Senha" Font-Bold="True" 
-                                    ForeColor="White" Font-Size="XX-Large" Font-Names="Colonna MT"></asp:Label>                               
+                                    ForeColor="#000066" Font-Size="XX-Large" Font-Names="Colonna MT"></asp:Label>                               
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="txtSenha" runat="server" TextMode="Password"></asp:TextBox> 
+                                <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" Width="153px"></asp:TextBox> 
                             </td>                            
                         </tr>                                          
                         <tr>
@@ -92,7 +91,7 @@
                                 &nbsp;</td>
                             <td align="left">
                                 <asp:Button ID="btnOk" runat="server" Text="Entrar" Height="27px" 
-                                    onclick="Button1_Click" Width="132px" />&nbsp;&nbsp;
+                                    onclick="Button1_Click" Width="153px" />&nbsp;&nbsp;
                                     </td>                            
                         </tr>                                          
                     </table>

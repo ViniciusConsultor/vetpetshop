@@ -18,7 +18,7 @@ namespace DAO
             databaseHelper = new DatabaseHelper();    
         }
 
-        public Usuario EfetuarSenha(string usuario, string senha)
+        public Usuario EfetuarLogin(string usuario, string senha)
         {
             Usuario usuarioEncontrado = new Usuario();
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -40,11 +40,16 @@ namespace DAO
                 cmd.Parameters.Add(pSenha);
              
                 conn.Open();
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);                
-                if (dr.HasRows)
-                {
-                    usuarioEncontrado.TipoUsuario = dr.GetInt32(0);
-                }
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (dr.Read())
+                  usuarioEncontrado.TipoUsuario = dr.GetInt32(0);
+                
+                else
+                  usuarioEncontrado = null;
+                
+
+                dr.Close();
             }
 
             catch (SqlException ex)

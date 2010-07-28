@@ -20,7 +20,7 @@ namespace Negocios
         public Usuario EfetuarLogin(string usuario, string senha)
         {
             Usuario usuarioEncontrado = new Usuario();
-            usuarioEncontrado = this.usuarioDAO.EfetuarSenha(usuario, senha);
+            usuarioEncontrado = this.usuarioDAO.EfetuarLogin(usuario, senha);
             return usuarioEncontrado;
 
         }

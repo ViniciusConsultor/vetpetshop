@@ -13,7 +13,10 @@ namespace WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+               
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -24,35 +27,40 @@ namespace WebUI
 
             if (txtUsu.Text == "")
             {
-                lblAviso.Text = "Preencha o campo Usuário";
+                lblAviso.Text = "Preencha o campo usuário";
                 return;
             }
 
-            if (txtUsu.Text == "")
+            if (txtSenha.Text == "")
             {
-                lblAviso.Text = "Preencha o campo Senha";
+                lblAviso.Text = "Preencha o campo senha";
                 return;
             }
 
-
-            usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenha.Text);
-
-            if (usuario != null)
+            if (txtUsu.Text != "" && txtSenha.Text != "")
             {
-                if (usuario.TipoUsuario == 1)
-                    Response.Redirect("DefaultAdmin.aspx");
+                usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenha.Text);
 
-                if (usuario.TipoUsuario == 2)
-                    Response.Redirect("DefaultVeterinario.aspx");
+                if (usuario != null)
+                {
+                    if (usuario.TipoUsuario == 1)
+                        Response.Redirect("DefaultAdmin.aspx");
 
-                if (usuario.TipoUsuario == 3)
-                    Response.Redirect("DefaultVendedor.aspx");
+                    if (usuario.TipoUsuario == 2)
+                        Response.Redirect("DefaultVeterinario.aspx");
+
+                    if (usuario.TipoUsuario == 3)
+                        Response.Redirect("DefaultVendedor.aspx");
+                }
+
+                else
+                {
+                    lblAviso.Text = "Usuário e/ou senha inválidos";
+                }
             }
 
-            else 
-            {
-                lblAviso.Text = "Usuário não cadastrado. Contacte o administrador do sistema";
-            }           
+            txtSenha.Text = "";
+            txtUsu.Text = "";
         }
     }
 }
