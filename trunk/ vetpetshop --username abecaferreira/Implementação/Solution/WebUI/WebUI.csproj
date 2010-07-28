@@ -57,6 +57,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CadastroGrupoProduto.aspx.cs">
+      <DependentUpon>CadastroGrupoProduto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CadastroGrupoProduto.aspx.designer.cs">
+      <DependentUpon>CadastroGrupoProduto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -143,9 +150,11 @@
     <Content Include="MenuVeterinario.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVeterinario.aspx" />
     <Content Include="images\bannercreator-nu %282%29.gif" />
+    <Content Include="images\bannercreator-nu %284%29.gif" />
     <Content Include="Login.aspx" />
     <Content Include="ManterCadastroCliente.aspx" />
     <Content Include="ManterUsuario.aspx" />

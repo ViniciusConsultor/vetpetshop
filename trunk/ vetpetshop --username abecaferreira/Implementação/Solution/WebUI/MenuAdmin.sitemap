@@ -3,7 +3,8 @@
     <siteMapNode url="" title="Administrador"  description="">
         <siteMapNode url="~/DefaultAdmin.aspx" title="Principal"  description="Pagina inicial do admin" />
         <siteMapNode url="~/ManterUsuario.aspx" title="Manter Usuário"  description="" />
-        <siteMapNode url="~/CadastroProduto.aspx" title="Manter Cadastro Produto"  description="" />
+      <siteMapNode url="~/CadastroGrupoProduto.aspx" title="Manter Grupo de Produto"  description="" />
+      <siteMapNode url="~/CadastroProduto.aspx" title="Manter Cadastro Produto"  description="" />
         <siteMapNode url="~/CadastroNotaFiscal.aspx" title="Cadastrar Nota Fiscal"  description="" />
         <siteMapNode url="~/ListaNotaFiscal.aspx" title="Listar Nota Fiscal"  description="" />
         <siteMapNode url="~/ListaEstoque.aspx" title="Listar Estoque"  description="" />
