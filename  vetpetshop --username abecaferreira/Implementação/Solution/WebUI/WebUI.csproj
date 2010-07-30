@@ -64,6 +64,13 @@
     <Compile Include="CadastroGrupoProduto.aspx.designer.cs">
       <DependentUpon>CadastroGrupoProduto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CadastroProduto.aspx.cs">
+      <DependentUpon>CadastroProduto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CadastroProduto.aspx.designer.cs">
+      <DependentUpon>CadastroProduto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -84,6 +91,13 @@
     </Compile>
     <Compile Include="DefaultVeterinario.aspx.designer.cs">
       <DependentUpon>DefaultVeterinario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioProduto.aspx.cs">
+      <DependentUpon>FormularioProduto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioProduto.aspx.designer.cs">
+      <DependentUpon>FormularioProduto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -151,8 +165,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CadastroGrupoProduto.aspx" />
+    <Content Include="CadastroProduto.aspx" />
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVeterinario.aspx" />
+    <Content Include="FormularioProduto.aspx" />
     <Content Include="images\bannercreator-nu %282%29.gif" />
     <Content Include="images\bannercreator-nu %284%29.gif" />
     <Content Include="Login.aspx" />
