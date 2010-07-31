@@ -38,5 +38,12 @@ namespace Negocios
             return executou;
         }
 
+        public List<Grupo> ListarTiposGrupo()
+        {
+            List<Grupo> _lista = new List<Grupo>();
+            _lista = this.grupoDAO.ListaTiposGrupos();
+            return _lista;
+        }
+
     }
 }

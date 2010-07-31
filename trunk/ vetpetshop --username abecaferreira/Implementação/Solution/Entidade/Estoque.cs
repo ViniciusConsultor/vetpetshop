@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Entidade
 {
-    public class Grupo
+    public class Estoque
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
+        public int Status { get; set; }
+        public int Quantidade { get; set; }
     }
-
 }
