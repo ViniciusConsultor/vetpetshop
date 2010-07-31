@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAO;
 using Entidade;
+using System.Data;
 
 namespace Negocios
 {
@@ -21,6 +22,14 @@ namespace Negocios
            bool salvou;
            salvou = this.produtoDAO.InserirProduto(produto);
            return salvou;
+       }
+
+       public DataTable ListarProdutos(DataTable tabela)
+       {
+           DataTable tabelaPreenchida = new DataTable();
+
+           tabelaPreenchida = this.produtoDAO.ListarProduto(tabela);
+           return tabelaPreenchida;
        }
 
     }
