@@ -17,7 +17,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 435px">
+                        <td style="height: 23px; width: 319px">
                             Novo Produto&nbsp;
                             <asp:RadioButton ID="novo" runat="server" 
                                 ValidationGroup="tipoCadastro" AutoPostBack="True" CausesValidation="True" 
@@ -37,7 +37,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 435px">
+                        <td style="height: 23px; width: 319px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 538px">
                             &nbsp;</td>
@@ -54,7 +54,7 @@
                             Nome do Produto&nbsp;
                             </td>
                         <td style="height: 23px; width: 133px">
-                            <asp:TextBox ID="TextBox1" runat="server" Width="232px"></asp:TextBox>
+                            <asp:TextBox ID="txtNome" runat="server" Width="232px"></asp:TextBox>
                         </td>
                         <td style="height: 23px; width: 297px">
                             &nbsp;</td>
@@ -67,10 +67,11 @@
                         <td style="height: 23px; width: 352px">
                             Tipo do Produto&nbsp;&nbsp;&nbsp; </td>
                         <td style="height: 23px; width: 133px">
-                            <asp:DropDownList ID="DropDownList2" runat="server" Width="232px">
+                            <asp:DropDownList ID="ddlTipo" runat="server" Width="232px">
                             </asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 298px">
+                        <asp:Button ID="btnConsultar" runat="server" Text="Buscar" OnClick="Buscar" />
                             &nbsp;</td>
                         <td style="height: 23px; width: 538px">
                             &nbsp;</td>
@@ -79,7 +80,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 435px">
+                        <td style="height: 23px; width: 319px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 538px">
                             &nbsp;</td>
