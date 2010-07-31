@@ -17,7 +17,7 @@ namespace Negocios
             this.usuarioDAO = new UsuarioDAO();
         }
 
-        public Usuario EfetuarLogin(string usuario, string senha)
+        public Usuario EfetuarLogin(string usuario, string senha)   
         {
             Usuario usuarioEncontrado = new Usuario();
             usuarioEncontrado = this.usuarioDAO.EfetuarLogin(usuario, senha);

@@ -123,8 +123,35 @@ namespace DAO
                 conn.Close();
             }
 
-
             return executou;              
+        }
+
+        public List<Grupo> ListaTiposGrupos()
+        { 
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaGruposProdutos";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            List<Grupo> _lista = new List<Grupo>();            
+
+            while (dr.Read())
+            {
+                Grupo grupo = new Grupo();
+                grupo.Id = dr.GetInt32(0);
+                grupo.Nome = dr.GetString(1);
+
+                _lista.Add(grupo);               
+            }
+
+            return _lista;
         }
     }
 }
