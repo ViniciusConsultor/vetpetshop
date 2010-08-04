@@ -70,9 +70,6 @@
                             <asp:DropDownList ID="ddlTipo" runat="server" Width="232px">
                             </asp:DropDownList>
                         </td>
-                        <td style="height: 23px; width: 298px">
-                        <asp:Button ID="btnConsultar" runat="server" Text="Buscar" OnClick="Buscar" />
-                            &nbsp;</td>
                         <td style="height: 23px; width: 538px">
                             &nbsp;</td>
                     </tr>
