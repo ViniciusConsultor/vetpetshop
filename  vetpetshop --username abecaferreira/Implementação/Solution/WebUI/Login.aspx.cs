@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocios;
 using Entidade;
+using System.Web.Security;
 
 namespace WebUI
 {
@@ -40,6 +41,7 @@ namespace WebUI
             if (txtUsu.Text != "" && txtSenha.Text != "")
             {
                 usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenha.Text);
+                FormsAuthentication.RedirectFromLoginPage(txtUsu.Text, true);
 
                 if (usuario != null)
                 {
