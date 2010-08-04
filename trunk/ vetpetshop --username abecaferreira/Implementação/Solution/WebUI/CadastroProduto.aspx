@@ -52,7 +52,7 @@
                         <td style="width: 58px; height: 23px">&nbsp;</td>                              
                         <td style="height: 23px; width: 352px;">
                             Nome do Produto&nbsp;
-                            </td>
+                            </td> 
                         <td style="height: 23px; width: 133px">
                             <asp:TextBox ID="txtNome" runat="server" Width="232px"></asp:TextBox>
                         </td>
