@@ -106,5 +106,15 @@ namespace WebUI
                 }
             }
         }
+
+        protected void grGrupos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Silver'");
+                // This will be the back ground color of the GridView Control
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
+            }
+        }
     }
 }

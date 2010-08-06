@@ -2,11 +2,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<table style="width:100%;">
+    <table style="width:100%;">
         <tr>
             <td style="width: 863px">
-                &nbsp;</td>
-            <td style="width: 80px">
                 &nbsp;</td>
             <td>
                 &nbsp;</td>
@@ -67,11 +65,12 @@
                         <td style="height: 23px; width: 352px">
                             Tipo do Produto&nbsp;&nbsp;&nbsp; </td>
                         <td style="height: 23px; width: 133px">
-                            <asp:DropDownList ID="ddlTipo" runat="server" Width="232px">
+                            <asp:DropDownList ID="ddlTipo" runat="server" Width="232px" AutoPostBack="true">
                             </asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 538px">
-                            &nbsp;</td>
+                            &nbsp;<asp:Button ID="Button1" runat="server" Text="Buscar Produto" 
+                                onclick="Buscar_Click" /></td>
                     </tr>
                     </asp:Panel>
                     <tr>
@@ -79,8 +78,8 @@
                             &nbsp;</td>
                         <td style="height: 23px; width: 319px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 538px">
-                            &nbsp;</td>
+                        <td style="height: 23px; width: 538px">                            
+                        </td>
                         <td style="height: 23px; width: 298px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
@@ -89,13 +88,13 @@
                     <tr>
                         <td style="width: 58px">
                             &nbsp;</td>
-                        <td colspan="3" style="width: 324px">
+                        <td colspan="4" style="width: 324px">
                          <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
-                                PageSize="15">
+                                PageSize="15" onrowdatabound="grUsuarios_RowDataBound">
                         <Columns>
                         <asp:TemplateField>  
-                        <HeaderStyle  Width="10%"/>                      
+                        <HeaderStyle  Width="5%"/>                      
                         <ItemTemplate>
                         <asp:LinkButton ID="lkEditar" runat="server" Text="Editar" CommandName="editar" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
                         </ItemTemplate>
@@ -103,60 +102,50 @@
                         <asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
                         </asp:BoundField>
-                        <asp:BoundField HeaderText="Nome do Produto" DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <asp:BoundField HeaderText="Nome do Produto" DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:d}" htmlencode="false">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Tipo" DataField="tipo" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="50%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Estoque Mín" DataField="min" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                          <asp:BoundField HeaderText="Estoque Máx" DataField="max" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Descrição" DataField="descricao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="40%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Preço Custo" DataField="preco_custo" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>                        
                         <asp:BoundField HeaderText="Preço Venda" DataField="preco_venda" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                          <asp:BoundField HeaderText="Validade" DataField="validade" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="25%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         </Columns>
                         </asp:GridView>
                         
                             &nbsp;</td>
-                        <td style="width: 538px">
-                            &nbsp;</td>
-                        <td style="width: 298px">
-                            &nbsp;</td>
-                        <td style="width: 518px">
-                            &nbsp;</td>
                     </tr>
                 </table>
-            </td>
-            <td style="height: 246px; width: 80px">
             </td>
             <td style="height: 246px">
             </td>
         </tr>
         <tr>
             <td style="width: 863px">
-                &nbsp;</td>
-            <td style="width: 80px">
                 &nbsp;</td>
             <td>
                 &nbsp;</td>

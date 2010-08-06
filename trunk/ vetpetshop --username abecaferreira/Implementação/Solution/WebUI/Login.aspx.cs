@@ -41,7 +41,7 @@ namespace WebUI
             if (txtUsu.Text != "" && txtSenha.Text != "")
             {
                 usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenha.Text);
-                FormsAuthentication.RedirectFromLoginPage(txtUsu.Text, true);
+                FormsAuthentication.RedirectFromLoginPage(txtUsu.Text, false);
 
                 if (usuario != null)
                 {

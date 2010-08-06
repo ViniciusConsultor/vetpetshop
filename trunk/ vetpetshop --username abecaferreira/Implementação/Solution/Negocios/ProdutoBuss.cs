@@ -24,11 +24,11 @@ namespace Negocios
            return salvou;
        }
 
-       public DataTable ListarProdutos(DataTable tabela)
+       public DataTable ListarProdutos(DataTable tabela, string nome, int id)
        {
            DataTable tabelaPreenchida = new DataTable();
 
-           tabelaPreenchida = this.produtoDAO.ListarProduto(tabela);
+           tabelaPreenchida = this.produtoDAO.ListarProduto(tabela, nome, id);
            return tabelaPreenchida;
        }
 

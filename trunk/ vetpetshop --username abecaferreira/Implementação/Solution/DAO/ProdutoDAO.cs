@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using Entidade;
 
 namespace DAO
 {
@@ -32,10 +33,10 @@ namespace DAO
                 cmd.CommandText = "spiInserirProduto";
 
                 SqlParameter pidGrupo = new SqlParameter("@IdGrupo", SqlDbType.Int, 4);
-                SqlParameter pnomeProd = new SqlParameter("@Nome", SqlDbType.VarChar, 50);               
+                SqlParameter pnomeProd = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
                 SqlParameter pestoqueMin = new SqlParameter("@EstoqueMin", SqlDbType.Int, 4);
                 SqlParameter pestoqueMax = new SqlParameter("@EstoqueMax", SqlDbType.Int, 4);
-                SqlParameter pdescricao = new SqlParameter("@Descricao", SqlDbType.VarChar, 100 );
+                SqlParameter pdescricao = new SqlParameter("@Descricao", SqlDbType.VarChar, 100);
                 SqlParameter pprecoCusto = new SqlParameter("@PrecoCusto", SqlDbType.Decimal);
                 SqlParameter pprecoVenda = new SqlParameter("@PrecoVenda", SqlDbType.Decimal);
                 SqlParameter pdataVal = new SqlParameter("@DataValidade", SqlDbType.DateTime);
@@ -81,7 +82,7 @@ namespace DAO
             return salvou;
         }
 
-        public DataTable ListarProduto(DataTable tabela)
+        public DataTable ListarProduto(DataTable tabela, string nome, int id)
         {
 
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -90,7 +91,16 @@ namespace DAO
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "spsListaUsuariosProfissionais";
+            cmd.CommandText = "ListarProdutos";
+
+            SqlParameter pTipo = new SqlParameter("@Tipo", SqlDbType.Int, 4);
+            SqlParameter pnomeNome = new SqlParameter("@Nome", SqlDbType.VarChar, 100);
+
+            pnomeNome.Value = nome;
+            pTipo.Value = id;
+
+            cmd.Parameters.Add(pnomeNome);
+            cmd.Parameters.Add(pTipo);
 
             conn.Open();
 
@@ -99,34 +109,25 @@ namespace DAO
             while (dr.Read())
             {
                 DataRow _linhaTabela = tabela.NewRow();
-                _linhaTabela["id_usuario"] = dr.GetInt32(0);
-
-
-                if (dr.GetInt32(1).Equals(1))
-                {
-                    _linhaTabela["tipo_prof"] = "Administrador";
-                    _linhaTabela["nm_prof"] = dr.GetString(4);
-                }
-
-                if (dr.GetInt32(1).Equals(2))
-                {
-                    _linhaTabela["tipo_prof"] = "Veterinário";
-                    _linhaTabela["nm_prof"] = dr.GetString(8);
-                }
-
-                if (dr.GetInt32(1).Equals(3))
-                {
-                    _linhaTabela["tipo_prof"] = "Vendedor";
-                    _linhaTabela["nm_prof"] = dr.GetString(11);
-                }
-
-                _linhaTabela["nm_usuario"] = dr.GetString(5);
+                _linhaTabela["id_produto"] = dr.GetInt32(0);
+                _linhaTabela["tipo"] = dr.GetString(10);
+                _linhaTabela["nm_produto"] = dr.GetString(3);
+                _linhaTabela["min"] = dr.GetInt32(4);
+                _linhaTabela["max"] = dr.GetInt32(5);
+                _linhaTabela["descricao"] = dr.GetString(6);
+                _linhaTabela["preco_custo"] = dr.GetDecimal(7);
+                _linhaTabela["validade"] = dr.GetDateTime(8).ToString("dd/MM/yyyy");
+                _linhaTabela["preco_venda"] = dr.GetDecimal(9);
 
                 tabela.Rows.Add(_linhaTabela);
             }
+            
+
+            dr.Close();
+            conn.Close();
 
             return tabela;
-        
+
         }
     }
 }
