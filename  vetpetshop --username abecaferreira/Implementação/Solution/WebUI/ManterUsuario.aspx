@@ -100,7 +100,8 @@
                         <td colspan="3" style="height: 23px; width: 163px">
                         <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
-                                PageSize="15" onrowcommand="grUsuarios_RowCommand">
+                                PageSize="15" onrowcommand="grUsuarios_RowCommand" 
+                                onrowdatabound="grUsuarios_RowDataBound">
                         <Columns>
                         <asp:TemplateField>  
                         <HeaderStyle  Width="10%"/>                      

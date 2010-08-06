@@ -83,8 +83,8 @@ namespace WebUI
 
             produto.Nome = txtNome.Text;
             produto.IdGrupo = Convert.ToInt32(ddlTipoGrupo.SelectedItem.Value);
-            produto.PrecoCusto = Convert.ToDecimal(txtPrecoCusto.Text);
-            produto.PrecoVenda = Convert.ToDecimal(txtPrecoVenda.Text);
+            produto.PrecoCusto = decimal.Parse(txtPrecoCusto.Text);
+            produto.PrecoVenda = decimal.Parse(txtPrecoVenda.Text);
             produto.EstoqueMin = Convert.ToInt32(txtEstoqueMin.Text);
             produto.EstoqueMax = Convert.ToInt32(txtEstoqueMax.Text);
             produto.Descricao = txtDesc.Text;
@@ -102,6 +102,9 @@ namespace WebUI
                 txtPrecoVenda.Text = "";
                 txtEstoqueMin.Text = "";
                 txtEstoqueMax.Text = "";
+                txtAno.Text = "";
+                txtDia.Text = "";
+                txtMes.Text = "";
                 txtDesc.Text = "";
                 lblMsg.Text = "Cadastro efetuado com sucesso";
             }

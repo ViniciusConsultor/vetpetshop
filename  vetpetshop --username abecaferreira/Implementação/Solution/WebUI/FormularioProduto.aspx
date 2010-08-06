@@ -102,11 +102,11 @@
                         <td style="height: 23px; width: 277px">
                             Data de Validade </td>
                         <td style="height: 23px; width: 1079px">
-                            <asp:TextBox ID="txtDia" runat="server" Width="28px"></asp:TextBox>
+                            <asp:TextBox ID="txtDia" runat="server" Width="23px"></asp:TextBox>
                         &nbsp;/
-                            <asp:TextBox ID="txtMes" runat="server" Width="28px"></asp:TextBox>
+                            <asp:TextBox ID="txtMes" runat="server" Width="23px"></asp:TextBox>
                         &nbsp;/
-                            <asp:TextBox ID="txtAno" runat="server" Width="73px"></asp:TextBox>
+                            <asp:TextBox ID="txtAno" runat="server" Width="36px"></asp:TextBox>
                         </td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>

@@ -214,6 +214,16 @@ namespace WebUI
                     lblMsg.Text = "Não foi possível excluir o usuário selecionado. Falha de conexão com banco de dados";
                 }                
             }
+        }
+
+        protected void grUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Silver'");
+                // This will be the back ground color of the GridView Control
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
+            }
         }      
     }
 }

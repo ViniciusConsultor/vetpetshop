@@ -287,6 +287,7 @@ namespace DAO
                 tabela.Rows.Add(_linhaTabela);
             }
 
+            conn.Close();
             return tabela;
         }
 

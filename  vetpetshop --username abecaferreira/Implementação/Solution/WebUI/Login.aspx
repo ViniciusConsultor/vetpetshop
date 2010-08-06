@@ -8,7 +8,7 @@
     <style type="text/css">
         .style1
         {
-            width: 530px;
+            width: 543px;
         }
         .botao3d	{
 		display: block;
