@@ -1,6 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="CadastroGrupoProduto.aspx.cs" Inherits="WebUI.CadastroGrupoProduto" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<script language="javascript" type="text/javascript" src="alerts.js"></script>
+
 <table style="width:100%;">
         <tr>
             <td style="width: 863px">

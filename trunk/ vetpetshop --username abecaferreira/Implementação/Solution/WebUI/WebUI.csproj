@@ -164,6 +164,7 @@
     <Content Include="MenuVeterinario.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="alerts.js" />
     <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="CadastroProduto.aspx" />
     <Content Include="DefaultAdmin.aspx" />

@@ -88,6 +88,20 @@ namespace WebUI
 
         protected void grGrupos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //bool existe;
+            //Content content = new Content();
+            //content = (Content)Page.FindControl("ContentPlaceHolder1");
+            //GridView gdv = (GridView)content.FindControl("grGrupos");
+            //LinkButton lb = (LinkButton)gdv.FindControl("lkExcluir");
+            //int idgrupo = Convert.ToInt32(e.CommandArgument);
+
+            //ProdutoBuss produtoBuss = new ProdutoBuss();
+            //existe = produtoBuss.ListarProdutosPorGrupo(Convert.ToInt32(idgrupo));
+
+            //if (existe)
+            //    lb.OnClientClick = "return confirm('Existem produtos vinculados a este grupo, todos os produtos vinculados a ele serão excluídos. Deseja realmente excluir?')";
+
+
             if (e.CommandName == "excluir")
             {
                 int id = Convert.ToInt32(e.CommandArgument);
@@ -103,7 +117,7 @@ namespace WebUI
                 else
                 {
                     lblMsg.Text = "Não foi possível excluir o grupo selecionado. Falha de conexão com banco de dados";
-                }
+                }                
             }
         }
 
@@ -113,7 +127,7 @@ namespace WebUI
             {
                 e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Silver'");
                 // This will be the back ground color of the GridView Control
-                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");                
             }
         }
     }
