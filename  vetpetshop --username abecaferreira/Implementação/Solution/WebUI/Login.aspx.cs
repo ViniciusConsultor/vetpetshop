@@ -41,10 +41,11 @@ namespace WebUI
             if (txtUsu.Text != "" && txtSenha.Text != "")
             {
                 usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenha.Text);
-                FormsAuthentication.RedirectFromLoginPage(txtUsu.Text, false);
 
                 if (usuario != null)
                 {
+                    FormsAuthentication.RedirectFromLoginPage(txtUsu.Text, false);
+
                     if (usuario.TipoUsuario == 1)
                         Response.Redirect("DefaultAdmin.aspx");
 
@@ -58,6 +59,7 @@ namespace WebUI
                 else
                 {
                     lblAviso.Text = "Usuário e/ou senha inválidos";
+                    return;
                 }
             }
         }

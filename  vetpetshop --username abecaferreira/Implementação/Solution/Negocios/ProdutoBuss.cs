@@ -32,5 +32,12 @@ namespace Negocios
            return tabelaPreenchida;
        }
 
+       public bool ListarProdutosPorGrupo(int id)
+       {
+           bool existe;
+           existe = this.produtoDAO.ListarProdutosPorGrupo(id);
+           return existe;
+       }
+
     }
 }

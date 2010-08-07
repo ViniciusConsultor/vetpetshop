@@ -129,5 +129,52 @@ namespace DAO
             return tabela;
 
         }
+
+        public bool ListarProdutosPorGrupo(int id)
+        {
+             string stringConexao = databaseHelper.GetConnectionString("conexao");
+
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsListaProdutoPorGrupo";
+
+                SqlParameter pidGrupo = new SqlParameter("@IdGrupo", SqlDbType.Int, 4);
+
+                pidGrupo.Value = id;               
+
+                cmd.Parameters.Add(pidGrupo);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (dr.HasRows)
+                    return true;
+                else
+                    return false;                 
+            
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }         
+        
+        }
     }
 }
