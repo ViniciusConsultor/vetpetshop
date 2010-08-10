@@ -54,21 +54,31 @@ namespace WebUI
         }
         protected void Buscar_Click(object sender, EventArgs e)
         {
+            DataTable tabelaPreenchida = Preencher();
+
+            grUsuarios.Visible = true;
+            grUsuarios.DataSource = tabelaPreenchida;
+            grUsuarios.DataBind();
+            
+        }
+
+        private DataTable Preencher()
+        {
             string nome = string.Empty;
             int IdGrupo = 0;
             Produto produto = new Produto();
             if (txtNome.Text != "" || ddlTipo.SelectedItem.Value != "")
             {
-               if(txtNome.Text == "")           
-                   nome = txtNome.Text;                 
-               else
-                   nome = txtNome.Text;  
-         
-               if(ddlTipo.SelectedItem.Value == "")
+                if (txtNome.Text == "")
+                    nome = txtNome.Text;
+                else
+                    nome = txtNome.Text;
+
+                if (ddlTipo.SelectedItem.Value == "")
                     IdGrupo = 0;
-               else
-                IdGrupo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
-            }         
+                else
+                    IdGrupo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
+            }
 
             DataTable tabela = new DataTable();
             DataTable tabelaPreenchida = new DataTable();
@@ -76,11 +86,7 @@ namespace WebUI
 
             ProdutoBuss produtoBuss = new ProdutoBuss();
             tabelaPreenchida = produtoBuss.ListarProdutos(tabela, nome, IdGrupo);
-
-            grUsuarios.Visible = true;
-            grUsuarios.DataSource = tabelaPreenchida;
-            grUsuarios.DataBind();
-            
+            return tabelaPreenchida;
         }
 
         private DataTable MontarTabela()
@@ -120,6 +126,24 @@ namespace WebUI
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
             }
 
+        }
+
+        protected void grUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            DataTable tabelaPreenchida = Preencher();
+            grUsuarios.PageIndex = e.NewPageIndex;
+
+            grUsuarios.Visible = true;
+            grUsuarios.DataSource = tabelaPreenchida;
+            grUsuarios.DataBind();
+            
+
+        }
+
+        protected void grUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "editar")
+                Response.Redirect("FormularioProduto.aspx?idProduto="+e.CommandArgument);
         }      
     }
 }

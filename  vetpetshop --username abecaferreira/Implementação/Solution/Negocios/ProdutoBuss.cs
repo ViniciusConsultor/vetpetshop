@@ -39,5 +39,13 @@ namespace Negocios
            return existe;
        }
 
+
+       public Produto ObterProdutoPorId(int idProd)
+       {
+           Produto produto = new Produto();
+           produto = this.produtoDAO.ObterProdutoPorId(idProd);
+
+           return produto;
+       }
     }
 }
