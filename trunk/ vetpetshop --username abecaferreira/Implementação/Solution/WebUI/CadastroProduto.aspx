@@ -91,7 +91,9 @@
                         <td colspan="4" style="width: 324px">
                          <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
-                                PageSize="15" onrowdatabound="grUsuarios_RowDataBound">
+                                PageSize="10" onrowdatabound="grUsuarios_RowDataBound" 
+                                onpageindexchanging="grUsuarios_PageIndexChanging" 
+                                onrowcommand="grUsuarios_RowCommand">
                         <Columns>
                         <asp:TemplateField>  
                         <HeaderStyle  Width="5%"/>                      
@@ -110,14 +112,6 @@
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField HeaderText="Estoque Mín" DataField="min" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
-                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                        </asp:BoundField>
-                         <asp:BoundField HeaderText="Estoque Máx" DataField="max" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
-                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                        </asp:BoundField>
                         <asp:BoundField HeaderText="Descrição" DataField="descricao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="40%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -130,11 +124,21 @@
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
+                        <asp:BoundField HeaderText="Estoque Mín" DataField="min" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>
+                         <asp:BoundField HeaderText="Estoque Máx" DataField="max" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
+                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>                                              
                          <asp:BoundField HeaderText="Validade" DataField="validade" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="25%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         </Columns>
+
+<HeaderStyle BackColor="DarkBlue"></HeaderStyle>
                         </asp:GridView>
                         
                             &nbsp;</td>

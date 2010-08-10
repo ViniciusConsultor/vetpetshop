@@ -38,7 +38,11 @@ namespace DAO
                 SqlParameter pestoqueMax = new SqlParameter("@EstoqueMax", SqlDbType.Int, 4);
                 SqlParameter pdescricao = new SqlParameter("@Descricao", SqlDbType.VarChar, 100);
                 SqlParameter pprecoCusto = new SqlParameter("@PrecoCusto", SqlDbType.Decimal);
+                pprecoCusto.Precision = 7;
+                pprecoCusto.Scale = 2;                    
                 SqlParameter pprecoVenda = new SqlParameter("@PrecoVenda", SqlDbType.Decimal);
+                pprecoVenda.Precision = 7;
+                pprecoCusto.Scale = 2;
                 SqlParameter pdataVal = new SqlParameter("@DataValidade", SqlDbType.DateTime);
 
                 pnomeProd.Value = produto.Nome;
@@ -175,6 +179,65 @@ namespace DAO
                 conn.Close();
             }         
         
+        }
+
+        public Produto ObterProdutoPorId(int idProd)
+        {
+            Produto produto = new Produto();   
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterProduto";
+
+                SqlParameter pidProd = new SqlParameter("@IdProduto", SqlDbType.Int, 4);
+
+                pidProd.Value = idProd;
+                cmd.Parameters.Add(pidProd);
+                
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+               
+
+                //if(!dr.Read())
+                //    return null;
+
+                while(dr.Read())
+                {
+                    produto.IdGrupo = dr.GetInt32(1);
+                    produto.Nome = dr.GetString(3);
+                    produto.EstoqueMin = dr.GetInt32(4);
+                    produto.EstoqueMax = dr.GetInt32(5);
+                    produto.Descricao = dr.GetString(6);
+                    produto.PrecoCusto = dr.GetDecimal(7);
+                    produto.DataValidade = dr.GetDateTime(8);
+                    produto.PrecoVenda = dr.GetDecimal(9);
+
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return produto;
         }
     }
 }

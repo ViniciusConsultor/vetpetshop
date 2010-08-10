@@ -20,8 +20,40 @@ namespace WebUI
             menu.DataBind();
             #endregion
 
-            if(!IsPostBack)
+            string idProd = Request.Params["idProduto"];
+
+            if (!IsPostBack)
+            {
                 CarregaListaTipoProduto();
+
+                if (idProd != "")
+                {
+                    Edicao(idProd);
+                    btnOk.Text = "Atualizar";
+                }
+            }
+        }
+
+        private void Edicao(string idProd)
+        {
+            Produto produto = new Produto();
+            ProdutoBuss produtoBuss = new ProdutoBuss();
+
+            produto = produtoBuss.ObterProdutoPorId(Convert.ToInt32(idProd));
+
+            if(produto != null)
+            {
+                txtNome.Text = produto.Nome;
+                ddlTipoGrupo.SelectedIndex = ddlTipoGrupo.Items.IndexOf(ddlTipoGrupo.Items.FindByValue(produto.IdGrupo.ToString()));
+                txtPrecoCusto.Text = produto.PrecoCusto.ToString();
+                txtPrecoVenda.Text = produto.PrecoVenda.ToString();
+                txtEstoqueMin.Text = produto.EstoqueMin.ToString();
+                txtEstoqueMax.Text = produto.EstoqueMax.ToString();
+                txtDesc.Text = produto.Descricao;
+                txtAno.Text = produto.DataValidade.Year.ToString();
+                txtMes.Text = produto.DataValidade.Month.ToString();
+                txtDia.Text = produto.DataValidade.Day.ToString();            
+            }            
         }
 
         private void CarregaListaTipoProduto()
