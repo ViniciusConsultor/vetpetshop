@@ -85,6 +85,13 @@
     <Compile Include="DefaultAdmin.aspx.designer.cs">
       <DependentUpon>DefaultAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DefaultVendedor.aspx.cs">
+      <DependentUpon>DefaultVendedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultVendedor.aspx.designer.cs">
+      <DependentUpon>DefaultVendedor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DefaultVeterinario.aspx.cs">
       <DependentUpon>DefaultVeterinario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -108,7 +115,6 @@
     </Compile>
     <Compile Include="ManterCadastroCliente.aspx.cs">
       <DependentUpon>ManterCadastroCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ManterCadastroCliente.aspx.designer.cs">
       <DependentUpon>ManterCadastroCliente.aspx</DependentUpon>
@@ -168,6 +174,7 @@
     <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="CadastroProduto.aspx" />
     <Content Include="DefaultAdmin.aspx" />
+    <Content Include="DefaultVendedor.aspx" />
     <Content Include="DefaultVeterinario.aspx" />
     <Content Include="FormularioProduto.aspx" />
     <Content Include="images\bannercreator-nu %282%29.gif" />
