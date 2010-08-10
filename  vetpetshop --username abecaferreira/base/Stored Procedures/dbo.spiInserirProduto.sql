@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -10,8 +11,8 @@ CREATE PROCEDURE [dbo].[spiInserirProduto]
 @EstoqueMin INT,
 @EstoqueMax INT,
 @Descricao VARCHAR(100),
-@PrecoCusto DECIMAL,
-@PrecoVenda DECIMAL,
+@PrecoCusto DECIMAL(7,2),
+@PrecoVenda DECIMAL(7,2),
 @DataValidade DATETIME
 
 AS
