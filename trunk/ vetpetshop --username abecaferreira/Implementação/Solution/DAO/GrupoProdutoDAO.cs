@@ -86,7 +86,7 @@ namespace DAO
 
         public bool ExcluirGrupo(int id)
         {
-                bool executou = false;
+            bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
 

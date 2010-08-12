@@ -97,15 +97,15 @@
                          <asp:TemplateField>  
                         <HeaderStyle  Width="5%"/>                      
                         <ItemTemplate>
-                        <asp:LinkButton ID="lkExcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
-                        </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField>  
-                        <HeaderStyle  Width="5%"/>                      
-                        <ItemTemplate>
                         <asp:LinkButton ID="lkEditar" runat="server" Text="Editar" CommandName="editar" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
                         </ItemTemplate>
-                        </asp:TemplateField>                       
+                        </asp:TemplateField>        
+                         <asp:TemplateField>  
+                        <HeaderStyle  Width="5%"/>                      
+                        <ItemTemplate>
+                        <asp:LinkButton ID="lkExcluir" runat="server" OnClientClick=" return confirm('Deseja realmente excluir este registro?');" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
+                        </ItemTemplate>
+                        </asp:TemplateField>                                      
                         <asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
                         </asp:BoundField>

@@ -1,10 +1,4 @@
 ﻿function alerta()
 {
-decisao = confirm("Deseja realmente excluir este registro?");
-if (decisao) {
-    return true;
-}
-else {
-    return false;
-}
+alert('Existem produtos vinculados a este grupo!');
 }

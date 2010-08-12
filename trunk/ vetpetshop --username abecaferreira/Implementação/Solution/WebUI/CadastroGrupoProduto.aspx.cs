@@ -59,6 +59,8 @@ namespace WebUI
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
+            lblMsg.Text = "";
+
             if (txtNomeGrupo.Text == "")
             {
                 lblMsg.Text = "Preencha o nome do grupo";
@@ -88,23 +90,20 @@ namespace WebUI
 
         protected void grGrupos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //bool existe;
-            //Content content = new Content();
-            //content = (Content)Page.FindControl("ContentPlaceHolder1");
-            //GridView gdv = (GridView)content.FindControl("grGrupos");
-            //LinkButton lb = (LinkButton)gdv.FindControl("lkExcluir");
-            //int idgrupo = Convert.ToInt32(e.CommandArgument);
-
-            //ProdutoBuss produtoBuss = new ProdutoBuss();
-            //existe = produtoBuss.ListarProdutosPorGrupo(Convert.ToInt32(idgrupo));
-
-            //if (existe)
-            //    lb.OnClientClick = "return confirm('Existem produtos vinculados a este grupo, todos os produtos vinculados a ele serão excluídos. Deseja realmente excluir?')";
-
+            bool existe;         
 
             if (e.CommandName == "excluir")
             {
                 int id = Convert.ToInt32(e.CommandArgument);
+
+                ProdutoBuss produtoBuss = new ProdutoBuss();
+                existe = produtoBuss.ExisteProdutoPorGrupo(id);
+                if (existe)
+                {
+                    Page.RegisterStartupScript("javascript", "<script>alert('Existem produtos vinculados a este grupo!');</script>");
+                    return;
+                }
+                
                 GrupoProdutoBuss grupoBuss = new GrupoProdutoBuss();
                 bool executou = grupoBuss.ExcluirGrupo(Convert.ToInt32(id));
 
@@ -125,7 +124,7 @@ namespace WebUI
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Silver'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Yellow'");
                 // This will be the back ground color of the GridView Control
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");                
             }

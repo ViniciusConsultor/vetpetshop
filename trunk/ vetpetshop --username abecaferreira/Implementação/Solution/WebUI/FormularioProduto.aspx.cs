@@ -170,7 +170,10 @@ namespace WebUI
             executou = produtoBuss.AtualizarProduto(produto, Convert.ToInt32(idProd));
 
             if (executou)
+            {
                 lblMsg.Text = "Produto atualizado com sucesso";
+                Response.Redirect("CadastroProduto.aspx");
+            }
             else
                 lblMsg.Text = "Falha de conexão com o banco de dados";
                 
