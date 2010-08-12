@@ -29,7 +29,8 @@ namespace WebUI
                 if (idProd != "")
                 {
                     Edicao(idProd);
-                    btnOk.Text = "Atualizar";
+                    btnOk.Visible = false;
+                    btnAtualizar.Visible = true;
                 }
             }
         }
@@ -145,6 +146,34 @@ namespace WebUI
             {
                 lblMsg.Text = "Cadastro não efetuado. Falha de conexão com o banco de dados";
             }
+        }
+
+        protected void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            ProdutoBuss produtoBuss = new ProdutoBuss();
+            Produto produto = new Produto();
+
+            produto.Nome = txtNome.Text;
+            produto.IdGrupo = Convert.ToInt32(ddlTipoGrupo.SelectedItem.Value);
+            produto.PrecoCusto = decimal.Parse(txtPrecoCusto.Text);
+            produto.PrecoVenda = decimal.Parse(txtPrecoVenda.Text);
+            produto.EstoqueMin = Convert.ToInt32(txtEstoqueMin.Text);
+            produto.EstoqueMax = Convert.ToInt32(txtEstoqueMax.Text);
+            produto.Descricao = txtDesc.Text;
+
+            DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
+
+            produto.DataValidade = dataVal;
+
+            bool executou;
+            string idProd = Request.Params["idProduto"];
+            executou = produtoBuss.AtualizarProduto(produto, Convert.ToInt32(idProd));
+
+            if (executou)
+                lblMsg.Text = "Produto atualizado com sucesso";
+            else
+                lblMsg.Text = "Falha de conexão com o banco de dados";
+                
         }
       
     }

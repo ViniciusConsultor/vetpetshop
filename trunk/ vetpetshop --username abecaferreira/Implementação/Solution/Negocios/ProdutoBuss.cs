@@ -47,5 +47,20 @@ namespace Negocios
 
            return produto;
        }
+
+       public bool ExcluirProduto(int idProd)
+       {
+           bool executou;
+           executou = this.produtoDAO.ExcluirProduto(idProd);
+           return executou;
+       }
+
+       public bool AtualizarProduto(Produto produto, int id)
+       {
+           bool executou;
+
+           executou = this.produtoDAO.AtualizarProduto(produto, id);
+           return executou;
+       }
     }
 }

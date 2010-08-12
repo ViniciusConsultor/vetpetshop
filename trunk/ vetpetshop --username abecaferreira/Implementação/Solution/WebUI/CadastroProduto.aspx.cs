@@ -121,7 +121,7 @@ namespace WebUI
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Silver'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Yellow'");
                 // This will be the back ground color of the GridView Control
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
             }
@@ -143,7 +143,28 @@ namespace WebUI
         protected void grUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "editar")
-                Response.Redirect("FormularioProduto.aspx?idProduto="+e.CommandArgument);
+                Response.Redirect("FormularioProduto.aspx?idProduto=" + e.CommandArgument);
+
+            else
+            {
+                int idProd = Convert.ToInt32(e.CommandArgument);
+                ProdutoBuss produtoBuss = new ProdutoBuss();
+                bool executou = produtoBuss.ExcluirProduto(idProd);
+
+                if (executou)
+                {
+                    lblMsg.Text = "Produto excluído com sucesso";
+                    DataTable tabelaPreenchida = Preencher();
+                    grUsuarios.Visible = true;
+                    grUsuarios.DataSource = tabelaPreenchida;
+                    grUsuarios.DataBind();
+                }
+                else
+                {
+                    lblMsg.Text = "Não foi possível excluir o usuário selecionado. Falha de conexão com banco de dados";
+                } 
+            }
         }      
+
     }
 }

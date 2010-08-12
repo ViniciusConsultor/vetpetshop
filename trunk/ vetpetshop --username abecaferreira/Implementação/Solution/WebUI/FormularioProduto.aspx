@@ -130,6 +130,8 @@
                             &nbsp;</td>
                         <td style="width: 1079px">
                         &nbsp;<asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
+                            <asp:Button ID="btnAtualizar" runat="server" Text="Atualizar" Visible = "false" 
+                                onclick="btnAtualizar_Click" />
                         </td>
                         <td style="width: 518px">
                             &nbsp;</td>
