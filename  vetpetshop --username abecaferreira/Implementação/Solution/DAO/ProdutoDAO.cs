@@ -134,7 +134,7 @@ namespace DAO
 
         }
 
-        public bool ListarProdutosPorGrupo(int id)
+        public bool ExisteProdutoPorGrupo(int id)
         {
              string stringConexao = databaseHelper.GetConnectionString("conexao");
 
@@ -145,9 +145,9 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "spsListaProdutoPorGrupo";
+                cmd.CommandText = "spsProdutoPorGrupo";
 
-                SqlParameter pidGrupo = new SqlParameter("@IdGrupo", SqlDbType.Int, 4);
+                SqlParameter pidGrupo = new SqlParameter("@Id_Grupo", SqlDbType.Int, 4);
 
                 pidGrupo.Value = id;               
 
@@ -296,7 +296,6 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "spuAtualizarProduto";
 
-                SqlParameter pId = new SqlParameter("@IdProduto", SqlDbType.Int, 4);
                 SqlParameter pidGrupo = new SqlParameter("@IdGrupo", SqlDbType.Int, 4);
                 SqlParameter pnomeProd = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
                 SqlParameter pestoqueMin = new SqlParameter("@EstoqueMin", SqlDbType.Int, 4);
@@ -310,7 +309,7 @@ namespace DAO
                 pprecoCusto.Scale = 2;
                 SqlParameter pdataVal = new SqlParameter("@DataValidade", SqlDbType.DateTime);
 
-                pId.Value = id;
+                //pId.Value = id;
                 pnomeProd.Value = produto.Nome;
                 pidGrupo.Value = produto.IdGrupo;
                 pestoqueMin.Value = produto.EstoqueMin;
@@ -320,7 +319,7 @@ namespace DAO
                 pprecoVenda.Value = produto.PrecoVenda;
                 pdataVal.Value = produto.DataValidade;
 
-                cmd.Parameters.Add(id);
+                cmd.Parameters.Add(new SqlParameter("@IdProduto", SqlDbType.Int)).Value = id;
                 cmd.Parameters.Add(pnomeProd);
                 cmd.Parameters.Add(pidGrupo);
                 cmd.Parameters.Add(pestoqueMin);
