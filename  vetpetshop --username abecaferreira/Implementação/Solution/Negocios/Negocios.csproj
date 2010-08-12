@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ClienteBuss.cs" />
     <Compile Include="EstoqueBuss.cs" />
     <Compile Include="GrupoProdutoBuss.cs" />
     <Compile Include="ProdutoBuss.cs" />

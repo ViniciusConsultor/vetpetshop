@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="ManterCadastroCliente.aspx.cs">
       <DependentUpon>ManterCadastroCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ManterCadastroCliente.aspx.designer.cs">
       <DependentUpon>ManterCadastroCliente.aspx</DependentUpon>
