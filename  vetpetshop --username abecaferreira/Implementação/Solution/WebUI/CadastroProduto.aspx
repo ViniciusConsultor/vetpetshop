@@ -5,13 +5,12 @@
     <table style="width:100%;">
         <tr>
             <td style="width: 863px">
-                &nbsp;</td>
-            <td>
+              <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
                 &nbsp;</td>
         </tr>
         <tr>
             <td style="height: 246px; width: 863px">
-                <table style="width: 100%; height: 228px;">
+                <table style="width: 102%; height: 228px;">
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
@@ -22,7 +21,7 @@
                                 GroupName="tipo" oncheckedchanged="novo_CheckedChanged" />
                         </td>
                         <td style="height: 23px; width: 538px">
-                            &nbsp;Alterar Produto
+                            &nbsp;Editar/Excluir Produto
                             <asp:RadioButton ID="edicao" runat="server" AutoPostBack="True" 
                                 CausesValidation="True" GroupName="tipo" 
                                 oncheckedchanged="edicao_CheckedChanged" />
@@ -95,12 +94,18 @@
                                 onpageindexchanging="grUsuarios_PageIndexChanging" 
                                 onrowcommand="grUsuarios_RowCommand">
                         <Columns>
+                         <asp:TemplateField>  
+                        <HeaderStyle  Width="5%"/>                      
+                        <ItemTemplate>
+                        <asp:LinkButton ID="lkExcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
+                        </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField>  
                         <HeaderStyle  Width="5%"/>                      
                         <ItemTemplate>
                         <asp:LinkButton ID="lkEditar" runat="server" Text="Editar" CommandName="editar" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
                         </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>                       
                         <asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
                         </asp:BoundField>
@@ -145,13 +150,9 @@
                     </tr>
                 </table>
             </td>
-            <td style="height: 246px">
-            </td>
         </tr>
         <tr>
             <td style="width: 863px">
-                &nbsp;</td>
-            <td>
                 &nbsp;</td>
         </tr>
     </table>
