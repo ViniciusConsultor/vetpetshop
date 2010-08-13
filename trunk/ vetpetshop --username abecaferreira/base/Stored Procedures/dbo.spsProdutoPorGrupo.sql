@@ -3,7 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
-CREATE PROCEDURE [dbo].[spsListaProdutoPorGrupo]
+CREATE PROCEDURE [dbo].[spsProdutoPorGrupo]
 	@Id_Grupo int
 AS
 BEGIN
