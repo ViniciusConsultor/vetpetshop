@@ -147,7 +147,7 @@ namespace WebUI
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Silver'");
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Yellow'");
                 // This will be the back ground color of the GridView Control
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
             }
