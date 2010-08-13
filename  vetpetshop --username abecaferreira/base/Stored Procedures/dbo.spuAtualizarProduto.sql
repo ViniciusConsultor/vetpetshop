@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -19,8 +20,7 @@ AS
 BEGIN
 	
 	UPDATE dbo.Produto SET 
-	IdGrupo = @IdGrupo,
-	IdFinanceiro = NULL,
+	IdGrupo = @IdGrupo,	
 	Nome = @Nome,
 	EstoqueMin = @EstoqueMin,
 	EstoqueMax = @EstoqueMax,
