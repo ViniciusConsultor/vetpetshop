@@ -20,13 +20,15 @@ CONSTRAINT  		PK_Grupo			PRIMARY KEY(Id)
 CREATE TABLE Financeiro 
 (
 Id					INT IDENTITY(1,1)	NOT NULL,
+IdUsuario		    INT				    NOT NULL,
 ValorTotal			DECIMAL				NULL,
 TipoPagamento 		INT					NOT NULL, -- Cheque Dinheiro Cartão
 Parcelas            INT                 NULL,     -- Quantidade de Parcelas (cartão, cheque)
 TipoTransacao 		INT					NOT NULL, -- Venda Consulta
 TipoResponsavel 	INT					NOT NULL, -- Veterinario Vendedor Administrador
 DataTransacao   	DATETIME			NOT NULL,
-CONSTRAINT  PK_Financeiro				PRIMARY KEY(Id)
+CONSTRAINT  PK_Financeiro				PRIMARY KEY(Id),
+CONSTRAINT  FK_Financeiro_Usuario		FOREIGN KEY(IdUsuario)     REFERENCES  Usuario(Id)
 )
 
 CREATE TABLE Produto
@@ -39,7 +41,6 @@ EstoqueMin			INT					NULL,
 EstoqueMax			INT					NULL,
 Descricao			VARCHAR(200)		NULL,
 PrecoCusto			DECIMAL				NULL,
-DataCompra		    DATETIME			NULL, 
 DataValidade		DATETIME			NOT NULL,
 PrecoVenda			DECIMAL				NULL,
 CONSTRAINT  PK_Produto					PRIMARY KEY(Id),
@@ -85,8 +86,7 @@ IdAdministrador		INT					NOT NULL,
 IdVeterinario		INT					NOT NULL,
 IdVendedor			INT					NOT NULL,
 Nome				VARCHAR(50)		    NULL,
-TipoUsuario 		INT					NOT NULL, -- Veterinario Vendedor Administrador 
-[Login]             VARCHAR(20)		    NOT NULL,
+TipoUsuario 		INT					NOT NULL, -- Veterinario Vendedor Administrador
 Senha				VARCHAR(20)			NOT NULL,
 CONSTRAINT  PK_Usuario					PRIMARY KEY(Id),
 CONSTRAINT  FK_Usuario_Administrador	FOREIGN KEY(IdAdministrador)	REFERENCES  Administrador(Id),
@@ -98,7 +98,7 @@ CREATE TABLE ConsultaVeterinaria
 (
 Id				INT IDENTITY(1,1)				NOT NULL,
 IdUsuario		INT								NOT NULL,
-IdFinanceiro	INT								NOT NULL,
+IdFinanceiro	INT								NULL,
 Valor			DECIMAL							NULL,
 Data			DATETIME						NOT NULL,
 [Status]		INT								NOT NULL, --Agendada Realizada Não Realizada
@@ -180,16 +180,6 @@ CONSTRAINT  PK_NotaFiscal						PRIMARY KEY(Id),
 CONSTRAINT  FK_NotaFiscal_Vendedor				FOREIGN KEY(IdVendedor)			REFERENCES  Vendedor(Id),
 CONSTRAINT  FK_NotaFiscal_Administrador			FOREIGN KEY(IdAdministrador)	REFERENCES  Administrador(Id),
 CONSTRAINT  FK_NotaFiscal_Usuario				FOREIGN KEY(IdUsuario)			REFERENCES  Usuario(Id)
-)
-
-CREATE TABLE Transacao 
-(
-Id					INT IDENTITY(1,1)			NOT NULL,
-IdUsuario			INT							NOT NULL,
-IdFinanceiro		INT							NOT NULL,
-CONSTRAINT  PK_Transacao						PRIMARY KEY(Id),
-CONSTRAINT  FK_Transacao_Usuario				FOREIGN KEY(IdUsuario)			REFERENCES  Usuario(Id),
-CONSTRAINT  FK_Transacao_Financeiro				FOREIGN KEY(IdFinanceiro)		REFERENCES  Financeiro(Id)
 )
 
 CREATE TABLE VeterinarioCliente
