@@ -88,6 +88,7 @@ IdVendedor			INT					NOT NULL,
 Nome				VARCHAR(50)		    NULL,
 TipoUsuario 		INT					NOT NULL, -- Veterinario Vendedor Administrador
 Senha				VARCHAR(20)			NOT NULL,
+Email				VARCHAR(30)			NULL,
 CONSTRAINT  PK_Usuario					PRIMARY KEY(Id),
 CONSTRAINT  FK_Usuario_Administrador	FOREIGN KEY(IdAdministrador)	REFERENCES  Administrador(Id),
 CONSTRAINT  FK_Usuario_Veterinario		FOREIGN KEY(IdVeterinario)		REFERENCES  Veterinario(Id),
