@@ -26,7 +26,7 @@ namespace WebUI
             {
                 CarregaListaTipoProduto();
 
-                if (idProd != "")
+                if (idProd != null)
                 {
                     Edicao(idProd);
                     btnOk.Visible = false;
