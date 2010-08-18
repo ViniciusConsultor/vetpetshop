@@ -27,11 +27,11 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-                ExibeGrid();
+                //ExibeGrid();
             }
         }
 
-        private void ExibeGrid()
+        /*private void ExibeGrid()
         {
             ClienteBuss clienteBus = new ClienteBuss();
             DataTable tabela = MontarTabela();
@@ -44,7 +44,7 @@ namespace WebUI
             }
             else
                 grClientes.Visible = false;
-        }
+        }*/
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace WebUI
                 txtCPF.Text = "";
                 txtTel.Text = "";
                 txtEmail.Text = "";
-                ExibeGrid();
+                //ExibeGrid();
             }
 
             else
@@ -120,9 +120,9 @@ namespace WebUI
             _tabela.Columns.Add(_coluna4);
 
             return _tabela;
-        }
+        }        
 
-        protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "excluir")
             {
@@ -141,9 +141,9 @@ namespace WebUI
                     lblMsg.Text = "Não foi possível excluir o cliente selecionado. Falha de conexão com banco de dados";
                 }
             }
-        }
+        }*/
 
-        protected void grClientes_RowDataBound(object sender, GridViewRowEventArgs e)
+        /*protected void grClientes_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -151,6 +151,6 @@ namespace WebUI
                 // This will be the back ground color of the GridView Control
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
             }
-        }     
+        }*/    
     }
 }
