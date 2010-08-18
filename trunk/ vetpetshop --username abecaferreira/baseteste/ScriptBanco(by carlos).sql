@@ -198,6 +198,7 @@ CREATE TABLE ProdutoNotaFiscal
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdProduto			INT							NOT NULL,
 IdNotaFiscal		INT							NOT NULL,
+Quantidade			INT							NOT NULL,
 CONSTRAINT  PK_ProdutoNotaFiscal				PRIMARY KEY(Id),
 CONSTRAINT  FK_ProdutoNotaFiscal_Produto		FOREIGN KEY(IdProduto)			REFERENCES  Produto(Id),
 CONSTRAINT  FK_ProdutoNotaFiscal_NotaFiscal		FOREIGN KEY(IdNotaFiscal)		REFERENCES  NotaFiscal(Id)
