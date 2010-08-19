@@ -52,14 +52,18 @@ namespace WebUI
         {
             Response.Redirect("FormularioProduto.aspx");
         }
+
         protected void Buscar_Click(object sender, EventArgs e)
         {
             DataTable tabelaPreenchida = Preencher();
 
-            grUsuarios.Visible = true;
-            grUsuarios.DataSource = tabelaPreenchida;
-            grUsuarios.DataBind();
-            
+            if (tabelaPreenchida.Rows.Count != 0)
+            {
+                grUsuarios.Visible = true;
+                grUsuarios.DataSource = tabelaPreenchida;
+                grUsuarios.DataBind();
+                lblLista.Visible = true;
+            }
         }
 
         private DataTable Preencher()
@@ -133,9 +137,13 @@ namespace WebUI
             DataTable tabelaPreenchida = Preencher();
             grUsuarios.PageIndex = e.NewPageIndex;
 
-            grUsuarios.Visible = true;
-            grUsuarios.DataSource = tabelaPreenchida;
-            grUsuarios.DataBind();
+            if (tabelaPreenchida.Rows.Count != 0)
+            {
+                lblLista.Visible = true;
+                grUsuarios.Visible = true;
+                grUsuarios.DataSource = tabelaPreenchida;
+                grUsuarios.DataBind();
+            }
             
 
         }

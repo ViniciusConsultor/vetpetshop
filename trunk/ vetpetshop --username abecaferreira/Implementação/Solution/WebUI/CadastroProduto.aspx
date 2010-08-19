@@ -75,8 +75,21 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 319px">
+                        <td colspan="2" style="height: 23px; width: 319px">
                             &nbsp;</td>
+                        <td style="height: 23px; width: 538px">                            
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 298px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td colspan="2" style="height: 23px; width: 319px">
+                            <asp:Label ID="lblLista" runat="server" Text="Lista de produtos cadastrados" Font-Bold="true" Visible="false"></asp:Label>
+                        </td>
                         <td style="height: 23px; width: 538px">                            
                         </td>
                         <td style="height: 23px; width: 298px">

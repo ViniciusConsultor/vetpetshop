@@ -22,7 +22,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 209px">
+                        <td style="height: 23px; width: 313px">
                             Nome do Grupo
                            </td>
                         <td style="height: 23px; width: 392px">
@@ -36,7 +36,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 209px">
+                        <td style="height: 23px; width: 313px">
                             </td>
                         <td style="height: 23px; width: 392px">
                             <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
@@ -47,11 +47,22 @@
                     <tr>
                         <td style="width: 58px; height: 9px">
                             </td>
-                        <td style="height: 9px; width: 209px">
+                        <td style="height: 9px; width: 313px">
                             </td>
                         <td style="height: 9px; width: 392px">
                             </td>
                         <td style="height: 9px; width: 518px">
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; ">
+                            </td>
+                        <td colspan="2" style="width: 313px">
+                            <asp:Label ID="lblLista" runat="server" Font-Bold="true" Text="Lista de grupos cadastrados"></asp:Label>
+                            </td>
+                        <td style="width: 392px">
+                            </td>
+                        <td style="width: 518px">
                             </td>
                     </tr>
                     <tr>
