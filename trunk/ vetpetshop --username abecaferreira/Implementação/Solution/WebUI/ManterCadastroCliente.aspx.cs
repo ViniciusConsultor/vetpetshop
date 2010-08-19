@@ -120,6 +120,11 @@ namespace WebUI
             _tabela.Columns.Add(_coluna4);
 
             return _tabela;
+        }
+
+        protected void chkCadPet_CheckedChanged(object sender, EventArgs e)
+        {
+            pnlPet.Visible = chkCadPet.Checked;
         }        
 
         /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
