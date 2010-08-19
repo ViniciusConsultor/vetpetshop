@@ -32,109 +32,91 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Nome do Produto</td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                         <asp:TextBox ID="txtNome" runat="server" Width="347px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Tipo</td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                         <asp:DropDownList ID="ddlTipoGrupo" runat="server" Width="200px">
                 </asp:DropDownList>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Preço de Custo</td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                             <asp:TextBox ID="txtPrecoCusto" runat="server" Width="200px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Preço de Venda</td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                             <asp:TextBox ID="txtPrecoVenda" runat="server" Width="200px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Estoque Mínimo</td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                             <asp:TextBox ID="txtEstoqueMin" runat="server" Width="200px"></asp:TextBox>
                         &nbsp;(quantidade mínima para aviso de reposição de estoque)</td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Estoque Máximo</td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                             <asp:TextBox ID="txtEstoqueMax" runat="server" Width="200px"></asp:TextBox>
                         &nbsp;(quantidade máxima do produto em estoque)</td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 277px">
+                        <td style="height: 23px; width: 370px">
                             Data de Validade </td>
-                        <td style="height: 23px; width: 1079px">
+                        <td style="height: 23px; width: 1901px">
                             <asp:TextBox ID="txtDia" runat="server" Width="23px"></asp:TextBox>
                         &nbsp;/
                             <asp:TextBox ID="txtMes" runat="server" Width="23px"></asp:TextBox>
                         &nbsp;/
                             <asp:TextBox ID="txtAno" runat="server" Width="36px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 87px">
                             </td>
-                        <td style="height: 87px; width: 277px">
+                        <td style="height: 87px; width: 370px">
                             Descrição</td>
-                        <td style="height: 87px; width: 1079px">
+                        <td style="height: 87px; width: 1901px">
                             <asp:TextBox ID="txtDesc" runat="server" Height="65px" TextMode="MultiLine" 
                                 Width="347px"></asp:TextBox>
                         </td>
-                        <td style="height: 87px; width: 518px">
-                            </td>
                     </tr>
                     <tr>
                         <td style="width: 58px">
                             &nbsp;</td>
-                        <td style="width: 277px">
+                        <td style="width: 370px">
                             &nbsp;</td>
-                        <td style="width: 1079px">
+                        <td style="width: 1901px">
                         &nbsp;<asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
                             <asp:Button ID="btnAtualizar" runat="server" Text="Atualizar" Visible = "false" 
                                 onclick="btnAtualizar_Click" />
                         </td>
-                        <td style="width: 518px">
-                            &nbsp;</td>
                     </tr>
                 </table>
             </td>

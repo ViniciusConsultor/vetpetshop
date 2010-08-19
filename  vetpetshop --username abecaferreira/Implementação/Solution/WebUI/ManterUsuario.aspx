@@ -31,9 +31,21 @@
                         <td style="width: 58px; height: 23px">
                         </td>
                         <td style="height: 23px; width: 383px">
-                            Nome de Usuário</td>
+                            Login</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeUsu" runat="server" Width="170px"></asp:TextBox>
+                        </td>
+                        <td style="height: 23px; width: 518px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 383px">
+                            Senha</td>
+                        <td style="height: 23px; width: 392px">
+                            <asp:TextBox ID="txtSenha" runat="server" Width="170px"></asp:TextBox>&nbsp;<asp:LinkButton id="lkGera" runat="server" Text="Gerar senha" 
+                                onclick="lkGera_Click"></asp:LinkButton>
                         </td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>
@@ -45,19 +57,7 @@
                             Nome do Profissional</td>
                         <td style="height: 23px; width: 392px">
                         <asp:TextBox ID="txtNomePro" runat="server" Width="350px"></asp:TextBox>
-                        </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 383px">
-                            Senha</td>
-                        <td style="height: 23px; width: 392px">
-                            <asp:TextBox ID="txtSenha" runat="server" Width="170px"></asp:TextBox>&nbsp;&nbsp;
-                            <asp:LinkButton id="lkGera" runat="server" Text="Gerar senha" 
-                                onclick="lkGera_Click"></asp:LinkButton>
+                            &nbsp;
                         </td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>
