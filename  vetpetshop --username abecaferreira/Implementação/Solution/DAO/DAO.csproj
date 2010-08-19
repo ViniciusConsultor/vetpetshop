@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalDAO.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ClienteDAO.cs" />
     <Compile Include="DatabaseHelper.cs" />
