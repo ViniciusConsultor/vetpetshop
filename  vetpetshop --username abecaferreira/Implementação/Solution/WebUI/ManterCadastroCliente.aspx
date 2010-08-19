@@ -30,7 +30,7 @@
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
+                        <td style="height: 23px; width: 497px">
                             &nbsp;</td>
                     </tr>
                     <tr>
@@ -59,7 +59,7 @@
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtEmail" runat="server" Width="189px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
+                        <td style="height: 23px; width: 497px">
                             &nbsp;</td>
                     </tr>
                     <tr>
@@ -70,15 +70,15 @@
                         <td style="height: 23px; width: 392px">
                             <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
                         </td>
-                        <td style="height: 23px; width: 518px">
+                        <td style="height: 23px; width: 497px">
                             &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td colspan="3" style="height: 23px; width: 163px">
+                        <td colspan="3" style="height: 23px; ">
                             <asp:CheckBox ID="chkCadPet" runat="server" AutoPostBack="True" 
-                                Text="Cadastrar novo Pet"/>
+                                Text="Cadastrar novo Pet" oncheckedchanged="chkCadPet_CheckedChanged"/>
                         </td>
                         <td style="height: 23px; width: 392px">
                             &nbsp;</td>
@@ -88,9 +88,47 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td colspan="3" style="height: 23px; width: 163px">
-                            <asp:Panel ID="pnlPet" runat="server" Width="100%">
-                                painel
+                        <td colspan="3" style="height: 23px; ">
+                            <asp:Panel ID="pnlPet" runat="server" Visible="False" style="width:500px;" 
+                                Width="456px">
+                               <table>
+                                   <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Nome do Animal</td>
+                                        <td style="height: 23px; width: 392px">
+                                         <asp:TextBox ID="txtNomeAnimal" runat="server" Width="189px"></asp:TextBox>
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Tipo do Animal</td>
+                                        <td style="height: 23px; width: 330px">
+                                            <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="189px">
+                                            </asp:DropDownList>
+                                        </td>                                                                               
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Peso</td>
+                                        <td style="height: 23px; width: 392px">
+                                         <asp:TextBox ID="txtPeso" runat="server" Width="189px"></asp:TextBox>
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Raça</td>
+                                        <td style="height: 23px; width: 392px">
+                                         <asp:TextBox ID="txtRaca" runat="server" Width="189px"></asp:TextBox>
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            </td>
+                                        <td style="height: 23px; width: 392px">
+                                            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" />
+                                        </td>                                        
+                                    </tr>
+                               </table>
                             </asp:Panel>                             
                         </td>
                         <td style="height: 23px; width: 392px">
@@ -105,7 +143,7 @@
                             &nbsp;</td>
                         <td style="width: 392px">
                             &nbsp;</td>
-                        <td style="width: 518px">
+                        <td style="width: 497px">
                             &nbsp;</td>
                     </tr>
                 </table>
