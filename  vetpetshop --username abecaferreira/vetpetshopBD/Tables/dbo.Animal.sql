@@ -2,8 +2,8 @@ CREATE TABLE [dbo].[Animal]
 (
 [Id] [int] NOT NULL IDENTITY(1, 1),
 [IdTipoAnimal] [int] NOT NULL,
-[IdCliente] [int] NULL,
-[TipoAnimal] [int] NULL,
+[IdCliente] [int] NOT NULL,
+[TipoAnimal] [int] NOT NULL,
 [Peso] [decimal] (18, 0) NOT NULL,
 [Raca] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [Nome] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
