@@ -39,11 +39,21 @@ namespace DAO
                 SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 100);
                 SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
                 SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
+                SqlParameter pCelular = new SqlParameter("@Email", SqlDbType.VarChar, 30);
                 SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+
 
                 pnomeCliente.Value = cliente.Nome;
                 pCpf.Value = cliente.CPF;
-                pTelefone.Value = cliente.Telefone;
+                pTelefone.Value = cliente.Telefone1;
+                pCelular.Value = cliente.Telefone2;
+
                 pEmail.Value = cliente.Email;
                 cmd.Parameters.Add(pnomeCliente);
                 cmd.Parameters.Add(pCpf);
