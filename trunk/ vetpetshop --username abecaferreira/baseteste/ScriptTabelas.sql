@@ -120,7 +120,6 @@ CREATE TABLE Animal
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdTipoAnimal		INT							NOT NULL,
 IdCliente			INT							NOT NULL,
-TipoAnimal			INT							NOT NULL,
 Peso				DECIMAL(9,2)				NOT NULL,
 Raca				VARCHAR(50)					NULL,
 Nome				VARCHAR(50)					NOT NULL,
