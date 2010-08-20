@@ -4,7 +4,7 @@ CREATE TABLE [dbo].[Animal]
 [IdTipoAnimal] [int] NOT NULL,
 [IdCliente] [int] NOT NULL,
 [TipoAnimal] [int] NOT NULL,
-[Peso] [decimal] (18, 0) NOT NULL,
+[Peso] [decimal] (9, 2) NOT NULL,
 [Raca] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [Nome] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [DataFimVacinacao] [datetime] NULL,
