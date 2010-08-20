@@ -46,9 +46,72 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
+                            RG</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtRG" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
                             Telefone</td>
                             <td style="width: 58px; height: 23px">
                          <asp:TextBox ID="txtTel" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            Celular</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtCel" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            Endereço</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtEndereco" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            Bairro</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtBairro" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            Cidade</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtCidade" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            Estado</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtEstado" runat="server" Width="189px"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            CEP</td>
+                            <td style="width: 58px; height: 23px">
+                         <asp:TextBox ID="txtCep" runat="server" Width="189px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -132,7 +195,8 @@
                                         <td style="height: 23px; width: 337px">
                                             </td>
                                         <td style="height: 23px; width: 392px">
-                                            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" />
+                                            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" 
+                                                onclick="btnSalvar_Click" />
                                         </td>                                        
                                     </tr>
                                </table>
