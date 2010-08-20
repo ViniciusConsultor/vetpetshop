@@ -77,8 +77,8 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td colspan="3" style="height: 23px; ">
-                            <asp:CheckBox ID="chkCadPet" runat="server" AutoPostBack="True" 
-                                Text="Cadastrar novo Pet" oncheckedchanged="chkCadPet_CheckedChanged"/>
+                            <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" 
+                                Text="Cadastrar Animal" />
                         </td>
                         <td style="height: 23px; width: 392px">
                             &nbsp;</td>
@@ -105,6 +105,13 @@
                                         <td style="height: 23px; width: 330px">
                                             <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="189px">
                                             </asp:DropDownList>
+                                        </td>                                                                               
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Data de Nascimento</td>
+                                        <td style="height: 23px; width: 330px">
+                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px"></asp:TextBox>                                           
                                         </td>                                                                               
                                     </tr>
                                     <tr>

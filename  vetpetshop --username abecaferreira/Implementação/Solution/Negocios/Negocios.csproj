@@ -51,6 +51,7 @@
     <Compile Include="GrupoProdutoBuss.cs" />
     <Compile Include="ProdutoBuss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoAnimalBuss.cs" />
     <Compile Include="UsuarioBuss.cs" />
   </ItemGroup>
   <ItemGroup>
