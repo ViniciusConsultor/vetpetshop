@@ -39,25 +39,37 @@ namespace DAO
                 SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 100);
                 SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
                 SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
-                SqlParameter pCelular = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                SqlParameter pCelular = new SqlParameter("@Celular", SqlDbType.VarChar, 20);
+                SqlParameter pRG = new SqlParameter("@RG", SqlDbType.VarChar, 20);
+                SqlParameter pEndereco = new SqlParameter("@Endereco", SqlDbType.VarChar, 50);
+                SqlParameter pBairro = new SqlParameter("@Bairro", SqlDbType.VarChar, 20);
+                SqlParameter pCidade = new SqlParameter("@Cidade", SqlDbType.VarChar, 20);
+                SqlParameter pEstado = new SqlParameter("@Estado", SqlDbType.VarChar, 20);
+                SqlParameter pCEP = new SqlParameter("@CEP", SqlDbType.VarChar, 20);
                 SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-                //SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-                //SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-                //SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-                //SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-                //SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-                //SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
-
 
                 pnomeCliente.Value = cliente.Nome;
                 pCpf.Value = cliente.CPF;
                 pTelefone.Value = cliente.Telefone1;
                 pCelular.Value = cliente.Telefone2;
-
+                pRG.Value = cliente.RG;
+                pEndereco = cliente.Endereco;
+                pBairro = cliente.Bairro;
+                pCidade = cliente.Cidade;
+                pEstado = cliente.Estado;
+                pCEP = cliente.CEP;
                 pEmail.Value = cliente.Email;
+
                 cmd.Parameters.Add(pnomeCliente);
                 cmd.Parameters.Add(pCpf);
                 cmd.Parameters.Add(pTelefone);
+                cmd.Parameters.Add(pCelular);
+                cmd.Parameters.Add(pRG);
+                cmd.Parameters.Add(pEndereco);
+                cmd.Parameters.Add(pBairro);
+                cmd.Parameters.Add(pCidade);
+                cmd.Parameters.Add(pEstado);
+                cmd.Parameters.Add(pCEP);
                 cmd.Parameters.Add(pEmail);
 
                 conn.Open();
