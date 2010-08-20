@@ -96,13 +96,14 @@ namespace WebUI
             
             cliente.Nome = txtNomeCli.Text;
             cliente.CPF = txtCPF.Text;
-            cliente.Telefone1 = txtTel.Text                
-            cliente.Telefone2 = txtCel.Text
-            cliente.RG = txtRG.Text
-            cliente.Endereco = txtEndereco.Text
-            cliente.Bairro = txtBairro.Text
-            cliente.Cidade = txtCidade.Text
-
+            cliente.Telefone1 = txtTel.Text;                
+            cliente.Telefone2 = txtCel.Text;
+            cliente.RG = txtRG.Text;
+            cliente.Endereco = txtEndereco.Text;
+            cliente.Bairro = txtBairro.Text;
+            cliente.Cidade = txtCidade.Text;
+            cliente.Estado = txtEstado.Text;
+            cliente.CEP = txtCep.Text;
             cliente.Email = txtEmail.Text;                
             executou = clienteBus.InserirCliente(cliente);
 
