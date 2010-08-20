@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalBuss.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ClienteBuss.cs" />
     <Compile Include="EstoqueBuss.cs" />
