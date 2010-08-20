@@ -27,6 +27,7 @@ namespace WebUI
 
             if (!IsPostBack)
             {
+
                 //ExibeGrid();
             }
         }
@@ -45,6 +46,23 @@ namespace WebUI
             else
                 grClientes.Visible = false;
         }*/
+
+        //private void CarregaListaTipoAnimal()
+        //{
+        //    TipoAnimalBuss tipoAnimalBuss = new TipoAnimalBuss();
+
+        //    List<Grupo> _listaGrupo = new List<Grupo>();
+        //    _listaGrupo = tipoAnimalBuss.ListarTiposAnimal();
+
+        //    ListItem _item = new ListItem("Selecione", "");
+        //    ddlTipoAnimal.Items.Add(_item);
+
+        //    foreach (Grupo grupo in _listaGrupo)
+        //    {
+        //        ListItem item = new ListItem(grupo.Nome.ToString(), grupo.Id.ToString());
+        //        ddlTipoAnimal.Items.Add(item);
+        //    }
+        //}
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
@@ -122,9 +140,9 @@ namespace WebUI
             return _tabela;
         }
 
-        protected void chkCadPet_CheckedChanged(object sender, EventArgs e)
+        protected void btnNovoPet_Click(object sender, EventArgs e)
         {
-            pnlPet.Visible = chkCadPet.Checked;
+            pnlPet.Visible = true;
         }        
 
         /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)

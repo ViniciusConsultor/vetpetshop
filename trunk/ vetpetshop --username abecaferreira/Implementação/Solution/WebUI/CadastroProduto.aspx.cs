@@ -29,7 +29,7 @@ namespace WebUI
         private void CarregaListaTipoProduto()
         {
             GrupoProdutoBuss grupoBuss = new GrupoProdutoBuss();
-
+             
             List<Grupo> _listaGrupo = new List<Grupo>();
             _listaGrupo = grupoBuss.ListarTiposGrupo();
 

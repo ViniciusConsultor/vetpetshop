@@ -68,13 +68,13 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Button btnOk;
         
         /// <summary>
-        /// chkCadPet control.
+        /// btnNovoPet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkCadPet;
+        protected global::System.Web.UI.WebControls.Button btnNovoPet;
         
         /// <summary>
         /// pnlPet control.
@@ -102,6 +102,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoAnimal;
+        
+        /// <summary>
+        /// txtNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNascimento;
         
         /// <summary>
         /// txtPeso control.
