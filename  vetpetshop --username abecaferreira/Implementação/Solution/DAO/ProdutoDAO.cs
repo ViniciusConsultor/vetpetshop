@@ -95,7 +95,7 @@ namespace DAO
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "ListarProdutos";
+            cmd.CommandText = "spsListarProdutos";
 
             SqlParameter pTipo = new SqlParameter("@Tipo", SqlDbType.Int, 4);
             SqlParameter pnomeNome = new SqlParameter("@Nome", SqlDbType.VarChar, 100);
