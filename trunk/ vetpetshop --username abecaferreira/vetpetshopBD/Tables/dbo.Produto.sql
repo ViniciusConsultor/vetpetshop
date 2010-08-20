@@ -2,14 +2,14 @@ CREATE TABLE [dbo].[Produto]
 (
 [Id] [int] NOT NULL IDENTITY(1, 1),
 [IdGrupo] [int] NOT NULL,
-[IdFinanceiro] [int] NOT NULL,
+[IdFinanceiro] [int] NULL,
 [Nome] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [EstoqueMin] [int] NULL,
 [EstoqueMax] [int] NULL,
 [Descricao] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[PrecoCusto] [decimal] (18, 0) NULL,
+[PrecoCusto] [decimal] (9, 2) NULL,
 [DataValidade] [datetime] NOT NULL,
-[PrecoVenda] [decimal] (18, 0) NULL
+[PrecoVenda] [decimal] (9, 2) NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Produto] ADD CONSTRAINT [PK_Produto] PRIMARY KEY CLUSTERED  ([Id]) ON [PRIMARY]

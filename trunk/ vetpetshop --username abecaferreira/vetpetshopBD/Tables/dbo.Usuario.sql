@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[Usuario]
 (
 [Id] [int] NOT NULL IDENTITY(1, 1),
-[IdAdministrador] [int] NOT NULL,
-[IdVeterinario] [int] NOT NULL,
-[IdVendedor] [int] NOT NULL,
+[IdAdministrador] [int] NULL,
+[IdVeterinario] [int] NULL,
+[IdVendedor] [int] NULL,
 [Nome] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [TipoUsuario] [int] NOT NULL,
 [Senha] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
