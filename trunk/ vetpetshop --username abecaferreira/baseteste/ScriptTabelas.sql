@@ -119,7 +119,8 @@ CREATE TABLE Animal
 (
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdTipoAnimal		INT							NOT NULL,
-TipoAnimal			INT							NULL,
+IdCliente			INT							NOT NULL,
+TipoAnimal			INT							NOT NULL,
 Peso				DECIMAL						NOT NULL,
 Raca				VARCHAR(50)					NULL,
 Nome				VARCHAR(50)					NOT NULL,
@@ -127,7 +128,8 @@ DataFimVacinacao	DATETIME					NULL,
 DataNascimento		DATETIME					NULL,
 DataProxVacinacao	DATETIME					NULL,
 CONSTRAINT  PK_Animal							PRIMARY KEY(Id),
-CONSTRAINT  FK_Animal_TipoAnimal				FOREIGN KEY(IdTipoAnimal)  REFERENCES  TipoAnimal(Id)
+CONSTRAINT  FK_Animal_TipoAnimal				FOREIGN KEY(IdTipoAnimal)  REFERENCES  TipoAnimal(Id),
+CONSTRAINT  FK_Animal_IdCliente					FOREIGN KEY(IdCliente)  REFERENCES  Cliente(Id)
 ) 
 
 CREATE TABLE Cliente 
@@ -155,16 +157,6 @@ IdAnimal			INT								NOT NULL,
 CONSTRAINT  PK_ConsultaAnimal						PRIMARY KEY(Id),
 CONSTRAINT  FK_ConsultaAnimal_ConsultaVeterinaria	FOREIGN KEY(IdConsulta)  REFERENCES  ConsultaVeterinaria(Id),
 CONSTRAINT  FK_ConsultaAnimal_Animal				FOREIGN KEY(IdAnimal)	 REFERENCES  Animal(Id)
-)
-
-CREATE TABLE PropietarioAnimal 
-(
-Id					INT IDENTITY(1,1)			NOT NULL,
-IdCliente			INT							NOT NULL,	
-IdAnimal			INT							NOT NULL,
-CONSTRAINT  PK_PropietarioAnimal				PRIMARY KEY(Id),
-CONSTRAINT  FK_PropietarioAnimal_Cliente		FOREIGN KEY(IdCliente)  REFERENCES  Cliente(Id),
-CONSTRAINT  FK_PropietarioAnimal_Animal			FOREIGN KEY(IdAnimal)	REFERENCES  Animal(Id)
 )
 
 CREATE TABLE NotaFiscal 
