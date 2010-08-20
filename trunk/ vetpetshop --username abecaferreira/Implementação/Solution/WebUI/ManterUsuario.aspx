@@ -66,6 +66,17 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 383px">
+                            E-mail</td>
+                        <td style="height: 23px; width: 392px">
+                            <asp:TextBox ID="TextBox1" runat="server" Width="350px"></asp:TextBox>
+                        </td>
+                        <td style="height: 23px; width: 518px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 383px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 392px">
                             <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
