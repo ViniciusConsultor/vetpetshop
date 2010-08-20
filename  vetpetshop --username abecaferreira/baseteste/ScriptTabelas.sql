@@ -17,6 +17,43 @@ Nome				VARCHAR(50)			NULL,
 CONSTRAINT  		PK_Grupo			PRIMARY KEY(Id)
 )
 
+CREATE TABLE Administrador
+(
+Id					INT IDENTITY(1,1)	NOT NULL,
+Nome				VARCHAR(50)			NULL,
+CONSTRAINT  		PK_Administrador	PRIMARY KEY(Id)
+)
+
+CREATE TABLE Veterinario
+(
+Id					INT IDENTITY(1,1)	NOT NULL,
+Nome				VARCHAR(50)			NULL,
+CONSTRAINT  		PK_Veterinario		PRIMARY KEY(Id)
+)
+
+CREATE TABLE Vendedor
+(
+Id					INT IDENTITY(1,1)	NOT NULL,
+Nome				VARCHAR(50)			NULL,
+CONSTRAINT  		PK_Vendedor			PRIMARY KEY(Id)
+)
+
+CREATE TABLE Usuario
+(
+Id					INT IDENTITY(1,1)	NOT NULL,
+IdAdministrador		INT					NOT NULL,
+IdVeterinario		INT					NOT NULL,
+IdVendedor			INT					NOT NULL,
+Nome				VARCHAR(50)		    NULL,
+TipoUsuario 		INT					NOT NULL, -- Veterinario Vendedor Administrador
+Senha				VARCHAR(20)			NOT NULL,
+Email				VARCHAR(30)			NULL,
+CONSTRAINT  PK_Usuario					PRIMARY KEY(Id),
+CONSTRAINT  FK_Usuario_Administrador	FOREIGN KEY(IdAdministrador)	REFERENCES  Administrador(Id),
+CONSTRAINT  FK_Usuario_Veterinario		FOREIGN KEY(IdVeterinario)		REFERENCES  Veterinario(Id),
+CONSTRAINT  FK_Usuario_Vendedor			FOREIGN KEY(IdVendedor)			REFERENCES  Vendedor(Id),
+)
+
 CREATE TABLE Financeiro 
 (
 Id					INT IDENTITY(1,1)	NOT NULL,
@@ -56,43 +93,6 @@ IdProduto 			INT					NOT NULL,
 CONSTRAINT  PK_EstoqueProduto			PRIMARY KEY(Id),
 CONSTRAINT  FK_EstoqueProduto_Estoque	FOREIGN KEY(IdEstoque)     REFERENCES  Estoque(Id),
 CONSTRAINT  FK_EstoqueProduto_Produto	FOREIGN KEY(IdProduto)     REFERENCES  Produto(Id)
-)
-
-CREATE TABLE Administrador
-(
-Id					INT IDENTITY(1,1)	NOT NULL,
-Nome				VARCHAR(50)			NULL,
-CONSTRAINT  		PK_Administrador	PRIMARY KEY(Id)
-)
-
-CREATE TABLE Veterinario
-(
-Id					INT IDENTITY(1,1)	NOT NULL,
-Nome				VARCHAR(50)			NULL,
-CONSTRAINT  		PK_Veterinario		PRIMARY KEY(Id)
-)
-
-CREATE TABLE Vendedor
-(
-Id					INT IDENTITY(1,1)	NOT NULL,
-Nome				VARCHAR(50)			NULL,
-CONSTRAINT  		PK_Vendedor			PRIMARY KEY(Id)
-)
-
-CREATE TABLE Usuario
-(
-Id					INT IDENTITY(1,1)	NOT NULL,
-IdAdministrador		INT					NOT NULL,
-IdVeterinario		INT					NOT NULL,
-IdVendedor			INT					NOT NULL,
-Nome				VARCHAR(50)		    NULL,
-TipoUsuario 		INT					NOT NULL, -- Veterinario Vendedor Administrador
-Senha				VARCHAR(20)			NOT NULL,
-Email				VARCHAR(30)			NULL,
-CONSTRAINT  PK_Usuario					PRIMARY KEY(Id),
-CONSTRAINT  FK_Usuario_Administrador	FOREIGN KEY(IdAdministrador)	REFERENCES  Administrador(Id),
-CONSTRAINT  FK_Usuario_Veterinario		FOREIGN KEY(IdVeterinario)		REFERENCES  Veterinario(Id),
-CONSTRAINT  FK_Usuario_Vendedor			FOREIGN KEY(IdVendedor)			REFERENCES  Vendedor(Id),
 )
 
 CREATE TABLE ConsultaVeterinaria 
