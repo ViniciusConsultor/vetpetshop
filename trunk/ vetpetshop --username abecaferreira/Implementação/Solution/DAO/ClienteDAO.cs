@@ -36,11 +36,11 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "spiInserirCliente";
 
-                SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 100);
+                SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 50);
                 SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
                 SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
-                SqlParameter pCelular = new SqlParameter("@Celular", SqlDbType.VarChar, 20);
-                SqlParameter pRG = new SqlParameter("@RG", SqlDbType.VarChar, 20);
+                SqlParameter pCelular = new SqlParameter("@Num_Cel", SqlDbType.VarChar, 20);
+                SqlParameter pRG = new SqlParameter("@Num_RG", SqlDbType.VarChar, 20);
                 SqlParameter pEndereco = new SqlParameter("@Endereco", SqlDbType.VarChar, 50);
                 SqlParameter pBairro = new SqlParameter("@Bairro", SqlDbType.VarChar, 20);
                 SqlParameter pCidade = new SqlParameter("@Cidade", SqlDbType.VarChar, 20);
@@ -53,11 +53,11 @@ namespace DAO
                 pTelefone.Value = cliente.Telefone1;
                 pCelular.Value = cliente.Telefone2;
                 pRG.Value = cliente.RG;
-                pEndereco = cliente.Endereco;
-                pBairro = cliente.Bairro;
-                pCidade = cliente.Cidade;
-                pEstado = cliente.Estado;
-                pCEP = cliente.CEP;
+                pEndereco.Value = cliente.Endereco;
+                pBairro.Value = cliente.Bairro;
+                pCidade.Value = cliente.Cidade;
+                pEstado.Value = cliente.Estado;
+                pCEP.Value = cliente.CEP;
                 pEmail.Value = cliente.Email;
 
                 cmd.Parameters.Add(pnomeCliente);

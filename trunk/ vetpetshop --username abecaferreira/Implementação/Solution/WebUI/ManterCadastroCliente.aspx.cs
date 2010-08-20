@@ -154,7 +154,68 @@ namespace WebUI
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
+            bool executou = false;
+            ClienteBuss clienteBus = new ClienteBuss();
+            Cliente cliente = new Cliente();
 
+            #region Validações
+            if (txtNomeCli.Text == "")
+            {
+                lblMsg.Text = "Preencha o nome do cliente";
+                return;
+            }
+
+            if (txtCPF.Text == "")
+            {
+                lblMsg.Text = "Preencha o cpf do cliente";
+                return;
+            }
+
+            if (txtTel.Text == "")
+            {
+                lblMsg.Text = "Preencha o telefone do cliente";
+                return;
+            }
+            if (txtEmail.Text == "")
+            {
+                lblMsg.Text = "Preencha o email do cliente";
+            }
+            #endregion
+
+            cliente.Nome = txtNomeCli.Text;
+            cliente.CPF = txtCPF.Text;
+            cliente.Telefone1 = txtTel.Text;
+            cliente.Telefone2 = txtCel.Text;
+            cliente.RG = txtRG.Text;
+            cliente.Endereco = txtEndereco.Text;
+            cliente.Bairro = txtBairro.Text;
+            cliente.Cidade = txtCidade.Text;
+            cliente.Estado = txtEstado.Text;
+            cliente.CEP = txtCep.Text;
+            cliente.Email = txtEmail.Text;
+            executou = clienteBus.InserirCliente(cliente);
+
+            if (executou)
+            {
+                lblMsg.Text = "Cadastro efetuado com sucesso";
+                txtNomeCli.Text = "";
+                txtCPF.Text = "";
+                txtRG.Text = "";
+                txtTel.Text = "";
+                txtEmail.Text = "";
+                txtCep.Text = "";
+                txtCel.Text = "";
+                txtEndereco.Text = "";
+                txtBairro.Text = "";
+                txtCidade.Text = "";
+                txtEstado.Text = "";
+                //ExibeGrid();
+            }
+
+            else
+            {
+                lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
+            }
         }        
 
         /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
