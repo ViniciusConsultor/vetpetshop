@@ -10,6 +10,5 @@
         <siteMapNode url="~/ListaEstoque.aspx" title="Listar Estoque"  description="" />
         <siteMapNode url="~/ConsultaEstatistica.aspx" title="Consultar Estatísticas"  description="" />
         <siteMapNode url="~/ControlaFinancas.aspx" title="Controlar Finanças"  description="" />
-        <siteMapNode url="~/ManterCadastroCliente.aspx" title="Manter Cadastro Cliente"  description="" />
     </siteMapNode>
 </siteMap>
