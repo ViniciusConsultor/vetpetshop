@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -6,7 +7,8 @@ CREATE PROCEDURE [dbo].[spiInserirVendedor]
 @Nome_Prof VARCHAR(50),
 @Nome_Usuario VARCHAR(20),
 @Tipo INT,
-@Senha VARCHAR(50)
+@Senha VARCHAR(50),
+@Email VARCHAR(50)
 
 AS
 BEGIN
@@ -21,13 +23,15 @@ BEGIN
 	IdVendedor,
 	Nome,
 	TipoUsuario,
-	Senha)	
+	Senha,
+	Email)	
 	VALUES
 	(NULL,
 	NULL,
 	@idVend,
 	@Nome_Usuario,
 	@Tipo,
-	@Senha)
+	@Senha,
+	@Email)
 END
 GO
