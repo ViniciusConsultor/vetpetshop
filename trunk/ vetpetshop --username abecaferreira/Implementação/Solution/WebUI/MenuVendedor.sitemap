@@ -2,7 +2,6 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="" title="Vendedor"  description="">
       <siteMapNode url="~/DefaultVendedor.aspx" title="Principal"  description="Pagina inicial do vendedor" />
-      <siteMapNode url="~/ManterCadastroCliente.aspx" title="Manter Cadastro Cliente"  description="" />
-        
+      <siteMapNode url="~/ManterCadastroCliente.aspx" title="Manter Cadastro Cliente"  description="" />        
     </siteMapNode>
 </siteMap>
