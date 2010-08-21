@@ -27,7 +27,7 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-
+                CarregaListaTipoAnimal();
                 //ExibeGrid();
             }
         }
@@ -47,22 +47,22 @@ namespace WebUI
                 grClientes.Visible = false;
         }*/
 
-        //private void CarregaListaTipoAnimal()
-        //{
-        //    TipoAnimalBuss tipoAnimalBuss = new TipoAnimalBuss();
+        private void CarregaListaTipoAnimal()
+        {
+            TipoAnimalBuss tipoAnimalBuss = new TipoAnimalBuss();
 
-        //    List<Grupo> _listaGrupo = new List<Grupo>();
-        //    _listaGrupo = tipoAnimalBuss.ListarTiposAnimal();
+            List<TipoAnimal> _listaTipoAnimal = new List<TipoAnimal>();
+            _listaTipoAnimal = tipoAnimalBuss.ListarTiposAnimal();
 
-        //    ListItem _item = new ListItem("Selecione", "");
-        //    ddlTipoAnimal.Items.Add(_item);
+            ListItem _item = new ListItem("Selecione", "");
+            ddlTipoAnimal.Items.Add(_item);
 
-        //    foreach (Grupo grupo in _listaGrupo)
-        //    {
-        //        ListItem item = new ListItem(grupo.Nome.ToString(), grupo.Id.ToString());
-        //        ddlTipoAnimal.Items.Add(item);
-        //    }
-        //}
+            foreach (TipoAnimal tipoanimal in _listaTipoAnimal)
+            {
+                ListItem item = new ListItem(tipoanimal.Nome.ToString(), tipoanimal.Id.ToString());
+                ddlTipoAnimal.Items.Add(item);
+            }
+        }
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
@@ -106,14 +106,14 @@ namespace WebUI
             cliente.CEP = txtCep.Text;
             cliente.Email = txtEmail.Text;                
             executou = clienteBus.InserirCliente(cliente);
-
+                        
             if (executou)
             {
                 lblMsg.Text = "Cadastro efetuado com sucesso";
-                txtNomeCli.Text = "";
+                /*txtNomeCli.Text = "";
                 txtCPF.Text = "";
                 txtTel.Text = "";
-                txtEmail.Text = "";
+                txtEmail.Text = "";   */             
                 //ExibeGrid();
             }
 
