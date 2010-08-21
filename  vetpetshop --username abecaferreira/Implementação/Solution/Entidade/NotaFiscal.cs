@@ -7,8 +7,6 @@ namespace Entidade
 {
     public class NotaFiscal
     {
-        public int idVendedor { get; set; }
-        public int idAdministrador { get; set; }
         public int idUsuario { get; set; }
         public DateTime DataCadastro { get; set; }
         public decimal Valor { get; set; }
