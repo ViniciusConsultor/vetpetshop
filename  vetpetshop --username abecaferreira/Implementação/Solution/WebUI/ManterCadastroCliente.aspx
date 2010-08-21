@@ -1,7 +1,12 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ManterCadastroCliente.aspx.cs" Inherits="WebUI.ManterCadastroCliente" %>
 
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+  <head id="Head1" runat="server">
+    <title>VetPetShop</title>
+   <script src="VetPetShop.js" type="text/javascript"></script>
+</head>
   
     <table style="width:100%;">
         <tr>
@@ -174,7 +179,7 @@
                                         <td style="height: 23px; width: 337px">
                                             Data de Nascimento</td>
                                         <td style="height: 23px; width: 330px">
-                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px"></asp:TextBox>                                           
+                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px" onblur="TestaField(this)" onfocus="inField()" Tipo="DATE"></asp:TextBox>                                           
                                         </td>                                                                               
                                     </tr>
                                     <tr>
@@ -189,6 +194,20 @@
                                             Raça</td>
                                         <td style="height: 23px; width: 392px">
                                          <asp:TextBox ID="txtRaca" runat="server" Width="189px"></asp:TextBox>
+                                        </td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Data de início da vacinação</td>
+                                        <td style="height: 23px; width: 392px">
+                                         <asp:TextBox ID="txtInicioVacinacao" runat="server" Width="189px"></asp:TextBox>
+                                        </td>                                        
+                                    </tr>
+                                     <tr>
+                                        <td style="height: 23px; width: 337px">
+                                            Data de Fim da vacinação</td>
+                                        <td style="height: 23px; width: 392px">
+                                         <asp:TextBox ID="txtFimVacinacao" runat="server" Width="189px"></asp:TextBox>
                                         </td>                                        
                                     </tr>
                                     <tr>
