@@ -1,10 +1,10 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
 CREATE PROCEDURE [dbo].[spiInserirAnimal]
  
- @idCliente   int,
  @IdTipoAnimal  int,
  @Peso    decimal,
  @Raca    varchar(50),
@@ -15,6 +15,9 @@ CREATE PROCEDURE [dbo].[spiInserirAnimal]
  
 AS
 BEGIN
+
+DECLARE  @idCliente   int
+SELECT @idCliente = SCOPE_IDENTITY()
  
 INSERT INTO dbo.Animal( IdCliente,
       IdTipoAnimal,
