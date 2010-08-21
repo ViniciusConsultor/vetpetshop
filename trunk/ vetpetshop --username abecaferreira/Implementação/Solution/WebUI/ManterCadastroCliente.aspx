@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <head id="Head1" runat="server">
+  <head>
     <title>VetPetShop</title>
    <script src="alerts.js" type="text/javascript"></script>
 </head>

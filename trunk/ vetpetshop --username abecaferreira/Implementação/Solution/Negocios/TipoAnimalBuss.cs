@@ -18,7 +18,7 @@ namespace Negocios
             this.tipoanimalDAO = new TipoAnimalDAO();
         }
 
-       public List<TipoAnimal> ListarTipoAnimal()
+       public List<TipoAnimal> ListarTiposAnimal()
        {
            List<TipoAnimal> _lista = new List<TipoAnimal>();
            _lista = this.tipoanimalDAO.ListaTiposAnimal();
