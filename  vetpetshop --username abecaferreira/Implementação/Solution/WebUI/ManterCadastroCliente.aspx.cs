@@ -72,6 +72,10 @@ namespace WebUI
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
 
+            //if (!ValidarDados())
+            //{
+            //    return;
+            //}
             #region Validações
             if (txtNomeCli.Text == "")
             {
@@ -125,6 +129,32 @@ namespace WebUI
             }  
         }
 
+        private bool ValidarDados() 
+        {
+            if (txtNomeCli.Text == "")
+            {
+                lblMsg.Text = "Preencha o nome do cliente";
+                return false;
+            }
+
+            if (txtCPF.Text == "")
+            {
+                lblMsg.Text = "Preencha o cpf do cliente";
+                return false;
+            }
+
+            if (txtTel.Text == "")
+            {
+                lblMsg.Text = "Preencha o telefone do cliente";
+                return false;
+            }
+            if (txtEmail.Text == "")
+            {
+                lblMsg.Text = "Preencha o email do cliente";
+                return false;
+            }
+            return true;
+        }
         private DataTable MontarTabela()
         {
             DataTable _tabela = new DataTable("Clientes");
