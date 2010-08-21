@@ -102,7 +102,8 @@ namespace WebUI
             {
                 usuario.Nome = txtNomeUsu.Text;
                 usuario.TipoUsuario = 1;
-                usuario.Senha = txtSenha.Text;               
+                usuario.Senha = txtSenha.Text;
+                usuario.Email = txtEmail.Text;
                 admin.Nome = txtNomePro.Text;
                 executou = usuarioBus.InserirUsuarioAdmin(admin, usuario);
             }
@@ -111,7 +112,8 @@ namespace WebUI
             {
                 usuario.Nome = txtNomeUsu.Text;
                 usuario.TipoUsuario = 2;
-                usuario.Senha = txtSenha.Text;                
+                usuario.Senha = txtSenha.Text;
+                usuario.Email = txtEmail.Text;
                 vet.Nome = txtNomePro.Text;
                 executou = usuarioBus.InserirUsuarioVeterinario(vet, usuario);
             }
@@ -120,17 +122,20 @@ namespace WebUI
             {
                 usuario.Nome = txtNomeUsu.Text;
                 usuario.TipoUsuario = 3;
-                usuario.Senha = txtSenha.Text;                
+                usuario.Senha = txtSenha.Text;
+                usuario.Email = txtEmail.Text;
                 vend.Nome = txtNomePro.Text;
                 executou = usuarioBus.InserirUsuarioVendedor(vend, usuario);
             }
 
             if (executou)
             {
+                EnviarEmail();
                 lblMsg.Text = "Cadastro efetuado com sucesso";
                 txtSenha.Text = "";
                 txtNomeUsu.Text = "";
                 txtNomePro.Text = "";
+                txtEmail.Text = "";
                 ddlTipoUsu.SelectedItem.Value = "";
                 ExibeGrid();
             }
@@ -139,6 +144,32 @@ namespace WebUI
             {
                 lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
             }    
+        }
+
+        private void EnviarEmail()
+        {
+            string remetenteEmail = "vetpetshopsystem@gmail.com";
+            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+            mail.To.Add(txtEmail.Text);
+            mail.From = new MailAddress(remetenteEmail, "Vetpetshop", System.Text.Encoding.UTF8);
+            mail.Subject = "Bem-vindo ao Vetpetshop!";
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = "Olá, "  +txtNomePro.Text+ "!<BR><BR>";
+            mail.Body += "Seus dados de acesso ao sistema Vetpetshop:<BR><BR>";
+            mail.Body += "Login: " + txtNomeUsu.Text + "<BR>";
+            mail.Body += "Senha: " + txtSenha.Text + "<BR><BR>";
+            mail.Body += "Para alterar sua senha de acesso, acesse a funcionalidade 'Alterar Senha'.";
+
+            mail.IsBodyHtml = true;
+
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "petvet1234");
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+
+            client.Send(mail);
+            
         }
 
         private DataTable MontarTabela()
