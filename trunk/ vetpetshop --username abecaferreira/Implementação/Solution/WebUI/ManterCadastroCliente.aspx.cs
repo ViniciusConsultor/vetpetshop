@@ -14,6 +14,8 @@ namespace WebUI
 {
     public partial class ManterCadastroCliente : System.Web.UI.Page
     {
+        public DateTime datNascimento, datIniVacinacao, datFimVacinacao;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Criação de Menu
@@ -22,7 +24,7 @@ namespace WebUI
             menu.DataSource = siteAdmin;
             menu.DataBind();
             #endregion
-
+            
             lblMsg.Text = "";
 
             if (!IsPostBack)

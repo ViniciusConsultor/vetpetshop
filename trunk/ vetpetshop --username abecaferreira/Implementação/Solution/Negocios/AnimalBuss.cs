@@ -17,6 +17,12 @@ namespace Negocios
             this.animalDAO = new AnimalDAO();
         }
 
+        public bool InserirAnimal(Animal animal)
+        {
+            bool executou = this.animalDAO.InserirAnimal(animal);
+            return executou;
+        }
+
         //public bool InserirCliente(Animal animal)
         //{
         //    bool executou = this.animalDAO.InserirAnimal(animal);

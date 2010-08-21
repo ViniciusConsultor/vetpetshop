@@ -9,7 +9,7 @@ namespace Entidade
     public class Animal
     {
         public string Nome { get; set; }
-        public int TipoAnimal { get; set; }
+        public int IdTipoAnimal { get; set; }
         public int Cliente { get; set; }
         public decimal Peso { get; set; }
         public string Raca { get; set; }
