@@ -94,15 +94,18 @@ namespace DAO
                     SqlParameter pnomeUsuario = new SqlParameter("@Nome_Usuario", SqlDbType.VarChar, 20);
                     SqlParameter ptipo = new SqlParameter("@Tipo", SqlDbType.Int, 4);
                     SqlParameter psenha = new SqlParameter("@Senha", SqlDbType.VarChar, 50);
+                    SqlParameter pemail = new SqlParameter("@Email", SqlDbType.VarChar, 50);
 
                     pnomeAdmin.Value = administrador.Nome;
                     pnomeUsuario.Value = usuario.Nome;
                     ptipo.Value = usuario.TipoUsuario;
                     psenha.Value = usuario.Senha;
+                    pemail.Value = usuario.Email;
                     cmd.Parameters.Add(pnomeAdmin);
                     cmd.Parameters.Add(pnomeUsuario);
                     cmd.Parameters.Add(ptipo);
                     cmd.Parameters.Add(psenha);
+                    cmd.Parameters.Add(pemail);
 
                     conn.Open();
                     int registro = cmd.ExecuteNonQuery();
@@ -153,15 +156,18 @@ namespace DAO
                 SqlParameter pnomeUsuario = new SqlParameter("@Nome_Usuario", SqlDbType.VarChar, 20);
                 SqlParameter ptipo = new SqlParameter("@Tipo", SqlDbType.Int, 4);
                 SqlParameter psenha = new SqlParameter("@Senha", SqlDbType.VarChar, 50);
+                SqlParameter pemail = new SqlParameter("@Email", SqlDbType.VarChar, 50);
 
                 pnomeVet.Value = veterinario.Nome;
                 pnomeUsuario.Value = usuario.Nome;
                 ptipo.Value = usuario.TipoUsuario;
                 psenha.Value = usuario.Senha;
+                pemail.Value = usuario.Email;
                 cmd.Parameters.Add(pnomeVet);
                 cmd.Parameters.Add(pnomeUsuario);
                 cmd.Parameters.Add(ptipo);
                 cmd.Parameters.Add(psenha);
+                cmd.Parameters.Add(pemail);
 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
@@ -210,15 +216,18 @@ namespace DAO
                 SqlParameter pnomeUsuario = new SqlParameter("@Nome_Usuario", SqlDbType.VarChar, 20);
                 SqlParameter ptipo = new SqlParameter("@Tipo", SqlDbType.Int, 4);
                 SqlParameter psenha = new SqlParameter("@Senha", SqlDbType.VarChar, 50);
+                SqlParameter pemail = new SqlParameter("@Email", SqlDbType.VarChar, 50);
 
                 pnomeVet.Value = vendedor.Nome;
                 pnomeUsuario.Value = usuario.Nome;
                 ptipo.Value = usuario.TipoUsuario;
                 psenha.Value = usuario.Senha;
+                pemail.Value = usuario.Email;
                 cmd.Parameters.Add(pnomeVet);
                 cmd.Parameters.Add(pnomeUsuario);
                 cmd.Parameters.Add(ptipo);
                 cmd.Parameters.Add(psenha);
+                cmd.Parameters.Add(pemail);
 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();

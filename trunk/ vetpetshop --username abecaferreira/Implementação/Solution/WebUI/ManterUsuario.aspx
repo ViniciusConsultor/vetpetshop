@@ -20,84 +20,69 @@
                         </td>
                         <td style="height: 23px; width: 383px">
                             Tipo de Usuário</td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="height: 23px; width: 569px">
                         <asp:DropDownList ID="ddlTipoUsu" runat="server" Width="170px" AutoPostBack="true">
                 </asp:DropDownList>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
                         <td style="height: 23px; width: 383px">
                             Login</td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="height: 23px; width: 569px">
                          <asp:TextBox ID="txtNomeUsu" runat="server" Width="170px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 383px">
+                        <td style="width: 58px; height: 6px">
+                            </td>
+                        <td style="height: 6px; width: 383px">
                             Senha</td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="height: 6px; width: 569px">
                             <asp:TextBox ID="txtSenha" runat="server" Width="170px"></asp:TextBox>&nbsp;<asp:LinkButton id="lkGera" runat="server" Text="Gerar senha" 
                                 onclick="lkGera_Click"></asp:LinkButton>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 383px">
+                        <td style="width: 58px; ">
+                            </td>
+                        <td style="width: 383px">
                             Nome do Profissional</td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="width: 569px">
                         <asp:TextBox ID="txtNomePro" runat="server" Width="350px"></asp:TextBox>
-                            &nbsp;
-                        </td>
-                        <td style="height: 23px; width: 518px">
                             &nbsp;</td>
                     </tr>
                     <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 383px">
+                        <td style="width: 58px; height: 14px">
+                            </td>
+                        <td style="height: 14px; width: 383px">
                             E-mail</td>
-                        <td style="height: 23px; width: 392px">
-                            <asp:TextBox ID="TextBox1" runat="server" Width="350px"></asp:TextBox>
+                        <td style="height: 14px; width: 569px">
+                            <asp:TextBox ID="txtEmail" runat="server" Width="350px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 383px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="height: 23px; width: 569px">
                             <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
                         </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 383px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 392px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
+                        <td style="height: 23px; width: 569px">
                             &nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td colspan="3" style="height: 23px; width: 163px">
+                        <td colspan="2" style="height: 23px; width: 163px">
                             <asp:Label ID="lblCadastrados" runat="server" Font-Bold="true" Text="Lista de usuários cadastrados"></asp:Label>
                         </td>
                         <td style="height: 23px; width: 392px">
@@ -108,7 +93,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td colspan="3" style="height: 23px; width: 163px">
+                        <td colspan="2" style="height: 23px; width: 163px">
                         <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
                                 PageSize="15" onrowcommand="grUsuarios_RowCommand" 
@@ -148,9 +133,7 @@
                             &nbsp;</td>
                         <td style="width: 383px">
                             &nbsp;</td>
-                        <td style="width: 392px">
-                            &nbsp;</td>
-                        <td style="width: 518px">
+                        <td style="width: 569px">
                             &nbsp;</td>
                     </tr>
                 </table>
