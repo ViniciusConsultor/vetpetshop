@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using Entidade;
+using System.Data.SqlTypes;
 
 namespace DAO
 {
@@ -52,7 +53,15 @@ namespace DAO
                 pdescricao.Value = produto.Descricao;
                 pprecoCusto.Value = produto.PrecoCusto;
                 pprecoVenda.Value = produto.PrecoVenda;
-                pdataVal.Value = produto.DataValidade;
+
+                if (produto.DataValidade == DateTime.MinValue)
+                {
+                    pdataVal.Value = SqlDateTime.Null;
+                }
+                else
+                {
+                    pdataVal.Value = produto.DataValidade;
+                }
 
                 cmd.Parameters.Add(pnomeProd);
                 cmd.Parameters.Add(pidGrupo);
