@@ -9,6 +9,7 @@ namespace Entidade
     {
         private int _estoqueMedio;
 
+        public int IdProduto { get; set; }
         public int IdGrupo { get; set; }
         public string Nome { get; set; }
         public int EstoqueMin { get; set; }
@@ -17,6 +18,7 @@ namespace Entidade
         public decimal PrecoCusto { get; set; }
         public DateTime DataValidade { get; set; }
         public decimal PrecoVenda { get; set; }
+        public int Quantidade { get; set; }
 
         public int EstoqueMedio
         {

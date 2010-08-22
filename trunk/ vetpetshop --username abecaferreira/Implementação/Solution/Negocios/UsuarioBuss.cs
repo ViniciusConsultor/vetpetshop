@@ -56,5 +56,11 @@ namespace Negocios
             bool executou = this.usuarioDAO.ExcluirUsuario(id);
             return executou;
         }
+
+        public int ObterIdUsuarioPorNomeUsuario(string nome)
+        {
+            int id = this.usuarioDAO.ObterIdUsuarioPorNomeUsuario(nome);
+            return id;
+        }
     }
 }

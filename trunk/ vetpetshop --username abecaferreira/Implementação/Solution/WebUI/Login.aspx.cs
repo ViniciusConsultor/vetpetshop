@@ -45,6 +45,7 @@ namespace WebUI
                 if (usuario != null)
                 {
                     FormsAuthentication.RedirectFromLoginPage(txtUsu.Text, false);
+                    Session["Usuario"] = usuario;
 
                     if (usuario.TipoUsuario == 1)
                         Response.Redirect("DefaultAdmin.aspx");

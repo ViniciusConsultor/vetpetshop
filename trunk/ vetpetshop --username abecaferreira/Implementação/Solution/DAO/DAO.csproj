@@ -52,6 +52,7 @@
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="EstoqueDAO.cs" />
     <Compile Include="GrupoProdutoDAO.cs" />
+    <Compile Include="NotaFiscalDAO.cs" />
     <Compile Include="ProdutoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoAnimalDAO.cs" />
