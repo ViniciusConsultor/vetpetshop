@@ -1,13 +1,13 @@
 CREATE TABLE [dbo].[NotaFiscal]
 (
 [Id] [int] NOT NULL IDENTITY(1, 1),
-[IdVendedor] [int] NOT NULL,
-[IdAdministrador] [int] NOT NULL,
+[IdVendedor] [int] NULL,
+[IdAdministrador] [int] NULL,
 [IdUsuario] [int] NOT NULL,
-[DataCadastro] [datetime] NOT NULL,
-[Valor] [decimal] (18, 0) NOT NULL,
-[Status] [int] NOT NULL,
-[DataRecebimento] [datetime] NOT NULL
+[DataCadastro] [datetime] NULL,
+[Valor] [int] NULL,
+[Status] [int] NULL,
+[DataRecebimento] [datetime] NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[NotaFiscal] ADD CONSTRAINT [PK_NotaFiscal] PRIMARY KEY CLUSTERED  ([Id]) ON [PRIMARY]
