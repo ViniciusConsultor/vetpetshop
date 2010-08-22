@@ -50,6 +50,7 @@
     <Compile Include="ClienteBuss.cs" />
     <Compile Include="EstoqueBuss.cs" />
     <Compile Include="GrupoProdutoBuss.cs" />
+    <Compile Include="NotaFiscalBuss.cs" />
     <Compile Include="ProdutoBuss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoAnimalBuss.cs" />

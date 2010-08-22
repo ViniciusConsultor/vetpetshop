@@ -43,10 +43,13 @@ namespace DAO
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 if (dr.Read())
-                  usuarioEncontrado.TipoUsuario = dr.GetInt32(0);
-                
+                {
+                    usuarioEncontrado.TipoUsuario = dr.GetInt32(0);
+                    usuarioEncontrado.Nome = dr.GetString(1);
+                }
+
                 else
-                  usuarioEncontrado = null;
+                    usuarioEncontrado = null;
                 
 
                 dr.Close();
@@ -342,7 +345,57 @@ namespace DAO
 
 
             return executou;
-        }           
-     }
+        }
+
+        public int ObterIdUsuarioPorNomeUsuario(string nome)
+        {
+            Usuario usuarioEncontrado = new Usuario();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterUsuarioPorCodigoUsuario";
+
+                SqlParameter pnomeUsu = new SqlParameter("@Nome_Usuario", SqlDbType.VarChar, 30);
+
+                pnomeUsu.Value = nome;
+                cmd.Parameters.Add(pnomeUsu);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (dr.Read())
+                    usuarioEncontrado.Id = dr.GetInt32(0);
+
+                else
+                    usuarioEncontrado.Id = 0;
+
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return usuarioEncontrado.Id;
+        
+        }
+    }
 
 }

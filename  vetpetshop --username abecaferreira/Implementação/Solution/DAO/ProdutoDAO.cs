@@ -129,7 +129,16 @@ namespace DAO
                 _linhaTabela["max"] = dr.GetInt32(5);
                 _linhaTabela["descricao"] = dr.GetString(6);
                 _linhaTabela["preco_custo"] = dr.GetDecimal(7);
-                _linhaTabela["validade"] = dr.GetDateTime(8).ToString("dd/MM/yyyy");
+
+                if(dr.IsDBNull(8))
+                {
+                    _linhaTabela["validade"] = "";
+                }
+                else
+                {
+                    _linhaTabela["validade"] = dr.GetDateTime(8).ToString("dd/MM/yyyy");
+                }
+
                 _linhaTabela["preco_venda"] = dr.GetDecimal(9);
 
                 tabela.Rows.Add(_linhaTabela);
@@ -217,13 +226,17 @@ namespace DAO
 
                 while(dr.Read())
                 {
+                    produto.IdProduto = dr.GetInt32(0);
                     produto.IdGrupo = dr.GetInt32(1);
                     produto.Nome = dr.GetString(3);
                     produto.EstoqueMin = dr.GetInt32(4);
                     produto.EstoqueMax = dr.GetInt32(5);
                     produto.Descricao = dr.GetString(6);
                     produto.PrecoCusto = dr.GetDecimal(7);
-                    produto.DataValidade = dr.GetDateTime(8);
+                    if (!dr.IsDBNull(8))
+                    {
+                        produto.DataValidade = Convert.ToDateTime(dr.GetDateTime(8));
+                    }
                     produto.PrecoVenda = dr.GetDecimal(9);
 
                 }
