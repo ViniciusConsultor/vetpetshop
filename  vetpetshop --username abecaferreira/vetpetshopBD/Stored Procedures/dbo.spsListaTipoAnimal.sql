@@ -2,7 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-CREATE PROCEDURE [dbo].[spsListaTiposAnimal] 
+CREATE PROCEDURE [dbo].[spsListaTipoAnimal] 
 	
 AS
 BEGIN
