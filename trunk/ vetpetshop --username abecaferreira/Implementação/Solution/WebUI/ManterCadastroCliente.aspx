@@ -1,7 +1,5 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ManterCadastroCliente.aspx.cs" Inherits="WebUI.ManterCadastroCliente" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   <head>
     <title>VetPetShop</title>
@@ -34,8 +32,14 @@
                             Nome de Cliente</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
+                          <asp:DropDownList visible="false" ID="ddlTdsClientes" runat="server" AutoPostBack="true" 
+                                width="189px" onselectedindexchanged="ddlTdsClientes_SelectedIndexChanged"></asp:DropDownList>
                         </td>
-                        <td style="height: 23px; width: 497px">
+                        <td style="height: 23px; width: 138px">
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
+                                onclick="BtnBuscar_Click" style="width: 138px" />
+                        </td>
+                        <td style="height: 23px; width: 142px">
                             &nbsp;</td>
                     </tr>
                     <tr>
@@ -127,7 +131,7 @@
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtEmail" runat="server" Width="189px"></asp:TextBox>
                         </td>
-                        <td style="height: 23px; width: 497px">
+                        <td style="height: 23px; width: 138px">
                             &nbsp;</td>
                     </tr>
                     <tr>
@@ -138,7 +142,7 @@
                         <td style="height: 23px; width: 392px">
                             <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
                         </td>
-                        <td style="height: 23px; width: 497px">
+                        <td style="height: 23px; width: 138px">
                             &nbsp;</td>
                     </tr>
                     <tr>
@@ -148,7 +152,7 @@
                             <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" 
                                 Text="Cadastrar Animal" />
                         </td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="height: 23px; width: 142px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>
@@ -198,7 +202,7 @@
                                     </tr>
                                     <tr>
                                         <td style="height: 23px; width: 337px">
-                                            Data de início da vacinação</td>
+                                            Data de Início da vacinação</td>
                                         <td style="height: 23px; width: 392px">
                                          <asp:TextBox ID="txtInicioVacinacao" runat="server" Width="189px"></asp:TextBox>
                                         </td>                                        
@@ -221,7 +225,7 @@
                                </table>
                             </asp:Panel>                             
                         </td>
-                        <td style="height: 23px; width: 392px">
+                        <td style="height: 23px; width: 142px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>
@@ -233,7 +237,7 @@
                             </td>
                         <td style="width: 392px">
                             </td>
-                        <td style="width: 497px">
+                        <td style="width: 138px">
                             </td>
                     </tr>
                 </table>

@@ -125,6 +125,79 @@ namespace DAO
             return tabela;
         }
 
+        public List<Cliente> ListarDDLClientes()
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaClientes";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            List<Cliente> _lista = new List<Cliente>();
+
+            while (dr.Read())
+            {
+                Cliente cliente = new Cliente();
+                cliente.IdCliente = dr.GetInt32(0);
+                cliente.Nome = dr.GetString(1);
+
+                _lista.Add(cliente);
+            }
+
+            return _lista;
+        }
+
+        public List<Cliente> PreencheUsuario(Int32 CodUsuario)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaClienteByPK";
+
+            
+            SqlParameter pCodUsuario = new SqlParameter("@IdCliente", SqlDbType.Int);
+
+            pCodUsuario.Value = CodUsuario;
+
+            cmd.Parameters.Add(pCodUsuario);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            List<Cliente> _lista = new List<Cliente>();
+
+            while (dr.Read())
+            {
+                Cliente cliente = new Cliente();
+                cliente.IdCliente = dr.GetInt32(0);
+                cliente.Nome = dr.GetString(1);
+                cliente.CPF = dr.GetString(2);
+                cliente.RG = dr.GetString(3);
+                cliente.Telefone1 = dr.GetString(4);
+                cliente.Telefone2 = dr.GetString(5);
+                cliente.Email = dr.GetString(6);
+                cliente.Endereco = dr.GetString(7);
+                cliente.Bairro = dr.GetString(8);
+                cliente.Cidade = dr.GetString(9);
+                cliente.Estado = dr.GetString(10);
+                cliente.CEP = dr.GetString(11);
+
+                _lista.Add(cliente);
+            }
+
+            return _lista;
+            
+        }
 
         public bool ExcluirCliente(int id)
         {

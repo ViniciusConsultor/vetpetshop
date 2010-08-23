@@ -10,7 +10,7 @@ namespace Entidade
     {
         public string Nome { get; set; }
         public int IdTipoAnimal { get; set; }
-        public int Cliente { get; set; }
+        public int IdCliente { get; set; }
         public decimal Peso { get; set; }
         public string Raca { get; set; }
         public string  DataFimVacinacao { get; set; }

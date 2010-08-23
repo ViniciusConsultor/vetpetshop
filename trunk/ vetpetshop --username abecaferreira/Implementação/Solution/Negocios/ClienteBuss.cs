@@ -31,6 +31,20 @@ namespace Negocios
             return _tabelapreenchida;
         }
 
+        public List<Cliente> ListarDDLClientes()
+        {
+            List<Cliente> _lista = new List<Cliente>();
+            _lista = this.clienteDAO.ListarDDLClientes();
+            return _lista;
+        }
+
+        public List<Cliente> PreencheUsuario(Int32 CodUsuario)
+        {
+            List<Cliente> _lista = new List<Cliente>();
+            _lista = this.clienteDAO.PreencheUsuario(CodUsuario);
+            return _lista;
+        }
+
         public bool ExcluirCliente(int id)
         {
             bool executou = this.clienteDAO.ExcluirCliente(id);
@@ -38,4 +52,5 @@ namespace Negocios
         }
    
     }
+
 }

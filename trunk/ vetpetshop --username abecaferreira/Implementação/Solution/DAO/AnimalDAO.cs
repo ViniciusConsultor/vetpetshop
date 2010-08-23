@@ -36,6 +36,7 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "spiInserirAnimal";
 
+                SqlParameter pIdCliente = new SqlParameter("@IdCliente", SqlDbType.Int);    
                 SqlParameter pIdTipoAnimal = new SqlParameter("@IdTipoAnimal", SqlDbType.Int);
                 SqlParameter pPeso = new SqlParameter("@Peso", SqlDbType.Decimal);
                 SqlParameter pRaca = new SqlParameter("@Raca", SqlDbType.VarChar, 50);
@@ -43,7 +44,8 @@ namespace DAO
                 SqlParameter pDatFimVacinacao = new SqlParameter("@DataFimVacinacao", SqlDbType.SmallDateTime);
                 SqlParameter pDatNascimento = new SqlParameter("@DataNascimento", SqlDbType.SmallDateTime);
                 SqlParameter pDatProxVacinacao = new SqlParameter("@DataProxVacinacao", SqlDbType.SmallDateTime);
-      
+
+                pIdCliente.Value = animal.IdCliente;
                 pIdTipoAnimal.Value = animal.IdTipoAnimal;
                 pPeso.Value = animal.Peso;
                 pRaca.Value = animal.Raca;
@@ -52,6 +54,7 @@ namespace DAO
                 pDatNascimento.Value = animal.DataNascimento;
                 pDatProxVacinacao.Value = animal.DataProxVacinacao;
 
+                cmd.Parameters.Add(pIdCliente);
                 cmd.Parameters.Add(pIdTipoAnimal);
                 cmd.Parameters.Add(pPeso);
                 cmd.Parameters.Add(pRaca);
