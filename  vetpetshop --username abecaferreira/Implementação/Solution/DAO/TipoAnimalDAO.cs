@@ -26,7 +26,7 @@ namespace DAO
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "spsListaTiposAnimal";
+            cmd.CommandText = "spsListaTipoAnimal";
 
             conn.Open();
 

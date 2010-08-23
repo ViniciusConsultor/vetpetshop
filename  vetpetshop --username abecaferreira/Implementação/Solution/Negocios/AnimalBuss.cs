@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Negocios
 {
-    class AnimalBuss
+    public class AnimalBuss
     {
         private AnimalDAO animalDAO;
 
@@ -22,12 +22,6 @@ namespace Negocios
             bool executou = this.animalDAO.InserirAnimal(animal);
             return executou;
         }
-
-        //public bool InserirCliente(Animal animal)
-        //{
-        //    bool executou = this.animalDAO.InserirAnimal(animal);
-        //    return executou;
-        //}
 
         //public DataTable ListarAnimais(DataTable tabela)
         //{

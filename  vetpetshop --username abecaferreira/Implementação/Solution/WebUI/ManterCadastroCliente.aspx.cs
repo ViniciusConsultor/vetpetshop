@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Entidade;
 using Negocios;
 using System.Data;
+using System.Web;
 
 namespace WebUI
 {
@@ -33,21 +34,6 @@ namespace WebUI
                 //ExibeGrid();
             }
         }
-
-        /*private void ExibeGrid()
-        {
-            ClienteBuss clienteBus = new ClienteBuss();
-            DataTable tabela = MontarTabela();
-            DataTable _tabelaPreenchida = clienteBus.ListarClientes(tabela);
-            if (_tabelaPreenchida.Rows.Count != 0)
-            {
-                grClientes.Visible = true;
-                grClientes.DataSource = _tabelaPreenchida;
-                grClientes.DataBind();
-            }
-            else
-                grClientes.Visible = false;
-        }*/
 
         private void CarregaListaTipoAnimal()
         {
@@ -112,10 +98,17 @@ namespace WebUI
             if (executou)
             {
                 lblMsg.Text = "Cadastro efetuado com sucesso";
-                /*txtNomeCli.Text = "";
+                txtNomeCli.Text = "";
                 txtCPF.Text = "";
+                txtRG.Text = "";
                 txtTel.Text = "";
-                txtEmail.Text = "";   */             
+                txtCel.Text = "";
+                txtEmail.Text = "";
+                txtEndereco.Text = "";
+                txtBairro.Text = "";
+                txtEstado.Text = "";
+                txtCel.Text = "";
+                
                 //ExibeGrid();
             }
 
@@ -158,8 +151,12 @@ namespace WebUI
         {
 
             bool executou = false;
+            string CodCliente = ViewState["hdnCodCliente"].ToString();
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
+            
+            AnimalBuss animalBus = new AnimalBuss();
+            Animal animal = new Animal();
 
             #region Validações
           
@@ -175,56 +172,68 @@ namespace WebUI
 		            }
 	        }
                            
-            if (txtNomeCli.Text == "")
-            {
-                lblMsg.Text = "Preencha o nome do cliente";
-                return;
-            }
+            //if (txtNomeCli.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o nome do cliente";
+            //    return;
+            //}
 
-            if (txtCPF.Text == "")
-            {
-                lblMsg.Text = "Preencha o cpf do cliente";
-                return;
-            }
+            //if (txtCPF.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o cpf do cliente";
+            //    return;
+            //}
 
-            if (txtTel.Text == "")
-            {
-                lblMsg.Text = "Preencha o telefone do cliente";
-                return;
-            }
-            if (txtEmail.Text == "")
-            {
-                lblMsg.Text = "Preencha o email do cliente";
-            }
+            //if (txtTel.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o telefone do cliente";
+            //    return;
+            //}
+            //if (txtEmail.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o email do cliente";
+            //}
             #endregion
 
-            cliente.Nome = txtNomeCli.Text;
-            cliente.CPF = txtCPF.Text;
-            cliente.Telefone1 = txtTel.Text;
-            cliente.Telefone2 = txtCel.Text;
-            cliente.RG = txtRG.Text;
-            cliente.Endereco = txtEndereco.Text;
-            cliente.Bairro = txtBairro.Text;
-            cliente.Cidade = txtCidade.Text;
-            cliente.Estado = txtEstado.Text;
-            cliente.CEP = txtCep.Text;
-            cliente.Email = txtEmail.Text;
-            executou = clienteBus.InserirCliente(cliente);
+            //cliente.Nome = txtNomeCli.Text;
+            //cliente.CPF = txtCPF.Text;
+            //cliente.Telefone1 = txtTel.Text;
+            //cliente.Telefone2 = txtCel.Text;
+            //cliente.RG = txtRG.Text;
+            //cliente.Endereco = txtEndereco.Text;
+            //cliente.Bairro = txtBairro.Text;
+            //cliente.Cidade = txtCidade.Text;
+            //cliente.Estado = txtEstado.Text;
+            //cliente.CEP = txtCep.Text;
+            //cliente.Email = txtEmail.Text;
+            //executou = clienteBus.InserirCliente(cliente);
+
+            animal.Nome = txtNomeAnimal.Text;
+            animal.Peso = Decimal.Parse(txtPeso.Text);
+            animal.Raca = txtRaca.Text;
+            animal.DataNascimento = txtNascimento.Text;
+            animal.DataProxVacinacao = txtFimVacinacao.Text;
+            animal.DataFimVacinacao = txtFimVacinacao.Text;
+            animal.IdTipoAnimal = Int32.Parse(ddlTipoAnimal.SelectedValue);
+            animal.IdCliente = Int32.Parse(CodCliente);
+            executou = animalBus.InserirAnimal(animal);
 
             if (executou)
             {
-                lblMsg.Text = "Cadastro efetuado com sucesso";
-                txtNomeCli.Text = "";
-                txtCPF.Text = "";
-                txtRG.Text = "";
-                txtTel.Text = "";
-                txtEmail.Text = "";
-                txtCep.Text = "";
-                txtCel.Text = "";
-                txtEndereco.Text = "";
-                txtBairro.Text = "";
-                txtCidade.Text = "";
-                txtEstado.Text = "";
+                lblMsg.Text = "Cadastro de Animal efetuado com sucesso";
+                //txtNomeCli.Text = "";
+                //txtCPF.Text = "";
+                //txtRG.Text = "";
+                //txtTel.Text = "";
+                //txtEmail.Text = "";
+                //txtCep.Text = "";
+                //txtCel.Text = "";
+                //txtEndereco.Text = "";
+                //txtBairro.Text = "";
+                //txtCidade.Text = "";
+                //txtEstado.Text = "";
+
+
                 //ExibeGrid();
             }
 
@@ -232,7 +241,80 @@ namespace WebUI
             {
                 lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
             }
-        }        
+        }
+
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            ddlTdsClientes.Items.Clear();
+            txtNomeCli.Text = "";
+            txtCPF.Text = "";
+            txtRG.Text = "";
+            txtTel.Text = "";
+            txtEmail.Text = "";
+            txtCep.Text = "";
+            txtCel.Text = "";
+            txtEndereco.Text = "";
+            txtBairro.Text = "";
+            txtCidade.Text = "";
+            txtEstado.Text = "";
+            btnOk.Visible = false;
+            BuscarClientes();
+        }
+
+        protected void BuscarClientes()
+        {
+
+            //bool executou = false;
+            ClienteBuss clienteBus = new ClienteBuss();
+            List<Cliente> _listaClientes = new List<Cliente>();
+            _listaClientes = clienteBus.ListarDDLClientes();
+                
+            ListItem _item = new ListItem("Selecione", "");
+            ddlTdsClientes.Items.Add(_item);
+
+            foreach (Cliente cliente in _listaClientes)
+                {
+                    ListItem item = new ListItem(cliente.Nome.ToString(), cliente.IdCliente.ToString());
+                    ddlTdsClientes.Items.Add(item);
+                }
+
+            txtNomeCli.Visible = false;
+            ddlTdsClientes.Visible = true;
+            lblMsg.Text = "Listagem concluída";
+        }
+
+        protected void ddlTdsClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //DropDownList d = (DropDownList)sender;
+
+            Int32 CodUsuario;
+            CodUsuario = Int32.Parse(ddlTdsClientes.SelectedValue);
+            PreencheUsuario(CodUsuario);
+        }
+
+        protected void PreencheUsuario(Int32 CodUsuario)
+        {
+            ClienteBuss clienteBus = new ClienteBuss();
+            List<Cliente> _listaClientes = new List<Cliente>();
+
+            _listaClientes = clienteBus.PreencheUsuario(CodUsuario);
+
+            foreach (Cliente cliente in _listaClientes) {
+                txtNomeCli.Text = cliente.Nome;
+                txtCPF.Text = cliente.CPF;
+                txtTel.Text = cliente.Telefone1;
+                txtCel.Text = cliente.Telefone2;
+                txtRG.Text = cliente.RG;
+                txtEndereco.Text = cliente.Endereco;
+                txtBairro.Text = cliente.Bairro;
+                txtCidade.Text = cliente.Cidade;
+                txtEstado.Text = cliente.Estado;
+                txtCep.Text = cliente.CEP;
+                txtEmail.Text = cliente.Email;
+                ViewState["hdnCodCliente"] = cliente.IdCliente; 
+            }
+            lblMsg.Text = "Dados Carregados";
+        }
 
         /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {

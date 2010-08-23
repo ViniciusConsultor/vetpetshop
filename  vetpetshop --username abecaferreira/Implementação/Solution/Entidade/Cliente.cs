@@ -9,6 +9,7 @@ namespace Entidade
 {
     public class Cliente
     {
+        public Int32 IdCliente { get; set; }
         public string CPF { get; set; }
         public string Nome { get; set; }
         public string RG { get; set; }
