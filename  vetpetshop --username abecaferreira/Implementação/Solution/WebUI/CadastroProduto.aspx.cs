@@ -55,6 +55,7 @@ namespace WebUI
 
         protected void Buscar_Click(object sender, EventArgs e)
         {
+            lblRegistros.Text = "";
             DataTable tabelaPreenchida = Preencher();
 
             if (tabelaPreenchida.Rows.Count != 0)
@@ -63,6 +64,12 @@ namespace WebUI
                 grUsuarios.DataSource = tabelaPreenchida;
                 grUsuarios.DataBind();
                 lblLista.Visible = true;
+            }
+            else
+            {
+                grUsuarios.Visible = false;
+                lblRegistros.Visible = true;
+                lblRegistros.Text = "Nenhum registro encontrado";
             }
         }
 
@@ -143,8 +150,7 @@ namespace WebUI
                 grUsuarios.Visible = true;
                 grUsuarios.DataSource = tabelaPreenchida;
                 grUsuarios.DataBind();
-            }
-            
+            }           
 
         }
 

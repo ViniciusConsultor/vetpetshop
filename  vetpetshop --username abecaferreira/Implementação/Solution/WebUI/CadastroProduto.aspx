@@ -98,6 +98,23 @@
                             &nbsp;</td>
                     </tr>
                     <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td colspan="2" style="height: 23px; width: 319px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 538px">                            
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 298px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px">
+                            &nbsp;
+                        <td colspan="4" style="width: 324px"><asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></td></td>
+                   </tr>
+                    <tr>
                         <td style="width: 58px">
                             &nbsp;</td>
                         <td colspan="4" style="width: 324px">
