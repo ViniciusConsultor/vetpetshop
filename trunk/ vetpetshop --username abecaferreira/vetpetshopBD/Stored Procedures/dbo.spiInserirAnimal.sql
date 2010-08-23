@@ -5,6 +5,7 @@ SET ANSI_NULLS ON
 GO
 CREATE PROCEDURE [dbo].[spiInserirAnimal]
  
+ @IdCliente int,
  @IdTipoAnimal  int,
  @Peso    decimal,
  @Raca    varchar(50),
@@ -15,9 +16,6 @@ CREATE PROCEDURE [dbo].[spiInserirAnimal]
  
 AS
 BEGIN
-
-DECLARE  @idCliente   int
-SELECT @idCliente = SCOPE_IDENTITY()
  
 INSERT INTO dbo.Animal( IdCliente,
       IdTipoAnimal,
@@ -28,7 +26,7 @@ INSERT INTO dbo.Animal( IdCliente,
       DataNascimento,
       DataProxVacinacao)
     VALUES
-           (@idCliente,  
+           (@IdCliente,  
    @IdTipoAnimal, 
    @Peso,   
    @Raca,   
