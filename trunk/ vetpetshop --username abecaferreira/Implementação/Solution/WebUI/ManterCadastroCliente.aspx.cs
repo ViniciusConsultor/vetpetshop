@@ -72,10 +72,6 @@ namespace WebUI
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
 
-            //if (!ValidarDados())
-            //{
-            //    return;
-            //}
             #region Validações
             if (txtNomeCli.Text == "")
             {
@@ -129,32 +125,6 @@ namespace WebUI
             }  
         }
 
-        private bool ValidarDados() 
-        {
-            if (txtNomeCli.Text == "")
-            {
-                lblMsg.Text = "Preencha o nome do cliente";
-                return false;
-            }
-
-            if (txtCPF.Text == "")
-            {
-                lblMsg.Text = "Preencha o cpf do cliente";
-                return false;
-            }
-
-            if (txtTel.Text == "")
-            {
-                lblMsg.Text = "Preencha o telefone do cliente";
-                return false;
-            }
-            if (txtEmail.Text == "")
-            {
-                lblMsg.Text = "Preencha o email do cliente";
-                return false;
-            }
-            return true;
-        }
         private DataTable MontarTabela()
         {
             DataTable _tabela = new DataTable("Clientes");
@@ -186,11 +156,25 @@ namespace WebUI
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
+
             bool executou = false;
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
 
             #region Validações
+          
+            if (txtNascimento.Text != string.Empty) 
+            {
+	                try 
+                    {
+			            datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
+		            } catch 
+                    {
+			            lblMsg.Text = "Data de nascimento inválida";
+			            return;
+		            }
+	        }
+                           
             if (txtNomeCli.Text == "")
             {
                 lblMsg.Text = "Preencha o nome do cliente";
