@@ -20,45 +20,39 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 58px; height: 23px">&nbsp;</td>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 273px">
+                            &nbsp;</td>
+                    </tr>
+                    <asp:Panel ID="Panel2" runat="server" Visible="false">
+                    <tr>
+                        <td style="width: 58px; height: 23px">&nbsp;</td>                        
                         <td style="height: 23px; width: 352px;">
-                             &nbsp;</td>
-                    </tr>     
-                    <tr>
-                        <td style="width: 58px; height: 23px">&nbsp;</td>
-                        <td style="height: 23px; width: 550px;">
-                             &nbsp;
-                             Data de Cadastro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Label ID="lblData" runat="server" Text=""></asp:Label>
+                             &nbsp; Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;
+                             <asp:Label ID="lblCod" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>     
                     <tr>
                         <td style="width: 58px; height: 23px">&nbsp;</td>
                         <td style="height: 23px; width: 550px;">
-                             &nbsp;&nbsp;<asp:Label ID="lblTotalNota" runat="server" Text="Valor Total" Visible="false"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Text=""></asp:Label>
-                        </td>
+                             &nbsp;&nbsp;Data de Cadastro
+                             &nbsp;&nbsp; &nbsp;<asp:Label ID="lblData" runat="server" Text=""></asp:Label>
+                        </td>                       
                     </tr>     
                     <tr>
                         <td style="width: 58px; height: 23px">&nbsp;</td>
                         <td style="height: 23px; width: 550px;">
-                             &nbsp;</td>
+                             &nbsp;&nbsp;<B>Valor Total</B>
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Text="" Font-Bold="true"></asp:Label>
+                        </td>
                     </tr>     
+                     </asp:Panel>
                     <tr>
                         <td style="width: 58px; "></td>
                         <td style="width: 550px;">
-                        <asp:Panel ID="panel3" runat="server" Visible="false" Width="196px">
-                        <table style="width: 100%; border-style: solid";>
-                                <tr>
-                                    <td style="width: 82px">
-                                        Quantidade</td>
-                                    <td>
-                                        <asp:TextBox ID="txtQuant" runat="server" Width="39px"></asp:TextBox>
-                                        &nbsp;<asp:Button ID="btnQuant" runat="server" Text="OK" 
-                                            onclick="btnQuant_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
+                        
                              &nbsp;</td>
                     </tr>     
                     <tr>
@@ -164,6 +158,24 @@
                             &nbsp;</td>
                         <td style="height: 23px; width: 319px">
                             &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 319px">
+                            <asp:Panel ID="panel3" runat="server" Visible="false" Width="196px">
+                        <table style="width: 100%; border-style: solid";>
+                                <tr>
+                                    <td style="width: 82px">
+                                        Quantidade</td>
+                                    <td>
+                                        <asp:TextBox ID="txtQuant" runat="server" Width="39px"></asp:TextBox>
+                                        &nbsp;<asp:Button ID="btnQuant" runat="server" Text="OK" 
+                                            onclick="btnQuant_Click" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>&nbsp;</td>
                     </tr>
                     <tr>
                         <td style="width: 58px">

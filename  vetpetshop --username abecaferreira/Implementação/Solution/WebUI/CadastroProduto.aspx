@@ -14,17 +14,14 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 319px">
-                            Novo Produto&nbsp;
-                            <asp:RadioButton ID="novo" runat="server" 
-                                ValidationGroup="tipoCadastro" AutoPostBack="True" CausesValidation="True" 
-                                GroupName="tipo" oncheckedchanged="novo_CheckedChanged" />
+                        <td style="height: 23px; width: 142px">
+                            <asp:Button ID="btnNovo" runat="server" Text="Novo Produto" 
+                                onclick="btnNovo_Click" />
                         </td>
                         <td style="height: 23px; width: 538px">
-                            &nbsp;Editar/Excluir Produto
-                            <asp:RadioButton ID="edicao" runat="server" AutoPostBack="True" 
-                                CausesValidation="True" GroupName="tipo" 
-                                oncheckedchanged="edicao_CheckedChanged" />
+                            &nbsp;
+                            <asp:Button ID="Button2" runat="server" Text="Editar/Excluir Produto" 
+                                onclick="Button2_Click" />
                         </td>
                         <td style="height: 23px; width: 298px">
                             &nbsp;</td>
@@ -34,7 +31,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                         </td>
-                        <td style="height: 23px; width: 319px">
+                        <td style="height: 23px; width: 142px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 538px">
                             &nbsp;</td>

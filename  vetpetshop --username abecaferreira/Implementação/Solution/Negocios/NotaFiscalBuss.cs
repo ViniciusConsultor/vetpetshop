@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DAO;
+using Entidade;
 
 namespace Negocios
 {
@@ -20,6 +21,12 @@ namespace Negocios
             bool executou;
             executou = this.notaDAO.InserirNotaFiscal(id);
             return executou;
+        }
+
+        public NotaFiscal ObterUltimoRegistroNota()
+        {
+            NotaFiscal nota = this.notaDAO.ObterUltimoRegistroNota();
+            return nota;
         }
     }
 }

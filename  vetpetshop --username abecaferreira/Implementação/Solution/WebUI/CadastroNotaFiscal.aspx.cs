@@ -62,7 +62,12 @@ namespace WebUI
 
             if (executou)
             {
+                NotaFiscal nota = notaBuss.ObterUltimoRegistroNota();
+
                 addProd.Visible = true;
+
+                Panel2.Visible = true;
+                lblCod.Text = nota.Id.ToString();
                 lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
@@ -153,7 +158,7 @@ namespace WebUI
                 idProd = Convert.ToInt32(e.CommandArgument);
                 Session["idProd"] = idProd;
                 Panel1.Visible = false;
-                grUsuarios.Visible = false;
+                // grUsuarios.Visible = false;
                 panel3.Visible = true;
             }
         }
@@ -215,6 +220,7 @@ namespace WebUI
             }
 
 
+                grUsuarios.Visible = false;
                 grProds.Visible = true;
                 grProds.DataSource = tabela;
                 grProds.DataBind();
@@ -226,8 +232,11 @@ namespace WebUI
                 valorTotal += Convert.ToDecimal(linha.Cells[4].Text);
             }
 
-            lblTotalNota.Visible = true;
-            lblTotal.Text = valorTotal.ToString();
+            //lblTotalNota.Visible = true;
+            //lblDataCadastro.Visible = true;
+            //lblData.Visible = true;
+            lblTotal.Text = "R$"+valorTotal.ToString();
+            
         }
 
 
