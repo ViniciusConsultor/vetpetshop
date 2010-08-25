@@ -44,7 +44,7 @@ Id					INT IDENTITY(1,1)	NOT NULL,
 IdAdministrador		INT					NOT NULL,
 IdVeterinario		INT					NOT NULL,
 IdVendedor			INT					NOT NULL,
-Nome				VARCHAR(50)		    NULL,
+Nome				VARCHAR(50)		    NOT NULL,
 TipoUsuario 		INT					NOT NULL, -- Veterinario Vendedor Administrador
 Senha				VARCHAR(20)			NOT NULL,
 Email				VARCHAR(30)			NULL,
