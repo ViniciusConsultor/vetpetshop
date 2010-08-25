@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[NotaFiscal]
 [IdAdministrador] [int] NULL,
 [IdUsuario] [int] NOT NULL,
 [DataCadastro] [datetime] NULL,
-[Valor] [int] NULL,
+[Valor] [decimal] (9, 2) NULL,
 [Status] [int] NULL,
 [DataRecebimento] [datetime] NULL
 ) ON [PRIMARY]
