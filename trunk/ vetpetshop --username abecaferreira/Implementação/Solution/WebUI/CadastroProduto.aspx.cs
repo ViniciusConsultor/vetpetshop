@@ -178,6 +178,16 @@ namespace WebUI
                     lblMsg.Text = "Não foi possível excluir o usuário selecionado. Falha de conexão com banco de dados";
                 } 
             }
+        }
+
+        protected void btnNovo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FormularioProduto.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = true;
         }      
 
     }
