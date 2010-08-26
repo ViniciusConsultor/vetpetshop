@@ -10,8 +10,8 @@ BEGIN
 
 SELECT
 c.Id,
-c.Nome,
 c.CPF,
+c.Nome,
 c.RG,
 c.Telefone1,
 c.Telefone2,
