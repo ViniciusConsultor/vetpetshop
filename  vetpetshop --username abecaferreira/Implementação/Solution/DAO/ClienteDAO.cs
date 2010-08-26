@@ -125,6 +125,52 @@ namespace DAO
             return tabela;
         }
 
+
+        public List<Cliente> ListarClientesCadastrados()
+        {
+            List<Cliente> lstCliente = new List<Cliente>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+            
+            try
+            {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaClientes";
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+                {
+                Cliente cliente = new Cliente();
+                cliente.IdCliente = dr.GetInt32(0);
+                cliente.CPF = dr.GetString(1);
+                cliente.Nome = dr.GetString(2);
+
+
+                lstCliente.Add(cliente);
+                }
+            }
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lstCliente;
+    }
+
         public List<Cliente> ListarDDLClientes()
         {
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -145,7 +191,7 @@ namespace DAO
             {
                 Cliente cliente = new Cliente();
                 cliente.IdCliente = dr.GetInt32(0);
-                cliente.Nome = dr.GetString(1);
+                cliente.Nome = dr.GetString(2);
 
                 _lista.Add(cliente);
             }

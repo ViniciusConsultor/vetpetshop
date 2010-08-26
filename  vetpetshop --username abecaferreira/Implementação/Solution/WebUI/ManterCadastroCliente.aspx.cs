@@ -33,6 +33,7 @@ namespace WebUI
                 CarregaListaTipoAnimal();
                 //ExibeGrid();
             }
+            BtnBuscar.Attributes.Add("onclick", "window.open('PopUpClientes.aspx',null,'height=50%, width=50%,status= no, resizable= no, scrollbars=no, toolbar=no,location=no,menubar=no ');");
         }
 
         private void CarregaListaTipoAnimal()
@@ -50,72 +51,6 @@ namespace WebUI
                 ListItem item = new ListItem(tipoanimal.Nome.ToString(), tipoanimal.Id.ToString());
                 ddlTipoAnimal.Items.Add(item);
             }
-        }
-
-        protected void btnOk_Click(object sender, EventArgs e)
-        {
-            bool executou = false;
-            ClienteBuss clienteBus = new ClienteBuss();
-            Cliente cliente = new Cliente();
-
-            #region Validações
-            if (txtNomeCli.Text == "")
-            {
-                lblMsg.Text = "Preencha o nome do cliente";
-                return;
-            }
-
-            if (txtCPF.Text == "")
-            {
-                lblMsg.Text = "Preencha o cpf do cliente";
-                return;
-            }
-
-            if (txtTel.Text == "")
-            {
-                lblMsg.Text = "Preencha o telefone do cliente";
-                return;
-            }
-            if (txtEmail.Text == "") 
-            {
-                lblMsg.Text = "Preencha o email do cliente";
-            }
-            #endregion
-            
-            cliente.Nome = txtNomeCli.Text;
-            cliente.CPF = txtCPF.Text;
-            cliente.Telefone1 = txtTel.Text;                
-            cliente.Telefone2 = txtCel.Text;
-            cliente.RG = txtRG.Text;
-            cliente.Endereco = txtEndereco.Text;
-            cliente.Bairro = txtBairro.Text;
-            cliente.Cidade = txtCidade.Text;
-            cliente.Estado = txtEstado.Text;
-            cliente.CEP = txtCep.Text;
-            cliente.Email = txtEmail.Text;                
-            executou = clienteBus.InserirCliente(cliente);
-                        
-            if (executou)
-            {
-                lblMsg.Text = "Cadastro efetuado com sucesso";
-                txtNomeCli.Text = "";
-                txtCPF.Text = "";
-                txtRG.Text = "";
-                txtTel.Text = "";
-                txtCel.Text = "";
-                txtEmail.Text = "";
-                txtEndereco.Text = "";
-                txtBairro.Text = "";
-                txtEstado.Text = "";
-                txtCel.Text = "";
-                
-                //ExibeGrid();
-            }
-
-            else
-            {
-                lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
-            }  
         }
 
         private DataTable MontarTabela()
@@ -147,14 +82,82 @@ namespace WebUI
             pnlPet.Visible = true;
         }
 
+        //protected void btnOk_Click(object sender, EventArgs e)
+        //{
+        //    bool executou = false;
+        //    ClienteBuss clienteBus = new ClienteBuss();
+        //    Cliente cliente = new Cliente();
+
+        //    #region Validações
+        //    if (txtNomeCli.Text == "")
+        //    {
+        //        lblMsg.Text = "Preencha o nome do cliente";
+        //        return;
+        //    }
+
+        //    if (txtCPF.Text == "")
+        //    {
+        //        lblMsg.Text = "Preencha o cpf do cliente";
+        //        return;
+        //    }
+
+        //    if (txtTel.Text == "")
+        //    {
+        //        lblMsg.Text = "Preencha o telefone do cliente";
+        //        return;
+        //    }
+        //    if (txtEmail.Text == "") 
+        //    {
+        //        lblMsg.Text = "Preencha o email do cliente";
+        //    }
+        //    #endregion
+
+        //    cliente.Nome = txtNomeCli.Text;
+        //    cliente.CPF = txtCPF.Text;
+        //    cliente.Telefone1 = txtTel.Text;                
+        //    cliente.Telefone2 = txtCel.Text;
+        //    cliente.RG = txtRG.Text;
+        //    cliente.Endereco = txtEndereco.Text;
+        //    cliente.Bairro = txtBairro.Text;
+        //    cliente.Cidade = txtCidade.Text;
+        //    cliente.Estado = txtEstado.Text;
+        //    cliente.CEP = txtCep.Text;
+        //    cliente.Email = txtEmail.Text;                
+        //    executou = clienteBus.InserirCliente(cliente);
+
+        //    if (executou)
+        //    {
+        //        lblMsg.Text = "Cadastro efetuado com sucesso";
+        //        txtNomeCli.Text = "";
+        //        txtCPF.Text = "";
+        //        txtRG.Text = "";
+        //        txtTel.Text = "";
+        //        txtCel.Text = "";
+        //        txtEmail.Text = "";
+        //        txtEndereco.Text = "";
+        //        txtBairro.Text = "";
+        //        txtEstado.Text = "";
+        //        txtCel.Text = "";
+
+        //        //ExibeGrid();
+        //    }
+
+        //    else
+        //    {
+        //        lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
+        //    }  
+        //}
+
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
 
-            bool executou = false;
+            bool executouCli = false;
+            bool executouAni = false;
+
             string CodCliente = ViewState["hdnCodCliente"].ToString();
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
-            
+
             AnimalBuss animalBus = new AnimalBuss();
             Animal animal = new Animal();
 
@@ -170,44 +173,47 @@ namespace WebUI
 			            lblMsg.Text = "Data de nascimento inválida";
 			            return;
 		            }
-	        }
-                           
-            //if (txtNomeCli.Text == "")
-            //{
-            //    lblMsg.Text = "Preencha o nome do cliente";
-            //    return;
-            //}
 
-            //if (txtCPF.Text == "")
-            //{
-            //    lblMsg.Text = "Preencha o cpf do cliente";
-            //    return;
-            //}
+                    if (txtNomeCli.Text == "")
+                    {
+                        lblMsg.Text = "Preencha o nome do cliente";
+                        return;
+                    }
 
-            //if (txtTel.Text == "")
-            //{
-            //    lblMsg.Text = "Preencha o telefone do cliente";
-            //    return;
-            //}
-            //if (txtEmail.Text == "")
-            //{
-            //    lblMsg.Text = "Preencha o email do cliente";
-            //}
+                    if (txtCPF.Text == "")
+                    {
+                        lblMsg.Text = "Preencha o cpf do cliente";
+                        return;
+                    }
+
+                    if (txtTel.Text == "")
+                    {
+                        lblMsg.Text = "Preencha o telefone do cliente";
+                        return;
+                    }
+                    if (txtEmail.Text == "")
+                    {
+                        lblMsg.Text = "Preencha o email do cliente";
+                    }
+	        }              
+            
             #endregion
 
-            //cliente.Nome = txtNomeCli.Text;
-            //cliente.CPF = txtCPF.Text;
-            //cliente.Telefone1 = txtTel.Text;
-            //cliente.Telefone2 = txtCel.Text;
-            //cliente.RG = txtRG.Text;
-            //cliente.Endereco = txtEndereco.Text;
-            //cliente.Bairro = txtBairro.Text;
-            //cliente.Cidade = txtCidade.Text;
-            //cliente.Estado = txtEstado.Text;
-            //cliente.CEP = txtCep.Text;
-            //cliente.Email = txtEmail.Text;
-            //executou = clienteBus.InserirCliente(cliente);
+            //Cliente
+            cliente.Nome = txtNomeCli.Text;
+            cliente.CPF = txtCPF.Text;
+            cliente.Telefone1 = txtTel.Text;
+            cliente.Telefone2 = txtCel.Text;
+            cliente.RG = txtRG.Text;
+            cliente.Endereco = txtEndereco.Text;
+            cliente.Bairro = txtBairro.Text;
+            cliente.Cidade = txtCidade.Text;
+            cliente.Estado = txtEstado.Text;
+            cliente.CEP = txtCep.Text;
+            cliente.Email = txtEmail.Text;
+            executouCli = clienteBus.InserirCliente(cliente);
 
+            //Animal
             animal.Nome = txtNomeAnimal.Text;
             animal.Peso = Decimal.Parse(txtPeso.Text);
             animal.Raca = txtRaca.Text;
@@ -216,25 +222,22 @@ namespace WebUI
             animal.DataFimVacinacao = txtFimVacinacao.Text;
             animal.IdTipoAnimal = Int32.Parse(ddlTipoAnimal.SelectedValue);
             animal.IdCliente = Int32.Parse(CodCliente);
-            executou = animalBus.InserirAnimal(animal);
+            executouAni = animalBus.InserirAnimal(animal);
 
-            if (executou)
+            if (executouCli)
             {
-                lblMsg.Text = "Cadastro de Animal efetuado com sucesso";
-                //txtNomeCli.Text = "";
-                //txtCPF.Text = "";
-                //txtRG.Text = "";
-                //txtTel.Text = "";
-                //txtEmail.Text = "";
-                //txtCep.Text = "";
-                //txtCel.Text = "";
-                //txtEndereco.Text = "";
-                //txtBairro.Text = "";
-                //txtCidade.Text = "";
-                //txtEstado.Text = "";
+                lblMsg.Text = "Cadastro efetuado com sucesso";
+                txtNomeCli.Text = "";
+                txtCPF.Text = "";
+                txtRG.Text = "";
+                txtTel.Text = "";
+                txtCel.Text = "";
+                txtEmail.Text = "";
+                txtEndereco.Text = "";
+                txtBairro.Text = "";
+                txtEstado.Text = "";
+                txtCep.Text = "";
 
-
-                //ExibeGrid();
             }
 
             else
@@ -257,7 +260,6 @@ namespace WebUI
             txtBairro.Text = "";
             txtCidade.Text = "";
             txtEstado.Text = "";
-            btnOk.Visible = false;
             BuscarClientes();
         }
 
@@ -280,7 +282,7 @@ namespace WebUI
 
             txtNomeCli.Visible = false;
             ddlTdsClientes.Visible = true;
-            lblMsg.Text = "Listagem concluída";
+            lblMsg.Text = "Carregamento concluído";
         }
 
         protected void ddlTdsClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -314,6 +316,11 @@ namespace WebUI
                 ViewState["hdnCodCliente"] = cliente.IdCliente; 
             }
             lblMsg.Text = "Dados Carregados";
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultVendedor.aspx");
         }
 
         /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)

@@ -31,6 +31,14 @@ namespace Negocios
             return _tabelapreenchida;
         }
 
+        public List<Cliente> ListarClientesCadastrados()
+        {
+            List<Cliente> lstCliente = new List<Cliente>();
+            lstCliente = this.clienteDAO.ListarClientesCadastrados();
+
+            return lstCliente;
+        }
+
         public List<Cliente> ListarDDLClientes()
         {
             List<Cliente> _lista = new List<Cliente>();

@@ -36,8 +36,7 @@
                                 width="189px" onselectedindexchanged="ddlTdsClientes_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 138px">
-                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
-                                onclick="BtnBuscar_Click" style="width: 138px" />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes"/>
                         </td>
                         <td style="height: 23px; width: 142px">
                             &nbsp;</td>
@@ -137,20 +136,9 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 383px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 392px">
-                            <asp:Button ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
-                        </td>
-                        <td style="height: 23px; width: 138px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td colspan="3" style="height: 23px; ">
+                        <td align="center" colspan="3" style="height: 23px; ">
                             <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" 
-                                Text="Cadastrar Animal" />
+                                Text="Adicionar Animal" />
                         </td>
                         <td style="height: 23px; width: 142px">
                             &nbsp;</td>
@@ -214,14 +202,6 @@
                                          <asp:TextBox ID="txtFimVacinacao" runat="server" Width="189px"></asp:TextBox>
                                         </td>                                        
                                     </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            </td>
-                                        <td style="height: 23px; width: 392px">
-                                            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" 
-                                                onclick="btnSalvar_Click" />
-                                        </td>                                        
-                                    </tr>
                                </table>
                             </asp:Panel>                             
                         </td>
@@ -229,6 +209,18 @@
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
                             &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 337px">
+                        </td>
+                        <td align="center" style="height: 23px; width: 392px">
+                        <asp:Button width="30%" ID="btnCancelar" runat="server" Text="Cancelar" 
+                            onclick="btnCancelar_Click" /> &nbsp;
+                        <asp:Button  width="30%" ID="btnSalvar" runat="server" Text="Salvar" 
+                            onclick="btnSalvar_Click" />
+                        </td>                                        
                     </tr>
                     <tr>
                         <td style="width: 58px">
@@ -256,5 +248,4 @@
                 &nbsp;</td>
         </tr>
     </table>
-  
 </asp:Content>

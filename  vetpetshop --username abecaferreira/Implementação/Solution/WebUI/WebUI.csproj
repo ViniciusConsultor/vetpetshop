@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\Program Files\Microsoft Visual Studio 9.0\AjaxControlToolkitSource\AjaxControlToolkit\bin\Release\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -141,6 +145,13 @@
     <Compile Include="ManterUsuario.aspx.designer.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PopUpClientes.aspx.cs">
+      <DependentUpon>PopUpClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PopUpClientes.aspx.designer.cs">
+      <DependentUpon>PopUpClientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vetpetshop.Master.cs">
       <DependentUpon>Vetpetshop.Master</DependentUpon>
@@ -200,6 +211,7 @@
     <Content Include="ManterCadastroCliente.aspx" />
     <Content Include="ManterUsuario.aspx" />
     <Content Include="MenuAdmin.sitemap" />
+    <Content Include="PopUpClientes.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
