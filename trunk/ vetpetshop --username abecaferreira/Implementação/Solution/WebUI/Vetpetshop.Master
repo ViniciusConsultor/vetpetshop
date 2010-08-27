@@ -21,9 +21,10 @@
 <body>
 <form id="form1" runat="server">
 <div>
+   <%-- <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>--%>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-
 </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr> 
