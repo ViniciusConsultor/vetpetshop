@@ -8,6 +8,7 @@ namespace Entidade
 {
     public class Animal
     {
+        public int IdAnimal { get; set; }
         public string Nome { get; set; }
         public int IdTipoAnimal { get; set; }
         public int IdCliente { get; set; }
