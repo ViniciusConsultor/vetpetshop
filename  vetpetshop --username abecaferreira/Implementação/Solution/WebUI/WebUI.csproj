@@ -61,6 +61,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendarConsulta.aspx.cs">
+      <DependentUpon>AgendarConsulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgendarConsulta.aspx.designer.cs">
+      <DependentUpon>AgendarConsulta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CadastroGrupoProduto.aspx.cs">
       <DependentUpon>CadastroGrupoProduto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -196,6 +203,7 @@
     <Content Include="MenuVeterinario.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgendarConsulta.aspx" />
     <Content Include="alerts.js" />
     <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="CadastroNotaFiscal.aspx" />
