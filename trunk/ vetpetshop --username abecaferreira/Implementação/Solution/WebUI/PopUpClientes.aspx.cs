@@ -13,5 +13,14 @@ namespace WebUI
         {
 
         }
+
+        protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "selecionar") { 
+                Server.Transfer("ManterCadastroCliente.aspx?Codigo="+grClientes.DataKeyNames+"");
+            
+            
+            }
+        }
     }
 }
