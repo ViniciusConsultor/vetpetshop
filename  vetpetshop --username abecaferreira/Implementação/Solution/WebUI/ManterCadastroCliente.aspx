@@ -3,7 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <head>
+    <head>
     <title>VetPetShop</title>
    <script src="alerts.js" type="text/javascript"></script>
 </head>
