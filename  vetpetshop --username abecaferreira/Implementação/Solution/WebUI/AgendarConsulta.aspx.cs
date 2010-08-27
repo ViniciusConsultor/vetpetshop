@@ -23,7 +23,11 @@ namespace WebUI
             menu.DataSource = siteVet;
             menu.DataBind();
             #endregion
-            CarregarClientes();
+            if (!IsPostBack)
+            {
+                CarregarClientes();
+            }
+           
         }
 
         protected void CarregarClientes()
@@ -32,6 +36,9 @@ namespace WebUI
             ClienteBuss clienteBus = new ClienteBuss();
             List<Cliente> _listaClientes = new List<Cliente>();
             _listaClientes = clienteBus.ListarDDLClientes();
+
+            ListItem _item = new ListItem("Selecione", "0");
+            ddlClientes.Items.Insert(0, _item);
 
             foreach (Cliente cliente in _listaClientes)
             {
@@ -44,8 +51,18 @@ namespace WebUI
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Int32 idCliente;
-            idCliente = Int32.Parse(ddlClientes.SelectedValue);            
-            CarregarAnimaisCliente(idCliente);
+            idCliente = Int32.Parse(ddlClientes.SelectedValue);
+            ddlAnimal.Enabled = true;
+            if (idCliente != 0)
+            {
+                CarregarAnimaisCliente(idCliente);
+            }
+            else
+            {
+                ddlAnimal.Items.Clear();
+                ddlAnimal.Enabled = false;
+            }
+                       
         }
            
         protected void CarregarAnimaisCliente(Int32 idCliente)
@@ -53,6 +70,9 @@ namespace WebUI
             AnimalBuss animalBus = new AnimalBuss();
             List<Animal> _listaAnimais = new List<Animal>();
             _listaAnimais = animalBus.ListarDDLAnimais(idCliente);
+
+            ListItem _item = new ListItem("Selecione", "0");
+            ddlAnimal.Items.Insert(0, _item);
 
             foreach (Animal Animal in _listaAnimais)
             {
