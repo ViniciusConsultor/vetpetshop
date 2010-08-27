@@ -252,13 +252,26 @@
         </tr>
     </table>
     
-    <asp:ModalPopupExtender OkControlID="button2" ID="ModalPopupExtender1" TargetControlID="LabelModalPopup" runat="server" PopupControlID="Panel1" cancelcontrolid="btpCancel">
+    <asp:ModalPopupExtender OkControlID="btpOK" ID="ModalPopupExtender1" TargetControlID="BtnBuscar" runat="server" PopupControlID="Panel1" cancelcontrolid="btpCancel">
     </asp:ModalPopupExtender>
-    <asp:Label ID="LabelModalPopup" runat="server" Text="a"></asp:Label>
     
     <asp:Panel ID="Panel1" runat="server" Style="display:none;">
-        
-    <asp:Button ID="button2" runat="server" />
-    <asp:Button ID="btpCancel" runat="server"  />
+        <div id="divPopupClientes">
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+        SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
+        </asp:ObjectDataSource>
+            <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="False" 
+                    HeaderStyle-BackColor="DarkBlue" Width="100%" 
+                    AllowPaging="True" PageSize="15" DataSourceID="ObjectDataSource1">
+        <Columns>
+            <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+            <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" /> 
+            <asp:ButtonField Text="Selecionar" CommandName="selecionar"/>
+            </Columns>
+        <HeaderStyle BackColor="DarkBlue"></HeaderStyle>
+        </asp:GridView>  
+        </div>
+        <asp:Button id="btpOK" runat="server"/>
+        <asp:Button id="btpCancel" runat="server"/>
     </asp:Panel>
 </asp:Content>
