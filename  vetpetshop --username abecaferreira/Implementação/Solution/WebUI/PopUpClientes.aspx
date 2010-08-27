@@ -13,11 +13,13 @@
         </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="False" 
                     HeaderStyle-BackColor="DarkBlue" Width="100%" 
-                    AllowPaging="True" PageSize="15" DataSourceID="ObjectDataSource1">
+                    AllowPaging="True" PageSize="15" DataSourceID="ObjectDataSource1" 
+            onrowcommand="grClientes_RowCommand">
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
-            <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" />
-        </Columns>
+            <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" /> 
+            <asp:ButtonField Text="Selecionar" CommandName="selecionar"/>
+            </Columns>
         <HeaderStyle BackColor="DarkBlue"></HeaderStyle>
         </asp:GridView>  
         </div>

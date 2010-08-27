@@ -9,7 +9,6 @@ using System.Web.UI.WebControls;
 using Entidade;
 using Negocios;
 using System.Data;
-using System.Web;
 
 namespace WebUI
 {
@@ -33,7 +32,7 @@ namespace WebUI
                 CarregaListaTipoAnimal();
                 //ExibeGrid();
             }
-            BtnBuscar.Attributes.Add("onclick", "window.open('PopUpClientes.aspx',null,'height=50%, width=50%,status= no, resizable= no, scrollbars=no, toolbar=no,location=no,menubar=no ');");
+            BtnBuscar.Attributes.Add("onclick", "window.open('PopUpClientes.aspx',null,'height=500, width=500,status= no, resizable= yes, scrollbars=yes, toolbar=no,location=no,menubar=no ');");
         }
 
         private void CarregaListaTipoAnimal()
