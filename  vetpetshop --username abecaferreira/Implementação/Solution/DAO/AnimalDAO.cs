@@ -86,82 +86,39 @@ namespace DAO
             return executou;
         }
 
-        /// <summary>
-        /// //PERSITE TABELA ANIMAL
-        /// </summary>
-        /// <param name="animal"></param>
-        /// <returns></returns>
-        //public bool InserirAnimal(Animal animal)
-        //{
-        //    bool executou = false;
-        //    string stringConexao = databaseHelper.GetConnectionString("conexao");
-        //    SqlConnection conn = new SqlConnection(stringConexao);
+        public List<Animal> ListarDDLAnimais(Int32 idCliente)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
 
-        //    try
-        //    {
-        //        SqlCommand cmd = new SqlCommand();
-        //        cmd.Connection = conn;
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.CommandText = "spiInserirAnimal";
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaAnimaisByFK";
 
-        //        SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 100);
-        //        SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
-        //        SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
-        //        SqlParameter pCelular = new SqlParameter("@Celular", SqlDbType.VarChar, 20);
-        //        SqlParameter pRG = new SqlParameter("@RG", SqlDbType.VarChar, 20);
-        //        SqlParameter pEndereco = new SqlParameter("@Endereco", SqlDbType.VarChar, 50);
-        //        SqlParameter pBairro = new SqlParameter("@Bairro", SqlDbType.VarChar, 20);
-        //        SqlParameter pCidade = new SqlParameter("@Cidade", SqlDbType.VarChar, 20);
-        //        SqlParameter pEstado = new SqlParameter("@Estado", SqlDbType.VarChar, 20);
-        //        SqlParameter pCEP = new SqlParameter("@CEP", SqlDbType.VarChar, 20);
-        //        SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+            SqlParameter pCodCliente = new SqlParameter("@IdCliente", SqlDbType.Int);
 
-        //        pnomeCliente.Value = cliente.Nome;
-        //        pCpf.Value = cliente.CPF;
-        //        pTelefone.Value = cliente.Telefone1;
-        //        pCelular.Value = cliente.Telefone2;
-        //        pRG.Value = cliente.RG;
-        //        pEndereco = cliente.Endereco;
-        //        pBairro = cliente.Bairro;
-        //        pCidade = cliente.Cidade;
-        //        pEstado = cliente.Estado;
-        //        pCEP = cliente.CEP;
-        //        pEmail.Value = cliente.Email;
+            pCodCliente.Value = idCliente;
 
-        //        cmd.Parameters.Add(pnomeCliente);
-        //        cmd.Parameters.Add(pCpf);
-        //        cmd.Parameters.Add(pTelefone);
-        //        cmd.Parameters.Add(pCelular);
-        //        cmd.Parameters.Add(pRG);
-        //        cmd.Parameters.Add(pEndereco);
-        //        cmd.Parameters.Add(pBairro);
-        //        cmd.Parameters.Add(pCidade);
-        //        cmd.Parameters.Add(pEstado);
-        //        cmd.Parameters.Add(pCEP);
-        //        cmd.Parameters.Add(pEmail);
+            cmd.Parameters.Add(pCodCliente);
 
-        //        conn.Open();
-        //        int registro = cmd.ExecuteNonQuery();
-        //        executou = true;
-        //    }
+            conn.Open();
 
-        //    catch (SqlException ex)
-        //    {
-        //        //throw new Exception("Servidor SQL Erro: " + ex.Number);
-        //        throw new Exception(ex.Message);
-        //    }
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
+            List<Animal> _lista = new List<Animal>();
 
-        //    return executou;
-        //}
+            while (dr.Read())
+            {
+                Animal animal = new Animal();
+                animal.IdAnimal = dr.GetInt32(0);
+                animal.Nome = dr.GetString(1);
+
+                _lista.Add(animal);
+            }
+
+            return _lista;
+        }
 
         public DataTable ListarAnimais(DataTable tabela)
         {

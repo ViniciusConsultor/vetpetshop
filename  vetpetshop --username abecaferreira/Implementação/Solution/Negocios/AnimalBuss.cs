@@ -23,18 +23,17 @@ namespace Negocios
             return executou;
         }
 
-        //public DataTable ListarAnimais(DataTable tabela)
-        //{
-        //    DataTable _tabelapreenchida = new DataTable();
-        //    _tabelapreenchida = this.animalDAO.ListarAnimal(tabela);
-
-        //    return _tabelapreenchida;
-        //}
-
         public bool ExcluirAnimal(int id)
         {
             bool executou = this.animalDAO.ExcluirAnimal(id);
             return executou;
+        }
+
+        public List<Animal> ListarDDLAnimais(int idCliente)
+        {
+            List<Animal> _lista = new List<Animal>();
+            _lista = this.animalDAO.ListarDDLAnimais(idCliente);
+            return _lista;
         }
 
     }
