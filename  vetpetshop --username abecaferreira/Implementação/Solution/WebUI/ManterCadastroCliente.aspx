@@ -1,5 +1,7 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ManterCadastroCliente.aspx.cs" Inherits="WebUI.ManterCadastroCliente" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   <head>
     <title>VetPetShop</title>
@@ -32,7 +34,8 @@
                             Nome de Cliente</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
-                          <asp:DropDownList visible="false" ID="ddlTdsClientes" runat="server" AutoPostBack="true" 
+                  
+                            <asp:DropDownList visible="false" ID="ddlTdsClientes" runat="server" AutoPostBack="true" 
                                 width="189px" onselectedindexchanged="ddlTdsClientes_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 138px">
@@ -248,4 +251,14 @@
                 &nbsp;</td>
         </tr>
     </table>
+    
+    <asp:ModalPopupExtender OkControlID="button2" ID="ModalPopupExtender1" TargetControlID="LabelModalPopup" runat="server" PopupControlID="Panel1" cancelcontrolid="btpCancel">
+    </asp:ModalPopupExtender>
+    <asp:Label ID="LabelModalPopup" runat="server" Text="a"></asp:Label>
+    
+    <asp:Panel ID="Panel1" runat="server" Style="display:none;">
+        
+    <asp:Button ID="button2" runat="server" />
+    <asp:Button ID="btpCancel" runat="server"  />
+    </asp:Panel>
 </asp:Content>
