@@ -13,8 +13,7 @@
         </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="False" 
                     HeaderStyle-BackColor="DarkBlue" Width="100%" 
-                    AllowPaging="True" PageSize="15" DataSourceID="ObjectDataSource1" 
-            onrowcommand="grClientes_RowCommand">
+                    AllowPaging="True" PageSize="15" DataSourceID="ObjectDataSource1">
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
             <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" /> 
