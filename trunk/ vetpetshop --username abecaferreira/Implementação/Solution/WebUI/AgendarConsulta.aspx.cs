@@ -43,22 +43,23 @@ namespace WebUI
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-          // CarregarAnimaisCliente();
+            Int32 idCliente;
+            idCliente = Int32.Parse(ddlClientes.SelectedValue);            
+            CarregarAnimaisCliente(idCliente);
         }
            
-       /* protected void CarregarAnimaisCliente();
+        protected void CarregarAnimaisCliente(Int32 idCliente)
         {
-
             AnimalBuss animalBus = new AnimalBuss();
             List<Animal> _listaAnimais = new List<Animal>();
-            _listaAnimais = animalBus.ListarDDLAnimais();
+            _listaAnimais = animalBus.ListarDDLAnimais(idCliente);
 
             foreach (Animal Animal in _listaAnimais)
             {
                 ListItem item = new ListItem(Animal.Nome.ToString(), Animal.IdAnimal.ToString());
-                ddlAnimais.Items.Add(item);
+                ddlAnimal.Items.Add(item);
             }
                            
-        }   */
+        }   
     }
 }
