@@ -61,6 +61,8 @@ namespace WebUI
             {
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
+                txtDataProx.Text = "";
+                pnlAnimal.Visible = false;
             }
 
         }
@@ -90,21 +92,17 @@ namespace WebUI
             {
                 pnlAnimal.Visible = true;
                 CarregarGrid(idAnimal);
-                txtData.Enabled = true;
                 txtDataProx.Enabled = true;
                 foreach (GridViewRow row in gdvAnimal.Rows)
                 {
-                    txtData.Text = row.Cells[5].Text;
-                    txtDataProx.Text = row.Cells[6].Text;
+                    txtDataProx.Text = row.Cells[4].Text;
                 }                
                 
             }
             else
             {
                 pnlAnimal.Visible = false;
-                txtData.Text = "";
                 txtDataProx.Text = "";
-                txtData.Enabled = false;
                 txtDataProx.Enabled = false;
             }
 
@@ -143,8 +141,7 @@ namespace WebUI
             DataColumn coluna2 = new DataColumn("raca");
             DataColumn coluna3 = new DataColumn("peso");
             DataColumn coluna4 = new DataColumn("nascimento");
-            DataColumn coluna5 = new DataColumn("datavacinacao");
-            DataColumn coluna6 = new DataColumn("dataproxvacinacao");
+            DataColumn coluna5 = new DataColumn("dataproxvacinacao");
          
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
@@ -152,7 +149,6 @@ namespace WebUI
             _tabela.Columns.Add(coluna3);
             _tabela.Columns.Add(coluna4);
             _tabela.Columns.Add(coluna5);
-            _tabela.Columns.Add(coluna6);
     
             return _tabela;
         }
@@ -164,7 +160,7 @@ namespace WebUI
             if (idAnimal != 0)
             {
                 pnlAnimal.Visible = true;
-                AgendamentoVacinacao(idAnimal);                             
+                AgendamentoVacinacao(idAnimal);                      
             }
             else
             {
@@ -174,21 +170,12 @@ namespace WebUI
 
         protected void AgendamentoVacinacao(Int32 idAnimal)
         {
-            DateTime datVacinacao = new DateTime();
             DateTime datProxVacinacao = new DateTime(); 
             AnimalBuss animalBuss = new AnimalBuss();
 
             bool executou;
 
-            try
-            {
-               datVacinacao = System.DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", null);
-            }
-            catch
-            {
-                lblMsg.Text = "Data de vacinacao inválida";
-                return;
-            }
+            
             try
             {
                 datProxVacinacao = System.DateTime.ParseExact(txtDataProx.Text, "dd/MM/yyyy", null);
@@ -199,11 +186,11 @@ namespace WebUI
                 return;
             }
 
-            executou = animalBuss.AgendamentoVacinacao(idAnimal, datVacinacao, datProxVacinacao);
+            executou = animalBuss.AgendamentoVacinacao(idAnimal, datProxVacinacao);
 
             if (executou)
             {
-                
+                CarregarGrid(idAnimal);
             }
         }
          
