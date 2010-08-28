@@ -2,12 +2,8 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <head>
-    <title>VetPetShop</title>
-   <script src="alerts.js" type="text/javascript"></script>
-</head>
-  
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
+
     <table style="width:100%;">
         <tr>
             <td style="width: 863px">
@@ -39,7 +35,8 @@
                                 width="189px" onselectedindexchanged="ddlTdsClientes_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 138px">
-                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes"/>
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
+                                onclick="BtnBuscar_Click"/>
                         </td>
                         <td style="height: 23px; width: 142px">
                             &nbsp;</td>
@@ -50,6 +47,9 @@
                         <td style="height: 23px; width: 518px">
                             CPF</td>
                             <td style="width: 58px; height: 23px">
+                            <asp:RegularExpressionValidator ID="regCPFCliente" runat="server" ControlToValidate="txtCPF"
+                            Display="None" ErrorMessage="O campo CPF está inválido. <br />Favor corrigí-lo."
+                            ValidationExpression="^[0-9]{11}$" ValidationGroup="ManterCadastroCliente"></asp:RegularExpressionValidator>
                          <asp:TextBox ID="txtCPF" runat="server" Width="189px"></asp:TextBox>
                         </td>
                     </tr>
@@ -252,26 +252,30 @@
         </tr>
     </table>
     
-    <asp:ModalPopupExtender OkControlID="btpOK" ID="ModalPopupExtender1" TargetControlID="BtnBuscar" runat="server" PopupControlID="Panel1" cancelcontrolid="btpCancel">
+    <asp:Button ID="ButtonPp" runat="server" style="display:none" />
+    <asp:ModalPopupExtender 
+    BackgroundCssClass="modalPopup1_Background" 
+    OkControlID="btpOK" ID="ModalPopupExtender1" TargetControlID="ButtonPp" runat="server" PopupControlID="Panel1" cancelcontrolid="btpCancel">
     </asp:ModalPopupExtender>
     
-    <asp:Panel ID="Panel1" runat="server" Style="display:none;">
+    <asp:Panel class="modalPopup1" ID="Panel1" runat="server" Style="display:block;">
         <div id="divPopupClientes">
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
         SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
         </asp:ObjectDataSource>
-            <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="False" 
-                    HeaderStyle-BackColor="DarkBlue" Width="100%" 
-                    AllowPaging="True" PageSize="15" DataSourceID="ObjectDataSource1">
-        <Columns>
-            <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
-            <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" /> 
-            <asp:ButtonField Text="Selecionar" CommandName="selecionar"/>
-            </Columns>
-        <HeaderStyle BackColor="DarkBlue"></HeaderStyle>
-        </asp:GridView>  
+            <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
+                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%">
+                <Columns>
+                    <asp:BoundField  DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+                    <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" />
+                    <asp:ButtonField CommandName="selecionar" Text="Selecionar" />
+                </Columns>
+                <HeaderStyle BackColor="DarkBlue" />
+            </asp:GridView>
         </div>
-        <asp:Button id="btpOK" runat="server"/>
-        <asp:Button id="btpCancel" runat="server"/>
+        <asp:Button id="btpOK" Text="OK" runat="server"/>
+        <asp:Button id="btpCancel" Text="Cancelar" runat="server"/>
     </asp:Panel>
+
 </asp:Content>
