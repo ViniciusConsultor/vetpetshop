@@ -46,10 +46,10 @@ namespace Negocios
             return _lista;
         }
 
-        public List<Cliente> PreencheUsuario(Int32 CodUsuario)
+        public List<Cliente> PreencheUsuario(Int32 CodCliente)
         {
             List<Cliente> _lista = new List<Cliente>();
-            _lista = this.clienteDAO.PreencheUsuario(CodUsuario);
+            _lista = this.clienteDAO.PreencheUsuario(CodCliente);
             return _lista;
         }
 

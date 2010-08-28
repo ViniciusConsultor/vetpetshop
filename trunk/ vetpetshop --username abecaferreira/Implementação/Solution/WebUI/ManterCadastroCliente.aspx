@@ -30,9 +30,6 @@
                             Nome de Cliente</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
-                  
-                            <asp:DropDownList visible="false" ID="ddlTdsClientes" runat="server" AutoPostBack="true" 
-                                width="189px" onselectedindexchanged="ddlTdsClientes_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                         <td style="height: 23px; width: 138px">
                             <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
@@ -255,27 +252,38 @@
     <asp:Button ID="ButtonPp" runat="server" style="display:none" />
     <asp:ModalPopupExtender 
     BackgroundCssClass="modalPopup1_Background" 
-    OkControlID="btpOK" ID="ModalPopupExtender1" TargetControlID="ButtonPp" runat="server" PopupControlID="Panel1" cancelcontrolid="btpCancel">
+    ID="ModalPopupExtender1" TargetControlID="ButtonPp" runat="server" PopupControlID="Panel1" cancelcontrolid="btpVoltar">
     </asp:ModalPopupExtender>
     
     <asp:Panel class="modalPopup1" ID="Panel1" runat="server" Style="display:block;">
+        <h3>
+            Lista de Clientes Cadastrados
+        </h3>
         <div id="divPopupClientes">
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
         SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
         </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
-                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%">
+                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" 
+                onrowcommand="grClientes_RowCommand">
                 <Columns>
+                    <asp:TemplateField>
+                    <ItemTemplate>
+                    <asp:LinkButton ID="selecionar" runat="server" Text="selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
+                    </ItemTemplate> 
+                    </asp:TemplateField>
                     <asp:BoundField  DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
                     <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" />
-                    <asp:ButtonField CommandName="selecionar" Text="Selecionar" />
                 </Columns>
                 <HeaderStyle BackColor="DarkBlue" />
             </asp:GridView>
         </div>
-        <asp:Button id="btpOK" Text="OK" runat="server"/>
-        <asp:Button id="btpCancel" Text="Cancelar" runat="server"/>
+        <div align="center">
+            <br />
+            <asp:Button id="btpVoltar" Text="Voltar" runat="server"/>
+        </div>
+        
     </asp:Panel>
 
 </asp:Content>

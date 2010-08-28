@@ -10,6 +10,7 @@ using Entidade;
 using Negocios;
 using System.Data;
 
+
 namespace WebUI
 {
     public partial class ManterCadastroCliente : System.Web.UI.Page
@@ -27,12 +28,19 @@ namespace WebUI
             
             lblMsg.Text = "";
 
+            //string CodCliente = Request.Params["CodCliente"];
+
+            if (Request.QueryString["CodCliente"] != string.Empty) {
+                Int32 CodCliente;
+                CodCliente = Convert.ToInt32(Request.QueryString["CodCliente"]);
+                PreencheUsuario(CodCliente);
+            }
+
             if (!IsPostBack)
             {
                 CarregaListaTipoAnimal();
                 //ExibeGrid();
             }
-
         }
 
         private void CarregaListaTipoAnimal()
@@ -263,45 +271,14 @@ namespace WebUI
         //    BuscarClientes();
         //}
 
-        protected void BuscarClientes()
-        {
-
-            //bool executou = false;
-            ClienteBuss clienteBus = new ClienteBuss();
-            List<Cliente> _listaClientes = new List<Cliente>();
-            _listaClientes = clienteBus.ListarDDLClientes();
-                
-            ListItem _item = new ListItem("Selecione", "");
-            ddlTdsClientes.Items.Add(_item);
-
-            foreach (Cliente cliente in _listaClientes)
-                {
-                    ListItem item = new ListItem(cliente.Nome.ToString(), cliente.IdCliente.ToString());
-                    ddlTdsClientes.Items.Add(item);
-                }
-
-            txtNomeCli.Visible = false;
-            ddlTdsClientes.Visible = true;
-            lblMsg.Text = "Carregamento concluído";
-        }
-
-        protected void ddlTdsClientes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //DropDownList d = (DropDownList)sender;
-
-            Int32 CodUsuario;
-            CodUsuario = Int32.Parse(ddlTdsClientes.SelectedValue);
-            PreencheUsuario(CodUsuario);
-        }
-
-        protected void PreencheUsuario(Int32 CodUsuario)
+        protected void PreencheUsuario(Int32 CodCliente)
         {
             ClienteBuss clienteBus = new ClienteBuss();
-            List<Cliente> _listaClientes = new List<Cliente>();
+            List<Cliente> _listaCliente = new List<Cliente>();
 
-            _listaClientes = clienteBus.PreencheUsuario(CodUsuario);
+            _listaCliente = clienteBus.PreencheUsuario(CodCliente);
 
-            foreach (Cliente cliente in _listaClientes) {
+            foreach (Cliente cliente in _listaCliente) {
                 txtNomeCli.Text = cliente.Nome;
                 txtCPF.Text = cliente.CPF;
                 txtTel.Text = cliente.Telefone1;
@@ -325,6 +302,17 @@ namespace WebUI
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
+            txtNomeCli.Text = "";
+            txtCPF.Text = "";
+            txtRG.Text = "";
+            txtTel.Text = "";
+            txtEmail.Text = "";
+            txtCep.Text = "";
+            txtCel.Text = "";
+            txtEndereco.Text = "";
+            txtBairro.Text = "";
+            txtCidade.Text = "";
+            txtEstado.Text = "";
             ModalPopupExtender1.Show();
         }
 
@@ -357,6 +345,14 @@ namespace WebUI
                 // This will be the back ground color of the GridView Control
                 e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
             }
-        }*/    
+        }*/
+
+
+        protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "selecionar")
+
+                Response.Redirect("ManterCadastroCliente.aspx?CodCliente=" + e.CommandArgument.ToString());
+        }
     }
 }
