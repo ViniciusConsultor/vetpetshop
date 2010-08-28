@@ -289,7 +289,7 @@ namespace DAO
                 pDatFimVacinacao.Value = datavac;
                 pDatProxVacinacao.Value = dataproxvac;
 
-                cmd.Parameters.Add(idAnimal);
+                cmd.Parameters.Add(new SqlParameter("@idAnimal", SqlDbType.Int)).Value = idAnimal;
                 cmd.Parameters.Add(pDatFimVacinacao);
                 cmd.Parameters.Add(pDatProxVacinacao);
 
