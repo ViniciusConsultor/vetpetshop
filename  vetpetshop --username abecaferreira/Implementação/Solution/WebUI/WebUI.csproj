@@ -159,13 +159,6 @@
     <Compile Include="ManterUsuario.aspx.designer.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PopUpClientes.aspx.cs">
-      <DependentUpon>PopUpClientes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PopUpClientes.aspx.designer.cs">
-      <DependentUpon>PopUpClientes.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vetpetshop.Master.cs">
       <DependentUpon>Vetpetshop.Master</DependentUpon>
@@ -227,7 +220,6 @@
     <Content Include="ManterCadastroCliente.aspx" />
     <Content Include="ManterUsuario.aspx" />
     <Content Include="MenuAdmin.sitemap" />
-    <Content Include="PopUpClientes.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

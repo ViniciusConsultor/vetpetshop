@@ -32,15 +32,6 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtNomeCli;
         
         /// <summary>
-        /// ddlTdsClientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTdsClientes;
-        
-        /// <summary>
         /// BtnBuscar control.
         /// </summary>
         /// <remarks>
@@ -293,21 +284,12 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.GridView grClientes;
         
         /// <summary>
-        /// btpOK control.
+        /// btpVoltar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btpOK;
-        
-        /// <summary>
-        /// btpCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btpCancel;
+        protected global::System.Web.UI.WebControls.Button btpVoltar;
     }
 }

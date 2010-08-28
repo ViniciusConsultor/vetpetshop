@@ -199,7 +199,7 @@ namespace DAO
             return _lista;
         }
 
-        public List<Cliente> PreencheUsuario(Int32 CodUsuario)
+        public List<Cliente> PreencheUsuario(Int32 CodCliente)
         {
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
@@ -209,12 +209,12 @@ namespace DAO
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "spsListaClienteByPK";
 
-            
-            SqlParameter pCodUsuario = new SqlParameter("@IdCliente", SqlDbType.Int);
 
-            pCodUsuario.Value = CodUsuario;
+            SqlParameter pCodCliente = new SqlParameter("@IdCliente", SqlDbType.Int);
 
-            cmd.Parameters.Add(pCodUsuario);
+            pCodCliente.Value = CodCliente;
+
+            cmd.Parameters.Add(pCodCliente);
 
             conn.Open();
 
