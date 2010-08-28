@@ -23,6 +23,12 @@ namespace Negocios
             return executou;
         }
 
+        public bool AgendamentoVacinacao(Int32 idAnimal, DateTime datavac, DateTime dataproxvac)
+        {
+            bool executou = this.animalDAO.AgendamentoVacinacao(idAnimal,datavac,dataproxvac);
+            return executou;
+        }
+
         public bool ExcluirAnimal(int id)
         {
             bool executou = this.animalDAO.ExcluirAnimal(id);
@@ -34,6 +40,14 @@ namespace Negocios
             List<Animal> _lista = new List<Animal>();
             _lista = this.animalDAO.ListarDDLAnimais(idCliente);
             return _lista;
+        }
+
+        public DataTable ConsultarAnimal(DataTable tabela, Int32 idAnimal)
+        {
+            DataTable tabelaPreenchida = new DataTable();
+
+            tabelaPreenchida = this.animalDAO.ConsultarAnimal(tabela, idAnimal);
+            return tabelaPreenchida;
         }
 
     }
