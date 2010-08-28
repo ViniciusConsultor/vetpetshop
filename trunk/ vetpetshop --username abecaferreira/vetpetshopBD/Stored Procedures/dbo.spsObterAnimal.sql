@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -7,7 +8,15 @@ CREATE PROCEDURE [dbo].[spsObterAnimal]
 AS
 BEGIN
 	
-	SELECT * FROM dbo.Animal WHERE Id = @IdAnimal
+	SELECT	a.Id,
+			a.Nome,
+			a.Peso,
+			a.Raca,
+			a.DataNascimento,
+			a.DataFimVacinacao,
+			a.DataProxVacinacao
+	
+	 FROM dbo.Animal a WHERE Id = @IdAnimal
 	
 END
 GO
