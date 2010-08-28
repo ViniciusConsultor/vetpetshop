@@ -192,6 +192,129 @@ namespace DAO
 
 
             return executou;
-        }     
+        }
+
+        public DataTable ConsultarAnimal(DataTable tabela, Int32 idAnimal)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsObterAnimal";
+
+            SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int, 4);
+
+            pIdAnimal.Value = idAnimal;
+
+            cmd.Parameters.Add(pIdAnimal);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_animal"] = dr.GetInt32(0);
+                _linhaTabela["nm_animal"] = dr.GetString(1);
+                _linhaTabela["peso"] = dr.GetDecimal(2);
+              
+
+                if (dr.IsDBNull(3))
+                {
+                    _linhaTabela["raca"] = "";
+                }
+                else
+                {
+                    _linhaTabela["raca"] = dr.GetString(3);
+                }    
+
+                if (dr.IsDBNull(4))
+                {
+                    _linhaTabela["datavacinacao"] = "";
+                }
+                else
+                {
+                   _linhaTabela["datavacinacao"] = dr.GetDateTime(4).ToString("dd/MM/yyyy");
+                }       
+                
+                if (dr.IsDBNull(5))
+                {
+                     _linhaTabela["dataproxvacinacao"]  = "";
+                }
+                else
+                {
+                    _linhaTabela["dataproxvacinacao"] = dr.GetDateTime(5).ToString("dd/MM/yyyy");
+                }        
+
+                if (dr.IsDBNull(6))
+                {
+                    _linhaTabela["nascimento"] = "";
+                }
+                else
+                {
+                    _linhaTabela["nascimento"] = dr.GetDateTime(6).ToString("dd/MM/yyyy");
+                }                             
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+            
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
+        public bool AgendamentoVacinacao(Int32 idAnimal, DateTime datavac, DateTime dataproxvac)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAtualizarAgendamento";
+
+                SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
+                SqlParameter pDatFimVacinacao = new SqlParameter("@DataFimVacinacao", SqlDbType.SmallDateTime);
+                SqlParameter pDatProxVacinacao = new SqlParameter("@DataProxVacinacao", SqlDbType.SmallDateTime);
+
+                pIdAnimal.Value = idAnimal;
+                pDatFimVacinacao.Value = datavac;
+                pDatProxVacinacao.Value = dataproxvac;
+
+                cmd.Parameters.Add(idAnimal);
+                cmd.Parameters.Add(pDatFimVacinacao);
+                cmd.Parameters.Add(pDatProxVacinacao);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
+
     }
 }
