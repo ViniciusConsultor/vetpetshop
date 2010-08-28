@@ -13,7 +13,6 @@ BEGIN
 			a.Peso,
 			a.Raca,
 			a.DataNascimento,
-			a.DataFimVacinacao,
 			a.DataProxVacinacao
 	
 	 FROM dbo.Animal a WHERE Id = @IdAnimal
