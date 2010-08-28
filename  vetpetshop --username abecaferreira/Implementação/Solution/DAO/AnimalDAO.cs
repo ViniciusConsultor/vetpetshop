@@ -234,29 +234,20 @@ namespace DAO
 
                 if (dr.IsDBNull(4))
                 {
-                    _linhaTabela["datavacinacao"] = "";
-                }
-                else
-                {
-                   _linhaTabela["datavacinacao"] = dr.GetDateTime(4).ToString("dd/MM/yyyy");
-                }       
-                
-                if (dr.IsDBNull(5))
-                {
                      _linhaTabela["dataproxvacinacao"]  = "";
                 }
                 else
                 {
-                    _linhaTabela["dataproxvacinacao"] = dr.GetDateTime(5).ToString("dd/MM/yyyy");
+                    _linhaTabela["dataproxvacinacao"] = dr.GetDateTime(4).ToString("dd/MM/yyyy");
                 }        
 
-                if (dr.IsDBNull(6))
+                if (dr.IsDBNull(5))
                 {
                     _linhaTabela["nascimento"] = "";
                 }
                 else
                 {
-                    _linhaTabela["nascimento"] = dr.GetDateTime(6).ToString("dd/MM/yyyy");
+                    _linhaTabela["nascimento"] = dr.GetDateTime(5).ToString("dd/MM/yyyy");
                 }                             
 
                 tabela.Rows.Add(_linhaTabela);
@@ -268,7 +259,7 @@ namespace DAO
             return tabela;
         }
 
-        public bool AgendamentoVacinacao(Int32 idAnimal, DateTime datavac, DateTime dataproxvac)
+        public bool AgendamentoVacinacao(Int32 idAnimal, DateTime dataproxvac)
         {
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -282,15 +273,12 @@ namespace DAO
                 cmd.CommandText = "spuAtualizarAgendamento";
 
                 SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
-                SqlParameter pDatFimVacinacao = new SqlParameter("@DataFimVacinacao", SqlDbType.SmallDateTime);
                 SqlParameter pDatProxVacinacao = new SqlParameter("@DataProxVacinacao", SqlDbType.SmallDateTime);
 
                 pIdAnimal.Value = idAnimal;
-                pDatFimVacinacao.Value = datavac;
                 pDatProxVacinacao.Value = dataproxvac;
 
                 cmd.Parameters.Add(new SqlParameter("@idAnimal", SqlDbType.Int)).Value = idAnimal;
-                cmd.Parameters.Add(pDatFimVacinacao);
                 cmd.Parameters.Add(pDatProxVacinacao);
 
                 conn.Open();

@@ -44,15 +44,6 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 685px">
-                            Data de vacinação</td>
-                            <td style="width: 586px; height: 23px">
-                         <asp:TextBox ID="txtData" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 685px">
                             Data da próxima vacinação</td>
                             <td style="width: 586px; height: 23px">
                          <asp:TextBox ID="txtDataProx" runat="server" Width="189px"></asp:TextBox>
@@ -92,10 +83,6 @@
                                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" HorizontalAlign="Center"></HeaderStyle>
                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                     </asp:BoundField>                        
-                                    <asp:BoundField HeaderText="Data de vacinação" DataField="datavacinacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" HorizontalAlign="Center"></HeaderStyle>
-                                        <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                    </asp:BoundField>
                                     <asp:BoundField HeaderText="Data da próxima vacinação" DataField="dataproxvacinacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>

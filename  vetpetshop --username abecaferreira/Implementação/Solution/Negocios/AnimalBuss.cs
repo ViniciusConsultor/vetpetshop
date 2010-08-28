@@ -23,9 +23,9 @@ namespace Negocios
             return executou;
         }
 
-        public bool AgendamentoVacinacao(Int32 idAnimal, DateTime datavac, DateTime dataproxvac)
+        public bool AgendamentoVacinacao(Int32 idAnimal, DateTime dataproxvac)
         {
-            bool executou = this.animalDAO.AgendamentoVacinacao(idAnimal,datavac,dataproxvac);
+            bool executou = this.animalDAO.AgendamentoVacinacao(idAnimal,dataproxvac);
             return executou;
         }
 
