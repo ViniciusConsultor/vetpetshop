@@ -32,7 +32,7 @@ namespace WebUI
                 CarregaListaTipoAnimal();
                 //ExibeGrid();
             }
-            //BtnBuscar.Attributes.Add("onclick", "window.open('PopUpClientes.aspx',null,'height=500, width=500,status= no, resizable= yes, scrollbars=yes, toolbar=no,location=no,menubar=no ');");
+
         }
 
         private void CarregaListaTipoAnimal()
@@ -245,22 +245,23 @@ namespace WebUI
             }
         }
 
-        protected void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            ddlTdsClientes.Items.Clear();
-            txtNomeCli.Text = "";
-            txtCPF.Text = "";
-            txtRG.Text = "";
-            txtTel.Text = "";
-            txtEmail.Text = "";
-            txtCep.Text = "";
-            txtCel.Text = "";
-            txtEndereco.Text = "";
-            txtBairro.Text = "";
-            txtCidade.Text = "";
-            txtEstado.Text = "";
-            BuscarClientes();
-        }
+        //protected void BtnBuscar_Click(object sender, EventArgs e)
+        //{
+        //    ModalPopupExtender1.Show();
+        //    ddlTdsClientes.Items.Clear();
+        //    txtNomeCli.Text = "";
+        //    txtCPF.Text = "";
+        //    txtRG.Text = "";
+        //    txtTel.Text = "";
+        //    txtEmail.Text = "";
+        //    txtCep.Text = "";
+        //    txtCel.Text = "";
+        //    txtEndereco.Text = "";
+        //    txtBairro.Text = "";
+        //    txtCidade.Text = "";
+        //    txtEstado.Text = "";
+        //    BuscarClientes();
+        //}
 
         protected void BuscarClientes()
         {
@@ -320,6 +321,11 @@ namespace WebUI
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DefaultVendedor.aspx");
+        }
+
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            ModalPopupExtender1.Show();
         }
 
         /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)

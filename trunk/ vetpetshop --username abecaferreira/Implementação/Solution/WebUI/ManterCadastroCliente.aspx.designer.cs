@@ -50,6 +50,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Button BtnBuscar;
         
         /// <summary>
+        /// regCPFCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regCPFCliente;
+        
+        /// <summary>
         /// txtCPF control.
         /// </summary>
         /// <remarks>
@@ -239,6 +248,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Button btnSalvar;
         
         /// <summary>
+        /// ButtonPp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonPp;
+        
+        /// <summary>
         /// ModalPopupExtender1 control.
         /// </summary>
         /// <remarks>
@@ -247,15 +265,6 @@ namespace WebUI {
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
         
-        // <summary>
-        /// ToolkitScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-
         /// <summary>
         /// Panel1 control.
         /// </summary>
