@@ -14,9 +14,9 @@ namespace Entidade
         public int IdCliente { get; set; }
         public decimal Peso { get; set; }
         public string Raca { get; set; }
-        public string  DataFimVacinacao { get; set; }
-        public string DataNascimento { get; set; }
-        public string DataProxVacinacao { get; set; }
+        public DateTime DataFimVacinacao { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public DateTime DataProxVacinacao { get; set; }
 
     }
 }

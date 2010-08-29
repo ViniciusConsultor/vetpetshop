@@ -163,9 +163,9 @@ namespace WebUI
                     animal.Nome = txtNomeAnimal.Text;
                     animal.Peso = Convert.ToDecimal(txtPeso.Text);
                     animal.Raca = txtRaca.Text;
-                    animal.DataNascimento = txtNascimento.Text;
-                    animal.DataProxVacinacao = txtFimVacinacao.Text;
-                    animal.DataFimVacinacao = txtFimVacinacao.Text;
+                    animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
+                    animal.DataProxVacinacao = Convert.ToDateTime(txtFimVacinacao.Text);
+                    animal.DataFimVacinacao = Convert.ToDateTime(txtFimVacinacao.Text);
                     animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
                     animal.IdCliente = Convert.ToInt32(CodCliente);
                     executou = animalBus.InserirAnimal(animal);
