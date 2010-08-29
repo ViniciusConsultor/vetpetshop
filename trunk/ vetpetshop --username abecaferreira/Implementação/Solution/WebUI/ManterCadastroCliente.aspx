@@ -29,7 +29,7 @@
                         </td>
                         <td style="height: 23px; width: 138px">
                             <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
-                                onclick="BtnBuscar_Click"/>
+                                onclick="BtnBuscar_Click" />
                         </td>
                         <td style="height: 23px; width: 142px">
                             &nbsp;</td>
@@ -213,7 +213,7 @@
                         </td>
                         <td align="center" style="height: 23px; width: 392px">
                         <asp:Button width="30%" ID="btnCancelar" runat="server" Text="Cancelar" 
-                            OnClientClick="window.history.back();" /> &nbsp;
+                                onclick="btnCancelar_Click" /> &nbsp;
                         <asp:Button  width="30%" ID="btnSalvar" runat="server" Text="Salvar" 
                             onclick="btnSalvar_Click" />
                         <asp:Button  width="30%" ID="btnSalvar2" runat="server" Text="Salvar" 
@@ -258,9 +258,13 @@
             Lista de Clientes Cadastrados
         </h3>
         <div id="divPopupClientes">
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
-        SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
-        </asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+                SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="txtNomeCli" ConvertEmptyStringToNull="False" 
+                        DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
                 HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" 
@@ -271,7 +275,7 @@
                     <asp:LinkButton ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
-                    <asp:BoundField  DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
                     <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" />
                 </Columns>
                 <HeaderStyle BackColor="DarkBlue" />

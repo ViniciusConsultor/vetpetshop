@@ -142,23 +142,23 @@ namespace WebUI
                     string CodCliente = ViewState["hdnCodCliente"].ToString();
                     AnimalBuss animalBus = new AnimalBuss();
                     Animal animal = new Animal();
-            
-                    //#region Validações
 
-                    //if (txtNascimento.Text != string.Empty)
-                    //{
-                    //    try
-                    //    {
-                    //        datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
-                    //    }
-                    //    catch
-                    //    {
-                    //        lblMsg.Text = "Data de nascimento inválida";
-                    //        return;
-                    //    }
-                    //}
+                    #region Validações
 
-                    //#endregion
+                    if (txtNascimento.Text != string.Empty)
+                    {
+                        try
+                        {
+                            datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
+                        }
+                        catch
+                        {
+                            lblMsg.Text = "Data de nascimento inválida";
+                            return;
+                        }
+                    }
+
+                    #endregion
             
                     animal.Nome = txtNomeAnimal.Text;
                     animal.Peso = Convert.ToDecimal(txtPeso.Text);
@@ -228,7 +228,6 @@ namespace WebUI
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
-            txtNomeCli.Text = "";
             txtCPF.Text = "";
             txtRG.Text = "";
             txtTel.Text = "";
@@ -252,6 +251,11 @@ namespace WebUI
         protected void btnSalvar2_Click(object sender, EventArgs e)
         {
             RealizaCadastroAnimal();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultVendedor.aspx");
         }
 
     }
