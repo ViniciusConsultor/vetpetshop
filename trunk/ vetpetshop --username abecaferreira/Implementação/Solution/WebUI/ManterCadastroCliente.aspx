@@ -217,9 +217,11 @@
                         </td>
                         <td align="center" style="height: 23px; width: 392px">
                         <asp:Button width="30%" ID="btnCancelar" runat="server" Text="Cancelar" 
-                            onclick="btnCancelar_Click" /> &nbsp;
+                            OnClientClick="window.history.back();" /> &nbsp;
                         <asp:Button  width="30%" ID="btnSalvar" runat="server" Text="Salvar" 
                             onclick="btnSalvar_Click" />
+                        <asp:Button  width="30%" ID="btnSalvar2" runat="server" Text="Salvar" 
+                            onclick="btnSalvar2_Click" Visible="false" />
                         </td>                                        
                     </tr>
                     <tr>
@@ -270,7 +272,7 @@
                 <Columns>
                     <asp:TemplateField>
                     <ItemTemplate>
-                    <asp:LinkButton ID="selecionar" runat="server" Text="selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
+                    <asp:LinkButton ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
                     <asp:BoundField  DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
@@ -281,7 +283,8 @@
         </div>
         <div align="center">
             <br />
-            <asp:Button id="btpVoltar" Text="Voltar" runat="server"/>
+            <asp:Button id="btpVoltar" Text="Voltar" runat="server" 
+                 OnClientClick="window.history.back();"/>
         </div>
         
     </asp:Panel>

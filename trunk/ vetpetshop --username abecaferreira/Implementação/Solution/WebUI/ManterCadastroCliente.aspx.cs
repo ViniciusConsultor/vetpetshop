@@ -28,18 +28,15 @@ namespace WebUI
             
             lblMsg.Text = "";
 
-            //string CodCliente = Request.Params["CodCliente"];
+            string CodCliente = Request.Params["CodCliente"];
 
-            if (Request.QueryString["CodCliente"] != string.Empty) {
-                Int32 CodCliente;
-                CodCliente = Convert.ToInt32(Request.QueryString["CodCliente"]);
-                PreencheUsuario(CodCliente);
+            if (CodCliente != null){
+                PreencheUsuario(Convert.ToInt32(CodCliente));
             }
 
             if (!IsPostBack)
             {
                 CarregaListaTipoAnimal();
-                //ExibeGrid();
             }
         }
 
@@ -60,153 +57,51 @@ namespace WebUI
             }
         }
 
-        private DataTable MontarTabela()
-        {
-            DataTable _tabela = new DataTable("Clientes");
-            DataColumn _coluna0;
-            DataColumn _coluna1;
-            DataColumn _coluna2;
-            DataColumn _coluna3;
-            DataColumn _coluna4;
-
-            _coluna0 = new DataColumn("id_cliente");
-            _coluna1 = new DataColumn("nm_cliente");
-            _coluna2 = new DataColumn("nm_cpf");
-            _coluna3 = new DataColumn("nm_tel");
-            _coluna4 = new DataColumn("nm_email");
-
-            _tabela.Columns.Add(_coluna0);
-            _tabela.Columns.Add(_coluna1);
-            _tabela.Columns.Add(_coluna2);
-            _tabela.Columns.Add(_coluna3);
-            _tabela.Columns.Add(_coluna4);
-
-            return _tabela;
-        }
-
         protected void btnNovoPet_Click(object sender, EventArgs e)
         {
             pnlPet.Visible = true;
         }
 
-        //protected void btnOk_Click(object sender, EventArgs e)
-        //{
-        //    bool executou = false;
-        //    ClienteBuss clienteBus = new ClienteBuss();
-        //    Cliente cliente = new Cliente();
-
-        //    #region Validações
-        //    if (txtNomeCli.Text == "")
-        //    {
-        //        lblMsg.Text = "Preencha o nome do cliente";
-        //        return;
-        //    }
-
-        //    if (txtCPF.Text == "")
-        //    {
-        //        lblMsg.Text = "Preencha o cpf do cliente";
-        //        return;
-        //    }
-
-        //    if (txtTel.Text == "")
-        //    {
-        //        lblMsg.Text = "Preencha o telefone do cliente";
-        //        return;
-        //    }
-        //    if (txtEmail.Text == "") 
-        //    {
-        //        lblMsg.Text = "Preencha o email do cliente";
-        //    }
-        //    #endregion
-
-        //    cliente.Nome = txtNomeCli.Text;
-        //    cliente.CPF = txtCPF.Text;
-        //    cliente.Telefone1 = txtTel.Text;                
-        //    cliente.Telefone2 = txtCel.Text;
-        //    cliente.RG = txtRG.Text;
-        //    cliente.Endereco = txtEndereco.Text;
-        //    cliente.Bairro = txtBairro.Text;
-        //    cliente.Cidade = txtCidade.Text;
-        //    cliente.Estado = txtEstado.Text;
-        //    cliente.CEP = txtCep.Text;
-        //    cliente.Email = txtEmail.Text;                
-        //    executou = clienteBus.InserirCliente(cliente);
-
-        //    if (executou)
-        //    {
-        //        lblMsg.Text = "Cadastro efetuado com sucesso";
-        //        txtNomeCli.Text = "";
-        //        txtCPF.Text = "";
-        //        txtRG.Text = "";
-        //        txtTel.Text = "";
-        //        txtCel.Text = "";
-        //        txtEmail.Text = "";
-        //        txtEndereco.Text = "";
-        //        txtBairro.Text = "";
-        //        txtEstado.Text = "";
-        //        txtCel.Text = "";
-
-        //        //ExibeGrid();
-        //    }
-
-        //    else
-        //    {
-        //        lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
-        //    }  
-        //}
-
         protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            RealizaCadastroCliente();
+        }
+
+        protected void RealizaCadastroCliente()
         {
 
             bool executouCli = false;
-            bool executouAni = false;
-
-            string CodCliente = ViewState["hdnCodCliente"].ToString();
+           
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
 
-            AnimalBuss animalBus = new AnimalBuss();
-            Animal animal = new Animal();
-
             #region Validações
-          
-            if (txtNascimento.Text != string.Empty) 
-            {
-	                try 
-                    {
-			            datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
-		            } catch 
-                    {
-			            lblMsg.Text = "Data de nascimento inválida";
-			            return;
-		            }
 
-                    if (txtNomeCli.Text == "")
-                    {
-                        lblMsg.Text = "Preencha o nome do cliente";
-                        return;
-                    }
+                if (txtNomeCli.Text == "")
+                {
+                    lblMsg.Text = "Preencha o nome do cliente";
+                    return;
+                }
 
-                    if (txtCPF.Text == "")
-                    {
-                        lblMsg.Text = "Preencha o cpf do cliente";
-                        return;
-                    }
+                if (txtCPF.Text == "")
+                {
+                    lblMsg.Text = "Preencha o cpf do cliente";
+                    return;
+                }
 
-                    if (txtTel.Text == "")
-                    {
-                        lblMsg.Text = "Preencha o telefone do cliente";
-                        return;
-                    }
-                    if (txtEmail.Text == "")
-                    {
-                        lblMsg.Text = "Preencha o email do cliente";
-                    }
-	        }              
+                if (txtTel.Text == "")
+                {
+                    lblMsg.Text = "Preencha o telefone do cliente";
+                    return;
+                }
+                if (txtEmail.Text == "")
+                {
+                    lblMsg.Text = "Preencha o email do cliente";
+                }
             
+
             #endregion
 
-            //Cliente
             cliente.Nome = txtNomeCli.Text;
             cliente.CPF = txtCPF.Text;
             cliente.Telefone1 = txtTel.Text;
@@ -220,20 +115,9 @@ namespace WebUI
             cliente.Email = txtEmail.Text;
             executouCli = clienteBus.InserirCliente(cliente);
 
-            //Animal
-            animal.Nome = txtNomeAnimal.Text;
-            animal.Peso = Decimal.Parse(txtPeso.Text);
-            animal.Raca = txtRaca.Text;
-            animal.DataNascimento = txtNascimento.Text;
-            animal.DataProxVacinacao = txtFimVacinacao.Text;
-            animal.DataFimVacinacao = txtFimVacinacao.Text;
-            animal.IdTipoAnimal = Int32.Parse(ddlTipoAnimal.SelectedValue);
-            animal.IdCliente = Int32.Parse(CodCliente);
-            executouAni = animalBus.InserirAnimal(animal);
-
             if (executouCli)
             {
-                lblMsg.Text = "Cadastro efetuado com sucesso";
+                lblMsg.Text = "Cadastro de cliente efetuado com sucesso";
                 txtNomeCli.Text = "";
                 txtCPF.Text = "";
                 txtRG.Text = "";
@@ -244,32 +128,48 @@ namespace WebUI
                 txtBairro.Text = "";
                 txtEstado.Text = "";
                 txtCep.Text = "";
-
             }
-
             else
             {
                 lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
             }
-        }
+     }
 
-        //protected void BtnBuscar_Click(object sender, EventArgs e)
-        //{
-        //    ModalPopupExtender1.Show();
-        //    ddlTdsClientes.Items.Clear();
-        //    txtNomeCli.Text = "";
-        //    txtCPF.Text = "";
-        //    txtRG.Text = "";
-        //    txtTel.Text = "";
-        //    txtEmail.Text = "";
-        //    txtCep.Text = "";
-        //    txtCel.Text = "";
-        //    txtEndereco.Text = "";
-        //    txtBairro.Text = "";
-        //    txtCidade.Text = "";
-        //    txtEstado.Text = "";
-        //    BuscarClientes();
-        //}
+
+        protected void RealizaCadastroAnimal()
+        {
+                    bool executouAni = false;
+                    string CodCliente = ViewState["hdnCodCliente"].ToString();
+                    AnimalBuss animalBus = new AnimalBuss();
+                    Animal animal = new Animal();
+            
+                    #region Validações
+
+                    if (txtNascimento.Text != string.Empty)
+                    {
+                        try
+                        {
+                            datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
+                        }
+                        catch
+                        {
+                            lblMsg.Text = "Data de nascimento inválida";
+                            return;
+                        }
+                    }
+
+                    #endregion
+            
+                    animal.Nome = txtNomeAnimal.Text;
+                    animal.Peso = Convert.ToDecimal(txtPeso.Text);
+                    animal.Raca = txtRaca.Text;
+                    animal.DataNascimento = txtNascimento.Text;
+                    animal.DataProxVacinacao = txtFimVacinacao.Text;
+                    animal.DataFimVacinacao = txtFimVacinacao.Text;
+                    animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
+                    animal.IdCliente = Convert.ToInt32(CodCliente);
+                    executouAni = animalBus.InserirAnimal(animal);
+        }     
 
         protected void PreencheUsuario(Int32 CodCliente)
         {
@@ -293,11 +193,28 @@ namespace WebUI
                 ViewState["hdnCodCliente"] = cliente.IdCliente; 
             }
             lblMsg.Text = "Dados Carregados";
-        }
+            pnlPet.Visible = false;
+            btnSalvar.Visible = false;
+            btnSalvar2.Visible = true;
+            txtNomeCli.Enabled = false;
+            txtCPF.Enabled = false;
+            txtRG.Enabled = false;
+            txtTel.Enabled = false;
+            txtEmail.Enabled = false;
+            txtCep.Enabled = false;
+            txtCel.Enabled = false;
+            txtEndereco.Enabled = false;
+            txtBairro.Enabled = false;
+            txtCidade.Enabled = false;
+            txtEstado.Enabled = false;
+            txtNomeAnimal.Visible = true;
+            ddlTipoAnimal.Visible = true;
+            txtNascimento.Visible = true;
+            txtPeso.Visible = true;
+            txtRaca.Visible = true;
+            txtInicioVacinacao.Visible = true;
+            txtFimVacinacao.Visible = true;
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DefaultVendedor.aspx");
         }
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
@@ -316,43 +233,17 @@ namespace WebUI
             ModalPopupExtender1.Show();
         }
 
-        /*protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "excluir")
-            {
-                int id = Convert.ToInt32(e.CommandArgument);
-                ClienteBuss clienteBus = new ClienteBuss();
-                bool executou = clienteBus.ExcluirCliente(Convert.ToInt32(id));
-
-                if (executou)
-                {
-                    lblMsg.Text = "Cliente excluído com sucesso";
-                    ExibeGrid();
-                }
-
-                else
-                {
-                    lblMsg.Text = "Não foi possível excluir o cliente selecionado. Falha de conexão com banco de dados";
-                }
-            }
-        }*/
-
-        /*protected void grClientes_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='Yellow'");
-                // This will be the back ground color of the GridView Control
-                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
-            }
-        }*/
-
-
         protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "selecionar")
 
                 Response.Redirect("ManterCadastroCliente.aspx?CodCliente=" + e.CommandArgument.ToString());
         }
+
+        protected void btnSalvar2_Click(object sender, EventArgs e)
+        {
+            RealizaCadastroAnimal();
+        }
+
     }
 }
