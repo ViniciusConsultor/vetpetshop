@@ -212,6 +212,7 @@
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVendedor.aspx" />
     <Content Include="DefaultVeterinario.aspx" />
+    <Content Include="Estilo.css" />
     <Content Include="FormularioProduto.aspx" />
     <Content Include="images\bannercreator-nu %282%29.gif" />
     <Content Include="images\bannercreator-nu %284%29.gif" />
