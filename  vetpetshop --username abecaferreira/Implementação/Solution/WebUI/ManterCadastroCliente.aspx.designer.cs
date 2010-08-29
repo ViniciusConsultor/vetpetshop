@@ -239,6 +239,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Button btnSalvar;
         
         /// <summary>
+        /// btnSalvar2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSalvar2;
+        
+        /// <summary>
         /// ButtonPp control.
         /// </summary>
         /// <remarks>
