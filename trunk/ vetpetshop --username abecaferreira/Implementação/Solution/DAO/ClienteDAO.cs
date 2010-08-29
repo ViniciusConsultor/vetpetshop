@@ -155,7 +155,15 @@ namespace DAO
                     cliente.IdCliente = dr.GetInt32(0);
                     cliente.CPF = dr.GetString(1);
                     cliente.Nome = dr.GetString(2);
-
+                    cliente.RG = dr.GetString(3);
+                    cliente.Telefone1 = dr.GetString(4);
+                    cliente.Telefone2 = dr.GetString(5);
+                    cliente.Email = dr.GetString(6);
+                    cliente.Endereco = dr.GetString(7);
+                    cliente.Bairro = dr.GetString(8);
+                    cliente.Cidade = dr.GetString(9);
+                    cliente.Estado = dr.GetString(10);
+                    cliente.CEP = dr.GetString(11);
 
                     lstCliente.Add(cliente);
                 }

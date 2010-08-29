@@ -86,6 +86,63 @@ namespace DAO
             return executou;
         }
 
+        public List<Animal> ListarAnimaisCadastrados(string Nome)
+        {
+            List<Animal> lstAnimal = new List<Animal>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsListaAnimaisByNome";
+
+                SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
+
+                pNome.Value = Nome;
+
+                cmd.Parameters.Add(pNome);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    Animal animal = new Animal();
+                    animal.IdAnimal = dr.GetInt32(0);
+                    animal.Nome = dr.GetString(1);
+                    animal.Peso = dr.GetDecimal(2);
+                    animal.Raca = dr.GetString(3);
+                    animal.DataNascimento = dr.GetDateTime(4);
+                    animal.DataProxVacinacao = dr.GetDateTime(5);
+                    animal.DataFimVacinacao = dr.GetDateTime(6);
+                    animal.IdTipoAnimal = dr.GetInt32(7);
+                    animal.IdCliente = dr.GetInt32(8);
+
+                    lstAnimal.Add(animal);
+                }
+            }
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lstAnimal;
+        }
+
         public List<Animal> ListarDDLAnimais(Int32 idCliente)
         {
             string stringConexao = databaseHelper.GetConnectionString("conexao");
