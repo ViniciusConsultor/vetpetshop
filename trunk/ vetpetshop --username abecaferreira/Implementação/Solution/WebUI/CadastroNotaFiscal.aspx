@@ -35,7 +35,7 @@
                         <td style="width: 58px; height: 23px">&nbsp;</td>                        
                         <td style="height: 23px; width: 352px;">
                              &nbsp; Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <asp:Label ID="lblCod" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>     
@@ -43,14 +43,16 @@
                         <td style="width: 58px; height: 23px">&nbsp;</td>
                         <td style="height: 23px; width: 550px;">
                              &nbsp;&nbsp;Data de Cadastro
-                             &nbsp;&nbsp; &nbsp;<asp:Label ID="lblData" runat="server" Text=""></asp:Label>
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblData" runat="server" Text=""></asp:Label>
                         </td>                       
                     </tr>     
                     <tr>
                         <td style="width: 58px; height: 23px">&nbsp;</td>
                         <td style="height: 23px; width: 550px;">
                              &nbsp;&nbsp;<B>Valor Total R$</B>
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Text="" Font-Bold="true"></asp:Label>
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Text="" Font-Bold="true"></asp:Label>
                         </td>
                     </tr>     
                      </asp:Panel>
@@ -66,7 +68,7 @@
                             &nbsp;
                                <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
-                                onrowcommand="grProds_RowCommand">
+                                onrowcommand="grProds_RowCommand" AlternatingRowStyle-BackColor="LightSteelBlue">
                                 <Columns>
                                  <asp:TemplateField>  
                                 <HeaderStyle  Width="5%"/>                      
@@ -105,9 +107,9 @@
                         </td>
                     </tr>     
                     <tr>
-                        <td style="width: 58px; height: 23px">&nbsp;</td>
-                        <td style="height: 23px; width: 550px;">
-                            &nbsp;</td>
+                        <td style="width: 58px; "></td>
+                        <td style="width: 550px;">
+                            </td>
                     </tr>     
                     <tr>
                      <td style="width: 58px; height: 23px">&nbsp;</td>
@@ -151,9 +153,9 @@
                       </td>                        
                       </tr>     
                     <tr>
-                     <td style="width: 58px; height: 23px">&nbsp;</td>
-                     <td style="height: 23px; width: 550px;">
-                         &nbsp;</td>                        
+                     <td style="width: 58px; height: 10px"></td>
+                     <td style="height: 10px; width: 550px;">
+                         </td>                        
                       </tr>     
                     <tr>
                      <td style="width: 58px; height: 23px">&nbsp;</td>
@@ -165,14 +167,8 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 319px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 319px">
                             <asp:Panel ID="panel3" runat="server" Visible="false" Width="196px">
-                        <table style="width: 100%; border-style: solid";>
+                        <table style="border-color: #FF0000; width: 100%; border-style: solid";>
                                 <tr>
                                     <td style="width: 82px">
                                         Quantidade</td>

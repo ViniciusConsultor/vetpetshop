@@ -166,6 +166,14 @@ namespace WebUI
                 txtQuant.Text = "";
                 idProd = Convert.ToInt32(e.CommandArgument);
                 Session["idProd"] = idProd;
+
+                HtmlTextWriterTag html = new HtmlTextWriterTag();
+                WebControl wc = new WebControl(html);
+                wc = ((WebControl)e.CommandSource);
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);
+                row.Font.Bold = true;
+                row.ForeColor = System.Drawing.Color.Red;
+
                 Panel1.Visible = false;
                 // grUsuarios.Visible = false;
                 panel3.Visible = true;
@@ -248,9 +256,7 @@ namespace WebUI
                 valorTotal += Convert.ToDecimal(linha.Cells[4].Text);
             }
 
-            //lblTotalNota.Visible = true;
-            //lblDataCadastro.Visible = true;
-            //lblData.Visible = true;
+           
             if (grProds.Rows.Count != 0)
                 btnSalvar.Visible = true;
             lblTotal.Text = valorTotal.ToString();
@@ -277,6 +283,7 @@ namespace WebUI
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
+           
             foreach (GridViewRow linha in grProds.Rows)
             {
                 if (linha.Visible == true)
@@ -298,18 +305,14 @@ namespace WebUI
             panel3.Visible = false;
             grProds.Visible = false;
             addProd.Visible = false;
-            btnSalvar.Visible = false;
-            //grProds.
+            btnSalvar.Visible = false;            
 
-            lblMsg.Text = "Nota Fiscal cadastrada com sucesso";
+            lblMsg.Text = "Nota fiscal cadastrada com sucesso";
         }
 
         protected void grUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
 
-            //}
         }
 
         protected void grUsuarios_RowCreated(object sender, GridViewRowEventArgs e)
