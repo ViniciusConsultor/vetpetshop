@@ -137,7 +137,7 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "spsListaClientes";
+                cmd.CommandText = "spsListaClientesByNome";
 
                 SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
 
