@@ -70,7 +70,7 @@ namespace WebUI
         protected void RealizaCadastroCliente()
         {
 
-            bool executouCli = false;
+            bool executou = false;
            
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
@@ -113,9 +113,9 @@ namespace WebUI
             cliente.Estado = txtEstado.Text;
             cliente.CEP = txtCep.Text;
             cliente.Email = txtEmail.Text;
-            executouCli = clienteBus.InserirCliente(cliente);
+            executou = clienteBus.InserirCliente(cliente);
 
-            if (executouCli)
+            if (executou)
             {
                 lblMsg.Text = "Cadastro de cliente efetuado com sucesso";
                 txtNomeCli.Text = "";
@@ -138,7 +138,7 @@ namespace WebUI
 
         protected void RealizaCadastroAnimal()
         {
-                    bool executouAni = false;
+                    bool executou = false;
                     string CodCliente = ViewState["hdnCodCliente"].ToString();
                     AnimalBuss animalBus = new AnimalBuss();
                     Animal animal = new Animal();
@@ -168,7 +168,22 @@ namespace WebUI
                     animal.DataFimVacinacao = txtFimVacinacao.Text;
                     animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
                     animal.IdCliente = Convert.ToInt32(CodCliente);
-                    executouAni = animalBus.InserirAnimal(animal);
+                    executou = animalBus.InserirAnimal(animal);
+
+                    if (executou)
+                    {
+                        lblMsg.Text = "Cadastro de animal efetuado com sucesso";
+                        txtNomeAnimal.Text = "";
+                        txtPeso.Text = "";
+                        txtRaca.Text = "";
+                        txtNascimento.Text = "";
+                        txtInicioVacinacao.Text = "";
+                        txtFimVacinacao.Text = "";
+                    }
+                    else
+                    {
+                        lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
+                    }
         }     
 
         protected void PreencheUsuario(Int32 CodCliente)
@@ -193,7 +208,6 @@ namespace WebUI
                 ViewState["hdnCodCliente"] = cliente.IdCliente; 
             }
             lblMsg.Text = "Dados Carregados";
-            pnlPet.Visible = false;
             btnSalvar.Visible = false;
             btnSalvar2.Visible = true;
             txtNomeCli.Enabled = false;
@@ -207,13 +221,8 @@ namespace WebUI
             txtBairro.Enabled = false;
             txtCidade.Enabled = false;
             txtEstado.Enabled = false;
-            txtNomeAnimal.Visible = true;
-            ddlTipoAnimal.Visible = true;
-            txtNascimento.Visible = true;
-            txtPeso.Visible = true;
-            txtRaca.Visible = true;
-            txtInicioVacinacao.Visible = true;
-            txtFimVacinacao.Visible = true;
+            pnlPet.Visible = true;
+            btnNovoPet.Visible = false;
 
         }
 
