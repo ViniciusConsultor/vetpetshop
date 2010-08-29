@@ -167,7 +167,7 @@
                                         <td style="height: 23px; width: 337px">
                                             Data de Nascimento</td>
                                         <td style="height: 23px; width: 330px">
-                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px" onblur="TestaField(this)" onfocus="inField()" Tipo="DATE"></asp:TextBox>                                           
+                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px"></asp:TextBox>                                           
                                         </td>                                                                               
                                     </tr>
                                     <tr>
