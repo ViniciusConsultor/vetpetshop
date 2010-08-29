@@ -114,5 +114,57 @@ namespace DAO
             return nota;
         
         }
+
+        public void InserirRelProdNota(RelProdutoNotaFiscal relProdNota)
+        {
+            //bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spiInserirRelNotaFiscal";
+
+                SqlParameter pidNota = new SqlParameter("@IdNota", SqlDbType.Int, 4);
+                SqlParameter pidProd = new SqlParameter("@IdProd", SqlDbType.Int, 4);
+                SqlParameter pquant = new SqlParameter("@Quantidade", SqlDbType.Int, 4);
+                SqlParameter pValor = new SqlParameter("@ValorNota", SqlDbType.Decimal);
+
+                pidNota.Value = relProdNota.IdNotaFiscal;
+                pidProd.Value = relProdNota.IdProduto;
+                pquant.Value = relProdNota.Quantidade;
+                pValor.Value = relProdNota.ValorNotal;
+
+                //cmd.Parameters.Add(new SqlParameter("@IdNota", SqlDbType.Int)).Value = pidNota;
+                cmd.Parameters.Add(pidNota);
+                cmd.Parameters.Add(pidProd);
+                cmd.Parameters.Add(pquant);
+                cmd.Parameters.Add(pValor);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                //executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            //return executou;
+        }
     }
 }

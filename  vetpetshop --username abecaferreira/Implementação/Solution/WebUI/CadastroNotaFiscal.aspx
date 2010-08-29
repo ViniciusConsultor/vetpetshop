@@ -2,10 +2,15 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <table style="width:100%;">
         <tr>
             <td style="width: 863px">
               <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 863px">
                 &nbsp;</td>
         </tr>
         <tr>
@@ -44,7 +49,7 @@
                     <tr>
                         <td style="width: 58px; height: 23px">&nbsp;</td>
                         <td style="height: 23px; width: 550px;">
-                             &nbsp;&nbsp;<B>Valor Total</B>
+                             &nbsp;&nbsp;<B>Valor Total R$</B>
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Text="" Font-Bold="true"></asp:Label>
                         </td>
                     </tr>     
@@ -60,7 +65,8 @@
                         <td style="height: 23px; width: 550px;">
                             &nbsp;
                                <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
-                                HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false">
+                                HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
+                                onrowcommand="grProds_RowCommand">
                                 <Columns>
                                  <asp:TemplateField>  
                                 <HeaderStyle  Width="5%"/>                      
@@ -94,6 +100,8 @@
                         <td style="height: 23px; width: 550px;">
                       <asp:Button ID="addProd" runat="server" Text="Adicionar Produto" 
                                 onclick="addProd_Click" Visible="false" Width="189px" />                    
+                        &nbsp;<asp:Button ID="btnSalvar" runat="server" Text="Salvar Nota Fiscal" 
+                                Visible="false" onclick="btnSalvar_Click" />
                         </td>
                     </tr>     
                     <tr>
@@ -183,7 +191,11 @@
                         <td style="width: 324px">
                          <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
-                                PageSize="10" onrowcommand="grUsuarios_RowCommand">
+                                PageSize="10" onrowcommand="grUsuarios_RowCommand" 
+                                AlternatingRowStyle-BackColor="LightSteelBlue" RowStyle-Height="50px" 
+                                onrowdatabound="grUsuarios_RowDataBound" 
+                                onrowcreated="grUsuarios_RowCreated" 
+                                onpageindexchanging="grUsuarios_PageIndexChanging">
                         <Columns>
                          <asp:TemplateField>  
                         <HeaderStyle  Width="5%"/>                      
@@ -203,7 +215,7 @@
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Descrição" DataField="descricao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="40%" HorizontalAlign="Center"></HeaderStyle>
+                        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="50%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Preço Custo" DataField="preco_custo" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
