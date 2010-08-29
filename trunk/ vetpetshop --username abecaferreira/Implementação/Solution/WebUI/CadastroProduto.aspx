@@ -117,7 +117,7 @@
                         <td colspan="4" style="width: 324px">
                          <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
-                                PageSize="10" onrowdatabound="grUsuarios_RowDataBound" 
+                                PageSize="10" onrowdatabound="grUsuarios_RowDataBound" AlternatingRowStyle-BackColor="LightSteelBlue" RowStyle-Height="50px" 
                                 onpageindexchanging="grUsuarios_PageIndexChanging" 
                                 onrowcommand="grUsuarios_RowCommand">
                         <Columns>

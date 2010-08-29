@@ -71,7 +71,7 @@
                         <td colspan="2" style="width: 163px">
                         <asp:GridView ID="grGrupos" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" PageSize="15" 
-                                onrowcommand="grGrupos_RowCommand" onrowdatabound="grGrupos_RowDataBound">
+                                onrowcommand="grGrupos_RowCommand" onrowdatabound="grGrupos_RowDataBound" AlternatingRowStyle-BackColor="LightSteelBlue">
                         <Columns>
                         <asp:TemplateField>  
                         <HeaderStyle  Width="5%" Height="10%"/>                      
