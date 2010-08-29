@@ -126,31 +126,38 @@ namespace DAO
         }
 
 
-        public List<Cliente> ListarClientesCadastrados()
+        public List<Cliente> ListarClientesCadastrados(string Nome)
         {
             List<Cliente> lstCliente = new List<Cliente>();
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
-            
+
             try
             {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "spsListaClientes";
-            conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsListaClientes";
 
-            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
 
-            while (dr.Read())
+                pNome.Value = Nome;
+
+                cmd.Parameters.Add(pNome);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
                 {
-                Cliente cliente = new Cliente();
-                cliente.IdCliente = dr.GetInt32(0);
-                cliente.CPF = dr.GetString(1);
-                cliente.Nome = dr.GetString(2);
+                    Cliente cliente = new Cliente();
+                    cliente.IdCliente = dr.GetInt32(0);
+                    cliente.CPF = dr.GetString(1);
+                    cliente.Nome = dr.GetString(2);
 
 
-                lstCliente.Add(cliente);
+                    lstCliente.Add(cliente);
                 }
             }
             catch (SqlException ex)
@@ -169,7 +176,7 @@ namespace DAO
             }
 
             return lstCliente;
-    }
+        }
 
         public List<Cliente> ListarDDLClientes()
         {

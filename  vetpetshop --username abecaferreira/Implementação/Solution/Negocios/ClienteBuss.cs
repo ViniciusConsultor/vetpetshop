@@ -31,10 +31,10 @@ namespace Negocios
             return _tabelapreenchida;
         }
 
-        public List<Cliente> ListarClientesCadastrados()
+        public List<Cliente> ListarClientesCadastrados(string Nome)
         {
             List<Cliente> lstCliente = new List<Cliente>();
-            lstCliente = this.clienteDAO.ListarClientesCadastrados();
+            lstCliente = this.clienteDAO.ListarClientesCadastrados(Nome);
 
             return lstCliente;
         }
