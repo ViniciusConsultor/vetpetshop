@@ -143,22 +143,22 @@ namespace WebUI
                     AnimalBuss animalBus = new AnimalBuss();
                     Animal animal = new Animal();
             
-                    #region Validações
+                    //#region Validações
 
-                    if (txtNascimento.Text != string.Empty)
-                    {
-                        try
-                        {
-                            datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
-                        }
-                        catch
-                        {
-                            lblMsg.Text = "Data de nascimento inválida";
-                            return;
-                        }
-                    }
+                    //if (txtNascimento.Text != string.Empty)
+                    //{
+                    //    try
+                    //    {
+                    //        datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
+                    //    }
+                    //    catch
+                    //    {
+                    //        lblMsg.Text = "Data de nascimento inválida";
+                    //        return;
+                    //    }
+                    //}
 
-                    #endregion
+                    //#endregion
             
                     animal.Nome = txtNomeAnimal.Text;
                     animal.Peso = Convert.ToDecimal(txtPeso.Text);
