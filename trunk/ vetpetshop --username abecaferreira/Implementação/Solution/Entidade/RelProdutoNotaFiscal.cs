@@ -10,5 +10,6 @@ namespace Entidade
         public int IdProduto { get; set; }
         public int IdNotaFiscal { get; set; }
         public int Quantidade { get; set; }
+        public decimal ValorNotal { get; set; }
     }
 }

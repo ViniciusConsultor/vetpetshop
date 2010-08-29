@@ -7,13 +7,16 @@ using System.Web.UI.WebControls;
 using Entidade;
 using Negocios;
 using System.Data;
+using System.Drawing;
 
 namespace WebUI
 {
     public partial class CadastroNotaFiscal : System.Web.UI.Page
     {
         Usuario usuario = new Usuario();
+        NotaFiscal nota = new NotaFiscal();
         int idProd;
+        decimal valorTotal = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,6 +57,11 @@ namespace WebUI
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
+            grProds.DataSource = null;
+            grProds.DataBind();
+
+            lblTotal.Text = "";
+            lblMsg.Text = "";
             NotaFiscalBuss notaBuss = new NotaFiscalBuss();
             bool executou;
 
@@ -62,7 +70,8 @@ namespace WebUI
 
             if (executou)
             {
-                NotaFiscal nota = notaBuss.ObterUltimoRegistroNota();
+                nota = notaBuss.ObterUltimoRegistroNota();
+                Session["idNota"] = nota.Id;
 
                 addProd.Visible = true;
 
@@ -88,7 +97,7 @@ namespace WebUI
                 grUsuarios.DataSource = tabelaPreenchida;
                 grUsuarios.DataBind();
             }
-            else 
+            else
             {
                 grUsuarios.Visible = false;
                 lblRegistros.Visible = true;
@@ -165,15 +174,21 @@ namespace WebUI
 
         protected void btnQuant_Click(object sender, EventArgs e)
         {
-            decimal valorTotal = 0;
             DataTable tabela = TabelaProdutos();
+            NotaFiscalBuss notabuss = new NotaFiscalBuss();
+            NotaFiscal nota = new NotaFiscal();
             ProdutoBuss produtoBuss = new ProdutoBuss();
             Produto produto = new Produto();
+
+            int idNota = (int)Session["idNota"];
+            
+            nota = notabuss.ObterUltimoRegistroNota();
 
             int idProd = (int)Session["idProd"];
             produto = produtoBuss.ObterProdutoPorId(idProd);
             produto.Quantidade = Convert.ToInt32(txtQuant.Text);
 
+            
             if (grProds.Rows.Count == 0)
             {
                 DataRow _linha = tabela.NewRow();
@@ -220,12 +235,13 @@ namespace WebUI
             }
 
 
-                grUsuarios.Visible = false;
-                grProds.Visible = true;
-                grProds.DataSource = tabela;
-                grProds.DataBind();
+            grUsuarios.Visible = false;
+            grProds.Visible = true;
+            grProds.DataSource = tabela;
+            grProds.DataBind();
 
-                panel3.Visible = false;
+            panel3.Visible = false;
+
 
             foreach (GridViewRow linha in grProds.Rows)
             {
@@ -235,8 +251,10 @@ namespace WebUI
             //lblTotalNota.Visible = true;
             //lblDataCadastro.Visible = true;
             //lblData.Visible = true;
-            lblTotal.Text = "R$"+valorTotal.ToString();
-            
+            if (grProds.Rows.Count != 0)
+                btnSalvar.Visible = true;
+            lblTotal.Text = valorTotal.ToString();
+
         }
 
 
@@ -255,6 +273,85 @@ namespace WebUI
             _tabela.Columns.Add(coluna3);
 
             return _tabela;
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            foreach (GridViewRow linha in grProds.Rows)
+            {
+                if (linha.Visible == true)
+                {
+                    RelProdutoNotaFiscal relProdNota = new RelProdutoNotaFiscal();
+                    int idNota = (int)Session["idNota"];
+                    relProdNota.IdNotaFiscal = idNota;
+                    relProdNota.ValorNotal = Convert.ToDecimal(lblTotal.Text);
+                    relProdNota.IdProduto = Convert.ToInt32(linha.Cells[1].Text);
+                    relProdNota.Quantidade = Convert.ToInt32(linha.Cells[3].Text);
+
+                    NotaFiscalBuss notaBuss = new NotaFiscalBuss();
+                    notaBuss.InserirRelProdNota(relProdNota);
+                }
+            }
+
+            Panel1.Visible = false;
+            Panel2.Visible = false;
+            panel3.Visible = false;
+            grProds.Visible = false;
+            addProd.Visible = false;
+            btnSalvar.Visible = false;
+            //grProds.
+
+            lblMsg.Text = "Nota Fiscal cadastrada com sucesso";
+        }
+
+        protected void grUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+
+            //}
+        }
+
+        protected void grUsuarios_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void grProds_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "excluir")
+            {
+                HtmlTextWriterTag html = new HtmlTextWriterTag();
+                WebControl wc = new WebControl(html);
+                wc = ((WebControl)e.CommandSource);
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);
+
+                row.Visible = false;
+
+                //grProds.DeleteRow(row.RowIndex);
+
+                foreach (GridViewRow linha in grProds.Rows)
+                {
+                    if (linha.Visible != false)
+                    {
+                        valorTotal += Convert.ToDecimal(linha.Cells[4].Text);
+                        lblTotal.Text = valorTotal.ToString();
+                    }
+                }
+            }
+        }
+
+        protected void grUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            DataTable tabelaPreenchida = Preencher();
+            grUsuarios.PageIndex = e.NewPageIndex;
+
+            if (tabelaPreenchida.Rows.Count != 0)
+            {
+                grUsuarios.Visible = true;
+                grUsuarios.DataSource = tabelaPreenchida;
+                grUsuarios.DataBind();
+            }    
         }
     }
 }

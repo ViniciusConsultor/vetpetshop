@@ -28,5 +28,10 @@ namespace Negocios
             NotaFiscal nota = this.notaDAO.ObterUltimoRegistroNota();
             return nota;
         }
+
+        public void InserirRelProdNota(RelProdutoNotaFiscal relProdNota)
+        {
+           this.notaDAO.InserirRelProdNota(relProdNota);
+        }
     }
 }
