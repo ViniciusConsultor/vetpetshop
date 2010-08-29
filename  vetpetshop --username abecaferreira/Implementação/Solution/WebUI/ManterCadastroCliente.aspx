@@ -6,13 +6,9 @@
 
     <table style="width:100%;">
         <tr>
-            <td style="width: 863px">
+            <td style="width: 100%;">
                 <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
             </td>
-            <td style="width: 80px">
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
         </tr>
         <tr>
             <td style="height: 246px; width: 863px">
