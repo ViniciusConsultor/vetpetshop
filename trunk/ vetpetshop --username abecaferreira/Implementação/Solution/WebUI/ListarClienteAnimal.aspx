@@ -16,12 +16,15 @@
         <td>
             <asp:Button ID="BtnBuscar" runat="server" Text="Listar" />
         </td>
-    </tr>
+     </tr>
+     <tr>
+     <td><br /></td>
+     </tr>
   </table>
-  <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1">
+  <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
   <asp:TabPanel ID="tabPanel1" runat="server">
   <HeaderTemplate>
-    Clientes
+    <b>Clientes</b>
   </HeaderTemplate>
   <ContentTemplate>
     <div id="divClientes" style="display:block;">
@@ -35,35 +38,77 @@
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" PageSize="15" Width="100%">
                 <Columns>
-                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
-                    <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" />
-                    <asp:BoundField DataField="RG" HeaderText="RG" SortExpression="RG" />
+                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="RG" HeaderText="RG" SortExpression="RG">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
                     <asp:BoundField DataField="Telefone1" HeaderText="Telefone" 
-                        SortExpression="Telefone1" />
+                        SortExpression="Telefone1">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
                     <asp:BoundField DataField="Telefone2" HeaderText="Celular" 
-                        SortExpression="Telefone2" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                        SortExpression="Telefone2">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
                     <asp:BoundField DataField="Endereco" HeaderText="Endereço" 
-                        SortExpression="Endereco" />
-                    <asp:BoundField DataField="Bairro" HeaderText="Bairro" 
-                        SortExpression="Bairro" />
-                    <asp:BoundField DataField="Cidade" HeaderText="Cidade" 
-                        SortExpression="Cidade" />
-                    <asp:BoundField DataField="Estado" HeaderText="Estado" 
-                        SortExpression="Estado" />
-                    <asp:BoundField DataField="CEP" HeaderText="CEP" SortExpression="CEP" />
+                        SortExpression="Endereco">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Bairro" HeaderText="Bairro" SortExpression="Bairro">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Cidade" HeaderText="Cidade" SortExpression="Cidade">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="CEP" HeaderText="CEP" SortExpression="CEP">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                    </asp:BoundField>
                 </Columns>
                 <HeaderStyle BackColor="DarkBlue" />
+                <AlternatingRowStyle BackColor="LightSteelBlue" />
             </asp:GridView>
         </div>
   </ContentTemplate>
   </asp:TabPanel>
   <asp:TabPanel ID="tabPanel2" runat="server">
   <HeaderTemplate>
-    Animais
+    <b>Animais</b>
   </HeaderTemplate>
   <ContentTemplate>
-        <div id="divAnimais" style="display:block;">
+        <div id="divAnimais" class="tabPanel1">
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
                 SelectMethod="ListarAnimaisCadastrados" TypeName="Negocios.AnimalBuss">
                 <SelectParameters>
@@ -74,23 +119,42 @@
             <asp:GridView ID="grAnimais" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" PageSize="15" Width="100%">
                 <Columns>
-                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
-                    <asp:BoundField DataField="Peso" HeaderText="Peso" 
-                        SortExpression="Peso" />
-                    <asp:BoundField DataField="Raca" HeaderText="Raca" 
-                        SortExpression="Raca" />
-                    <asp:BoundField DataField="DataFimVacinacao" HeaderText="DataFimVacinacao" 
-                        SortExpression="DataFimVacinacao" />
-                    <asp:BoundField DataField="DataNascimento" HeaderText="DataNascimento" 
-                        SortExpression="DataNascimento" />
-                    <asp:BoundField DataField="DataProxVacinacao" HeaderText="DataProxVacinacao" 
-                        SortExpression="DataProxVacinacao" />
+                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Peso" HeaderText="Peso" SortExpression="Peso">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Raca" HeaderText="Raca" SortExpression="Raca">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                    </asp:BoundField>
+                    <asp:BoundField DataField="DataFimVacinacao" HeaderText="DataFimVacinacao" SortExpression="DataFimVacinacao">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                    </asp:BoundField>
+                    <asp:BoundField DataField="DataNascimento" HeaderText="DataNascimento" SortExpression="DataNascimento">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                    </asp:BoundField>
+                    <asp:BoundField DataField="DataProxVacinacao" HeaderText="DataProxVacinacao" SortExpression="DataProxVacinacao">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                    </asp:BoundField>
                 </Columns>
                 <HeaderStyle BackColor="DarkBlue" />
+                <AlternatingRowStyle BackColor="LightSteelBlue" />
             </asp:GridView>
         </div>
   </ContentTemplate>
   </asp:TabPanel>
-  </asp:TabContainer>
-
-</asp:Content>
+  </asp:TabContainer> 
+ </asp:Content>
