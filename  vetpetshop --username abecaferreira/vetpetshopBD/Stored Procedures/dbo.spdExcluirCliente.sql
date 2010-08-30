@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -9,6 +10,7 @@ CREATE PROCEDURE [dbo].[spdExcluirCliente]
 AS
 BEGIN
 	
+	DELETE FROM Animal WHERE IdCliente = @Id
 	DELETE FROM Cliente WHERE Id = @Id
 	
 END
