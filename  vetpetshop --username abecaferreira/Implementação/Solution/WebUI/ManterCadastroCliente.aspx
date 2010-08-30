@@ -21,7 +21,7 @@
                         <td style="width: 58px; height: 23px">
                         </td>
                         <td style="height: 23px; width: 383px">
-                            Nome de Cliente</td>
+                            Nome de Cliente*</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
                         </td>
@@ -36,7 +36,7 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
-                            CPF</td>
+                            CPF*</td>
                             <td style="width: 58px; height: 23px">
                             <asp:RegularExpressionValidator ID="regCPFCliente" runat="server" ControlToValidate="txtCPF"
                             Display="None" ErrorMessage="O campo CPF está inválido. <br />Favor corrigí-lo."
@@ -57,7 +57,7 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
-                            Telefone</td>
+                            Telefone*</td>
                             <td style="width: 58px; height: 23px">
                          <asp:TextBox ID="txtTel" runat="server" Width="189px"></asp:TextBox>
                         </td>
@@ -120,7 +120,7 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 383px">
-                            E-mail</td>
+                            E-mail*</td>
                         <td style="height: 23px; width: 392px">
                          <asp:TextBox ID="txtEmail" runat="server" Width="189px"></asp:TextBox>
                         </td>
@@ -148,14 +148,14 @@
                                <table>
                                    <tr>
                                         <td style="height: 23px; width: 337px">
-                                            Nome do Animal</td>
+                                            Nome do Animal*</td>
                                         <td style="height: 23px; width: 392px">
                                          <asp:TextBox ID="txtNomeAnimal" runat="server" Width="189px"></asp:TextBox>
                                         </td>                                        
                                     </tr>
                                     <tr>
                                         <td style="height: 23px; width: 337px">
-                                            Tipo do Animal</td>
+                                            Tipo do Animal*</td>
                                         <td style="height: 23px; width: 330px">
                                             <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="189px">
                                             </asp:DropDownList>
@@ -163,14 +163,14 @@
                                     </tr>
                                     <tr>
                                         <td style="height: 23px; width: 337px">
-                                            Data de Nascimento</td>
+                                            Data de Nascimento*</td>
                                         <td style="height: 23px; width: 330px">
-                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px"></asp:TextBox>                                           
+                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox>                                           
                                         </td>                                                                               
                                     </tr>
                                     <tr>
                                         <td style="height: 23px; width: 337px">
-                                            Peso</td>
+                                            Peso*</td>
                                         <td style="height: 23px; width: 392px">
                                          <asp:TextBox ID="txtPeso" runat="server" Width="189px"></asp:TextBox>
                                         </td>                                        

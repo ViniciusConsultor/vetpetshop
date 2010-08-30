@@ -13,7 +13,12 @@ namespace WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            #region Criação de Menu
+            Menu menu = (Menu)Page.Master.FindControl("Menu1");
+            SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
+            menu.DataSource = siteVendedor;
+            menu.DataBind();
+            #endregion
         }
 
         protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
