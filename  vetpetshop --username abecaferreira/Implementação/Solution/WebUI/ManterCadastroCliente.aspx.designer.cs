@@ -239,6 +239,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Button BtnUpdateCli;
         
         /// <summary>
+        /// BtnUpdateAni control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnUpdateAni;
+        
+        /// <summary>
         /// ButtonPp control.
         /// </summary>
         /// <remarks>
