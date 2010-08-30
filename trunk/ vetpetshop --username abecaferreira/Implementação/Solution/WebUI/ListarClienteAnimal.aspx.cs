@@ -19,6 +19,11 @@ namespace WebUI
             menu.DataSource = siteVendedor;
             menu.DataBind();
             #endregion
+
+            if (Convert.ToString(ViewState["hdnMSG"]) != string.Empty) 
+            {
+                lblMsg.Text = Convert.ToString(ViewState["hdnMSG"]); 
+            }
         }
 
         protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -32,6 +37,17 @@ namespace WebUI
                 ExcluirCliente(Convert.ToInt32(e.CommandArgument));
         }
 
+        protected void grAnimais_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "alterar")
+
+                Response.Redirect("ManterCadastroCliente.aspx?CodAnimalAlt=" + e.CommandArgument.ToString());
+
+            if (e.CommandName == "excluir")
+
+                ExcluirAnimal(Convert.ToInt32(e.CommandArgument));
+        }
+
         protected void ExcluirCliente(int id) 
         {
             bool executou = false;
@@ -42,8 +58,8 @@ namespace WebUI
 
             if (executou)
             {
-                lblMsg.Text = "Cliente e animais vinculados foram excluídos com sucesso!";
-            
+                ViewState["hdnMSG"] = "Cliente excluído com sucesso!";
+                Response.Redirect("ListarClienteAnimal.aspx");
             }
             else
             {
@@ -51,5 +67,48 @@ namespace WebUI
             }
             
         }
+
+        protected void ExcluirAnimal(int id)
+        {
+            bool executou = false;
+
+            AnimalBuss animalBus = new AnimalBuss();
+
+            executou = animalBus.ExcluirAnimal(id);
+
+            if (executou)
+            {
+                ViewState["hdnMSG"] = "Animal excluído com sucesso!";
+                Response.Redirect("ListarClienteAnimal.aspx");
+
+            }
+            else
+            {
+                lblMsg.Text = "A exclusão não foi efetuada. Falha de conexão com o banco de dados";
+            }
+
+        }
+
+        protected void grAnimais_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType ==  DataControlRowType.DataRow)
+            {
+                if (e.Row.Cells[3].Text == Convert.ToString(DateTime.MinValue))
+                {
+                    e.Row.Cells[3].Text = "";
+                }
+                if (e.Row.Cells[4].Text == Convert.ToString(DateTime.MinValue))
+                {
+                    e.Row.Cells[4].Text = "";
+                }
+                if (e.Row.Cells[5].Text == Convert.ToString(DateTime.MinValue))
+                {
+                    e.Row.Cells[5].Text = "";
+                }
+                
+            }
+        }  
+
+
     }
 }

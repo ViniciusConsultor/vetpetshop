@@ -11,7 +11,6 @@ using Negocios;
 using System.Data;
 using System.Web.Caching;
 
-
 namespace WebUI
 {
     public partial class ManterCadastroCliente : System.Web.UI.Page
@@ -47,6 +46,15 @@ namespace WebUI
                     RemoveCache();
                     PreencheAlterarCliente(Convert.ToInt32(CodClienteAlt));
                 }
+
+                string CodAnimalAlt = Request.Params["CodAnimalAlt"];
+
+                if (CodAnimalAlt != null)
+                {
+                    RemoveCache();
+                    PreencheAlterarAnimal(Convert.ToInt32(CodAnimalAlt));
+                }
+                
             }
         }
 
@@ -120,6 +128,7 @@ namespace WebUI
                 if (txtEmail.Text == "")
                 {
                     lblMsg.Text = "Preencha o email do cliente";
+                    return;
                 }
             
 
@@ -189,6 +198,7 @@ namespace WebUI
                 if (txtEmail.Text == "")
                 {
                     lblMsg.Text = "Preencha o email do cliente";
+                    return;
                 }
             
 
@@ -257,6 +267,30 @@ namespace WebUI
                     Animal animal = new Animal();
 
                     #region Validações
+     
+                    if (txtNomeAnimal.Text == "") 
+                    {
+                        lblMsg.Text = "Preencha o nome do animal";
+                        return;
+                    }
+
+                    if (txtPeso.Text == "")
+                    {
+                        lblMsg.Text = "Preencha o peso do animal";
+                        return;
+                    }
+
+                    if (txtNascimento.Text == "")
+                    {
+                        lblMsg.Text = "Preencha a data de nascimento do animal";
+                        return;
+                    }
+
+                    if (ddlTipoAnimal.SelectedIndex == 0)
+                    {
+                        lblMsg.Text = "Preencha o tipo do animal";
+                        return;
+                    }
 
                     if (txtNascimento.Text != string.Empty)
                     {
@@ -366,6 +400,47 @@ namespace WebUI
 
         }
 
+
+        protected void PreencheAlterarAnimal(Int32 CodAnimal)
+        {
+
+            AnimalBuss animalBus = new AnimalBuss();
+            List<Animal> _listaAnimal = new List<Animal>();
+
+            _listaAnimal = animalBus.PreencheAnimal(CodAnimal);
+
+            foreach (Animal animal in _listaAnimal)
+            {
+                ViewState["hdnCodAnimal"] = Convert.ToString(animal.IdAnimal);
+                txtNomeAnimal.Text = animal.Nome;
+                txtPeso.Text = Convert.ToString(animal.Peso);
+                txtRaca.Text = animal.Raca;
+                txtNascimento.Text = Convert.ToString(animal.DataNascimento);
+                ddlTipoAnimal.SelectedIndex = animal.IdTipoAnimal;
+            }
+            lblMsg.Text = "Dados Carregados";
+            pnlPet.Visible = true;
+            btnNovoPet.Visible = false;
+            btnSalvar.Visible = false;
+            btnSalvar2.Visible = false;
+            BtnUpdateCli.Visible = false;
+            BtnUpdateAni.Visible = true;
+
+            BtnBuscar.Enabled = false;
+            txtNomeCli.Enabled = false;
+            txtCPF.Enabled = false;
+            txtRG.Enabled = false;
+            txtTel.Enabled = false;
+            txtEmail.Enabled = false;
+            txtCep.Enabled = false;
+            txtCel.Enabled = false;
+            txtEndereco.Enabled = false;
+            txtBairro.Enabled = false;
+            txtCidade.Enabled = false;
+            txtEstado.Enabled = false;
+
+        }
+
         protected void BtnUpdateCli_Click(object sender, EventArgs e)
         {
             bool executou = false;
@@ -427,6 +502,80 @@ namespace WebUI
                 txtBairro.Text = "";
                 txtEstado.Text = "";
                 txtCep.Text = "";
+            }
+            else
+            {
+                lblMsg.Text = "A alteração não foi efetuada. Falha de conexão com o banco de dados";
+            }
+            //AlterarCadastroCliente();
+        }
+
+
+
+        protected void BtnUpdateAni_Click(object sender, EventArgs e)
+        {
+            bool executou = false;
+
+            AnimalBuss animalBus = new AnimalBuss();
+            Animal animal = new Animal();
+
+            #region Validações
+
+            if (txtNomeAnimal.Text == "")
+            {
+                lblMsg.Text = "Preencha o nome do animal";
+                return;
+            }
+
+            if (txtPeso.Text == "")
+            {
+                lblMsg.Text = "Preencha o peso do animal";
+                return;
+            }
+
+            if (txtNascimento.Text == "")
+            {
+                lblMsg.Text = "Preencha a data de nascimento do animal";
+                return;
+            }
+
+            if (ddlTipoAnimal.SelectedIndex == 0)
+            {
+                lblMsg.Text = "Preencha o tipo do animal";
+                return;
+            }
+
+            if (txtNascimento.Text != string.Empty)
+            {
+                try
+                {
+                    txtNascimento.Text = Convert.ToString(System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null));
+                }
+                catch
+                {
+                    lblMsg.Text = "Data de nascimento inválida";
+                    return;
+                }
+            }
+
+            #endregion
+
+            animal.IdAnimal = Convert.ToInt32(ViewState["hdnCodAnimal"]);
+            animal.Nome = txtNomeAnimal.Text;
+            animal.Peso = Convert.ToDecimal(txtPeso.Text);
+            animal.Raca = txtRaca.Text;
+            animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
+            animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
+            executou = animalBus.AlterarAnimal(animal);
+
+            if (executou)
+            {
+                lblMsg.Text = "Alteração de animal efetuada com sucesso";
+                txtNomeAnimal.Text = "";
+                txtPeso.Text = "";
+                txtRaca.Text = "";
+                txtNascimento.Text = "";
+                ddlTipoAnimal.SelectedIndex = 0;
             }
             else
             {

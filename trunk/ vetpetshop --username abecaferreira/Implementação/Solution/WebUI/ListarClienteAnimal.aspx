@@ -6,9 +6,10 @@
   </h3>
   <table width="100%">
     <tr>
-        <td>
-            <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
-        </td>
+    <td></td>
+    <td>
+        <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
+    </td>
     </tr>
     <tr>
         <td style="width:6%;">
@@ -32,7 +33,7 @@
     <b>Clientes</b>
   </HeaderTemplate>
   <ContentTemplate>
-    <div id="divClientes" style="display:block;">
+    <div id="divClientes">
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                 SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
                 <SelectParameters>
@@ -43,14 +44,14 @@
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" PageSize="15" Width="100%" onrowcommand="grClientes_RowCommand">
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                     <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("IdCliente") %>'></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdCliente") %>'></asp:LinkButton>
+                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdCliente") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
@@ -123,7 +124,7 @@
     <b>Animais</b>
   </HeaderTemplate>
   <ContentTemplate>
-        <div id="divAnimais" class="tabPanel1">
+        <div id="divAnimais">
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
                 SelectMethod="ListarAnimaisCadastrados" TypeName="Negocios.AnimalBuss">
                 <SelectParameters>
@@ -132,8 +133,18 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
             <asp:GridView ID="grAnimais" runat="server" AllowPaging="True" 
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" PageSize="15" Width="100%">
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" PageSize="15" Width="100%" OnRowDataBound="grAnimais_RowDataBound"  onrowcommand="grAnimais_RowCommand">
                 <Columns>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                    <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("IdAnimal") %>'></asp:LinkButton>
+                    </ItemTemplate> 
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdAnimal") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton>
+                    </ItemTemplate> 
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>

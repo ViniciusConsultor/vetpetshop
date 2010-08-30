@@ -229,16 +229,16 @@ namespace DAO
                     Cliente cliente = new Cliente();
                     cliente.IdCliente = dr.GetInt32(0);
                     cliente.CPF = dr.GetString(1);
-                    cliente.Nome = dr.GetString(2);
-                    cliente.RG = dr.GetString(3);
-                    cliente.Telefone1 = dr.GetString(4);
-                    cliente.Telefone2 = dr.GetString(5);
-                    cliente.Email = dr.GetString(6);
-                    cliente.Endereco = dr.GetString(7);
-                    cliente.Bairro = dr.GetString(8);
-                    cliente.Cidade = dr.GetString(9);
-                    cliente.Estado = dr.GetString(10);
-                    cliente.CEP = dr.GetString(11);
+                    cliente.Nome = dr.IsDBNull(2) ? "" : dr.GetString(2);
+                    cliente.RG = dr.IsDBNull(3) ? "" : dr.GetString(3);
+                    cliente.Telefone1 = dr.IsDBNull(4) ? "" : dr.GetString(4);
+                    cliente.Telefone2 = dr.IsDBNull(5) ? "" : dr.GetString(5);
+                    cliente.Email = dr.IsDBNull(6) ? "" : dr.GetString(6);
+                    cliente.Endereco = dr.IsDBNull(7) ? "" : dr.GetString(7);
+                    cliente.Bairro = dr.IsDBNull(8) ? "" : dr.GetString(8);
+                    cliente.Cidade = dr.IsDBNull(9) ? "" : dr.GetString(9);
+                    cliente.Estado = dr.IsDBNull(10) ? "" : dr.GetString(10);
+                    cliente.CEP = dr.IsDBNull(11) ? "" : dr.GetString(11);
 
                     lstCliente.Add(cliente);
                 }

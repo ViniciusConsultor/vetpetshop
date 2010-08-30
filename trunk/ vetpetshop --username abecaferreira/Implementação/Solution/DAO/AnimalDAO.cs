@@ -43,8 +43,8 @@ namespace DAO
                 SqlParameter pRaca = new SqlParameter("@Raca", SqlDbType.VarChar, 50);
                 SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
                 SqlParameter pDatNascimento = new SqlParameter("@DataNascimento", SqlDbType.SmallDateTime);
-                
 
+                
                 pIdCliente.Value = animal.IdCliente;
                 pIdTipoAnimal.Value = animal.IdTipoAnimal;
                 pPeso.Value = animal.Peso;
@@ -109,12 +109,12 @@ namespace DAO
                 {
                     Animal animal = new Animal();
                     animal.IdAnimal = dr.GetInt32(0);
-                    animal.Nome = dr.GetString(1);
-                    animal.Peso = dr.GetDecimal(2);
-                    animal.Raca = dr.GetString(3);
-                    animal.DataNascimento = dr.GetDateTime(4);
-                    animal.DataProxVacinacao = dr.GetDateTime(5);
-                    animal.DataFimVacinacao = dr.GetDateTime(6);
+                    animal.Nome = dr.IsDBNull(1) ? "" : dr.GetString(1);
+                    animal.Peso = dr.IsDBNull(2) ? Convert.ToDecimal("") : dr.GetDecimal(2);
+                    animal.Raca = dr.IsDBNull(3) ? "" : dr.GetString(3);
+                    animal.DataNascimento = dr.IsDBNull(4) ? DateTime.MinValue : dr.GetDateTime(4);
+                    animal.DataProxVacinacao = dr.IsDBNull(5) ? DateTime.MinValue : dr.GetDateTime(5);
+                    animal.DataFimVacinacao = dr.IsDBNull(6) ? DateTime.MinValue : dr.GetDateTime(6);
                     animal.IdTipoAnimal = dr.GetInt32(7);
                     animal.IdCliente = dr.GetInt32(8);
 
@@ -414,5 +414,102 @@ namespace DAO
             return lstAnimal;
         }
 
+
+        public List<Animal> PreencheAnimal(Int32 CodAnimal)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListaAnimalByPK";
+
+
+            SqlParameter pCodAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
+
+            pCodAnimal.Value = CodAnimal;
+
+            cmd.Parameters.Add(pCodAnimal);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            List<Animal> _lista = new List<Animal>();
+
+            while (dr.Read())
+            {
+                Animal animal = new Animal();
+                animal.IdAnimal = dr.GetInt32(0);
+                animal.Nome = dr.GetString(1);
+                animal.Peso = dr.GetDecimal(2);
+                animal.Raca = dr.GetString(3);
+                animal.DataNascimento = dr.GetDateTime(4);
+                animal.IdTipoAnimal = dr.GetInt32(5);
+
+                _lista.Add(animal);
+            }
+
+            return _lista;
+
+        }
+
+        public bool AlterarAnimal(Animal animal)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAlterarAnimal";
+
+                SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
+                SqlParameter pnomeAnimal = new SqlParameter("@Nome_Animal", SqlDbType.VarChar, 50);
+                SqlParameter pPeso = new SqlParameter("@Peso", SqlDbType.Decimal);
+                SqlParameter pRaca = new SqlParameter("@Raca", SqlDbType.VarChar, 20);
+                SqlParameter pNascimento = new SqlParameter("@Nascimento", SqlDbType.DateTime);
+                SqlParameter pTipoAnimal = new SqlParameter("@TipoAnimal", SqlDbType.Int);
+
+                pIdAnimal.Value = animal.IdAnimal;
+                pnomeAnimal.Value = animal.Nome;
+                pPeso.Value = animal.Peso;
+                pRaca.Value = animal.Raca;
+                pNascimento.Value = animal.DataNascimento;
+                pTipoAnimal.Value = animal.IdTipoAnimal;
+
+                cmd.Parameters.Add(pIdAnimal);
+                cmd.Parameters.Add(pnomeAnimal);
+                cmd.Parameters.Add(pPeso);
+                cmd.Parameters.Add(pRaca);
+                cmd.Parameters.Add(pNascimento);
+                cmd.Parameters.Add(pTipoAnimal);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
     }
 }

@@ -24,6 +24,12 @@ namespace Negocios
         }
 
 
+        public bool AlterarAnimal(Animal animal)
+        {
+            bool executou = this.animalDAO.AlterarAnimal(animal);
+            return executou;
+        }
+
         public List<Animal> ListarAnimaisCadastrados(string Nome)
         {
             List<Animal> lstAnimal = new List<Animal>();
@@ -65,6 +71,13 @@ namespace Negocios
 
             tabelaPreenchida = this.animalDAO.ConsultarAnimal(tabela, idAnimal);
             return tabelaPreenchida;
+        }
+
+        public List<Animal> PreencheAnimal(Int32 CodAnimal)
+        {
+            List<Animal> _lista = new List<Animal>();
+            _lista = this.animalDAO.PreencheAnimal(CodAnimal);
+            return _lista;
         }
 
     }

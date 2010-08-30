@@ -203,7 +203,9 @@
                         <asp:Button  width="30%" ID="btnSalvar2" runat="server" Text="Salvar" 
                             onclick="btnSalvar2_Click" Visible="false" />
                         <asp:Button  width="30%" ID="BtnUpdateCli" runat="server" Text="Salvar" 
-                            onclick="BtnUpdateCli_Click" Visible="false" />        
+                            onclick="BtnUpdateCli_Click" Visible="false" />
+                        <asp:Button  width="30%" ID="BtnUpdateAni" runat="server" Text="Salvar" 
+                            onclick="BtnUpdateAni_Click" Visible="false" />         
                         </td>                                        
                     </tr>
                     <tr>
@@ -261,10 +263,19 @@
                     <asp:LinkButton ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
-                    <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF" />
+                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
                 </Columns>
                 <HeaderStyle BackColor="DarkBlue" />
+                <AlternatingRowStyle BackColor="LightSteelBlue" />
             </asp:GridView>
         </div>
         <div align="center">
