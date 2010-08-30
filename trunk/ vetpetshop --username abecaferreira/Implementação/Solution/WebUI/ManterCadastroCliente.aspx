@@ -182,20 +182,6 @@
                                          <asp:TextBox ID="txtRaca" runat="server" Width="189px"></asp:TextBox>
                                         </td>                                        
                                     </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Data de Início da vacinação</td>
-                                        <td style="height: 23px; width: 392px">
-                                         <asp:TextBox ID="txtInicioVacinacao" runat="server" Width="189px"></asp:TextBox>
-                                        </td>                                        
-                                    </tr>
-                                     <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Data de Fim da vacinação</td>
-                                        <td style="height: 23px; width: 392px">
-                                         <asp:TextBox ID="txtFimVacinacao" runat="server" Width="189px"></asp:TextBox>
-                                        </td>                                        
-                                    </tr>
                                </table>
                             </asp:Panel>                             
                         </td>
@@ -216,6 +202,8 @@
                             onclick="btnSalvar_Click" />
                         <asp:Button  width="30%" ID="btnSalvar2" runat="server" Text="Salvar" 
                             onclick="btnSalvar2_Click" Visible="false" />
+                        <asp:Button  width="30%" ID="BtnUpdateCli" runat="server" Text="Salvar" 
+                            onclick="BtnUpdateCli_Click" Visible="false" />        
                         </td>                                        
                     </tr>
                     <tr>

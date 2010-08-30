@@ -41,27 +41,22 @@ namespace DAO
                 SqlParameter pPeso = new SqlParameter("@Peso", SqlDbType.Decimal);
                 SqlParameter pRaca = new SqlParameter("@Raca", SqlDbType.VarChar, 50);
                 SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
-                SqlParameter pDatFimVacinacao = new SqlParameter("@DataFimVacinacao", SqlDbType.SmallDateTime);
                 SqlParameter pDatNascimento = new SqlParameter("@DataNascimento", SqlDbType.SmallDateTime);
-                SqlParameter pDatProxVacinacao = new SqlParameter("@DataProxVacinacao", SqlDbType.SmallDateTime);
+                
 
                 pIdCliente.Value = animal.IdCliente;
                 pIdTipoAnimal.Value = animal.IdTipoAnimal;
                 pPeso.Value = animal.Peso;
                 pRaca.Value = animal.Raca;
                 pNome.Value = animal.Nome;
-                pDatFimVacinacao.Value = animal.DataFimVacinacao;
                 pDatNascimento.Value = animal.DataNascimento;
-                pDatProxVacinacao.Value = animal.DataProxVacinacao;
 
                 cmd.Parameters.Add(pIdCliente);
                 cmd.Parameters.Add(pIdTipoAnimal);
                 cmd.Parameters.Add(pPeso);
                 cmd.Parameters.Add(pRaca);
                 cmd.Parameters.Add(pNome);
-                cmd.Parameters.Add(pDatFimVacinacao);
                 cmd.Parameters.Add(pDatNascimento);
-                cmd.Parameters.Add(pDatProxVacinacao);
                 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();

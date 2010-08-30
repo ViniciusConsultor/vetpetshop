@@ -23,6 +23,12 @@ namespace Negocios
             return executou;
         }
 
+        public bool AlterarCliente(Cliente cliente)
+        {
+            bool executou = this.clienteDAO.AlterarCliente(cliente);
+            return executou;
+        }
+
         public DataTable ListarClientes(DataTable tabela)
         {
             DataTable _tabelapreenchida = new DataTable();

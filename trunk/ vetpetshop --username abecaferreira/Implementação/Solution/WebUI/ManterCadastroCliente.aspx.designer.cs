@@ -203,24 +203,6 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtRaca;
         
         /// <summary>
-        /// txtInicioVacinacao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInicioVacinacao;
-        
-        /// <summary>
-        /// txtFimVacinacao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFimVacinacao;
-        
-        /// <summary>
         /// btnCancelar control.
         /// </summary>
         /// <remarks>
@@ -246,6 +228,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSalvar2;
+        
+        /// <summary>
+        /// BtnUpdateCli control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnUpdateCli;
         
         /// <summary>
         /// ButtonPp control.
