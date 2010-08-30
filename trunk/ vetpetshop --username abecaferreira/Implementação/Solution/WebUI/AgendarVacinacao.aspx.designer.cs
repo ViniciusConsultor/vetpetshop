@@ -23,6 +23,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
+        /// odsListarAnimais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsListarAnimais;
+        
+        /// <summary>
         /// ddlClientes control.
         /// </summary>
         /// <remarks>
@@ -68,6 +77,24 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.GridView gdvAnimal;
         
         /// <summary>
+        /// pnlListagem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlListagem;
+        
+        /// <summary>
+        /// gdvAnimais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvAnimais;
+        
+        /// <summary>
         /// btnAgendar control.
         /// </summary>
         /// <remarks>
@@ -84,6 +111,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnExcluir;
+        
+        /// <summary>
+        /// btnVisualizar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVisualizar;
         
         /// <summary>
         /// btnCancelar control.
