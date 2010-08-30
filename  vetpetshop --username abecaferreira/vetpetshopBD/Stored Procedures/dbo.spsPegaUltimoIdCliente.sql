@@ -1,0 +1,14 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[spsPegaUltimoIdCliente]
+	
+AS
+BEGIN
+
+	SELECT MAX(Id) FROM Cliente
+		 
+END
+GO
