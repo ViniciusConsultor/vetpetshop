@@ -15,7 +15,8 @@ namespace WebUI
 {
     public partial class AgendarVacinacao : System.Web.UI.Page
     {
-        
+        public DateTime datProxVacinacao; 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Criação de Menu
@@ -95,8 +96,16 @@ namespace WebUI
                 txtDataProx.Enabled = true;
                 foreach (GridViewRow row in gdvAnimal.Rows)
                 {
-                    txtDataProx.Text = row.Cells[4].Text;
-                }                
+                    if (row.Cells[5].Text == "&nbsp;")
+                    {
+                        txtDataProx.Text = "";
+                    }
+                    else 
+                    {
+                        txtDataProx.Text = row.Cells[5].Text;
+                    }
+                                     
+                }              
                 
             }
             else
@@ -157,10 +166,20 @@ namespace WebUI
         {
             Int32 idAnimal;
             idAnimal = Int32.Parse(ddlAnimal.SelectedValue);
+
+            if (txtDataProx.Text != "")
+            {
+                datProxVacinacao = System.DateTime.ParseExact(txtDataProx.Text, "dd/MM/yyyy", null);
+            }
+            else
+            {
+                lblMsg.Text = "Digite a data da próxima vacinação";
+            }
+                       
             if (idAnimal != 0)
             {
                 pnlAnimal.Visible = true;
-                AgendamentoVacinacao(idAnimal);                      
+                AgendamentoVacinacao(idAnimal, datProxVacinacao);                      
             }
             else
             {
@@ -168,24 +187,14 @@ namespace WebUI
             }
         }
 
-        protected void AgendamentoVacinacao(Int32 idAnimal)
+        protected void AgendamentoVacinacao(Int32 idAnimal, DateTime datProxVacinacao)
         {
-            DateTime datProxVacinacao = new DateTime(); 
+            
             AnimalBuss animalBuss = new AnimalBuss();
 
             bool executou;
-
-            
-            try
-            {
-                datProxVacinacao = System.DateTime.ParseExact(txtDataProx.Text, "dd/MM/yyyy", null);
-            }
-            catch
-            {
-                lblMsg.Text = "Data da próxima vacinacao inválida";
-                return;
-            }
-
+                        
+           
             executou = animalBuss.AgendamentoVacinacao(idAnimal, datProxVacinacao);
 
             if (executou)
@@ -193,6 +202,31 @@ namespace WebUI
                 CarregarGrid(idAnimal);
             }
         }
+
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Int32 idAnimal;
+            idAnimal = Int32.Parse(ddlAnimal.SelectedValue);
+
+            datProxVacinacao = DateTime.MinValue;
+
+            if (idAnimal != 0)
+            {
+                pnlAnimal.Visible = true;
+                AgendamentoVacinacao(idAnimal, datProxVacinacao);
+                txtDataProx.Text = "";
+            }
+            else
+            {
+                lblMsg.Text = "Selecione um animal para o agendamento da vacinação";
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultVeterinario.aspx");
+        }
+        
          
     }
 }

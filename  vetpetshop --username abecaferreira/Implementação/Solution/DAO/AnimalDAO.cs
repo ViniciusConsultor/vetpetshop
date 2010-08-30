@@ -6,6 +6,7 @@ using Entidade;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlTypes;
 
 namespace DAO
 {
@@ -241,8 +242,7 @@ namespace DAO
             {
                 conn.Close();
             }
-
-
+            
             return executou;
         }
 
@@ -282,26 +282,26 @@ namespace DAO
                 else
                 {
                     _linhaTabela["raca"] = dr.GetString(3);
-                }    
+                }
 
                 if (dr.IsDBNull(4))
-                {
-                     _linhaTabela["dataproxvacinacao"]  = "";
-                }
-                else
-                {
-                    _linhaTabela["dataproxvacinacao"] = dr.GetDateTime(4).ToString("dd/MM/yyyy");
-                }        
-
-                if (dr.IsDBNull(5))
                 {
                     _linhaTabela["nascimento"] = "";
                 }
                 else
                 {
-                    _linhaTabela["nascimento"] = dr.GetDateTime(5).ToString("dd/MM/yyyy");
-                }                             
+                    _linhaTabela["nascimento"] = dr.GetDateTime(4).ToString("dd/MM/yyyy");
+                }        
 
+                if (dr.IsDBNull(5))
+                {
+                     _linhaTabela["dataproxvacinacao"]  = "";
+                }
+                else
+                {
+                    _linhaTabela["dataproxvacinacao"] = dr.GetDateTime(5).ToString("dd/MM/yyyy");
+                }      
+                                                  
                 tabela.Rows.Add(_linhaTabela);
             }
             
@@ -328,7 +328,17 @@ namespace DAO
                 SqlParameter pDatProxVacinacao = new SqlParameter("@DataProxVacinacao", SqlDbType.SmallDateTime);
 
                 pIdAnimal.Value = idAnimal;
-                pDatProxVacinacao.Value = dataproxvac;
+
+                if (dataproxvac == DateTime.MinValue)
+                {
+                    pDatProxVacinacao.Value = SqlDateTime.Null;
+                }
+                else
+                {
+                    pDatProxVacinacao.Value = dataproxvac;
+                }
+                
+                
 
                 cmd.Parameters.Add(new SqlParameter("@idAnimal", SqlDbType.Int)).Value = idAnimal;
                 cmd.Parameters.Add(pDatProxVacinacao);
