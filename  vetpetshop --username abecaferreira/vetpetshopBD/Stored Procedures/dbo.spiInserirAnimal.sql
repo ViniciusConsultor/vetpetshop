@@ -10,9 +10,7 @@ CREATE PROCEDURE [dbo].[spiInserirAnimal]
  @Peso    decimal,
  @Raca    varchar(50),
  @Nome    varchar(50),
- @DataFimVacinacao datetime,
- @DataNascimento  datetime,
- @DataProxVacinacao datetime  
+ @DataNascimento  datetime
  
 AS
 BEGIN
@@ -31,8 +29,8 @@ INSERT INTO dbo.Animal( IdCliente,
    @Peso,   
    @Raca,   
    @Nome,   
-   @DataFimVacinacao,
+   null,
    @DataNascimento, 
-   @DataProxVacinacao)
+   null)
    END
 GO
