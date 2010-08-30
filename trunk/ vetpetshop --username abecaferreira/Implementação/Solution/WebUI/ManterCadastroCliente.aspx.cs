@@ -22,8 +22,8 @@ namespace WebUI
         {
             #region Criação de Menu
             Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
-            menu.DataSource = siteAdmin;
+            SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
+            menu.DataSource = siteVendedor;
             menu.DataBind();
             #endregion
             
@@ -75,6 +75,19 @@ namespace WebUI
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
             RealizaCadastroCliente();
+
+            if (pnlPet.Visible != false) {
+                PegaUltimoIdCliente();
+                RealizaCadastroAnimal();
+            }
+        }
+
+        protected void PegaUltimoIdCliente()
+        {
+            ClienteBuss clienteBus = new ClienteBuss();
+            
+            ViewState["hdnCodCliente"] = Convert.ToString(clienteBus.PegaUltimoIdCliente());
+        
         }
 
         protected void RealizaCadastroCliente()
@@ -127,7 +140,7 @@ namespace WebUI
 
             if (executou)
             {
-                lblMsg.Text = "Cadastro de cliente efetuado com sucesso";
+                lblMsg.Text = "Cadastro efetuado com sucesso";
                 txtNomeCli.Text = "";
                 txtCPF.Text = "";
                 txtRG.Text = "";
@@ -136,6 +149,7 @@ namespace WebUI
                 txtEmail.Text = "";
                 txtEndereco.Text = "";
                 txtBairro.Text = "";
+                txtCidade.Text = "";
                 txtEstado.Text = "";
                 txtCep.Text = "";
             }
@@ -196,7 +210,7 @@ namespace WebUI
 
             if (executou)
             {
-                lblMsg.Text = "Alteração de cliente efetuada com sucesso";
+                lblMsg.Text = "Alteração efetuada com sucesso";
                 txtNomeCli.Text = "";
                 txtCPF.Text = "";
                 txtRG.Text = "";
@@ -248,7 +262,7 @@ namespace WebUI
                     {
                         try
                         {
-                            datNascimento = System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null);
+                            txtNascimento.Text = Convert.ToString(System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null));
                         }
                         catch
                         {
@@ -269,7 +283,7 @@ namespace WebUI
 
                     if (executou)
                     {
-                        lblMsg.Text = "Cadastro de animal efetuado com sucesso";
+                        lblMsg.Text = "Cadastro efetuado com sucesso";
                         txtNomeAnimal.Text = "";
                         txtPeso.Text = "";
                         txtRaca.Text = "";

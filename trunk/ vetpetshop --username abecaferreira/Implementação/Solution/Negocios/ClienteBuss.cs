@@ -37,6 +37,12 @@ namespace Negocios
             return _tabelapreenchida;
         }
 
+        public int PegaUltimoIdCliente()
+        {
+            int idCliente = this.clienteDAO.PegaUltimoIdCliente();
+            return idCliente;
+        }
+
         public List<Cliente> ListarClientesCadastrados(string Nome)
         {
             List<Cliente> lstCliente = new List<Cliente>();
