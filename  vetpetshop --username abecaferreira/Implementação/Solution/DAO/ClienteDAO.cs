@@ -95,6 +95,81 @@ namespace DAO
             return executou;
         }
 
+        public bool AlterarCliente(Cliente cliente)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAlterarCliente";
+
+                SqlParameter pIdCliente = new SqlParameter("@IdCliente", SqlDbType.Int);
+                SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 50);
+                SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
+                SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
+                SqlParameter pCelular = new SqlParameter("@Num_Cel", SqlDbType.VarChar, 20);
+                SqlParameter pRG = new SqlParameter("@Num_RG", SqlDbType.VarChar, 20);
+                SqlParameter pEndereco = new SqlParameter("@Endereco", SqlDbType.VarChar, 50);
+                SqlParameter pBairro = new SqlParameter("@Bairro", SqlDbType.VarChar, 20);
+                SqlParameter pCidade = new SqlParameter("@Cidade", SqlDbType.VarChar, 20);
+                SqlParameter pEstado = new SqlParameter("@Estado", SqlDbType.VarChar, 20);
+                SqlParameter pCEP = new SqlParameter("@CEP", SqlDbType.VarChar, 20);
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+
+                pIdCliente.Value = cliente.IdCliente;
+                pnomeCliente.Value = cliente.Nome;
+                pCpf.Value = cliente.CPF;
+                pTelefone.Value = cliente.Telefone1;
+                pCelular.Value = cliente.Telefone2;
+                pRG.Value = cliente.RG;
+                pEndereco.Value = cliente.Endereco;
+                pBairro.Value = cliente.Bairro;
+                pCidade.Value = cliente.Cidade;
+                pEstado.Value = cliente.Estado;
+                pCEP.Value = cliente.CEP;
+                pEmail.Value = cliente.Email;
+
+                cmd.Parameters.Add(pIdCliente);
+                cmd.Parameters.Add(pnomeCliente);
+                cmd.Parameters.Add(pCpf);
+                cmd.Parameters.Add(pTelefone);
+                cmd.Parameters.Add(pCelular);
+                cmd.Parameters.Add(pRG);
+                cmd.Parameters.Add(pEndereco);
+                cmd.Parameters.Add(pBairro);
+                cmd.Parameters.Add(pCidade);
+                cmd.Parameters.Add(pEstado);
+                cmd.Parameters.Add(pCEP);
+                cmd.Parameters.Add(pEmail);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
+
         public DataTable ListarClientes(DataTable tabela)
         {
             string stringConexao = databaseHelper.GetConnectionString("conexao");

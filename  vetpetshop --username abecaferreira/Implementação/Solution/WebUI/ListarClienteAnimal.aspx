@@ -6,6 +6,11 @@
   </h3>
   <table width="100%">
     <tr>
+        <td>
+            <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
+        </td>
+    </tr>
+    <tr>
         <td style="width:6%;">
             <asp:Label ID="lblBusca" runat="server" Text="Nome" Font-Bold="true"></asp:Label>
         </td>
@@ -36,8 +41,18 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" PageSize="15" Width="100%">
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" PageSize="15" Width="100%" onrowcommand="grClientes_RowCommand">
                 <Columns>
+                    <asp:TemplateField>
+                    <ItemTemplate>
+                    <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("IdCliente") %>'></asp:LinkButton>
+                    </ItemTemplate> 
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                    <ItemTemplate>
+                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdCliente") %>'></asp:LinkButton>
+                    </ItemTemplate> 
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
