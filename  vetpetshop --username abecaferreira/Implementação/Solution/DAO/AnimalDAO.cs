@@ -366,5 +366,53 @@ namespace DAO
             return executou;
         }
 
+        public List<Animal> ListarAnimaisTodos()
+        {
+            List<Animal> lstAnimal = new List<Animal>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsListarAnimaisTodos";
+
+               conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    Animal animal = new Animal();
+                    animal.IdAnimal = dr.GetInt32(0);
+                    animal.Nome = dr.GetString(1);
+                    animal.Raca = dr.GetString(2);
+                    animal.Peso = dr.GetDecimal(3);
+                    animal.DataNascimento = dr.GetDateTime(4);
+                    animal.DataProxVacinacao = dr.GetDateTime(5);
+
+                    lstAnimal.Add(animal);
+                }
+            }
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lstAnimal;
+        }
+
     }
 }

@@ -32,6 +32,14 @@ namespace Negocios
             return lstAnimal;
         }
 
+        public List<Animal> ListarAnimaisTodos()
+        {
+            List<Animal> lstAnimal = new List<Animal>();
+            lstAnimal = this.animalDAO.ListarAnimaisTodos();
+
+            return lstAnimal;
+        }
+
         public bool AgendamentoVacinacao(Int32 idAnimal, DateTime dataproxvac)
         {
             bool executou = this.animalDAO.AgendamentoVacinacao(idAnimal,dataproxvac);

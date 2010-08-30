@@ -226,6 +226,12 @@ namespace WebUI
         {
             Response.Redirect("DefaultVeterinario.aspx");
         }
+
+        protected void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            pnlAnimal.Visible = false;
+            pnlListagem.Visible = true;
+        }
         
          
     }
