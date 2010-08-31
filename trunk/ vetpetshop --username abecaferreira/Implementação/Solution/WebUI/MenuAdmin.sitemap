@@ -5,7 +5,7 @@
         <siteMapNode url="~/ManterUsuario.aspx" title="Manter Usuário"  description="" />
         <siteMapNode url="~/CadastroGrupoProduto.aspx" title="Manter Grupo de Produto"  description="" />
         <siteMapNode url="~/CadastroProduto.aspx" title="Manter Cadastro Produto"  description="" />
-        <siteMapNode url="~/CadastroNotaFiscal.aspx" title="Cadastrar Nota Fiscal"  description="" />
+        <siteMapNode url="~/CadastroPedidoDeCompra.aspx" title="Cadastrar Pedido de Compra"  description="" />
         <siteMapNode url="~/ListaNotaFiscal.aspx" title="Listar Nota Fiscal"  description="" />
         <siteMapNode url="~/ListaEstoque.aspx" title="Listar Estoque"  description="" />
         <siteMapNode url="~/ConsultaEstatistica.aspx" title="Consultar Estatísticas"  description="" />

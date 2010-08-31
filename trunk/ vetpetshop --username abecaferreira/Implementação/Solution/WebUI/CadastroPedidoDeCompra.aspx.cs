@@ -11,7 +11,7 @@ using System.Drawing;
 
 namespace WebUI
 {
-    public partial class CadastroNotaFiscal : System.Web.UI.Page
+    public partial class CadastroPedidoDeCompra : System.Web.UI.Page
     {
         Usuario usuario = new Usuario();
         NotaFiscal nota = new NotaFiscal();
@@ -172,7 +172,7 @@ namespace WebUI
                 wc = ((WebControl)e.CommandSource);
                 GridViewRow row = ((GridViewRow)wc.NamingContainer);
                 row.Font.Bold = true;
-                row.ForeColor = System.Drawing.Color.Red;
+                //row.ForeColor = System.Drawing.Color.Red;
 
                 Panel1.Visible = false;
                 // grUsuarios.Visible = false;
@@ -203,6 +203,8 @@ namespace WebUI
                 _linha["id_produto"] = produto.IdProduto;
                 _linha["nm_produto"] = produto.Nome;
                 _linha["quant"] = txtQuant.Text;
+                _linha["valunit"] = produto.PrecoCusto.ToString();
+
                 decimal _valorTotalProduto = (produto.Quantidade * produto.PrecoCusto);
                 _linha["valor"] = _valorTotalProduto.ToString();
 
@@ -216,13 +218,13 @@ namespace WebUI
                     int id = Convert.ToInt32(linha.Cells[1].Text);
 
                     produto = produtoBuss.ObterProdutoPorId(id);
-                    produto.Quantidade = Convert.ToInt32(linha.Cells[3].Text);
+                    produto.Quantidade = Convert.ToInt32(linha.Cells[4].Text);
 
                     DataRow _linha = tabela.NewRow();
                     _linha["id_produto"] = produto.IdProduto;
                     _linha["nm_produto"] = produto.Nome;
                     _linha["quant"] = produto.Quantidade.ToString();
-
+                    _linha["valunit"] = produto.PrecoCusto.ToString();
                     decimal _valorTotalProduto = (produto.Quantidade * produto.PrecoCusto);
                     _linha["valor"] = _valorTotalProduto.ToString();
 
@@ -235,7 +237,7 @@ namespace WebUI
                 _linha2["id_produto"] = produto.IdProduto;
                 _linha2["nm_produto"] = produto.Nome;
                 _linha2["quant"] = txtQuant.Text;
-
+                _linha2["valunit"] = produto.PrecoCusto.ToString();
                 decimal _valorTotalProduto2 = (produto.Quantidade * produto.PrecoCusto);
                 _linha2["valor"] = _valorTotalProduto2.ToString();
 
@@ -253,7 +255,7 @@ namespace WebUI
 
             foreach (GridViewRow linha in grProds.Rows)
             {
-                valorTotal += Convert.ToDecimal(linha.Cells[4].Text);
+                valorTotal += Convert.ToDecimal(linha.Cells[5].Text);
             }
 
            
@@ -270,13 +272,15 @@ namespace WebUI
 
             DataColumn coluna0 = new DataColumn("id_produto");
             DataColumn coluna1 = new DataColumn("nm_produto");
-            DataColumn coluna2 = new DataColumn("quant");
-            DataColumn coluna3 = new DataColumn("valor");
+            DataColumn coluna3 = new DataColumn("valunit");
+            DataColumn coluna2 = new DataColumn("quant");           
+            DataColumn coluna4 = new DataColumn("valor");
 
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
             _tabela.Columns.Add(coluna2);
             _tabela.Columns.Add(coluna3);
+            _tabela.Columns.Add(coluna4);
 
             return _tabela;
         }
@@ -293,7 +297,7 @@ namespace WebUI
                     relProdNota.IdNotaFiscal = idNota;
                     relProdNota.ValorNotal = Convert.ToDecimal(lblTotal.Text);
                     relProdNota.IdProduto = Convert.ToInt32(linha.Cells[1].Text);
-                    relProdNota.Quantidade = Convert.ToInt32(linha.Cells[3].Text);
+                    relProdNota.Quantidade = Convert.ToInt32(linha.Cells[4].Text);
 
                     NotaFiscalBuss notaBuss = new NotaFiscalBuss();
                     notaBuss.InserirRelProdNota(relProdNota);
@@ -337,7 +341,7 @@ namespace WebUI
                 {
                     if (linha.Visible != false)
                     {
-                        valorTotal += Convert.ToDecimal(linha.Cells[4].Text);
+                        valorTotal += Convert.ToDecimal(linha.Cells[5].Text);
                         lblTotal.Text = valorTotal.ToString();
                     }
                 }
