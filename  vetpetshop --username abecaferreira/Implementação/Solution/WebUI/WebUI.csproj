@@ -82,12 +82,12 @@
     <Compile Include="CadastroGrupoProduto.aspx.designer.cs">
       <DependentUpon>CadastroGrupoProduto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CadastroNotaFiscal.aspx.cs">
-      <DependentUpon>CadastroNotaFiscal.aspx</DependentUpon>
+    <Compile Include="CadastroPedidoDeCompra.aspx.cs">
+      <DependentUpon>CadastroPedidoDeCompra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CadastroNotaFiscal.aspx.designer.cs">
-      <DependentUpon>CadastroNotaFiscal.aspx</DependentUpon>
+    <Compile Include="CadastroPedidoDeCompra.aspx.designer.cs">
+      <DependentUpon>CadastroPedidoDeCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="CadastroProduto.aspx.cs">
       <DependentUpon>CadastroProduto.aspx</DependentUpon>
@@ -207,7 +207,7 @@
     <Content Include="AgendarVacinacao.aspx" />
     <Content Include="alerts.js" />
     <Content Include="CadastroGrupoProduto.aspx" />
-    <Content Include="CadastroNotaFiscal.aspx" />
+    <Content Include="CadastroPedidoDeCompra.aspx" />
     <Content Include="CadastroProduto.aspx" />
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVendedor.aspx" />

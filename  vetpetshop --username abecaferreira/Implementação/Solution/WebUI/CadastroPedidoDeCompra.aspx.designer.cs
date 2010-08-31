@@ -11,7 +11,7 @@
 namespace WebUI {
     
     
-    public partial class CadastroNotaFiscal {
+    public partial class CadastroPedidoDeCompra {
         
         /// <summary>
         /// lblMsg control.
