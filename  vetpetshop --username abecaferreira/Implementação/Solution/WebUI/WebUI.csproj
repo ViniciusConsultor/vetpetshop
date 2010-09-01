@@ -131,6 +131,13 @@
     <Compile Include="FormularioProduto.aspx.designer.cs">
       <DependentUpon>FormularioProduto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListaPedidoDeCompra.aspx.cs">
+      <DependentUpon>ListaPedidoDeCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaPedidoDeCompra.aspx.designer.cs">
+      <DependentUpon>ListaPedidoDeCompra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListarClienteAnimal.aspx.cs">
       <DependentUpon>ListarClienteAnimal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,6 +223,7 @@
     <Content Include="FormularioProduto.aspx" />
     <Content Include="images\bannercreator-nu %282%29.gif" />
     <Content Include="images\bannercreator-nu %284%29.gif" />
+    <Content Include="ListaPedidoDeCompra.aspx" />
     <Content Include="ListarClienteAnimal.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="ManterCadastroCliente.aspx" />
