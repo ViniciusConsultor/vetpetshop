@@ -1,0 +1,12 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[spsListaPedidosDeCompras] 
+	
+AS
+BEGIN
+	SELECT * FROM NotaFiscal
+END
+GO
