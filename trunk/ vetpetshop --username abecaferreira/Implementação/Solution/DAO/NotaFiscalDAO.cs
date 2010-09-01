@@ -166,5 +166,69 @@ namespace DAO
 
             //return executou;
         }
+
+        public DataTable ListaPedidosDeCompras(DataTable _tabela)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsListaPedidosDeCompras";
+               
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+               
+
+                while(dr.Read())
+                {
+                    DataRow _linha = _tabela.NewRow();
+                    _linha["id_pedido"] = dr.GetInt32(0).ToString();
+
+                    if (!dr.IsDBNull(4))
+                        _linha["dt_cad"] = dr.GetDateTime(4).ToString("dd/MM/yyyy");
+                    else
+                        _linha["dt_cad"] = "";
+
+                    _linha["valor"] = dr.GetDecimal(5).ToString();
+
+                    if (dr.GetInt32(6).Equals(1))
+                        _linha["status"] = "À Receber";
+                    else
+                        _linha["status"] = "Recebida";
+
+                    if (dr.IsDBNull(7))
+                        _linha["dt_receb"] = "";                        
+                    else
+                        _linha["dt_receb"] = dr.GetDateTime(7).ToString("dd/MM/yyyy");
+                        
+
+                    _tabela.Rows.Add(_linha);
+                 }
+
+                dr.Close();
+                conn.Close();
+
+                return _tabela;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
