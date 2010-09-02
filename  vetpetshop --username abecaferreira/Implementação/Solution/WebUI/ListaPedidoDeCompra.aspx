@@ -16,7 +16,8 @@
                         <td style="width: 58px; height: 23px">
                          <asp:GridView ID="grPedidos" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%"  
-                                 AlternatingRowStyle-BackColor="LightSteelBlue">
+                                 AlternatingRowStyle-BackColor="LightSteelBlue" 
+                                onrowcommand="grPedidos_RowCommand">
                                 <Columns>
                                  <asp:TemplateField>  
                                 <HeaderStyle  Width="5%"/>                      

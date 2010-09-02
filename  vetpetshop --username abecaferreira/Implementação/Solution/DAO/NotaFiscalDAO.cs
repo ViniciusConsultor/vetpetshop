@@ -230,5 +230,118 @@ namespace DAO
                 conn.Close();
             }
         }
+
+        public List<RelProdutoNotaFiscal> ListarRelProdutoNotaFiscalByIdPedido(int codNota)
+        {
+            List<RelProdutoNotaFiscal> rel = new List<RelProdutoNotaFiscal>();            
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsListaRelProdutoNotaFiscal";
+                
+                SqlParameter pId = new SqlParameter("@IdNota", SqlDbType.Int, 4);
+
+                pId.Value = codNota;
+
+                cmd.Parameters.Add(pId);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                while (dr.Read())
+                {
+                    RelProdutoNotaFiscal produtoNota = new RelProdutoNotaFiscal();
+
+                    produtoNota.IdProduto = dr.GetInt32(2);
+                    produtoNota.Quantidade = dr.GetInt32(3);
+                    produtoNota.NomeProduto = dr.GetString(4);
+                    produtoNota.PrecoUnitarioProduto = dr.GetDecimal(5);
+                    produtoNota.ValorTotalProduto = (dr.GetDecimal(5) * produtoNota.Quantidade);
+
+                    rel.Add(produtoNota);
+                }
+
+                dr.Close();
+                conn.Close();
+
+                return rel;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+               
+        }
+
+        public NotaFiscal ObterPedidoById(int idPedido)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            NotaFiscal nota = new NotaFiscal();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterPedidoDeCompraByPK";
+
+                SqlParameter pId = new SqlParameter("@IdNota", SqlDbType.Int, 4);
+                pId.Value = idPedido;
+
+                cmd.Parameters.Add(pId);
+                
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                while (dr.Read())
+                {
+                    nota.idUsuario = dr.GetInt32(0);
+                    nota.DataCadastro = dr.GetDateTime(1);
+                    nota.Valor = dr.GetDecimal(2);
+                    nota.Status = dr.GetInt32(3);                    
+                }
+
+                dr.Close();
+                conn.Close();
+
+                return nota;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
