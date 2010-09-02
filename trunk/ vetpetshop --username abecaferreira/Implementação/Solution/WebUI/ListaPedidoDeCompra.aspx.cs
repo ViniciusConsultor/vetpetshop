@@ -55,5 +55,11 @@ namespace WebUI
             grPedidos.DataSource = tabelaPreenchida;
             grPedidos.DataBind();
         }
+
+        protected void grPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "selecionar")
+                Response.Redirect("RecebimentoPedidoDeCompra.aspx?pedido=" + e.CommandArgument);
+        }
     }
 }

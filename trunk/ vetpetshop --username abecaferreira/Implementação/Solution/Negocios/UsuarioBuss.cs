@@ -62,5 +62,11 @@ namespace Negocios
             int id = this.usuarioDAO.ObterIdUsuarioPorNomeUsuario(nome);
             return id;
         }
+
+        public Usuario ObterUsuarioPorId(int Id)
+        {
+            Usuario usuario = this.usuarioDAO.ObterUsuarioPorId(Id);
+            return usuario;
+        }
     }
 }

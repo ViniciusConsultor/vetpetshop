@@ -167,6 +167,13 @@
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecebimentoPedidoDeCompra.aspx.cs">
+      <DependentUpon>RecebimentoPedidoDeCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecebimentoPedidoDeCompra.aspx.designer.cs">
+      <DependentUpon>RecebimentoPedidoDeCompra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vetpetshop.Master.cs">
       <DependentUpon>Vetpetshop.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -229,6 +236,7 @@
     <Content Include="ManterCadastroCliente.aspx" />
     <Content Include="ManterUsuario.aspx" />
     <Content Include="MenuAdmin.sitemap" />
+    <Content Include="RecebimentoPedidoDeCompra.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

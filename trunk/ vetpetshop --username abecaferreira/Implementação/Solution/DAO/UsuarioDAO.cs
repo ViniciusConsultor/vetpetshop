@@ -396,6 +396,57 @@ namespace DAO
             return usuarioEncontrado.Id;
         
         }
+
+        public Usuario ObterUsuarioPorId(int id)
+        { 
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            Usuario usuario = new Usuario();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterUsuarioByIdUsuario";
+
+                SqlParameter pId = new SqlParameter("@IdUsuario", SqlDbType.Int, 4);
+                pId.Value = id;
+
+                cmd.Parameters.Add(pId);
+                
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                while (dr.Read())
+                {
+                    usuario.Nome = dr.GetString(4);
+                    usuario.TipoUsuario = dr.GetInt32(5);
+                }
+
+                dr.Close();
+                conn.Close();
+
+                return usuario;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 
 }

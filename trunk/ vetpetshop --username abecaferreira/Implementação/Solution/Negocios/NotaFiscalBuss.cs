@@ -38,10 +38,21 @@ namespace Negocios
         public System.Data.DataTable ListarPedidosDeCompras(DataTable _tabela)
         {
             DataTable tabela = new DataTable();
-
             tabela = this.notaDAO.ListaPedidosDeCompras(_tabela);
-
             return tabela;
+        }
+
+        public List<RelProdutoNotaFiscal> ListarRelProdutoNotaFiscalByIdPedido(int codNota)
+        {
+            List<RelProdutoNotaFiscal> rel = new List<RelProdutoNotaFiscal>();
+            rel = this.notaDAO.ListarRelProdutoNotaFiscalByIdPedido(codNota);
+            return rel;
+        }
+
+        public NotaFiscal ObterPedidoById(int idPedido)
+        {
+            NotaFiscal nota = this.notaDAO.ObterPedidoById(idPedido);
+            return nota;
         }
     }
 }
