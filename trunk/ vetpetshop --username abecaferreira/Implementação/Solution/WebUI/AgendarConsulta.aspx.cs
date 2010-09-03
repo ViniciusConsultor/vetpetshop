@@ -16,6 +16,7 @@ namespace WebUI
     public partial class AgendarConsulta : System.Web.UI.Page
     {
         public DateTime datProxVacinacao;
+        Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +26,10 @@ namespace WebUI
             menu.DataSource = siteVet;
             menu.DataBind();
             #endregion
+            usuario = (Usuario)Session["User"];
+            UsuarioBuss usuarioBuss = new UsuarioBuss();
+            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
             if (!IsPostBack)
             {
                 CarregarClientes();
@@ -138,7 +143,9 @@ namespace WebUI
             DataColumn coluna2 = new DataColumn("raca");
             DataColumn coluna3 = new DataColumn("peso");
             DataColumn coluna4 = new DataColumn("nascimento");
-            DataColumn coluna5 = new DataColumn("dataproxvacinacao");
+            DataColumn coluna5 = new DataColumn("dataconsulta");
+            DataColumn coluna6 = new DataColumn("status");
+            DataColumn coluna7 = new DataColumn("valor");
 
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
@@ -146,6 +153,8 @@ namespace WebUI
             _tabela.Columns.Add(coluna3);
             _tabela.Columns.Add(coluna4);
             _tabela.Columns.Add(coluna5);
+            _tabela.Columns.Add(coluna6);
+            _tabela.Columns.Add(coluna7);
 
             return _tabela;
         }
