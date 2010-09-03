@@ -68,6 +68,24 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.RadioButtonList rblStatus;
         
         /// <summary>
+        /// pnlAnimal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAnimal;
+        
+        /// <summary>
+        /// gdvAnimal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvAnimal;
+        
+        /// <summary>
         /// btnAgendar control.
         /// </summary>
         /// <remarks>

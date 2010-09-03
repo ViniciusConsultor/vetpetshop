@@ -15,6 +15,8 @@ namespace WebUI
 {
     public partial class AgendarConsulta : System.Web.UI.Page
     {
+        public DateTime datProxVacinacao;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Criação de Menu
@@ -27,7 +29,6 @@ namespace WebUI
             {
                 CarregarClientes();
             }
-           
         }
 
         protected void CarregarClientes()
@@ -45,7 +46,7 @@ namespace WebUI
                 ListItem item = new ListItem(cliente.Nome.ToString(), cliente.IdCliente.ToString());
                 ddlClientes.Items.Add(item);
             }
-                           
+
         }
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,10 +62,12 @@ namespace WebUI
             {
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
+                txtData.Text = "";
+                pnlAnimal.Visible = false;
             }
-                       
+
         }
-           
+
         protected void CarregarAnimaisCliente(Int32 idCliente)
         {
             AnimalBuss animalBus = new AnimalBuss();
@@ -79,7 +82,72 @@ namespace WebUI
                 ListItem item = new ListItem(Animal.Nome.ToString(), Animal.IdAnimal.ToString());
                 ddlAnimal.Items.Add(item);
             }
-                           
-        }   
+
+        }
+
+        protected void ddlAnimal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 idAnimal;
+            idAnimal = Int32.Parse(ddlAnimal.SelectedValue);
+            if (idAnimal != 0)
+            {
+                pnlAnimal.Visible = true;
+                CarregarGrid(idAnimal);
+                txtData.Enabled = true;               
+
+            }
+            else
+            {
+                pnlAnimal.Visible = false;
+                txtData.Text = "";
+                txtData.Enabled = false;
+            }
+
+        }
+
+        protected void CarregarGrid(Int32 idAnimal)
+        {
+            DataTable tabelaPreenchida = Preencher(idAnimal);
+
+            if (tabelaPreenchida.Rows.Count != 0)
+            {
+                gdvAnimal.DataSource = tabelaPreenchida;
+                gdvAnimal.DataBind();
+            }
+        }
+
+        private DataTable Preencher(Int32 idAnimal)
+        {
+            Animal animal = new Animal();
+
+            DataTable tabela = new DataTable();
+            DataTable tabelaPreenchida = new DataTable();
+            tabela = MontarTabela();
+
+            AnimalBuss animalBuss = new AnimalBuss();
+            tabelaPreenchida = animalBuss.ConsultarAnimal(tabela, idAnimal);
+            return tabelaPreenchida;
+        }
+
+        private DataTable MontarTabela()
+        {
+            DataTable _tabela = new DataTable();
+
+            DataColumn coluna0 = new DataColumn("id_animal");
+            DataColumn coluna1 = new DataColumn("nm_animal");
+            DataColumn coluna2 = new DataColumn("raca");
+            DataColumn coluna3 = new DataColumn("peso");
+            DataColumn coluna4 = new DataColumn("nascimento");
+            DataColumn coluna5 = new DataColumn("dataproxvacinacao");
+
+            _tabela.Columns.Add(coluna0);
+            _tabela.Columns.Add(coluna1);
+            _tabela.Columns.Add(coluna2);
+            _tabela.Columns.Add(coluna3);
+            _tabela.Columns.Add(coluna4);
+            _tabela.Columns.Add(coluna5);
+
+            return _tabela;
+        }
     }
 }

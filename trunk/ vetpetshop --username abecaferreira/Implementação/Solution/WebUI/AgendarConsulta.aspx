@@ -37,7 +37,7 @@
                             Animal</td>
                             <td style="width: 500px; height: 23px">
                           <asp:DropDownList Enabled="False" ID="ddlAnimal" runat="server" AutoPostBack="true" 
-                                width="220px"></asp:DropDownList>
+                                width="220px" onselectedindexchanged="ddlAnimal_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -46,7 +46,7 @@
                         <td style="height: 23px; width: 690px">
                             Data do agendamento</td>
                             <td style="width: 500px; height: 23px">
-                         <asp:TextBox ID="txtData" runat="server" Width="189px"></asp:TextBox>
+                         <asp:TextBox ID="txtData" runat="server" Width="189px" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -75,7 +75,48 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td colspan="3" style="height: 23px; ">
-                            &nbsp;</td>
+                            <br />
+                            <asp:Panel ID="pnlAnimal" Visible="false" runat="server" Width="100%">
+                                <asp:GridView ID="gdvAnimal" runat="server" AutoGenerateColumns="false" 
+                                    HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
+                                    PageSize="10">
+                                    <Columns>
+                                        <asp:BoundField DataField="id_animal" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
+                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                            Wrap="False"/>
+                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Nome do animal" DataField="nm_animal" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:d}" htmlencode="false">
+                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                            Wrap="False"/>
+                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Raça" DataField="raca" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                            Wrap="False"/>
+                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Peso" DataField="peso" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                            Wrap="False"/>
+                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                                        </asp:BoundField>
+                                        <asp:BoundField HeaderText="Data de Nascimento" DataField="nascimento" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                            Wrap="False"/>
+                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                                        </asp:BoundField>                        
+                                        <asp:BoundField HeaderText="Data da próxima vacinação" DataField="dataproxvacinacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                            Wrap="False"/>
+                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                                        </asp:BoundField>                         
+                                    </Columns>
+                                <HeaderStyle BackColor="DarkBlue"></HeaderStyle>
+                                <AlternatingRowStyle BackColor="LightSteelBlue" />
+                                </asp:GridView>    
+                            </asp:Panel>    
+                        </td>
                         <td style="height: 23px; width: 518px">
                             </td>
                     </tr>
