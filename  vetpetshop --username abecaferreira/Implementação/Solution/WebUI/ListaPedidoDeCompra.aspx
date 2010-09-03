@@ -2,10 +2,10 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<table style="width:100%;">
+    <table style="width:100%;">
         <tr>
             <td style="width: 863px">
-                &nbsp;</td>
+                &nbsp;<b>Lista de pedidos cadastrados</b></td>
             <td>
                 &nbsp;</td>
         </tr>

@@ -343,5 +343,48 @@ namespace DAO
                 conn.Close();
             }
         }
+
+        public bool AtualizarPedidoCompra(int idPed, int status)
+        {
+            bool salvou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAtualizarPedidoDeCompra";
+
+                SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int, 4);
+                pStatus.Value = status;
+                
+                cmd.Parameters.Add(new SqlParameter("@IdNota", SqlDbType.Int)).Value = idPed;
+                cmd.Parameters.Add(pStatus);
+                
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                salvou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return salvou;
+        }
     }
 }

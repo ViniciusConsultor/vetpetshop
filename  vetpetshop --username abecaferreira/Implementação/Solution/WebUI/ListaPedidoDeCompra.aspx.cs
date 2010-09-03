@@ -6,18 +6,37 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Negocios;
+using Entidade;
 
 namespace WebUI
 {
     public partial class ListaPedidoDeCompra : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
-            menu.DataSource = siteAdmin;
-            menu.DataBind();
+            
+            usuario = (Usuario)Session["User"];
+            
+            #region Criação de Menu Admin
+            if (usuario.TipoUsuario == 1)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            #endregion
+
+            #region Criação de Menu Vend
+            if (usuario.TipoUsuario == 3)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
             #endregion
 
             PreencherTabela();
@@ -58,6 +77,7 @@ namespace WebUI
 
         protected void grPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Session["tipoUser"] = usuario.TipoUsuario;
             if (e.CommandName == "selecionar")
                 Response.Redirect("RecebimentoPedidoDeCompra.aspx?pedido=" + e.CommandArgument);
         }

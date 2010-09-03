@@ -18,7 +18,7 @@
        A:hover {color: #0066cc}   
     .style2
     {
-        width: 14%;
+        width: 165px;
     }
     
 </style>
@@ -65,13 +65,13 @@
     style="height: 768px; width: 1024px;">
   <tr>
     <td valign="top" bgcolor="#6666ff" class="style2">
-      <table width="150" border="0" cellspacing="0" cellpadding="0">
+      <table width="165" border="0" cellspacing="0" cellpadding="0">
         
       </table>
-      <table border="0" cellspacing="0" cellpadding="0" style="width: 100%">
+      <table border="0" cellspacing="0" cellpadding="0" style="width: 99%">
         <tr>
           <td bgcolor="#6666ff">
-            <p>
+            <p style="width: 159px">
                 <asp:SiteMapDataSource ID="adm" SiteMapProvider="administrador" runat="server" ShowStartingNode="false" />
                 <asp:SiteMapDataSource ID="vend" SiteMapProvider="vendedor" runat="server" ShowStartingNode="false" />
                 <asp:SiteMapDataSource ID="vet" SiteMapProvider="veterinario" runat="server" ShowStartingNode="false" />
