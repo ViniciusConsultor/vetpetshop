@@ -12,12 +12,35 @@ namespace WebUI
 {
     public partial class RecebimentoPedidoDeCompra : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            int tipoUser = (int)Session["tipoUser"];
+
+            #region Criação de Menu Admin
+            if (tipoUser == 1)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            #endregion
+
+            #region Criação de Menu Vend
+            if (tipoUser == 3)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            #endregion
+
             string idPedido = Request.Params["pedido"];
 
-            ListarStatusPedido();
-
+            Session["idPed"] = Convert.ToInt32(idPedido);
             NotaFiscalBuss notaBuss = new NotaFiscalBuss();
             UsuarioBuss usuarioBuss = new UsuarioBuss();
             List<RelProdutoNotaFiscal> rel = new List<RelProdutoNotaFiscal>();
@@ -29,25 +52,55 @@ namespace WebUI
             //usuario = usuarioBuss.ObterUsuarioPorId(nota.idUsuario);
             rel = notaBuss.ListarRelProdutoNotaFiscalByIdPedido(Convert.ToInt32(idPedido));
 
+            if (!IsPostBack)
+            {
+                ListarStatusPedido();
+                //ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByValue(nota.Status.ToString()));
+                //ddlStatus.Items.FindByValue(nota.Status.ToString()).Selected = true;
+
+                //if (ddlStatus.SelectedItem.Value == "2")
+                //    btnOk.Text = "Alterar Status de Pedido";
+                //else
+                //    btnOk.Text = "Registrar Recebimento de Pedido";
+            }
+
             lblCodigo.Text = idPedido;
             lblData.Text = nota.DataCadastro.ToString("dd/MM/yyyy");
             lblTotal.Text = nota.Valor.ToString();
 
-
-            ListItem li = ddlStatus.Items.FindByValue(nota.Status.ToString());
-            if(li != null)
-                ddlStatus.Items.FindByValue(nota.Status.ToString()).Selected = true;
+            if (nota.Status == 1)
+                lblStatus.Text = "À Receber";
+            else
+                lblStatus.Text = "Recebida";
+            
 
             PreencherTabela(rel);
         }
 
         private void ListarStatusPedido()
         {
+            NotaFiscal nota = new NotaFiscal();
+            NotaFiscalBuss notaBuss = new NotaFiscalBuss();
+            int idPedido = (int)Session["idPed"];
+
             ListItem li0 = new ListItem("À Receber", "1");
             ListItem li1 = new ListItem("Recebida", "2");
 
-            ddlStatus.Items.Add(li0);
-            ddlStatus.Items.Add(li1);
+            nota = notaBuss.ObterPedidoById(Convert.ToInt32(idPedido));
+
+            if (nota.Status == 1)
+            {
+                ddlStatus.Items.Add(li1);
+                btnOk.Text = "Registrar Recebimento de Pedido";
+            }
+            else
+            {
+                ddlStatus.Items.Add(li0);
+                btnOk.Text = "Alterar Status de Pedido"; 
+            }
+
+            //ddlStatus.Items.Add(li0);
+            //ddlStatus.Items.Add(li1);
         }
 
         private DataTable TabelaProdutos()
@@ -93,7 +146,18 @@ namespace WebUI
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-           
+            NotaFiscalBuss notaBuss = new NotaFiscalBuss();
+            int idPed = (int)Session["idPed"];
+
+            bool executou = notaBuss.AtualizarPedidoDeCompra(idPed, Convert.ToInt32(ddlStatus.SelectedItem.Value));
+
+            if (executou)
+                Response.Redirect("ListaPedidoDeCompra.aspx");
+        }
+
+        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

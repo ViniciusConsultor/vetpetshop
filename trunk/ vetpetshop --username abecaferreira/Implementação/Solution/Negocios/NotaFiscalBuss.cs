@@ -54,5 +54,11 @@ namespace Negocios
             NotaFiscal nota = this.notaDAO.ObterPedidoById(idPedido);
             return nota;
         }
+
+        public bool AtualizarPedidoDeCompra(int idPed, int status)
+        {
+            bool executou = this.notaDAO.AtualizarPedidoCompra(idPed, status);
+            return executou;
+        }
     }
 }
