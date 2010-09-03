@@ -3,10 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <table style="width:100%;">
         <tr>
-            <td style="width: 121px">
-                &nbsp;</td>
+            <td colspan="2">
+                <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label></td>
             <td>
                 &nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 121px; height: 17px;">
+                </td>
+            <td style="height: 17px">
+                </td>
         </tr>
         <tr>
             <td style="height: 20px; width: 121px">
@@ -16,12 +22,6 @@
             <td style="height: 20px">
                 <asp:Label ID="lblCodigo" runat="server" Text=""></asp:Label>
             </td>
-        </tr>
-        <tr>
-            <td style="width: 121px">
-                &nbsp;Cadastrado Por</td>
-            <td>
-               <asp:Label ID="lblProf" runat="server" Text=""></asp:Label></td>
         </tr>
         <tr>
             <td style="width: 121px">
@@ -39,7 +39,7 @@
             <td style="width: 121px">
                 &nbsp;Status &nbsp;</td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server" Width="130px">
+                <asp:DropDownList ID="ddlStatus" runat="server" Width="100px">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -48,6 +48,14 @@
                 &nbsp;</td>
             <td>
                 &nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 121px">
+                &nbsp;</td>
+            <td>
+                <asp:Button ID="btnOk" runat="server" 
+                    Text="Registrar Recebimento de Pedido" onclick="btnOk_Click" />
+            </td>
         </tr>
         <tr>
             <td colspan="2">
