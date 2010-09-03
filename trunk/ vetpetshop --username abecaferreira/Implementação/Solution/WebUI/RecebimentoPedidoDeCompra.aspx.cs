@@ -16,6 +16,8 @@ namespace WebUI
         {
             string idPedido = Request.Params["pedido"];
 
+            ListarStatusPedido();
+
             NotaFiscalBuss notaBuss = new NotaFiscalBuss();
             UsuarioBuss usuarioBuss = new UsuarioBuss();
             List<RelProdutoNotaFiscal> rel = new List<RelProdutoNotaFiscal>();
@@ -24,19 +26,29 @@ namespace WebUI
             Usuario usuario = new Usuario();
 
             nota = notaBuss.ObterPedidoById(Convert.ToInt32(idPedido));
-            usuario = usuarioBuss.ObterUsuarioPorId(nota.idUsuario);
+            //usuario = usuarioBuss.ObterUsuarioPorId(nota.idUsuario);
             rel = notaBuss.ListarRelProdutoNotaFiscalByIdPedido(Convert.ToInt32(idPedido));
 
             lblCodigo.Text = idPedido;
-            lblProf.Text = usuario.Nome;
             lblData.Text = nota.DataCadastro.ToString("dd/MM/yyyy");
             lblTotal.Text = nota.Valor.ToString();
 
-            
+
+            ListItem li = ddlStatus.Items.FindByValue(nota.Status.ToString());
+            if(li != null)
+                ddlStatus.Items.FindByValue(nota.Status.ToString()).Selected = true;
 
             PreencherTabela(rel);
         }
 
+        private void ListarStatusPedido()
+        {
+            ListItem li0 = new ListItem("À Receber", "1");
+            ListItem li1 = new ListItem("Recebida", "2");
+
+            ddlStatus.Items.Add(li0);
+            ddlStatus.Items.Add(li1);
+        }
 
         private DataTable TabelaProdutos()
         {
@@ -77,6 +89,11 @@ namespace WebUI
             grProds.Visible = true;
             grProds.DataSource = tabelaProdutos;
             grProds.DataBind();
+        }
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
