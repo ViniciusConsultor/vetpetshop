@@ -15,7 +15,7 @@ namespace WebUI
 {
     public partial class AgendarConsulta : System.Web.UI.Page
     {
-        public DateTime datProxVacinacao;
+        public DateTime datConsulta;
         Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace WebUI
             tabela = MontarTabela();
 
             AnimalBuss animalBuss = new AnimalBuss();
-            tabelaPreenchida = animalBuss.ConsultarAnimal(tabela, idAnimal);
+            tabelaPreenchida = animalBuss.ObterConsultasAnimal(tabela, idAnimal);
             return tabelaPreenchida;
         }
 
@@ -138,24 +138,16 @@ namespace WebUI
         {
             DataTable _tabela = new DataTable();
 
-            DataColumn coluna0 = new DataColumn("id_animal");
-            DataColumn coluna1 = new DataColumn("nm_animal");
-            DataColumn coluna2 = new DataColumn("raca");
-            DataColumn coluna3 = new DataColumn("peso");
-            DataColumn coluna4 = new DataColumn("nascimento");
-            DataColumn coluna5 = new DataColumn("dataconsulta");
-            DataColumn coluna6 = new DataColumn("status");
-            DataColumn coluna7 = new DataColumn("valor");
+            DataColumn coluna0 = new DataColumn("id_consulta");
+            DataColumn coluna1 = new DataColumn("dataconsulta");
+            DataColumn coluna2 = new DataColumn("status");
+            DataColumn coluna3 = new DataColumn("valor");
 
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
             _tabela.Columns.Add(coluna2);
             _tabela.Columns.Add(coluna3);
-            _tabela.Columns.Add(coluna4);
-            _tabela.Columns.Add(coluna5);
-            _tabela.Columns.Add(coluna6);
-            _tabela.Columns.Add(coluna7);
-
+       
             return _tabela;
         }
     }

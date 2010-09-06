@@ -311,6 +311,69 @@ namespace DAO
             return tabela;
         }
 
+        public DataTable ObterConsultasAnimal(DataTable tabela, Int32 idAnimal)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarConsultaAnimal";
+
+            SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int, 4);
+
+            pIdAnimal.Value = idAnimal;
+
+            cmd.Parameters.Add(pIdAnimal);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_consulta"] = dr.GetInt32(0);
+                if (dr.IsDBNull(1))
+                {
+                    _linhaTabela["dataconsulta"] = "";
+                }
+                else
+                {
+                    _linhaTabela["dataconsulta"] = dr.GetDateTime(1).ToString("dd/MM/yyyy");
+                }
+                if (dr.GetInt32(2) == 0)
+                {
+                    _linhaTabela["status"] = "Agendada";                                      
+                }
+                if (dr.GetInt32(2) == 1)
+                {
+                    _linhaTabela["status"] = "Desmarcada"; 
+                }
+                if (dr.GetInt32(2) == 2)
+                {
+                    _linhaTabela["status"] = "Finalizada"; 
+                }
+                if (dr.IsDBNull(3))
+                {
+                    _linhaTabela["valor"] = "";
+                }
+                else
+                {
+                    _linhaTabela["valor"] = dr.GetDecimal(3);
+                }
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
         public bool AgendamentoVacinacao(Int32 idAnimal, DateTime dataproxvac)
         {
             bool executou = false;
