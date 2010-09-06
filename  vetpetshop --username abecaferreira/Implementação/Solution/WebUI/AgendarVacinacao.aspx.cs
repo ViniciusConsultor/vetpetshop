@@ -225,14 +225,7 @@ namespace WebUI
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DefaultVeterinario.aspx");
-        }
-
-        protected void btnVisualizar_Click(object sender, EventArgs e)
-        {
-            pnlAnimal.Visible = false;
-            pnlListagem.Visible = true;
-        }
-        
+        }                   
          
     }
 }
