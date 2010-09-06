@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="AgendarConsulta.aspx.cs" Inherits="WebUI.AgendarConsulta" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="AgendarConsulta.aspx.cs" Inherits="WebUI.AgendarConsulta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
        <table style="width:100%;">
@@ -81,31 +81,11 @@
                                     HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
                                     PageSize="10">
                                     <Columns>
-                                        <asp:BoundField DataField="id_animal" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
+                                        <asp:BoundField DataField="id_consulta" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
                                              <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                             Wrap="False"/>
                                             <ItemStyle HorizontalAlign="Center" Wrap="false"/>
                                         </asp:BoundField>
-                                        <asp:BoundField HeaderText="Nome do animal" DataField="nm_animal" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:d}" htmlencode="false">
-                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                            Wrap="False"/>
-                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
-                                        </asp:BoundField>
-                                        <asp:BoundField HeaderText="Raça" DataField="raca" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                            Wrap="False"/>
-                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
-                                        </asp:BoundField>
-                                        <asp:BoundField HeaderText="Peso" DataField="peso" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                            Wrap="False"/>
-                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
-                                        </asp:BoundField>
-                                        <asp:BoundField HeaderText="Data de Nascimento" DataField="nascimento" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                            Wrap="False"/>
-                                            <ItemStyle HorizontalAlign="Center" Wrap="false"/>
-                                        </asp:BoundField>                        
                                         <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                                              <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                             Wrap="False"/>
