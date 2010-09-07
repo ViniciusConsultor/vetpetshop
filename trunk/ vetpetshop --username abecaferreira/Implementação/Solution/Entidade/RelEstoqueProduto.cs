@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Entidade
 {
-    public class Estoque
+    public class RelEstoqueProduto
     {
         public int Id { get; set; }
-        public int Status { get; set; }
-        public int Quantidade { get; set; }
+        public int IdProduto { get; set; }
+        public int IdEstoque { get; set; }
     }
 }

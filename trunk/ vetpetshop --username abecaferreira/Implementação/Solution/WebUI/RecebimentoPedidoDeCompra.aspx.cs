@@ -152,7 +152,60 @@ namespace WebUI
             bool executou = notaBuss.AtualizarPedidoDeCompra(idPed, Convert.ToInt32(ddlStatus.SelectedItem.Value));
 
             if (executou)
+            {
+                foreach (GridViewRow linha in grProds.Rows)
+                {
+                    Estoque estoque = new Estoque();
+                    RelEstoqueProduto relEstoqueProd = new RelEstoqueProduto();
+                    EstoqueBuss estoqueBuss = new EstoqueBuss();
+                    
+                    Produto prod = new Produto();
+                    ProdutoBuss produtoBuss = new ProdutoBuss();
+
+                    prod = produtoBuss.ObterProdutoPorId(Convert.ToInt32(linha.Cells[0].Text));
+                    int estoqueMedio = (prod.EstoqueMax + prod.EstoqueMin)/2;
+
+                    relEstoqueProd = estoqueBuss.ObterEstoqueProdutoPorIdProd(prod.IdProduto);
+                    
+                    if (relEstoqueProd != null)
+                    {
+                        estoque = estoqueBuss.ObterEstoquePorId(relEstoqueProd.IdEstoque);
+
+                        if (Convert.ToInt32(linha.Cells[3].Text) >= prod.EstoqueMax)
+                            estoque.Status = 3;
+
+                        else if (Convert.ToInt32(linha.Cells[3].Text) == estoqueMedio)
+                            estoque.Status = 2;
+
+                        else
+                            estoque.Status = 1;
+
+                        estoque.Quantidade = estoque.Quantidade + Convert.ToInt32(linha.Cells[3].Text);
+
+                        estoqueBuss.AtualizarEstoque(relEstoqueProd.IdEstoque, estoque.Quantidade, estoque.Status);
+                    }
+
+                    else
+                    {
+                        if (Convert.ToInt32(linha.Cells[3].Text) >= prod.EstoqueMax)
+                            estoque.Status = 3;
+
+                        else if (Convert.ToInt32(linha.Cells[3].Text) == estoqueMedio)
+                            estoque.Status = 2;
+
+                        else
+                            estoque.Status = 1;
+
+                        estoque.Quantidade = estoque.Quantidade + Convert.ToInt32(linha.Cells[3].Text);
+
+                        estoqueBuss.InserirEstoque(estoque, prod.IdProduto);
+                    }
+
+                }
+
+
                 Response.Redirect("ListaPedidoDeCompra.aspx");
+            }
         }
 
         protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
