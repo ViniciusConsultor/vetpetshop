@@ -116,7 +116,8 @@
                         <td style="height: 23px; width: 690px">
                         </td>
                         <td align="center" style="height: 23px; width: 500px">
-                            <asp:Button ID="btnAgendar" runat="server" Text="Agendar Consulta" />
+                            <asp:Button ID="btnAgendar" runat="server" Text="Agendar Consulta" 
+                                onclick="btnAgendar_Click" />
                             &nbsp;
                             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
                         </td>                                        

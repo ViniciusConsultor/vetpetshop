@@ -88,5 +88,10 @@ namespace Negocios
             return _lista;
         }
 
+        public bool AgendamentoConsulta(Int32 idUsuario,Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status)
+        {
+            bool executou = this.animalDAO.AgendamentoConsulta(idUsuario, idAnimal, Valor, datConsulta, status);
+            return executou;
+        }
     }
 }

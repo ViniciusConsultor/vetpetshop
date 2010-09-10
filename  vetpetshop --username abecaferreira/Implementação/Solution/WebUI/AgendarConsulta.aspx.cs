@@ -150,5 +150,53 @@ namespace WebUI
        
             return _tabela;
         }
+
+        protected void btnAgendar_Click(object sender, EventArgs e)
+        {
+            Int32 idAnimal;
+            idAnimal = Int32.Parse(ddlAnimal.SelectedValue);
+
+            if (txtData.Text != "")
+            {
+                datConsulta = System.DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", null);
+            }
+            else
+            {
+                lblMsg.Text = "Digite a data consulta";
+            }
+
+            if (idAnimal != 0)
+            {
+                pnlAnimal.Visible = true;
+                AgendamentoConsulta(idAnimal);
+            }
+            else
+            {
+                lblMsg.Text = "Selecione um animal para o agendamento da consulta";
+            }
+        }
+
+        protected void AgendamentoConsulta(Int32 idAnimal)
+        {
+            Int32 Status;
+            Decimal Valor = 0;
+            AnimalBuss animalBuss = new AnimalBuss();
+
+            if (!string.IsNullOrEmpty(txtValor.Text))
+            {
+            Valor = Convert.ToDecimal(txtValor.Text);
+            }
+
+            Status = Convert.ToInt32(rblStatus.SelectedItem.Value);
+
+            bool executou;
+            
+            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status);
+
+            if (executou)
+            {
+                CarregarGrid(idAnimal);
+            }
+        }
     }
 }
