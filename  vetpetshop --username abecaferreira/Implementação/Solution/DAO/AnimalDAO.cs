@@ -508,7 +508,7 @@ namespace DAO
                 animal.Nome = dr.GetString(1);
                 animal.Peso = dr.GetDecimal(2);
                 animal.Raca = dr.GetString(3);
-                animal.DataNascimento = dr.GetDateTime(4);
+                animal.DataNascimento = dr.IsDBNull(4) ? DateTime.MinValue : dr.GetDateTime(4);
                 animal.IdTipoAnimal = dr.GetInt32(5);
 
                 _lista.Add(animal);
