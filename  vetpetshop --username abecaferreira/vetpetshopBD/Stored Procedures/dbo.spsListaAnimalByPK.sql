@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -16,7 +17,8 @@ a.Nome,
 a.Peso,
 a.Raca,
 a.DataNascimento,
-a.IdTipoAnimal
+a.IdTipoAnimal,
+a.IdCliente
 FROM Animal a 
 where Id = @IdAnimal
 	
