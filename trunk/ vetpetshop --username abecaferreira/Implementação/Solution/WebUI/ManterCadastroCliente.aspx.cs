@@ -256,6 +256,8 @@ namespace WebUI
             Cache.Remove("txtPeso");
             Cache.Remove("txtRaca");
             Cache.Remove("txtNascimento");
+            Cache.Remove("ddlTipoAnimal");
+                
             
         }
 

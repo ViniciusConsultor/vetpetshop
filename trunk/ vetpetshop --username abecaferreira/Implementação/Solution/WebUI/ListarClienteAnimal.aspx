@@ -27,7 +27,7 @@
      <td><br /></td>
      </tr>
   </table>
-  <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
+  <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1">
   <asp:TabPanel ID="tabPanel1" runat="server">
   <HeaderTemplate>
     <b>Clientes</b>
@@ -145,6 +145,11 @@
                     <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdAnimal") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
+                    <asp:BoundField DataField="IdCliente" HeaderText="Proprietário" SortExpression="Proprietário">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>

@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidade;
 using Negocios;
+using System.Globalization;
+using System.IO;
 
 namespace WebUI
 {
@@ -91,24 +93,43 @@ namespace WebUI
 
         protected void grAnimais_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+
             if (e.Row.RowType ==  DataControlRowType.DataRow)
             {
-                if (e.Row.Cells[3].Text == Convert.ToString(DateTime.MinValue))
+                if (e.Row.Cells[6].Text == Convert.ToString(DateTime.MinValue))
                 {
-                    e.Row.Cells[3].Text = "";
+                    e.Row.Cells[6].Text = "";
                 }
-                if (e.Row.Cells[4].Text == Convert.ToString(DateTime.MinValue))
+                if (e.Row.Cells[7].Text == Convert.ToString(DateTime.MinValue))
                 {
-                    e.Row.Cells[4].Text = "";
+                    e.Row.Cells[7].Text = "";
                 }
-                if (e.Row.Cells[5].Text == Convert.ToString(DateTime.MinValue))
+                if (e.Row.Cells[8].Text == Convert.ToString(DateTime.MinValue))
                 {
-                    e.Row.Cells[5].Text = "";
+                    e.Row.Cells[8].Text = "";
                 }
                 
+                e.Row.Cells[2].Text = BuscarProprietarioAnimal(Convert.ToInt32(e.Row.Cells[2].Text)); 
+                
             }
-        }  
+        }
+    
 
+        protected string BuscarProprietarioAnimal(int IdCliente)
+        {
+            string nomeCliente = string.Empty;
 
+            List<Cliente> lstCliente = new List<Cliente>();
+            ClienteBuss clienteBus = new ClienteBuss();
+
+            lstCliente = clienteBus.PreencheUsuario(IdCliente);
+
+            foreach (Cliente cliente in lstCliente)
+            {
+                nomeCliente = cliente.Nome;
+            }
+            return nomeCliente;
+        }
+        
     }
 }
