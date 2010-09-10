@@ -510,6 +510,7 @@ namespace DAO
                 animal.Raca = dr.GetString(3);
                 animal.DataNascimento = dr.IsDBNull(4) ? DateTime.MinValue : dr.GetDateTime(4);
                 animal.IdTipoAnimal = dr.GetInt32(5);
+                animal.IdCliente = dr.GetInt32(6);
 
                 _lista.Add(animal);
             }
