@@ -417,8 +417,9 @@ namespace WebUI
                 txtNomeAnimal.Text = animal.Nome;
                 txtPeso.Text = Convert.ToString(animal.Peso);
                 txtRaca.Text = animal.Raca;
-                txtNascimento.Text = Convert.ToString(animal.DataNascimento);
+                txtNascimento.Text = animal.DataNascimento.ToString("dd/MM/yyyy");
                 ddlTipoAnimal.SelectedIndex = animal.IdTipoAnimal;
+                PreencheUsuario(animal.IdCliente);
             }
             lblMsg.Text = "Dados Carregados";
             pnlPet.Visible = true;
