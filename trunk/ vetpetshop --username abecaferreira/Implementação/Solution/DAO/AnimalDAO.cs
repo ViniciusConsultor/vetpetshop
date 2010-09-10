@@ -574,5 +574,66 @@ namespace DAO
 
             return executou;
         }
+
+        public bool AgendamentoConsulta(Int32 idUsuario, Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spiInserirConsultaVeterinaria";
+
+                SqlParameter pidUsuario = new SqlParameter("@IdUsuario", SqlDbType.Int);
+                SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
+                SqlParameter pValor = new SqlParameter("@Valor", SqlDbType.Decimal);
+                SqlParameter pDatConsulta = new SqlParameter("@Data", SqlDbType.SmallDateTime);
+                SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
+
+                pidUsuario.Value = idUsuario;
+                pIdAnimal.Value = idAnimal;
+                pValor.Value = Valor;
+                if (datConsulta == DateTime.MinValue)
+                {
+                    pDatConsulta.Value = SqlDateTime.Null;
+                }
+                else
+                {
+                    pDatConsulta.Value = datConsulta;
+                }
+                pStatus.Value = status;
+
+                cmd.Parameters.Add(new SqlParameter("@idUsuario", SqlDbType.Int)).Value = idUsuario;
+                cmd.Parameters.Add(new SqlParameter("@idAnimal", SqlDbType.Int)).Value = idAnimal;
+                cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = Valor;
+                cmd.Parameters.Add(pDatConsulta);
+                cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Int)).Value = status;
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
     }
 }
