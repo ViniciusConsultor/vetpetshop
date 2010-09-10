@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -7,6 +8,6 @@ CREATE PROCEDURE [dbo].[spsListaPedidosDeCompras]
 	
 AS
 BEGIN
-	SELECT * FROM NotaFiscal
+	SELECT * FROM NotaFiscal ORDER BY DataCadastro DESC
 END
 GO
