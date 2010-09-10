@@ -320,7 +320,7 @@ namespace DAO
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "spsListarConsultaAnimal";
+            cmd.CommandText = "spsObterConsultasAnimal";
 
             SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int, 4);
 
