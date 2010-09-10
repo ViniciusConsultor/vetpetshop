@@ -165,17 +165,17 @@
                             Wrap="False"/>
                         <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
                     </asp:BoundField>
-                    <asp:BoundField DataField="DataFimVacinacao" HeaderText="DataFimVacinacao" SortExpression="DataFimVacinacao" DataFormatString="{0:d}" NullDisplayText="" >
+                    <asp:BoundField DataField="DataFimVacinacao" HeaderText="DataFimVacinacao" SortExpression="DataFimVacinacao" DataFormatString="{0:d}">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
                         <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
                     </asp:BoundField>
-                    <asp:BoundField DataField="DataNascimento" HeaderText="DataNascimento" SortExpression="DataNascimento" DataFormatString="{0:d}" NullDisplayText="" >
+                    <asp:BoundField DataField="DataNascimento" HeaderText="DataNascimento" SortExpression="DataNascimento" DataFormatString="{0:d}">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
                         <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
                     </asp:BoundField>
-                    <asp:BoundField DataField="DataProxVacinacao" HeaderText="DataProxVacinacao" SortExpression="DataProxVacinacao" DataFormatString="{0:d}" NullDisplayText="">
+                    <asp:BoundField DataField="DataProxVacinacao" HeaderText="DataProxVacinacao" SortExpression="DataProxVacinacao" DataFormatString="{0:d}">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
                         <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
