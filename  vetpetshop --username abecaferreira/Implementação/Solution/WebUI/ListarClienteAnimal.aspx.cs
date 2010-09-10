@@ -96,15 +96,15 @@ namespace WebUI
 
             if (e.Row.RowType ==  DataControlRowType.DataRow)
             {
-                if (e.Row.Cells[6].Text == Convert.ToString(DateTime.MinValue))
+                if (e.Row.Cells[6].Text == "01/01/0001")
                 {
                     e.Row.Cells[6].Text = "";
                 }
-                if (e.Row.Cells[7].Text == Convert.ToString(DateTime.MinValue))
+                if (e.Row.Cells[7].Text == "01/01/0001")
                 {
                     e.Row.Cells[7].Text = "";
                 }
-                if (e.Row.Cells[8].Text == Convert.ToString(DateTime.MinValue))
+                if (e.Row.Cells[8].Text == "01/01/0001")
                 {
                     e.Row.Cells[8].Text = "";
                 }
