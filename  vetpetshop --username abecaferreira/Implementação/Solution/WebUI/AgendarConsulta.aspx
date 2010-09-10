@@ -119,7 +119,8 @@
                             <asp:Button ID="btnAgendar" runat="server" Text="Agendar Consulta" 
                                 onclick="btnAgendar_Click" />
                             &nbsp;
-                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
+                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+                                onclick="btnCancelar_Click" />
                         </td>                                        
                     </tr>
                     <tr>
