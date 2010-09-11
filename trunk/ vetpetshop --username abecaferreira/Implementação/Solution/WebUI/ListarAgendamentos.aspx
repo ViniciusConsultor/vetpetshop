@@ -42,12 +42,12 @@
                                 <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                             </asp:BoundField>
                             <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta">
-                                 <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                 Wrap="False" BackColor="DarkBlue"/>
                                 <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                             </asp:BoundField>
                             <asp:BoundField HeaderText="Valor" DataField="valor">
-                                 <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                 Wrap="False" BackColor="DarkBlue"/>
                                 <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                             </asp:BoundField>
