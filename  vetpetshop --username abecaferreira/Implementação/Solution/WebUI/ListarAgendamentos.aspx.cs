@@ -61,6 +61,61 @@ namespace WebUI
             return tabelaPreenchida;
         }
 
+        protected void gdvConsultas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "alterar")
+            {
+                ViewState["id_consulta"] = e.CommandArgument.ToString();
+                pnlConsultas.Visible = true;
+                CarregarConsultaAlteracao();
+            }
+
+            if (e.CommandName == "excluir") { }
+
+                //ExcluirCliente(Convert.ToInt32(e.CommandArgument));
+        }
+
+       /* protected void ExcluirCliente(int id)
+        {
+            bool executou = false;
+
+            ClienteBuss clienteBus = new ClienteBuss();
+
+            executou = clienteBus.ExcluirCliente(id);
+
+            if (executou)
+            {
+                ViewState["hdnMSG"] = "Cliente excluído com sucesso!";
+                Response.Redirect("ListarClienteAnimal.aspx");
+            }
+            else
+            {
+                lblMsg.Text = "A exclusão não foi efetuada. Falha de conexão com o banco de dados";
+            }
+
+        }*/
+        protected void CarregarConsultaAlteracao()
+        {
+            try
+            { 
+                foreach (GridViewRow row in gdvConsultas.Rows)
+                {
+                    if ( Convert.ToInt32(row.Cells[2].Text) == Convert.ToInt32(ViewState["id_consulta"]))
+                    {
+                        lblProprietario.Text = row.Cells[3].Text;
+                        lblAnimal.Text = row.Cells[4].Text;
+                        txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
+                        txtValor.Text = row.Cells[6].Text;
+                        rblStatus.Text = row.Cells[7].Text;
+                    }
+                }     
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        
         private DataTable MontarTabela()
         {
             DataTable _tabela = new DataTable();
