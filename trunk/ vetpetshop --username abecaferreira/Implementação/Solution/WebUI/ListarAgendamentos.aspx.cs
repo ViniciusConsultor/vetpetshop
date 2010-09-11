@@ -67,34 +67,33 @@ namespace WebUI
             {
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = true;
-                CarregarConsultaAlteracao();
+                CarregarDadosConsultaAlteracao();
             }
 
             if (e.CommandName == "excluir") { }
 
-                //ExcluirCliente(Convert.ToInt32(e.CommandArgument));
+                //ExcluirConsulta(Convert.ToInt32(e.CommandArgument));
         }
 
-       /* protected void ExcluirCliente(int id)
-        {
-            bool executou = false;
+        /* protected void ExcluirConsulta(int id)
+         {
+             bool executou = false;
 
-            ClienteBuss clienteBus = new ClienteBuss();
+             AnimalBuss animalBus = new AnimalBuss();
 
-            executou = clienteBus.ExcluirCliente(id);
+             executou = animalBus.ExcluirConsulta(id);
 
-            if (executou)
-            {
-                ViewState["hdnMSG"] = "Cliente excluído com sucesso!";
-                Response.Redirect("ListarClienteAnimal.aspx");
-            }
-            else
-            {
-                lblMsg.Text = "A exclusão não foi efetuada. Falha de conexão com o banco de dados";
-            }
+             if (executou)
+             {
+                 lblMsg.text = "Consulta excluída com sucesso!";                 
+             }
+             else
+             {
+                 lblMsg.Text = "A exclusão não foi efetuada. Falha de conexão com o banco de dados";
+             }
 
-        }*/
-        protected void CarregarConsultaAlteracao()
+         }*/
+        protected void CarregarDadosConsultaAlteracao()
         {
             try
             { 
