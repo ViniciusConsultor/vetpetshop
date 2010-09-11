@@ -12,7 +12,7 @@
                 <ContentTemplate>
                     <br />
                     <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
-                        AutoGenerateColumns="False" Width="100%">
+                        AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand"><%----%>
                         <Columns>
                             <asp:TemplateField>
                             <ItemTemplate>
