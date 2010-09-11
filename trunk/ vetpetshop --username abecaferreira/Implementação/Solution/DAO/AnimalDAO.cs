@@ -374,6 +374,65 @@ namespace DAO
             return tabela;
         }
 
+        public DataTable ListarConsultasAnimais(DataTable tabela)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarConsultasAnimais";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_consulta"] = dr.GetInt32(0);
+                _linhaTabela["nm_cliente"] = dr.GetString(1);
+                _linhaTabela["nm_animal"] = dr.GetString(2);
+                if (dr.IsDBNull(3))
+                {
+                    _linhaTabela["dataconsulta"] = "";
+                }
+                else
+                {
+                    _linhaTabela["dataconsulta"] = dr.GetDateTime(3).ToString("dd/MM/yyyy");
+                }
+                if (dr.IsDBNull(4))
+                {
+                    _linhaTabela["valor"] = "";
+                }
+                else
+                {
+                    _linhaTabela["valor"] = dr.GetDecimal(4);
+                }
+                if (dr.GetInt32(5) == 0)
+                {
+                    _linhaTabela["status"] = "Agendada";                                      
+                }
+                if (dr.GetInt32(5) == 1)
+                {
+                    _linhaTabela["status"] = "Desmarcada"; 
+                }
+                if (dr.GetInt32(5) == 2)
+                {
+                    _linhaTabela["status"] = "Finalizada"; 
+                }
+                
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
         public bool AgendamentoVacinacao(Int32 idAnimal, DateTime dataproxvac)
         {
             bool executou = false;
