@@ -67,12 +67,37 @@ namespace WebUI
             {
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = true;
-                CarregarDadosConsultaAlteracao();
+
+                HtmlTextWriterTag html = new HtmlTextWriterTag();
+                WebControl wc = new WebControl(html);
+                wc = ((WebControl)e.CommandSource);
+
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);
+
+                lblProprietario.Text = row.Cells[3].Text;
+                lblAnimal.Text = row.Cells[4].Text;
+                txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
+                txtValor.Text = row.Cells[6].Text;
+
+                if (row.Cells[7].Text == "Agendada")
+                {
+                    rblStatus.SelectedIndex = 0;
+                }
+                else if (row.Cells[7].Text == "Desmarcada")
+                {
+                    rblStatus.SelectedIndex = 1;
+                }
+                else
+                {
+                    rblStatus.SelectedIndex = 2;
+                }
+
+                // CarregarDadosConsultaAlteracao();
             }
 
             if (e.CommandName == "excluir") { }
 
-                //ExcluirConsulta(Convert.ToInt32(e.CommandArgument));
+            //ExcluirConsulta(Convert.ToInt32(e.CommandArgument));
         }
 
         /* protected void ExcluirConsulta(int id)
@@ -93,28 +118,30 @@ namespace WebUI
              }
 
          }*/
-        protected void CarregarDadosConsultaAlteracao()
-        {
-            try
-            { 
-                foreach (GridViewRow row in gdvConsultas.Rows)
-                {
-                    if ( Convert.ToInt32(row.Cells[2].Text) == Convert.ToInt32(ViewState["id_consulta"]))
-                    {
-                        lblProprietario.Text = row.Cells[3].Text;
-                        lblAnimal.Text = row.Cells[4].Text;
-                        txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
-                        txtValor.Text = row.Cells[6].Text;
-                        rblStatus.Text = row.Cells[7].Text;
-                    }
-                }     
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        
+        //protected void CarregarDadosConsultaAlteracao()
+        //{
+        //    try
+        //    {
+        //        foreach (GridViewRow row in gdvConsultas.Rows)
+        //        {
+        //            int idconsulta = Convert.ToInt32(gdvConsultas.Rows[gdvConsultas.SelectedIndex].Cells[2].Text);
+
+        //            if (idconsulta == Convert.ToInt32(ViewState["id_consulta"]))
+        //            {
+        //                lblProprietario.Text = row.Cells[3].Text;
+        //                lblAnimal.Text = row.Cells[4].Text;
+        //                txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
+        //                txtValor.Text = row.Cells[6].Text;
+        //                rblStatus.Text = row.Cells[7].Text;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
+
         private DataTable MontarTabela()
         {
             DataTable _tabela = new DataTable();
@@ -135,6 +162,6 @@ namespace WebUI
 
             return _tabela;
         }
-                
+
     }
 }

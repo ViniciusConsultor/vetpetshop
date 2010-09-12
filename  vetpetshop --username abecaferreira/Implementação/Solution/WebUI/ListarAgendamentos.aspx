@@ -1,4 +1,4 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ListarAgendamentos.aspx.cs" Inherits="WebUI.ListarAgendamentos" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ListarAgendamentos.aspx.cs" Inherits="WebUI.ListarAgendamentos" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -7,12 +7,14 @@
         <asp:TabContainer ID="tabAgendamentos" runat="server" ActiveTabIndex="0" Width="100%">
             <asp:TabPanel ID="tabpnlConsultas" runat="server">
                 <HeaderTemplate>
-                    <b>Consulta veterin√°ria</b>
+                    <b>Consulta veterin·ria</b>
                 </HeaderTemplate> 
                 <ContentTemplate>
                     <br />
                     <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
-                        AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand"><%----%>
+                        AutoGenerateColumns="False" Width="100%" 
+                        OnRowCommand="gdvConsultas_RowCommand" 
+                        >
                         <Columns>
                             <asp:TemplateField>
                             <ItemTemplate>
@@ -31,7 +33,7 @@
                                     Wrap="False"/>
                                 <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                             </asp:BoundField>
-                            <asp:BoundField DataField="nm_cliente" HeaderText="Propriet√°rio" SortExpression="nm_cliente">
+                            <asp:BoundField DataField="nm_cliente" HeaderText="Propriet·rio" SortExpression="nm_cliente">
                                 <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                     Wrap="False"/>
                                 <ItemStyle HorizontalAlign="Center" Wrap="False"/>
@@ -65,7 +67,7 @@
             </asp:TabPanel>
             <asp:TabPanel ID="tabpnlVacinacoes" runat="server">
                 <HeaderTemplate>
-                    <b>Vacina√ß√µes</b>
+                    <b>VacinaÁıes</b>
                 </HeaderTemplate>
                 <ContentTemplate>
                     
@@ -75,7 +77,7 @@
         <asp:Panel ID="pnlConsultas" runat="server" Visible="False">
             <div style="width:100%; height:20px;">
                 <div style="float:left; width:200px; height:20px;">
-                    Propriet√°rio:
+                    Propriet·rio:
                 </div>
                 <div style="float:left; width:300px; height:20px;">
                     <asp:Label ID="lblProprietario" runat="server"></asp:Label>   
@@ -111,7 +113,7 @@
                 </div>
                 <div style="float:left; width:300px; height:30px;">
                     <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3">
-                        <asp:ListItem Text="Agendada" Selected="True" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Agendada" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>   
