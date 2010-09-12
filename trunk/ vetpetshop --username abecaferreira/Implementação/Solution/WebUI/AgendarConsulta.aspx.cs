@@ -154,7 +154,7 @@ namespace WebUI
         protected void btnAgendar_Click(object sender, EventArgs e)
         {
             Int32 idAnimal;
-            idAnimal = Int32.Parse(ddlAnimal.SelectedValue);
+            idAnimal = Int32.Parse(ddlAnimal.SelectedItem.Value);
 
             if (txtData.Text != "")
             {
