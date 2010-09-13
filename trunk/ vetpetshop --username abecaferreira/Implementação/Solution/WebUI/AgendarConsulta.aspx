@@ -64,7 +64,8 @@
                         <td style="height: 23px; width: 690px">
                             Status da consulta</td>
                             <td style="width: 500px; height: 23px">
-                                <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3">
+                                <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3" 
+                                    Enabled="False">
                                 <asp:ListItem Text="Agendada" Selected="True" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
