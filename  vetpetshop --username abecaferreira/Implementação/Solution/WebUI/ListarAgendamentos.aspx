@@ -13,8 +13,7 @@
                     <br />
                     <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
                         AutoGenerateColumns="False" Width="100%" 
-                        OnRowCommand="gdvConsultas_RowCommand" 
-                        >
+                        OnRowCommand="gdvConsultas_RowCommand" >
                         <Columns>
                             <asp:TemplateField>
                             <ItemTemplate>
@@ -74,6 +73,8 @@
                 </ContentTemplate>
             </asp:TabPanel>        
         </asp:TabContainer>
+        <p><asp:Label ID="lblMsg" runat="server" BackColor="Red" Font-Bold="true"></asp:Label></p>
+        <br />
         <asp:Panel ID="pnlConsultas" runat="server" Visible="False">
             <div style="width:100%; height:20px;">
                 <div style="float:left; width:200px; height:20px;">
@@ -121,8 +122,8 @@
             </div>
             <div style="width:100%; height:30px;">
                 <div style="float:left; padding-left:200px; width:300px;">
-                    <asp:Button ID="btnAlterar" runat="server" Text="Alterar" />&nbsp;
-                    <asp:Button ID="btrCancelar" runat="server" Text="Cancelar" />   
+                    <asp:Button ID="btnAlterar" runat="server" Text="Alterar" onclick="btnAlterar_Click"/>&nbsp;
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click"/>   
                 </div>
             </div>
         </asp:Panel>

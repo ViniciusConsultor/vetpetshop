@@ -91,13 +91,10 @@ namespace WebUI
                 {
                     rblStatus.SelectedIndex = 2;
                 }
-
-                // CarregarDadosConsultaAlteracao();
             }
 
             if (e.CommandName == "excluir") { }
-
-            //ExcluirConsulta(Convert.ToInt32(e.CommandArgument));
+           
         }
 
         /* protected void ExcluirConsulta(int id)
@@ -118,30 +115,7 @@ namespace WebUI
              }
 
          }*/
-        //protected void CarregarDadosConsultaAlteracao()
-        //{
-        //    try
-        //    {
-        //        foreach (GridViewRow row in gdvConsultas.Rows)
-        //        {
-        //            int idconsulta = Convert.ToInt32(gdvConsultas.Rows[gdvConsultas.SelectedIndex].Cells[2].Text);
-
-        //            if (idconsulta == Convert.ToInt32(ViewState["id_consulta"]))
-        //            {
-        //                lblProprietario.Text = row.Cells[3].Text;
-        //                lblAnimal.Text = row.Cells[4].Text;
-        //                txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
-        //                txtValor.Text = row.Cells[6].Text;
-        //                rblStatus.Text = row.Cells[7].Text;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
-
+       
         private DataTable MontarTabela()
         {
             DataTable _tabela = new DataTable();
@@ -161,6 +135,54 @@ namespace WebUI
             _tabela.Columns.Add(coluna5);
 
             return _tabela;
+        }
+
+        protected void btnAlterar_Click(object sender, EventArgs e)
+        {
+
+
+            if (txtDataConsulta.Text != "")
+            {
+                datConsulta = System.DateTime.ParseExact(txtDataConsulta.Text, "dd/MM/yyyy", null);
+            }
+            else
+            {
+                lblMsg.Text = "Digite a data da próxima vacinação";
+            }
+
+            if (ViewState["id_consulta"] != null)
+            {
+                AlterarAgendamentoConsulta();
+            }
+            else
+            {
+                lblMsg.Text = "Selecione um animal para o agendamento da vacinação";
+            }
+        }
+
+        protected void AlterarAgendamentoConsulta()
+        {
+            decimal valor = 0;
+            AnimalBuss animalBuss = new AnimalBuss();
+
+            bool executou;
+
+            if (! string.IsNullOrEmpty(txtValor.Text))
+            { 
+            valor = Convert.ToDecimal(txtValor.Text);
+            }
+
+            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datConsulta, valor, rblStatus.SelectedIndex);
+
+            if (executou)
+            {
+                CarregarConsultas();
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultVeterinario.aspx");
         }
 
     }

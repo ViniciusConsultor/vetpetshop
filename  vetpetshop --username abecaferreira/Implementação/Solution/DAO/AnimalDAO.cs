@@ -488,6 +488,64 @@ namespace DAO
             return executou;
         }
 
+        public bool AlterarAgendamentoConsulta(Int32 id_consulta, Int32 id_usuario, DateTime dataconsulta, decimal valor, Int32 status)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAtualizarAgendamentoConsulta";
+
+                SqlParameter pIdConsulta = new SqlParameter("@id_consulta", SqlDbType.Int);
+                SqlParameter pIdUsuario = new SqlParameter("@id_usuario", SqlDbType.Int);
+                SqlParameter pDatConsulta = new SqlParameter("@Data", SqlDbType.SmallDateTime);
+                SqlParameter pValor = new SqlParameter("@Valor", SqlDbType.Decimal);
+                SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
+
+                if (dataconsulta == DateTime.MinValue)
+                {
+                    pDatConsulta.Value = SqlDateTime.Null;
+                }
+                else
+                {
+                    pDatConsulta.Value = dataconsulta;
+                }
+               
+
+                cmd.Parameters.Add(new SqlParameter("@id_consulta", SqlDbType.Int)).Value = id_consulta;
+                cmd.Parameters.Add(new SqlParameter("@id_usuario", SqlDbType.Int)).Value = id_usuario;
+                cmd.Parameters.Add(pDatConsulta);
+                cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = valor;
+                cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Int)).Value = status;
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
+
         public List<Animal> ListarAnimaisTodos()
         {
             List<Animal> lstAnimal = new List<Animal>();
