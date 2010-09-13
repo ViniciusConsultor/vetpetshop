@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAO;
 using Entidade;
+using System.Data;
 
 namespace Negocios
 {
@@ -38,6 +39,13 @@ namespace Negocios
         {
             Estoque estoque = this.estoqueDAO.ObterEstoquePorId(idEstoque);
             return estoque;
+        }
+
+        public DataTable ListarEstoque(System.Data.DataTable tabela)
+        {
+            DataTable tabelaPreenchida = this.estoqueDAO.ListarEstoque(tabela);
+
+            return tabelaPreenchida;
         }
     }
 }

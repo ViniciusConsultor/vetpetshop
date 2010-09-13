@@ -210,6 +210,40 @@ namespace DAO
                 conn.Close();
             }
         }
-        
+
+
+        public DataTable ListarEstoque(DataTable tabela)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarEstoque";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_estoque"] = dr.GetInt32(0).ToString();
+                _linhaTabela["tipo"] = dr.GetString(1);
+                _linhaTabela["nm_produto"] = dr.GetString(2);
+                _linhaTabela["min"] = dr.GetInt32(3).ToString();
+                _linhaTabela["max"] = dr.GetInt32(4).ToString();
+                _linhaTabela["quantidade"] = dr.GetInt32(5).ToString();
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
     }
 }
