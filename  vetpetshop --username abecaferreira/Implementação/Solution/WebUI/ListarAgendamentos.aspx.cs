@@ -178,6 +178,9 @@ namespace WebUI
             {
                 CarregarConsultas();
             }
+
+            pnlConsultas.Visible = false;
+            lblMsg.Text = "Alteração realizada com sucesso";
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
