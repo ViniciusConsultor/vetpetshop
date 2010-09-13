@@ -38,9 +38,6 @@
                         <td style="height: 23px; width: 518px">
                             CPF*</td>
                             <td style="width: 58px; height: 23px">
-                            <asp:RegularExpressionValidator ID="regCPFCliente" runat="server" ControlToValidate="txtCPF"
-                            Display="None" ErrorMessage="O campo CPF está inválido. <br />Favor corrigí-lo."
-                            ValidationExpression="^[0-9]{11}$" ValidationGroup="ManterCadastroCliente"></asp:RegularExpressionValidator>
                          <asp:TextBox ID="txtCPF" runat="server" Width="189px"></asp:TextBox>
                         </td>
                     </tr>
