@@ -64,6 +64,12 @@ namespace Negocios
             return executou;
         }
 
+        public bool ExcluirConsulta(int id)
+        {
+            bool executou = this.animalDAO.ExcluirConsulta(id);
+            return executou;
+        }
+
         public List<Animal> ListarDDLAnimais(int idCliente)
         {
             List<Animal> _lista = new List<Animal>();

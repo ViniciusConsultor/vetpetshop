@@ -246,6 +246,48 @@ namespace DAO
             return executou;
         }
 
+        public bool ExcluirConsulta(int id)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spdExcluirConsulta";
+
+                SqlParameter pId = new SqlParameter("@Id", SqlDbType.Int, 4);
+
+                pId.Value = id;
+                cmd.Parameters.Add(pId);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
+
         public DataTable ConsultarAnimal(DataTable tabela, Int32 idAnimal)
         {
 
