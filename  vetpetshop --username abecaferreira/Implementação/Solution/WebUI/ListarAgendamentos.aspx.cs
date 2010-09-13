@@ -188,6 +188,46 @@ namespace WebUI
             lblMsg.Text = "Alteração realizada com sucesso";
         }
 
+        protected void gdvVacinacoes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "alterar")
+            {
+                ViewState["id_animal"] = e.CommandArgument.ToString();
+                pnlConsultas.Visible = false;
+
+                HtmlTextWriterTag html = new HtmlTextWriterTag();
+                WebControl wc = new WebControl(html);
+                wc = ((WebControl)e.CommandSource);
+
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);
+
+                lblProprietario.Text = row.Cells[3].Text;
+                lblAnimal.Text = row.Cells[4].Text;
+                txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
+                txtValor.Text = row.Cells[6].Text;
+
+                if (row.Cells[7].Text == "Agendada")
+                {
+                    rblStatus.SelectedIndex = 0;
+                }
+                else if (row.Cells[7].Text == "Desmarcada")
+                {
+                    rblStatus.SelectedIndex = 1;
+                }
+                else
+                {
+                    rblStatus.SelectedIndex = 2;
+                }
+            }
+
+            if (e.CommandName == "excluir")
+            {
+                ViewState["id_consulta"] = e.CommandArgument.ToString();
+                ExcluirConsulta(Convert.ToInt32(ViewState["id_consulta"]));
+            }
+
+        }
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DefaultVeterinario.aspx");
