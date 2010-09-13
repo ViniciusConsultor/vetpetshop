@@ -27,7 +27,7 @@
                 </ContentTemplate>
             </asp:TabPanel>        
         </asp:TabContainer>
-        <p><asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="Red"></asp:Label></p>
+        <p><asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label></p>
         <br />
         <asp:Panel ID="pnlConsultas" runat="server" Visible="False">
             <div style="width:100%; height:20px;">
