@@ -187,17 +187,18 @@ namespace WebUI
 
                         else
                         {
+                            estoque.Quantidade = estoque.Quantidade + Convert.ToInt32(linha.Cells[3].Text);
 
-                            if (Convert.ToInt32(linha.Cells[3].Text) >= prod.EstoqueMax)
+                            if (estoque.Quantidade >= prod.EstoqueMax)
                                 estoque.Status = 3;
 
-                            else if (Convert.ToInt32(linha.Cells[3].Text) == estoqueMedio)
+                            else if (estoque.Quantidade == estoqueMedio || estoque.Quantidade < prod.EstoqueMax)
                                 estoque.Status = 2;
 
                             else
                                 estoque.Status = 1;
 
-                            estoque.Quantidade = estoque.Quantidade + Convert.ToInt32(linha.Cells[3].Text);
+                            //estoque.Quantidade = estoque.Quantidade + Convert.ToInt32(linha.Cells[3].Text);
                         }
 
                         estoqueBuss.AtualizarEstoque(relEstoqueProd.IdEstoque, estoque.Quantidade, estoque.Status);
