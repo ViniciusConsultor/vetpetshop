@@ -324,6 +324,7 @@ namespace WebUI
                         txtPeso.Text = "";
                         txtRaca.Text = "";
                         txtNascimento.Text = "";
+                        ddlTipoAnimal.SelectedIndex = 0;
                     }
                     else
                     {
