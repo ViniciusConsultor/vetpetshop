@@ -52,6 +52,12 @@ namespace Negocios
             return executou;
         }
 
+        public bool AlterarAgendamentoConsulta(Int32 id_consulta, Int32 id_usuario, DateTime dataconsulta, decimal valor, Int32 status)
+        {
+            bool executou = this.animalDAO.AlterarAgendamentoConsulta(id_consulta, id_usuario, dataconsulta, valor, status);
+            return executou;
+        }
+
         public bool ExcluirAnimal(int id)
         {
             bool executou = this.animalDAO.ExcluirAnimal(id);
