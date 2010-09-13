@@ -93,11 +93,15 @@ namespace WebUI
                 }
             }
 
-            if (e.CommandName == "excluir") { }
+            if (e.CommandName == "excluir") 
+            { 
+                ViewState["id_consulta"] = e.CommandArgument.ToString();
+                ExcluirConsulta(Convert.ToInt32(ViewState["id_consulta"]));              
+            }
            
         }
 
-        /* protected void ExcluirConsulta(int id)
+         protected void ExcluirConsulta(int id)
          {
              bool executou = false;
 
@@ -107,14 +111,15 @@ namespace WebUI
 
              if (executou)
              {
-                 lblMsg.text = "Consulta excluída com sucesso!";                 
+                 lblMsg.Text = "Consulta excluída com sucesso!";
+                 CarregarConsultas();
              }
              else
              {
                  lblMsg.Text = "A exclusão não foi efetuada. Falha de conexão com o banco de dados";
              }
 
-         }*/
+         }
        
         private DataTable MontarTabela()
         {
