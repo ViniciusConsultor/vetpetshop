@@ -86,20 +86,21 @@ namespace WebUI
 
                  if (estoque.Status == 3)
                  {
-                     linha.BackColor = System.Drawing.Color.Green;
-                     linha.Font.Bold = true;
+                     linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#33CC66");
+                     
+                     //linha.Font.Bold = true;
                  }
 
                  else if (estoque.Status == 2)
                  {
-                     linha.BackColor = System.Drawing.Color.Yellow;
-                     linha.Font.Bold = true;
+                     linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFF99");
+                     //#ffd700
+                     //linha.Font.Bold = true;
                  }
 
                  else if (estoque.Status == 1)
                  {
-                     linha.BackColor = System.Drawing.Color.Red;
-                     linha.Font.Bold = true;
+                     linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffd700");                     
                  }
             }
         }

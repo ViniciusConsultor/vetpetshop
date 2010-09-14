@@ -24,15 +24,15 @@
                         <td style="width: 145px" class="style2">
                             Estoque mínimo/crítico
                         </td>
-                        <td style="width: 35px; background-color:Red;">
+                        <td style="width: 35px; background-color:#ffd700;">
                             &nbsp;</td>
                         <td style="width: 127px">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estoque médio</td>
-                        <td style="width: 35px; background-color:Yellow;">
+                        <td style="width: 35px; background-color:#FFFF99;">
                             &nbsp;</td>
                         <td style="width: 137px">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estoque máximo</td>
-                        <td style="width: 35px; background-color:Green;">
+                        <td style="width: 35px; background-color:#33CC66;">
                             &nbsp;</td>
                         <td>
                             &nbsp;</td>
@@ -70,7 +70,7 @@
                                 HeaderStyle-BackColor="DarkBlue" Width="100%"  
                                 onselectedindexchanged="grEstoque_SelectedIndexChanged" >
                                 <Columns>        
-                                <asp:BoundField HeaderText="Código" DataField="id_estoque" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <asp:BoundField DataField="id_estoque" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                                 <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="5%"></HeaderStyle>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>                         
