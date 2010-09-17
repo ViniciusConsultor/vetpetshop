@@ -149,22 +149,22 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel pnlVacinacao;
         
         /// <summary>
-        /// Label1 control.
+        /// lblClienteVac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblClienteVac;
         
         /// <summary>
-        /// Label2 control.
+        /// lblAnimalVac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblAnimalVac;
         
         /// <summary>
         /// txtDataVacinacao control.

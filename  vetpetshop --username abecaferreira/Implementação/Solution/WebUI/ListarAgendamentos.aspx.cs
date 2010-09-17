@@ -92,6 +92,7 @@ namespace WebUI
             {
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = true;
+                pnlVacinacao.Visible = false;
 
                 HtmlTextWriterTag html = new HtmlTextWriterTag();
                 WebControl wc = new WebControl(html);
@@ -209,8 +210,6 @@ namespace WebUI
 
         protected void btnAlterarVac_Click(object sender, EventArgs e)
         {
-
-
             if (txtDataVacinacao.Text != "")
             {
                 datVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
@@ -222,12 +221,29 @@ namespace WebUI
 
             if (ViewState["id_animal"] != null)
             {
-                //AlterarAgendamentoVacinacao();
+                AlterarAgendamentoVacinacao();
             }
             else
             {
                 lblMsg.Text = "Selecione um animal para o agendamento da vacinação";
             }
+        }
+
+        protected void AlterarAgendamentoVacinacao()
+        {
+            AnimalBuss animalBuss = new AnimalBuss();
+
+            bool executou;
+
+            executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
+
+            if (executou)
+            {
+                CarregarVacinacoes();
+            }
+
+            pnlVacinacao.Visible = false;
+            lblMsg.Text = "Alteração realizada com sucesso";
         }
 
         protected void AlterarAgendamentoConsulta()
@@ -253,12 +269,30 @@ namespace WebUI
             lblMsg.Text = "Alteração realizada com sucesso";
         }
 
+        protected void ExcluirVacinacao()
+        {
+            AnimalBuss animalBuss = new AnimalBuss();
+
+            bool executou;
+
+           executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
+
+            if (executou)
+            {
+                CarregarVacinacoes();
+            }
+
+            pnlVacinacao.Visible = false;
+            lblMsg.Text = "Alteração realizada com sucesso";
+        }
+
         protected void gdvVacinacoes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "alterar")
             {
                 ViewState["id_animal"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = false;
+                pnlVacinacao.Visible = true;
 
                 HtmlTextWriterTag html = new HtmlTextWriterTag();
                 WebControl wc = new WebControl(html);
@@ -266,8 +300,8 @@ namespace WebUI
 
                 GridViewRow row = ((GridViewRow)wc.NamingContainer);
 
-                lblProprietario.Text = row.Cells[3].Text;
-                lblAnimal.Text = row.Cells[4].Text;
+                lblClienteVac.Text = row.Cells[3].Text;
+                lblAnimalVac.Text = row.Cells[4].Text;
                 txtDataVacinacao.Text = string.Format("{0:d}", row.Cells[5].Text);
                
             }
@@ -275,7 +309,8 @@ namespace WebUI
             if (e.CommandName == "excluir")
             {
                 ViewState["id_animal"] = e.CommandArgument.ToString();
-                ExcluirConsulta(Convert.ToInt32(ViewState["id_animal"]));
+                datVacinacao = DateTime.MinValue;
+                ExcluirVacinacao();
             }
 
         }
