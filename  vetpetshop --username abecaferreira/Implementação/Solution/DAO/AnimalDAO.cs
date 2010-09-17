@@ -475,6 +475,45 @@ namespace DAO
             return tabela;
         }
 
+        public DataTable ListarVacinacoesAnimais(DataTable tabela)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarVacinacoesAnimais";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_animal"] = dr.GetInt32(0);
+                _linhaTabela["nm_cliente"] = dr.GetString(1);
+                _linhaTabela["nm_animal"] = dr.GetString(2);
+                if (dr.IsDBNull(3))
+                {
+                    _linhaTabela["datavacinacao"] = "";
+                }
+                else
+                {
+                    _linhaTabela["datavacinacao"] = dr.GetDateTime(3).ToString("dd/MM/yyyy");
+                }
+                
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
         public bool AgendamentoVacinacao(Int32 idAnimal, DateTime dataproxvac)
         {
             bool executou = false;

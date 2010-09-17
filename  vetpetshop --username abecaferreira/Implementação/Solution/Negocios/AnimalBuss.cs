@@ -101,6 +101,13 @@ namespace Negocios
             return tabelaPreenchida;
         }
 
+        public DataTable ListarVacinacoesAnimais(DataTable tabela)
+        {
+            DataTable tabelaPreenchida = new DataTable();
+
+            tabelaPreenchida = this.animalDAO.ListarVacinacoesAnimais(tabela);
+            return tabelaPreenchida;
+        }
         public List<Animal> PreencheAnimal(Int32 CodAnimal)
         {
             List<Animal> _lista = new List<Animal>();

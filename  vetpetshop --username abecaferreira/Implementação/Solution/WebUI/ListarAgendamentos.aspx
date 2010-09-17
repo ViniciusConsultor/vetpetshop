@@ -11,14 +11,53 @@
                 </HeaderTemplate> 
                 <ContentTemplate><br />
                 <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
-                        AutoGenerateColumns="False" Width="100%" 
-                        OnRowCommand="gdvConsultas_RowCommand" ><Columns><asp:TemplateField><ItemTemplate><asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("id_consulta") %>'></asp:LinkButton></ItemTemplate><ItemStyle HorizontalAlign="Center" /></asp:TemplateField><asp:TemplateField><ItemTemplate><asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton></ItemTemplate><ItemStyle HorizontalAlign="Center" /></asp:TemplateField><asp:BoundField DataField="id_consulta" visible="False"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                    Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/></asp:BoundField><asp:BoundField DataField="nm_cliente" HeaderText="Proprietário" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                    Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/></asp:BoundField><asp:BoundField DataField="nm_animal" HeaderText="Animal" SortExpression="nm_animal"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                    Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/></asp:BoundField><asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/></asp:BoundField><asp:BoundField HeaderText="Valor" DataField="valor"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/></asp:BoundField><asp:BoundField HeaderText="Status" DataField="status"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/></asp:BoundField></Columns><AlternatingRowStyle BackColor="LightSteelBlue" /><HeaderStyle BackColor="DarkBlue" /></asp:GridView><br />
+                        AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
+                        <Columns>
+                        <asp:TemplateField>
+                        <ItemTemplate>
+                        <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("id_consulta") %>'>
+                        </asp:LinkButton>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                        <ItemTemplate>
+                        <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');">
+                        </asp:LinkButton>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="id_consulta" visible="False">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                    Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="nm_cliente" HeaderText="Proprietário" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                    Wrap="False"/>
+                                    <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="nm_animal" HeaderText="Animal" SortExpression="nm_animal">
+                                    <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                    Wrap="False"/>
+                                    <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta">
+                                    <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Valor" DataField="valor">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False" BackColor="DarkBlue"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Status" DataField="status">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False" BackColor="DarkBlue"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                </Columns>
+                                <AlternatingRowStyle BackColor="LightSteelBlue" />
+                                <HeaderStyle BackColor="DarkBlue" />
+                                </asp:GridView><br />
                 </ContentTemplate>
             </asp:TabPanel>
             <asp:TabPanel ID="tabpnlVacinacoes" runat="server">
@@ -42,7 +81,7 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
-                            <asp:BoundField DataField="id_consulta" visible="False">
+                            <asp:BoundField DataField="id_animal" visible="False">
                                 <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" Wrap="False"/>
                                 <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                             </asp:BoundField>
@@ -113,6 +152,38 @@
                 <div style="float:left; padding-left:200px; width:300px;">
                     <asp:Button ID="btnAlterar" runat="server" Text="Alterar" onclick="btnAlterar_Click"/>&nbsp;
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click"/>   
+                </div>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="pnlVacinacao" runat="server" Visible="False">
+            <div style="width:100%; height:20px;">
+                <div style="float:left; width:200px; height:20px;">
+                    Proprietário:
+                </div>
+                <div style="float:left; width:300px; height:20px;">
+                    <asp:Label ID="Label1" runat="server"></asp:Label>   
+                </div>
+            </div>
+            <div style="width:100%; height:20px;">
+                <div style="float:left; width:200px; height:20px;">
+                    Animal:
+                </div>
+                <div style="float:left; width:300px; height:20px;">
+                    <asp:Label ID="Label2" runat="server"></asp:Label>   
+                </div>
+            </div>
+            <div style="width:100%; height:20px;">
+                <div style="float:left; width:200px; height:20px;">
+                    Data de vacinação:
+                </div>
+                <div style="float:left; width:300px; height:20px;">
+                    <asp:TextBox ID="txtDataVacinacao" runat="server"></asp:TextBox>   
+                </div>
+            </div>            
+            <div style="width:100%; height:30px;">
+                <div style="float:left; padding-left:200px; width:300px;">
+                    <asp:Button ID="btnAlterarVac" runat="server" Text="Alterar" onclick="btnAlterarVac_Click"/>&nbsp;
+                    <asp:Button ID="btnCancelarVac" runat="server" Text="Cancelar" onclick="btnCancelarVac_Click"/>   
                 </div>
             </div>
         </asp:Panel>
