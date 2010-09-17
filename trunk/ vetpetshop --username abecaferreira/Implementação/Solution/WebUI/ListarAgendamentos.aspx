@@ -161,7 +161,7 @@
                     Proprietário:
                 </div>
                 <div style="float:left; width:300px; height:20px;">
-                    <asp:Label ID="Label1" runat="server"></asp:Label>   
+                    <asp:Label ID="lblClienteVac" runat="server"></asp:Label>   
                 </div>
             </div>
             <div style="width:100%; height:20px;">
@@ -169,14 +169,14 @@
                     Animal:
                 </div>
                 <div style="float:left; width:300px; height:20px;">
-                    <asp:Label ID="Label2" runat="server"></asp:Label>   
+                    <asp:Label ID="lblAnimalVac" runat="server"></asp:Label>   
                 </div>
             </div>
             <div style="width:100%; height:20px;">
                 <div style="float:left; width:200px; height:20px;">
                     Data de vacinação:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:TextBox ID="txtDataVacinacao" runat="server"></asp:TextBox>   
                 </div>
             </div>            
