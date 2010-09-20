@@ -104,35 +104,35 @@
         <p><asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label></p>
         <br />
         <asp:Panel ID="pnlConsultas" runat="server" Visible="False">
-            <div style="width:100%; height:20px;">
-                <div style="float:left; width:200px; height:20px;">
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
                     Proprietário:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:Label ID="lblProprietario" runat="server"></asp:Label>   
                 </div>
             </div>
-            <div style="width:100%; height:20px;">
-                <div style="float:left; width:200px; height:20px;">
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
                     Animal:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:Label ID="lblAnimal" runat="server"></asp:Label>   
                 </div>
             </div>
-            <div style="width:100%; height:20px;">
-                <div style="float:left; width:200px; height:20px;">
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
                     Data da Consulta:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:TextBox ID="txtDataConsulta" runat="server"></asp:TextBox>   
                 </div>
             </div>
-            <div style="width:100%; height:20px;">
-                <div style="float:left; width:200px; height:20px;">
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
                     Valor da Consulta:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>   
                 </div>
             </div>
@@ -141,7 +141,7 @@
                     Status da Consulta:
                 </div>
                 <div style="float:left; width:300px; height:30px;">
-                    <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3">
+                    <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3" Width="300px">
                         <asp:ListItem Text="Agendada" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
@@ -156,24 +156,24 @@
             </div>
         </asp:Panel>
         <asp:Panel ID="pnlVacinacao" runat="server" Visible="False">
-            <div style="width:100%; height:20px;">
-                <div style="float:left; width:200px; height:20px;">
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
                     Proprietário:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:Label ID="lblClienteVac" runat="server"></asp:Label>   
                 </div>
             </div>
-            <div style="width:100%; height:20px;">
-                <div style="float:left; width:200px; height:20px;">
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
                     Animal:
                 </div>
-                <div style="float:left; width:300px; height:20px;">
+                <div style="float:left; width:300px; height:30px;">
                     <asp:Label ID="lblAnimalVac" runat="server"></asp:Label>   
                 </div>
             </div>
             <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:20px;">
+                <div style="float:left; width:200px; height:30px;">
                     Data de vacinação:
                 </div>
                 <div style="float:left; width:300px; height:30px;">
