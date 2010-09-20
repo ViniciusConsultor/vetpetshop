@@ -58,7 +58,7 @@
                     <table style="width: 100%; height: 305px;" align="center">
                     <tr>
                         <td colspan="2" align="center"> 
-                        <img src="images/bannercreator-nu (4).gif"</img>                       
+                        <img src="style/img/bannerlogin.gif"</img>                       
                         </td>
                     </tr>  
                     <tr>
