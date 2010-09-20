@@ -1,105 +1,67 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Vetpetshop.master.cs" Inherits="WebUI.Vetpetshop" %>
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vetpetshop</title>
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
- <head runat="server">
-    <title> Vetpetshop </title>   
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script src="alerts.js" type="text/javascript"></script>
-<link rel="stylesheet" href="Estilo.css" type="text/css" />
+<!-- CSS -->
+<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" />
 
-<style type="text/css"> 
-       
-       A:link {text-decoration: none;}
-       A:visited {text-decoration: none;}
-       A:hover {color: #0066cc}   
-    .style2
-    {
-        width: 165px;
-    }
-    
-</style>
+<!-- JavaScripts-->
+<script type="text/javascript" src="style/js/jquery.js"></script>
+<script type="text/javascript" src="style/js/jNice.js"></script>
+</head>
 
-</head> 
 <body>
-<form id="form1" runat="server">
-<div>
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-    </asp:ToolkitScriptManager>
-</div>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td colspan="2">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">       
-        <tr> 
-          <td><img src="./images/logo.gif" width="1200" height="35"></td>
-        </tr>
-        <tr> 
-          <td>
-            <table border="0" cellspacing="0" cellpadding="0" style="width: 1197px">
-              <tr>
-                <td bgcolor="1F2AB9" width="225">&nbsp;</td>
-                <td width="225" background="./images/bg.jpg"></td>
-                  <td width="225" background="./images/bg.jpg"></td>
-                  <td width="225" background="./images/bg.jpg"></td>
-                <td width="225" background="./images/bg.jpg"></td>
-                <td width="225" background="./images/bg.jpg"></td>
-                <td><img src="./images/lowerend.gif" width="30" height="50"></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr> 
-    <td width="150">      
-    </td>    
-  </tr>
-</table>    
- 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" 
-    style="height: 768px; width: 1024px;">
-  <tr>
-    <td valign="top" bgcolor="#6666ff" class="style2">
-      <table width="165" border="0" cellspacing="0" cellpadding="0">
+	<div id="wrapper" runat="server">
+    	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
+    	<h1><a href="#"><span>Vetpetshop</span></a></h1>
         
-      </table>
-      <table border="0" cellspacing="0" cellpadding="0" style="width: 99%">
-        <tr>
-          <td bgcolor="#6666ff">
-            <p style="width: 159px">
-                <asp:SiteMapDataSource ID="adm" SiteMapProvider="administrador" runat="server" ShowStartingNode="false" />
-                <asp:SiteMapDataSource ID="vend" SiteMapProvider="vendedor" runat="server" ShowStartingNode="false" />
-                <asp:SiteMapDataSource ID="vet" SiteMapProvider="veterinario" runat="server" ShowStartingNode="false" />
-                <asp:Menu ID="Menu1" runat="server" Font-Bold="true"  ForeColor="Azure"></asp:Menu>
-              </p>
-            <p>&nbsp;</p>
-          </td>
-        </tr>
-      </table>
-    </td> 
+        <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
+        <ul id="mainNav">
+        	<li><a href="#">Ola</a></li>
+        	<li class="logout"><a href="#">LOGOUT</a></li>
+        </ul>
+        <!-- // #end mainNav -->
+        
+        <div id="containerHolder">
+          <form id="Form1" runat="server">
+			<div id="container">
+        		<div id="sidebar">
+                	<ul class="sideNav">
+                    	<li><asp:SiteMapDataSource ID="adm" SiteMapProvider="administrador" runat="server" ShowStartingNode="false" />
+                            <asp:SiteMapDataSource ID="vend" SiteMapProvider="vendedor" runat="server" ShowStartingNode="false" />
+                            <asp:SiteMapDataSource ID="vet" SiteMapProvider="veterinario" runat="server" ShowStartingNode="false" />
+                            <asp:Menu ID="Menu1" runat="server" Font-Bold="true" Width="179px"></asp:Menu>
+                        </li>
+                    </ul>
+                    <!-- // .sideNav -->
+                </div>    
+                <!-- // #sidebar -->
+                
+                <div id="principal">
+                	<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                    </asp:ToolkitScriptManager>
+                	<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">     
+                    </asp:ContentPlaceHolder>
+                </div>
+                <!-- // #main -->
+                
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        	</form>
+        </div>
+        <!-- // #containerHolder -->
+        
+        <p id="footer">2010 Vetpetshop - Todos os direitos reservados</p>
     
+    </div>
+    <!-- // #wrapper -->
     
-    <td valign="top">        
-   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">     
-
-      
-  </asp:ContentPlaceHolder>
-    </td>
-  </tr>
-</table>  
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#000066"
-        style="height: 17px">
-<tr>
-<td align="center"><asp:Label ID="direitos" runat="server" ForeColor="White" Font-Size="X-Small" Text="2010 Vetpetshop - Todos os direitos reservados"></asp:Label></td>
-</tr>
-</table>
- </form>
-
 </body>
 </html>
