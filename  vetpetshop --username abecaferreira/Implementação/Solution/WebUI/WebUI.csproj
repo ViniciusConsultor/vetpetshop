@@ -207,21 +207,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\bg.jpg" />
-    <Content Include="images\bg.png" />
-    <Content Include="images\hbbottomleft.gif" />
-    <Content Include="images\hbbottomright.gif" />
-    <Content Include="images\hbtopleft.gif" />
-    <Content Include="images\hbtopright.gif" />
-    <Content Include="images\horizontalbar.gif" />
-    <Content Include="images\leftend.gif" />
-    <Content Include="images\logo.gif" />
-    <Content Include="images\lowerend.gif" />
-    <Content Include="images\middleend.gif" />
-    <Content Include="images\navbarend.gif" />
-    <Content Include="images\navbarmiddle.gif" />
-    <Content Include="images\navbartop.gif" />
-    <Content Include="images\rightend.gif" />
     <Content Include="Vetpetshop.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -233,17 +218,13 @@
   <ItemGroup>
     <Content Include="AgendarConsulta.aspx" />
     <Content Include="AgendarVacinacao.aspx" />
-    <Content Include="alerts.js" />
     <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="CadastroPedidoDeCompra.aspx" />
     <Content Include="CadastroProduto.aspx" />
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVendedor.aspx" />
     <Content Include="DefaultVeterinario.aspx" />
-    <Content Include="Estilo.css" />
     <Content Include="FormularioProduto.aspx" />
-    <Content Include="images\bannercreator-nu %282%29.gif" />
-    <Content Include="images\bannercreator-nu %284%29.gif" />
     <Content Include="ListaPedidoDeCompra.aspx" />
     <Content Include="ListarAgendamentos.aspx" />
     <Content Include="ListarClienteAnimal.aspx" />
@@ -253,6 +234,33 @@
     <Content Include="ManterUsuario.aspx" />
     <Content Include="MenuAdmin.sitemap" />
     <Content Include="RecebimentoPedidoDeCompra.aspx" />
+    <Content Include="style\css\hack.css" />
+    <Content Include="style\css\ie6.css" />
+    <Content Include="style\css\ie7.css" />
+    <Content Include="style\css\jNice.css" />
+    <Content Include="style\css\layout.css" />
+    <Content Include="style\css\reset.css" />
+    <Content Include="style\css\transdmin.css" />
+    <Content Include="style\img\bannerlogin.gif" />
+    <Content Include="style\img\btn_left.gif" />
+    <Content Include="style\img\btn_right.gif" />
+    <Content Include="style\img\button-submit.gif" />
+    <Content Include="style\img\caobebe.jpg" />
+    <Content Include="style\img\content.gif" />
+    <Content Include="style\img\headertitle.gif" />
+    <Content Include="style\img\input-shaddow-hover.gif" />
+    <Content Include="style\img\input-shaddow.gif" />
+    <Content Include="style\img\left-menu-bg.gif" />
+    <Content Include="style\img\select_left.gif" />
+    <Content Include="style\img\select_right.gif" />
+    <Content Include="style\img\top-menu-bg.gif" />
+    <Content Include="style\img\top-menu-item-bg.gif" />
+    <Content Include="style\img\transdmin-light.gif" />
+    <Content Include="style\js\alerts.js" />
+    <Content Include="style\js\ie_png.js" />
+    <Content Include="style\js\jNice.js" />
+    <Content Include="style\js\jquery.js" />
+    <Content Include="style\js\VetPetShop.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
