@@ -172,7 +172,7 @@
                     <asp:Label ID="lblAnimalVac" runat="server"></asp:Label>   
                 </div>
             </div>
-            <div style="width:100%; height:20px;">
+            <div style="width:100%; height:30px;">
                 <div style="float:left; width:200px; height:20px;">
                     Data de vacinação:
                 </div>
