@@ -285,7 +285,7 @@
             </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
-                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" Font-Size="Medium" 
+                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" Font-Size="Small" 
                 onrowcommand="grClientes_RowCommand">
                 <Columns>
                     <asp:TemplateField>
