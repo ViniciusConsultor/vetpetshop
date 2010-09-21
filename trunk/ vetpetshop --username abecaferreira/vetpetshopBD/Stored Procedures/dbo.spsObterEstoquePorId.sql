@@ -1,0 +1,12 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE PROCEDURE [dbo].[spsObterEstoquePorId] 
+	@IdEstoque INT	
+AS
+BEGIN
+	SELECT * FROM Estoque WHERE Id = @IdEstoque
+END
+GO
