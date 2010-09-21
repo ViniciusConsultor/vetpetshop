@@ -54,6 +54,19 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 518px">
+                            Sexo*</td>
+                            <td style="width: 58px; height: 23px">
+                            <asp:DropDownList ID="ddlSexoCliente" runat="server" width="189px">
+                            <asp:ListItem Value="">Selecione</asp:ListItem>
+                            <asp:ListItem Value="Masculino">Masculino</asp:ListItem>
+                            <asp:ListItem Value="Feminino">Feminino</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>                                                                               
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 518px">
                             Telefone*</td>
                             <td style="width: 58px; height: 23px">
                          <asp:TextBox ID="txtTel" runat="server" Width="189px"></asp:TextBox>
@@ -152,6 +165,17 @@
                                     </tr>
                                     <tr>
                                         <td style="height: 23px; width: 337px">
+                                            Sexo do Animal*</td>
+                                        <td style="height: 23px; width: 330px">
+                                            <asp:DropDownList ID="ddlSexoAnimal" runat="server" width="189px">
+                                            <asp:ListItem Value="">Selecione</asp:ListItem>
+                                            <asp:ListItem Value="Masculino">Masculino</asp:ListItem>
+                                            <asp:ListItem Value="Feminino">Feminino</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>                                                                               
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 23px; width: 337px">
                                             Tipo do Animal*</td>
                                         <td style="height: 23px; width: 330px">
                                             <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="189px">
@@ -193,8 +217,17 @@
                         <td style="height: 23px; width: 337px">
                         </td>
                         <td align="center" style="height: 23px; width: 392px">
+                         * Preenchimento Obrigatório.         
+                        </td>                                        
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                        <td style="height: 23px; width: 337px">
+                        </td>
+                        <td align="center" style="height: 23px; width: 392px">
                         <asp:Button width="30%" ID="btnCancelar" runat="server" Text="Cancelar" 
-                                onclick="btnCancelar_Click" /> &nbsp;
+                                 OnClientClick="window.history.back();" /> &nbsp;
                         <asp:Button  width="30%" ID="btnSalvar" runat="server" Text="Salvar" 
                             onclick="btnSalvar_Click" />
                         <asp:Button  width="30%" ID="btnSalvar2" runat="server" Text="Salvar" 
@@ -252,7 +285,7 @@
             </asp:ObjectDataSource>
             <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
-                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" 
+                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" Font-Size="Medium" 
                 onrowcommand="grClientes_RowCommand">
                 <Columns>
                     <asp:TemplateField>

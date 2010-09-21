@@ -38,6 +38,7 @@ namespace DAO
 
                 SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 50);
                 SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
+                SqlParameter pSexo = new SqlParameter("@Sexo", SqlDbType.VarChar, 10);
                 SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
                 SqlParameter pCelular = new SqlParameter("@Num_Cel", SqlDbType.VarChar, 20);
                 SqlParameter pRG = new SqlParameter("@Num_RG", SqlDbType.VarChar, 20);
@@ -50,6 +51,7 @@ namespace DAO
 
                 pnomeCliente.Value = cliente.Nome;
                 pCpf.Value = cliente.CPF;
+                pSexo.Value = cliente.Sexo;
                 pTelefone.Value = cliente.Telefone1;
                 pCelular.Value = cliente.Telefone2;
                 pRG.Value = cliente.RG;
@@ -62,6 +64,7 @@ namespace DAO
 
                 cmd.Parameters.Add(pnomeCliente);
                 cmd.Parameters.Add(pCpf);
+                cmd.Parameters.Add(pSexo);
                 cmd.Parameters.Add(pTelefone);
                 cmd.Parameters.Add(pCelular);
                 cmd.Parameters.Add(pRG);
@@ -111,6 +114,7 @@ namespace DAO
                 SqlParameter pIdCliente = new SqlParameter("@IdCliente", SqlDbType.Int);
                 SqlParameter pnomeCliente = new SqlParameter("@Nome_Cliente", SqlDbType.VarChar, 50);
                 SqlParameter pCpf = new SqlParameter("@Num_Cpf", SqlDbType.VarChar, 20);
+                SqlParameter pSexo = new SqlParameter("@Sexo", SqlDbType.VarChar, 10);
                 SqlParameter pTelefone = new SqlParameter("@Num_Tel", SqlDbType.VarChar, 20);
                 SqlParameter pCelular = new SqlParameter("@Num_Cel", SqlDbType.VarChar, 20);
                 SqlParameter pRG = new SqlParameter("@Num_RG", SqlDbType.VarChar, 20);
@@ -124,6 +128,7 @@ namespace DAO
                 pIdCliente.Value = cliente.IdCliente;
                 pnomeCliente.Value = cliente.Nome;
                 pCpf.Value = cliente.CPF;
+                pSexo.Value = cliente.Sexo;
                 pTelefone.Value = cliente.Telefone1;
                 pCelular.Value = cliente.Telefone2;
                 pRG.Value = cliente.RG;
@@ -137,6 +142,7 @@ namespace DAO
                 cmd.Parameters.Add(pIdCliente);
                 cmd.Parameters.Add(pnomeCliente);
                 cmd.Parameters.Add(pCpf);
+                cmd.Parameters.Add(pSexo);
                 cmd.Parameters.Add(pTelefone);
                 cmd.Parameters.Add(pCelular);
                 cmd.Parameters.Add(pRG);
@@ -239,6 +245,7 @@ namespace DAO
                     cliente.Cidade = dr.IsDBNull(9) ? "" : dr.GetString(9);
                     cliente.Estado = dr.IsDBNull(10) ? "" : dr.GetString(10);
                     cliente.CEP = dr.IsDBNull(11) ? "" : dr.GetString(11);
+                    cliente.Sexo = dr.IsDBNull(12) ? "" : dr.GetString(12);
 
                     lstCliente.Add(cliente);
                 }
@@ -327,6 +334,7 @@ namespace DAO
                 cliente.Cidade = dr.GetString(9);
                 cliente.Estado = dr.GetString(10);
                 cliente.CEP = dr.GetString(11);
+                cliente.Sexo = dr.GetString(12);
 
                 _lista.Add(cliente);
             }

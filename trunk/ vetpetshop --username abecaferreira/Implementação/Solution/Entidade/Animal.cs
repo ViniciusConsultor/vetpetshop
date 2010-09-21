@@ -11,6 +11,7 @@ namespace Entidade
         public int IdAnimal { get; set; }
         public string Nome { get; set; }
         public int IdTipoAnimal { get; set; }
+        public string Sexo { get; set; } 
         public int IdCliente { get; set; }
         public decimal Peso { get; set; }
         public string Raca { get; set; }
