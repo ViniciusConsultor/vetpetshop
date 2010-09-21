@@ -327,3 +327,23 @@ div.scroll
 	border:1px solid #b8b8b8;
 	overflow:scroll;
 }
+
+
+
+table {border-collapse:collapse; font-size:10px;}
+table thead tr.top td {text-transform:uppercase;text-align:center;background:#cdcdcd;}
+table thead tr.top1 td {text-transform:uppercase;background:#cdcdcd;}
+table thead td, table tfoot td {padding:5px;font-weight:bold;background:#e2e2e2;vertical-align:top;}
+table thead td a {color:#000;}
+table tbody tr:hover {background:#fcfcfc;}
+table tbody tr.dest td {background:#cdcdcd;}
+table tbody td {padding:3px 5px 5px 5px;}
+table tbody td ul.ckb li {float:left;width:100px;padding:0 5px;white-space:nowrap;}
+table tbody td ul.mn {top:auto !important;right:auto !important;margin:20px 0 0 5px !important;}
+table tbody td span {font-weight:bold;}
+table tbody td span.nm {margin-bottom:0;font-weight:normal;}
+table tbody td a {color:#020202;}
+table tr.head td {font-weight:bold;background:#f4f4f4;}
+table tr.edit td {font-size:9px;color:#666;text-align:center;background:#e2e2e2;}
+table.brd {border:1px solid #a7a7a7;}
+table.brdInt td {border:1px solid #cecece}
