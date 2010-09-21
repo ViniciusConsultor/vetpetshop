@@ -43,6 +43,7 @@ namespace DAO
                 SqlParameter pRaca = new SqlParameter("@Raca", SqlDbType.VarChar, 50);
                 SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
                 SqlParameter pDatNascimento = new SqlParameter("@DataNascimento", SqlDbType.SmallDateTime);
+                SqlParameter pSexo = new SqlParameter("@Sexo", SqlDbType.VarChar, 10);
 
                 
                 pIdCliente.Value = animal.IdCliente;
@@ -51,6 +52,7 @@ namespace DAO
                 pRaca.Value = animal.Raca;
                 pNome.Value = animal.Nome;
                 pDatNascimento.Value = animal.DataNascimento;
+                pSexo.Value = animal.Sexo;
 
                 cmd.Parameters.Add(pIdCliente);
                 cmd.Parameters.Add(pIdTipoAnimal);
@@ -58,6 +60,7 @@ namespace DAO
                 cmd.Parameters.Add(pRaca);
                 cmd.Parameters.Add(pNome);
                 cmd.Parameters.Add(pDatNascimento);
+                cmd.Parameters.Add(pSexo);
                 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
@@ -117,6 +120,7 @@ namespace DAO
                     animal.DataFimVacinacao = dr.IsDBNull(6) ? DateTime.MinValue : dr.GetDateTime(6);
                     animal.IdTipoAnimal = dr.GetInt32(7);
                     animal.IdCliente = dr.GetInt32(8);
+                    animal.Sexo = dr.GetString(9);
 
                     lstAnimal.Add(animal);
                 }
@@ -709,6 +713,7 @@ namespace DAO
                 animal.DataNascimento = dr.IsDBNull(4) ? DateTime.MinValue : dr.GetDateTime(4);
                 animal.IdTipoAnimal = dr.GetInt32(5);
                 animal.IdCliente = dr.GetInt32(6);
+                animal.Sexo = dr.GetString(7);
 
                 _lista.Add(animal);
             }
@@ -736,6 +741,7 @@ namespace DAO
                 SqlParameter pRaca = new SqlParameter("@Raca", SqlDbType.VarChar, 20);
                 SqlParameter pNascimento = new SqlParameter("@Nascimento", SqlDbType.DateTime);
                 SqlParameter pTipoAnimal = new SqlParameter("@TipoAnimal", SqlDbType.Int);
+                SqlParameter pSexo = new SqlParameter("@Sexo", SqlDbType.VarChar, 10);
 
                 pIdAnimal.Value = animal.IdAnimal;
                 pnomeAnimal.Value = animal.Nome;
@@ -743,6 +749,7 @@ namespace DAO
                 pRaca.Value = animal.Raca;
                 pNascimento.Value = animal.DataNascimento;
                 pTipoAnimal.Value = animal.IdTipoAnimal;
+                pSexo.Value = animal.Sexo;
 
                 cmd.Parameters.Add(pIdAnimal);
                 cmd.Parameters.Add(pnomeAnimal);
@@ -750,6 +757,7 @@ namespace DAO
                 cmd.Parameters.Add(pRaca);
                 cmd.Parameters.Add(pNascimento);
                 cmd.Parameters.Add(pTipoAnimal);
+                cmd.Parameters.Add(pSexo);
 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();

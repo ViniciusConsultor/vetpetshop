@@ -59,6 +59,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtRG;
         
         /// <summary>
+        /// ddlSexoCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexoCliente;
+        
+        /// <summary>
         /// txtTel control.
         /// </summary>
         /// <remarks>
@@ -156,6 +165,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNomeAnimal;
+        
+        /// <summary>
+        /// ddlSexoAnimal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexoAnimal;
         
         /// <summary>
         /// ddlTipoAnimal control.

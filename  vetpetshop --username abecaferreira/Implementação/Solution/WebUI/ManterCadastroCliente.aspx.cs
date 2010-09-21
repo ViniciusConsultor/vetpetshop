@@ -120,6 +120,12 @@ namespace WebUI
                     return;
                 }
 
+                if (ddlSexoCliente.SelectedIndex == 0)
+                {
+                    lblMsg.Text = "Preencha o sexo do cliente";
+                    return;
+                }
+
                 if (txtTel.Text == "")
                 {
                     lblMsg.Text = "Preencha o telefone do cliente";
@@ -136,6 +142,7 @@ namespace WebUI
 
             cliente.Nome = txtNomeCli.Text;
             cliente.CPF = txtCPF.Text;
+            cliente.Sexo = ddlSexoCliente.SelectedValue;
             cliente.Telefone1 = txtTel.Text;
             cliente.Telefone2 = txtCel.Text;
             cliente.RG = txtRG.Text;
@@ -152,6 +159,7 @@ namespace WebUI
                 lblMsg.Text = "Cadastro efetuado com sucesso";
                 txtNomeCli.Text = "";
                 txtCPF.Text = "";
+                ddlSexoCliente.SelectedIndex = 0;
                 txtRG.Text = "";
                 txtTel.Text = "";
                 txtCel.Text = "";
@@ -190,6 +198,12 @@ namespace WebUI
                     return;
                 }
 
+                if (ddlSexoCliente.SelectedIndex == 0)
+                {
+                    lblMsg.Text = "Preencha o sexo do cliente";
+                    return;
+                }
+
                 if (txtTel.Text == "")
                 {
                     lblMsg.Text = "Preencha o telefone do cliente";
@@ -207,6 +221,7 @@ namespace WebUI
             cliente.IdCliente = Convert.ToInt32(ViewState["hdnCodCliente"]);
             cliente.Nome = txtNomeCli.Text;
             cliente.CPF = txtCPF.Text;
+            cliente.Sexo = ddlSexoCliente.SelectedValue;
             cliente.Telefone1 = txtTel.Text;
             cliente.Telefone2 = txtCel.Text;
             cliente.RG = txtRG.Text;
@@ -223,6 +238,7 @@ namespace WebUI
                 lblMsg.Text = "Alteração efetuada com sucesso";
                 txtNomeCli.Text = "";
                 txtCPF.Text = "";
+                ddlSexoCliente.SelectedIndex = 0;
                 txtRG.Text = "";
                 txtTel.Text = "";
                 txtCel.Text = "";
@@ -243,6 +259,7 @@ namespace WebUI
         {
             Cache.Remove("txtNomeCli");
             Cache.Remove("txtCPF");
+            Cache.Remove("ddlSexoCliente");    
             Cache.Remove("txtRG");
             Cache.Remove("txtTel");
             Cache.Remove("txtCel");
@@ -257,7 +274,7 @@ namespace WebUI
             Cache.Remove("txtRaca");
             Cache.Remove("txtNascimento");
             Cache.Remove("ddlTipoAnimal");
-                
+            Cache.Remove("ddlSexoAnimal");    
             
         }
 
@@ -293,6 +310,12 @@ namespace WebUI
                         lblMsg.Text = "Preencha o tipo do animal";
                         return;
                     }
+                    
+                    if (ddlSexoAnimal.SelectedIndex == 0)
+                    {
+                        lblMsg.Text = "Preencha o sexo do animal";
+                        return;
+                    }
 
                     if (txtNascimento.Text != string.Empty)
                     {
@@ -315,6 +338,7 @@ namespace WebUI
                     animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
                     animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
                     animal.IdCliente = Convert.ToInt32(CodCliente);
+                    animal.Sexo = ddlSexoAnimal.SelectedValue;
                     executou = animalBus.InserirAnimal(animal);
 
                     if (executou)
@@ -325,6 +349,7 @@ namespace WebUI
                         txtRaca.Text = "";
                         txtNascimento.Text = "";
                         ddlTipoAnimal.SelectedIndex = 0;
+                        ddlSexoAnimal.SelectedIndex = 0;
                     }
                     else
                     {
@@ -342,6 +367,7 @@ namespace WebUI
             foreach (Cliente cliente in _listaCliente) {
                 txtNomeCli.Text = cliente.Nome;
                 txtCPF.Text = cliente.CPF;
+                ddlSexoCliente.SelectedValue = cliente.Sexo;
                 txtTel.Text = cliente.Telefone1;
                 txtCel.Text = cliente.Telefone2;
                 txtRG.Text = cliente.RG;
@@ -358,6 +384,7 @@ namespace WebUI
             btnSalvar2.Visible = true;
             txtNomeCli.Enabled = false;
             txtCPF.Enabled = false;
+            ddlSexoCliente.Enabled = false;
             txtRG.Enabled = false;
             txtTel.Enabled = false;
             txtEmail.Enabled = false;
@@ -383,6 +410,7 @@ namespace WebUI
             {
                 txtNomeCli.Text = cliente.Nome;
                 txtCPF.Text = cliente.CPF;
+                ddlSexoCliente.SelectedValue = cliente.Sexo;
                 txtTel.Text = cliente.Telefone1;
                 txtCel.Text = cliente.Telefone2;
                 txtRG.Text = cliente.RG;
@@ -420,6 +448,7 @@ namespace WebUI
                 txtRaca.Text = animal.Raca;
                 txtNascimento.Text = animal.DataNascimento.ToString("dd/MM/yyyy");
                 ddlTipoAnimal.SelectedIndex = animal.IdTipoAnimal;
+                ddlSexoAnimal.SelectedValue = animal.Sexo;
                 PreencheUsuario(animal.IdCliente);
             }
             lblMsg.Text = "Dados Carregados";
@@ -433,6 +462,7 @@ namespace WebUI
             BtnBuscar.Enabled = false;
             txtNomeCli.Enabled = false;
             txtCPF.Enabled = false;
+            ddlSexoCliente.Enabled = false;
             txtRG.Enabled = false;
             txtTel.Enabled = false;
             txtEmail.Enabled = false;
@@ -466,6 +496,12 @@ namespace WebUI
                 return;
             }
 
+            if (ddlSexoCliente.SelectedIndex == 0)
+            {
+                lblMsg.Text = "Preencha o sexo do cliente";
+                return;
+            }
+
             if (txtTel.Text == "")
             {
                 lblMsg.Text = "Preencha o telefone do cliente";
@@ -482,6 +518,7 @@ namespace WebUI
             cliente.IdCliente = Convert.ToInt32(ViewState["hdnCodCliente"]);
             cliente.Nome = txtNomeCli.Text;
             cliente.CPF = txtCPF.Text;
+            cliente.Sexo = ddlSexoCliente.SelectedValue;
             cliente.Telefone1 = txtTel.Text;
             cliente.Telefone2 = txtCel.Text;
             cliente.RG = txtRG.Text;
@@ -498,6 +535,7 @@ namespace WebUI
                 lblMsg.Text = "Alteração de cliente efetuada com sucesso";
                 txtNomeCli.Text = "";
                 txtCPF.Text = "";
+                ddlSexoCliente.SelectedIndex = 0;
                 txtRG.Text = "";
                 txtTel.Text = "";
                 txtCel.Text = "";
@@ -549,6 +587,12 @@ namespace WebUI
                 return;
             }
 
+            if (ddlSexoAnimal.SelectedIndex == 0)
+            {
+                lblMsg.Text = "Preencha o sexo do animal";
+                return;
+            }
+
             if (txtNascimento.Text != string.Empty)
             {
                 try
@@ -570,6 +614,8 @@ namespace WebUI
             animal.Raca = txtRaca.Text;
             animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
             animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
+            animal.Sexo = ddlSexoAnimal.SelectedValue;
+            
             executou = animalBus.AlterarAnimal(animal);
 
             if (executou)
@@ -580,6 +626,7 @@ namespace WebUI
                 txtRaca.Text = "";
                 txtNascimento.Text = "";
                 ddlTipoAnimal.SelectedIndex = 0;
+                ddlSexoAnimal.SelectedIndex = 0;
             }
             else
             {
@@ -600,6 +647,7 @@ namespace WebUI
             txtBairro.Text = "";
             txtCidade.Text = "";
             txtEstado.Text = "";
+            ddlSexoCliente.SelectedIndex = 0;
             ModalPopupExtender1.Show();
         }
 
@@ -613,11 +661,6 @@ namespace WebUI
         protected void btnSalvar2_Click(object sender, EventArgs e)
         {
             RealizaCadastroAnimal();
-        }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DefaultVendedor.aspx");
         }
 
     }
