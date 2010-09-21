@@ -318,3 +318,12 @@ h3 {
     border:2px solid #0033FF;
     width:50%;
 } 
+
+div.scroll
+{
+	clear:right;
+	margin-top:5px;
+	max-height:350px;
+	border:1px solid #b8b8b8;
+	overflow:scroll;
+}
