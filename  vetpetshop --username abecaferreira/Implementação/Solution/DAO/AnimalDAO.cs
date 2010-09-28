@@ -842,5 +842,48 @@ namespace DAO
 
             return executou;
         }
+
+        public bool RegistrarPagamento(Int32 idConsulta)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAtualizarPagamentoConsulta";
+
+                SqlParameter pIdConsulta = new SqlParameter("@IdConsulta", SqlDbType.Int);
+
+                pIdConsulta.Value = idConsulta;
+
+                cmd.Parameters.Add(pIdConsulta);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        
+        }
     }
 }

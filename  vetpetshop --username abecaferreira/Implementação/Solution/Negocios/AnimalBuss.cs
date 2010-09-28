@@ -120,5 +120,11 @@ namespace Negocios
             bool executou = this.animalDAO.AgendamentoConsulta(idUsuario, idAnimal, Valor, datConsulta, status);
             return executou;
         }
+
+        public bool RegistrarPagamento(Int32 idConsulta) 
+        {
+            bool executou = this.animalDAO.RegistrarPagamento(idConsulta);
+            return executou;
+        }
     }
 }
