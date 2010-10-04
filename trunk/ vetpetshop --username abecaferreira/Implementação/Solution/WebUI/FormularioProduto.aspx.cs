@@ -52,9 +52,15 @@ namespace WebUI
                 txtEstoqueMin.Text = produto.EstoqueMin.ToString();
                 txtEstoqueMax.Text = produto.EstoqueMax.ToString();
                 txtDesc.Text = produto.Descricao;
-                txtAno.Text = produto.DataValidade.Year.ToString();
-                txtMes.Text = produto.DataValidade.Month.ToString();
-                txtDia.Text = produto.DataValidade.Day.ToString();            
+
+                if (produto.DataValidade != null)
+                {
+                    DateTime dtVal = new DateTime();
+                    dtVal = Convert.ToDateTime(produto.DataValidade.Value);
+                    txtAno.Text = dtVal.Year.ToString();
+                    txtMes.Text = dtVal.Month.ToString();
+                    txtDia.Text = dtVal.Day.ToString();
+                }
             }            
         }
 

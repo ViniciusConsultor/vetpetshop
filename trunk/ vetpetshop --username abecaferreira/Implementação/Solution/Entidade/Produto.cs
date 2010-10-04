@@ -16,9 +16,10 @@ namespace Entidade
         public int EstoqueMax { get; set; }
         public string Descricao { get; set; }
         public decimal PrecoCusto { get; set; }
-        public DateTime DataValidade { get; set; }
+        public Nullable<DateTime> DataValidade { get; set; }
         public decimal PrecoVenda { get; set; }
         public int Quantidade { get; set; }
+        public string NomeGrupo { get; set; }
 
         public int EstoqueMedio
         {
