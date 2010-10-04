@@ -62,5 +62,13 @@ namespace Negocios
            executou = this.produtoDAO.AtualizarProduto(produto, id);
            return executou;
        }
+
+       public List<Produto> ListarProdutos(string nome, int id)
+       {
+           List<Produto> _lista = new List<Produto>();
+
+           _lista = this.produtoDAO.ListarProduto(nome, id);
+           return _lista;
+       }
     }
 }

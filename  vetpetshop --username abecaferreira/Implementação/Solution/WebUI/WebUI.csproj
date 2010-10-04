@@ -195,6 +195,13 @@
     <Compile Include="RegistrarPagamentoConsulta.aspx.designer.cs">
       <DependentUpon>RegistrarPagamentoConsulta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarPagamentoProdutos.aspx.cs">
+      <DependentUpon>RegistrarPagamentoProdutos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarPagamentoProdutos.aspx.designer.cs">
+      <DependentUpon>RegistrarPagamentoProdutos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vetpetshop.Master.cs">
       <DependentUpon>Vetpetshop.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -242,6 +249,7 @@
     <Content Include="MenuAdmin.sitemap" />
     <Content Include="RecebimentoPedidoDeCompra.aspx" />
     <Content Include="RegistrarPagamentoConsulta.aspx" />
+    <Content Include="RegistrarPagamentoProdutos.aspx" />
     <Content Include="style\css\hack.css" />
     <Content Include="style\css\ie6.css" />
     <Content Include="style\css\ie7.css" />
