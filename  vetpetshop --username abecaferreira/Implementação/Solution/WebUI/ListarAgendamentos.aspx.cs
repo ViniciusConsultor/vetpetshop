@@ -301,8 +301,7 @@ namespace WebUI
 
                 lblClienteVac.Text = row.Cells[3].Text;
                 lblAnimalVac.Text = row.Cells[4].Text;
-                txtDataVacinacao.Text = string.Format("{0:d}", row.Cells[5].Text);
-               
+                txtDataVacinacao.Text = string.Format("{0:d}", row.Cells[5].Text);               
             }
 
             if (e.CommandName == "excluir")
@@ -322,6 +321,20 @@ namespace WebUI
         protected void btnCancelarVac_Click(object sender, EventArgs e)
         {
             Response.Redirect("DefaultVeterinario.aspx");
+        }
+        
+        protected void tabAgendamentos_OnActiveTabChanged(object sender, EventArgs e)
+        {
+            if (pnlConsultas.Visible == true)
+            { 
+                pnlConsultas.Visible = (tabAgendamentos.ActiveTabIndex == 0);
+                pnlVacinacao.Visible = false;
+            }
+            else if (pnlVacinacao.Visible == true)
+            {
+                pnlConsultas.Visible = false;
+                pnlVacinacao.Visible = (tabAgendamentos.ActiveTabIndex == 1);
+            }
         }
 
     }

@@ -4,9 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="padding: 20px 10px 10px 20px; width:100%;">
-        <asp:TabContainer ID="tabAgendamentos" runat="server" ActiveTabIndex="0" 
+        <asp:TabContainer ID="tabAgendamentos" runat="server" ActiveTabIndex="0"  OnActiveTabChanged="tabAgendamentos_OnActiveTabChanged" AutoPostBack="true"
             Width="100%">
-            <asp:TabPanel ID="tabpnlConsultas" runat="server">
+            <asp:TabPanel ID="tabpnlConsultas" runat="server" OnClientClick="">
                 <HeaderTemplate><b>Consulta veterinária</b>
                 </HeaderTemplate> 
                 <ContentTemplate><br />
