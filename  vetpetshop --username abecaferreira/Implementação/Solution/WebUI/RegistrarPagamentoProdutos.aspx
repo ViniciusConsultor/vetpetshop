@@ -43,7 +43,7 @@
                                 <td style="width: 143px">
                                     Tipo doProduto</td>
                                 <td>
-                                      <asp:DropDownList ID="ddlTipo" runat="server" Width="232px">
+                            <asp:DropDownList ID="ddlTipo" runat="server" Width="232px">
                             </asp:DropDownList>
                                 </td>
                                 <td>
@@ -52,50 +52,93 @@
                                 </td>
                             </tr>
                         </table>
-                      </asp:Panel></td>
+                      </asp:Panel>
+                      </td>
+                    </tr>   
+                    <tr>
+                    <td>
+                    </td>
                     </tr>
-                    <asp:Panel ID="Panel2" runat="server" Visible="false">
                     <tr>
-                        <td style="width: 58px; height: 23px">&nbsp;</td>                        
-                        <td style="height: 23px; width: 352px;">
-                             &nbsp; Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             <asp:Label ID="lblCod" runat="server" Text=""></asp:Label>
-                        </td>
-                    </tr>     
+                    <td>&nbsp;<asp:Label ID="lblValor" runat="server" Font-Bold="true" Visible="false" Text="Valor Total da Compra:" ForeColor="Blue"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="lblTotal" runat="server" Font-Bold="true" Visible="false" ForeColor="Blue"></asp:Label>
+                    </td>
+                    </tr>
+                     <tr>
+                    <td>
+                     <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
+                                HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
+                                AlternatingRowStyle-BackColor="LightSteelBlue">
+                                <Columns>
+                                 <asp:TemplateField>  
+                                <HeaderStyle  Width="5%"/>                      
+                                <ItemTemplate>
+                                <asp:LinkButton ID="lexcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton></ItemTemplate></asp:TemplateField><asp:BoundField HeaderText="Código" DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Nome do Produto" DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Preço Unitário" DataField="valunit" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Quantidade" DataField="quant" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>                               
+                                <asp:BoundField HeaderText="Subtotal" DataField="valor" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>                               
+                                </Columns>
+
+<HeaderStyle BackColor="DarkBlue"></HeaderStyle>
+                                </asp:GridView>
+                    
+                    </td>
+                    </tr>
                     <tr>
-                        <td style="width: 58px; height: 23px">&nbsp;</td>
-                        <td style="height: 23px; width: 550px;">
-                             &nbsp;&nbsp;Data de Cadastro
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblData" runat="server" Text=""></asp:Label>
-                        </td>                       
-                    </tr>     
+                    <td>
+                    </td>
+                    </tr>
                     <tr>
-                        <td style="width: 58px; height: 23px">&nbsp;</td>
-                        <td style="height: 23px; width: 550px;">
-                             &nbsp;&nbsp;<B>Valor Total R$</B>
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Text="" Font-Bold="true"></asp:Label>
-                        </td>
-                    </tr>     
-                     </asp:Panel>         
+                    <td>
+                       <asp:Panel ID="panel3" runat="server" Visible="false" Width="196px"><table style="border-color: #FF0000; width: 100%; border-style: solid";>
+                                <tr>
+                                    <td style="width: 82px">
+                                        <b>Quantidade</b></td><td>
+                                        <asp:TextBox ID="txtQuant" runat="server" Width="39px"></asp:TextBox>&nbsp;<asp:Button ID="btnQuant" runat="server" Text="OK" 
+                                            onclick="btnQuant_Click" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    </td>
+                    </tr>
                      <tr>                     
                         <td style="width: 550px;"> 
-                        <div style="OVERFLOW: auto; HEIGHT: 300px; width: 693px">                        
-                             &nbsp;
-                             <asp:GridView ID="grProdutos" runat="server" AutoGenerateColumns="false" 
+                        <div style="OVERFLOW: auto; HEIGHT: 300px; width: 690px">                        
+                             &nbsp;<asp:GridView ID="grProdutos" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
                                 PageSize="10" 
-                                AlternatingRowStyle-BackColor="LightSteelBlue" RowStyle-Height="50px">
+                                AlternatingRowStyle-BackColor="LightSteelBlue" RowStyle-Height="50px" 
+                                 onrowcommand="grProdutos_RowCommand">
                         <Columns>
                          <asp:TemplateField>  
                         <HeaderStyle  Width="5%"/>                      
                         <ItemTemplate>
-                        <asp:LinkButton ID="lSelecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
-                        </ItemTemplate>
-                        </asp:TemplateField>    
-                        <asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
+                        <asp:LinkButton ID="lSelecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton></ItemTemplate></asp:TemplateField><asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
                         </asp:BoundField>
                         <asp:BoundField HeaderText="Nome do Produto" DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:d}" htmlencode="false">
@@ -116,57 +159,19 @@
                         </asp:BoundField>                                             
                         </Columns>
                         </asp:GridView>                       
-                        </td>                        
-                         </div>
-                    </tr>  
-                      
-                    <tr>
+                        &nbsp;</td>
+                        </div>
+                        </tr>
+                        <tr>
                         <td style="width: 550px;">
                         
-                             &nbsp;</td>
-                    </tr>     
-                    <tr>
+                             &nbsp;</td></tr><tr>
                         <td style="width: 550px;">
                         
-                             &nbsp;</td>
-                    </tr>     
-                    <tr>
+                             &nbsp;</td></tr><tr>
                         <td style="height: 23px; width: 550px;">
                             &nbsp;
-                               <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
-                                HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
-                                AlternatingRowStyle-BackColor="LightSteelBlue">
-                                <Columns>
-                                 <asp:TemplateField>  
-                                <HeaderStyle  Width="5%"/>                      
-                                <ItemTemplate>
-                                <asp:LinkButton ID="lexcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton>
-                                </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField HeaderText="Código" DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Nome do Produto" DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Valor Unitário" DataField="valunit" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Quantidade" DataField="quant" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>                               
-                                <asp:BoundField HeaderText="Valor Total" DataField="valor" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>                               
-                                </Columns>
-
-<HeaderStyle BackColor="DarkBlue"></HeaderStyle>
-                                </asp:GridView></td>
+                              </td>
                     </tr>     
                     <tr>
                         <td style="height: 23px; width: 550px;">
@@ -191,35 +196,11 @@
                       </tr>     
                     <tr>
                      <td style="height: 23px; width: 550px;">
-                         <asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label>
-                        </td>                        
-                      </tr>     
-                    <tr>
+                         <asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></td></tr><tr>
                         <td style="height: 23px; width: 319px">
-                            <asp:Panel ID="panel3" runat="server" Visible="false" Width="196px">
-                        <table style="border-color: #FF0000; width: 100%; border-style: solid";>
-                                <tr>
-                                    <td style="width: 82px">
-                                        Quantidade</td>
-                                    <td>
-                                        <asp:TextBox ID="txtQuant" runat="server" Width="39px"></asp:TextBox>
-                                        &nbsp;<asp:Button ID="btnQuant" runat="server" Text="OK" 
-                                            onclick="btnQuant_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>&nbsp;</td>
-                    </tr>
-                    <tr>
+                            &nbsp;</td></tr><tr>
                         <td style="width: 324px">                         
-                            &nbsp;</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>        
-        <tr>
+                            &nbsp;</td></tr></table></td></tr><tr>
             <td style="width: 863px">
-                &nbsp;</td>
-        </tr>
-    </table>
-</asp:Content>
+                &nbsp;</td></tr></table>
+                </asp:Content>

@@ -5,5 +5,6 @@
       <siteMapNode url="~/ManterCadastroCliente.aspx" title="Manter Cadastro Cliente"  description="Página de cadastro de clientes e animais" />
       <siteMapNode url="~/ListarClienteAnimal.aspx" title="Listar Cliente/Animal"  description="Listar clientes e animais" />
       <siteMapNode url="~/ListaPedidoDeCompra.aspx" title="Listar Pedidos de Compras"  description="" />
+      <siteMapNode url="~/RegistrarPagamentoProdutos.aspx" title="Registrar Compras"  description="" />
     </siteMapNode>   
 </siteMap>
