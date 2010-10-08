@@ -1,7 +1,5 @@
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spiInserirEstoque]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].spiInserirEstoque
 GO
 
 CREATE PROCEDURE [dbo].[spiInserirEstoque]
@@ -9,6 +7,9 @@ CREATE PROCEDURE [dbo].[spiInserirEstoque]
 	@Quantidade INT,
 	@IdProd INT
 AS
+
+SET NOCOUNT ON
+
 BEGIN
 	
 	INSERT INTO Estoque (Status, Quantidade) VALUES (@Status, @Quantidade)
@@ -18,4 +19,5 @@ BEGIN
 	
 	INSERT INTO EstoqueProduto(IdEstoque, IdProduto) VALUES (@IdEst, @IdProd) 
 END
-GO
+
+SET NOCOUNT OFF
