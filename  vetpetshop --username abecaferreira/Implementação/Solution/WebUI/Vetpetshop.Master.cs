@@ -11,6 +11,9 @@ namespace WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            lblWelcome.Text = "Olá";
+
             string url = Request.Url.ToString().ToLower();
             if (url.EndsWith("defaultadmin.aspx"))
             {

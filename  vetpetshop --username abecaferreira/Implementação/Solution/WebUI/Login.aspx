@@ -70,7 +70,7 @@
                     <tr>
                             <td class="style1" align="right">
                                 &nbsp;
-                                <asp:Label ID="lblUsu" Text="Usuário" runat="server" Font-Bold="True" 
+                                <asp:Label ID="lblUsu" Text="Login" runat="server" Font-Bold="True" 
                                     ForeColor="#000066" Font-Size="XX-Large" Font-Names="Colonna MT"></asp:Label>
                             </td>
                             <td align="left">
