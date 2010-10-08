@@ -2,10 +2,11 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="" title="Veterinario"  description="">
     <siteMapNode url="~/DefaultVeterinario.aspx" title="Principal"  description="Pagina inicial do veterinario" />
-    <siteMapNode url="~/AgendarConsulta.aspx" title="Agendar Consulta"  description="" />
-    <siteMapNode url="~/AgendarVacinacao.aspx" title="Agendar Vacinação"  description="" />
-    <siteMapNode url="~/ListarAgendamentos.aspx" title="Listar Agendamentos"  description="" />  
+    <siteMapNode url="~/AgendarConsulta.aspx" title="Agendar Consulta"  description="Agendar Consulta" />
+    <siteMapNode url="~/AgendarVacinacao.aspx" title="Agendar Vacinação"  description="Agendar Vacinação" />
+    <siteMapNode url="~/ListarAgendamentos.aspx" title="Listar Agendamentos"  description="Listar Agendamentos" />  
     <siteMapNode url="~/ManterCadastroCliente.aspx" title="Manter Cadastro Cliente"  description="Página de cadastro de clientes e animais" />
     <siteMapNode url="~/ListarClienteAnimal.aspx" title="Listar Cliente/Animal"  description="Listar clientes e animais" />
+    <siteMapNode url="~/RegistrarPagamentoConsulta.aspx" title="Registrar Pagamento Consulta"  description="Registrar Pagamento Consulta" />
     </siteMapNode>
 </siteMap>
