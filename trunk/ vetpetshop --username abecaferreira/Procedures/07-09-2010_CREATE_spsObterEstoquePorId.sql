@@ -1,29 +1,16 @@
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [dbo].[spuAtualizarEstoque] 
-	@IdEstoque INT,
-	@Status INT,
-	@Quantidade INT
-AS
-BEGIN
-	UPDATE Estoque SET Quantidade = @Quantidade, Status = @Status
-	WHERE Id = @IdEstoque
-END
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spsObterEstoquePorId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].spsObterEstoquePorId
 GO
 
 CREATE PROCEDURE [dbo].[spsObterEstoquePorId] 
 	@IdEstoque INT	
 AS
+
+SET NOCOUNT ON
+
 BEGIN
 	SELECT * FROM Estoque WHERE Id = @IdEstoque
 END
-GO
+
+SET NOCOUNT OFF
+
