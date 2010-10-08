@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso8859-1" />
 <title>Vetpetshop</title>
 
 <!-- CSS -->
@@ -24,8 +24,8 @@
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <ul id="mainNav">
-        	<li><a href="#">Ola</a></li>
-        	<li class="logout"><a href="#">LOGOUT</a></li>
+        	<li><a href="#"><asp:Label ID="lblWelcome" runat="server" Text="" Font-Bold="true"></asp:Label></label></a></li>
+        	<li class="logout"><a href="login.aspx">LOGOUT</a></li>
         </ul>
         <!-- // #end mainNav -->
         
