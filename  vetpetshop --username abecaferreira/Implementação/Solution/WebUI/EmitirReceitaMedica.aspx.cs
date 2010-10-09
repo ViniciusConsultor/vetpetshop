@@ -14,7 +14,7 @@ namespace WebUI
 {
     public partial class EmitirReceitaMedica : System.Web.UI.Page
     {
-        public DateTime datConsulta, datVacinacao;
+        public DateTime datConsulta;
         Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,8 +32,7 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-                CarregarConsultas();
-                CarregarVacinacoes();
+                CarregarConsultas();               
             }
         }
 
@@ -45,17 +44,6 @@ namespace WebUI
             {
                 gdvConsultas.DataSource = tabelaPreenchida;
                 gdvConsultas.DataBind();
-            }
-        }
-
-        protected void CarregarVacinacoes()
-        {
-            DataTable tabelaPreenchida = PreencherVacinacoes();
-
-            if (tabelaPreenchida.Rows.Count != 0)
-            {
-                gdvVacinacoes.DataSource = tabelaPreenchida;
-                gdvVacinacoes.DataBind();
             }
         }
 
@@ -72,27 +60,13 @@ namespace WebUI
             return tabelaPreenchida;
         }
 
-        private DataTable PreencherVacinacoes()
-        {
-            Animal animal = new Animal();
-
-            DataTable tabela = new DataTable();
-            DataTable tabelaPreenchida = new DataTable();
-            tabela = MontarTabelaVacinacoes();
-
-            AnimalBuss animalBuss = new AnimalBuss();
-            tabelaPreenchida = animalBuss.ListarVacinacoesAnimais(tabela);
-            return tabelaPreenchida;
-        }
-
         protected void gdvConsultas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "alterar")
             {
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = true;
-                pnlVacinacao.Visible = false;
-
+           
                 HtmlTextWriterTag html = new HtmlTextWriterTag();
                 WebControl wc = new WebControl(html);
                 wc = ((WebControl)e.CommandSource);
@@ -167,23 +141,6 @@ namespace WebUI
             return _tabela;
         }
 
-        private DataTable MontarTabelaVacinacoes()
-        {
-            DataTable _tabela = new DataTable();
-
-            DataColumn coluna0 = new DataColumn("id_animal");
-            DataColumn coluna1 = new DataColumn("nm_cliente");
-            DataColumn coluna2 = new DataColumn("nm_animal");
-            DataColumn coluna3 = new DataColumn("datavacinacao");
-      
-            _tabela.Columns.Add(coluna0);
-            _tabela.Columns.Add(coluna1);
-            _tabela.Columns.Add(coluna2);
-            _tabela.Columns.Add(coluna3);
-
-            return _tabela;
-        }
-
         protected void btnAlterar_Click(object sender, EventArgs e)
         {
 
@@ -205,44 +162,6 @@ namespace WebUI
             {
                 lblMsg.Text = "Selecione um animal para o agendamento da consulta";
             }
-        }
-
-        protected void btnAlterarVac_Click(object sender, EventArgs e)
-        {
-            if (txtDataVacinacao.Text != "")
-            {
-                datVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
-            }
-            else
-            {
-                lblMsg.Text = "Digite a data da vacinação";
-            }
-
-            if (ViewState["id_animal"] != null)
-            {
-                AlterarAgendamentoVacinacao();
-            }
-            else
-            {
-                lblMsg.Text = "Selecione um animal para o agendamento da vacinação";
-            }
-        }
-
-        protected void AlterarAgendamentoVacinacao()
-        {
-            AnimalBuss animalBuss = new AnimalBuss();
-
-            bool executou;
-
-            executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
-
-            if (executou)
-            {
-                CarregarVacinacoes();
-            }
-
-            pnlVacinacao.Visible = false;
-            lblMsg.Text = "Alteração realizada com sucesso";
         }
 
         protected void AlterarAgendamentoConsulta()
@@ -268,74 +187,10 @@ namespace WebUI
             lblMsg.Text = "Alteração realizada com sucesso";
         }
 
-        protected void ExcluirVacinacao()
-        {
-            AnimalBuss animalBuss = new AnimalBuss();
-
-            bool executou;
-
-           executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
-
-            if (executou)
-            {
-                CarregarVacinacoes();
-            }
-
-            pnlVacinacao.Visible = false;
-            lblMsg.Text = "Alteração realizada com sucesso";
-        }
-
-        protected void gdvVacinacoes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "alterar")
-            {
-                ViewState["id_animal"] = e.CommandArgument.ToString();
-                pnlConsultas.Visible = false;
-                pnlVacinacao.Visible = true;
-
-                HtmlTextWriterTag html = new HtmlTextWriterTag();
-                WebControl wc = new WebControl(html);
-                wc = ((WebControl)e.CommandSource);
-
-                GridViewRow row = ((GridViewRow)wc.NamingContainer);
-
-                lblClienteVac.Text = row.Cells[3].Text;
-                lblAnimalVac.Text = row.Cells[4].Text;
-                txtDataVacinacao.Text = string.Format("{0:d}", row.Cells[5].Text);               
-            }
-
-            if (e.CommandName == "excluir")
-            {
-                ViewState["id_animal"] = e.CommandArgument.ToString();
-                datVacinacao = DateTime.MinValue;
-                ExcluirVacinacao();
-            }
-
-        }
-
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DefaultVeterinario.aspx");
         }
-
-        protected void btnCancelarVac_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DefaultVeterinario.aspx");
-        }
-        
-        protected void tabAgendamentos_OnActiveTabChanged(object sender, EventArgs e)
-        {
-            if (pnlConsultas.Visible == true)
-            { 
-                pnlConsultas.Visible = (tabAgendamentos.ActiveTabIndex == 0);
-                pnlVacinacao.Visible = false;
-            }
-            else if (pnlVacinacao.Visible == true)
-            {
-                pnlConsultas.Visible = false;
-                pnlVacinacao.Visible = (tabAgendamentos.ActiveTabIndex == 1);
-            }
-        }
-
+             
     }
 }
