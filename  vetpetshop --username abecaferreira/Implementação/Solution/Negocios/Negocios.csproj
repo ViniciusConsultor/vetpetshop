@@ -49,6 +49,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ClienteBuss.cs" />
     <Compile Include="EstoqueBuss.cs" />
+    <Compile Include="FinanceiroBuss.cs" />
     <Compile Include="GrupoProdutoBuss.cs" />
     <Compile Include="NotaFiscalBuss.cs" />
     <Compile Include="ProdutoBuss.cs" />

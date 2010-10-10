@@ -51,6 +51,7 @@
     <Compile Include="ClienteDAO.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="EstoqueDAO.cs" />
+    <Compile Include="FinanceiroDAO.cs" />
     <Compile Include="GrupoProdutoDAO.cs" />
     <Compile Include="NotaFiscalDAO.cs" />
     <Compile Include="ProdutoDAO.cs" />
