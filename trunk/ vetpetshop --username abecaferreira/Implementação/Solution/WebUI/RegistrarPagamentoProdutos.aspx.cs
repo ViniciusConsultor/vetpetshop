@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using Entidade;
 using Negocios;
+using System.Data.SqlTypes;
 
 namespace WebUI
 {
@@ -29,8 +30,10 @@ namespace WebUI
             UsuarioBuss usuarioBuss = new UsuarioBuss();
             usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
 
-           if (!IsPostBack)
+            if (!IsPostBack)
+            {
                 CarregaListaTipoProduto();
+            }
         }
 
         private void CarregaListaTipoProduto()
@@ -136,7 +139,7 @@ namespace WebUI
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-
+            Panel4.Visible = true;
         }
 
         protected void btnQuant_Click(object sender, EventArgs e)
@@ -264,6 +267,171 @@ namespace WebUI
 
                 panel3.Visible = true;
             }
+        }
+
+        protected void rbCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void btnEnviar_Click1(object sender, EventArgs e)
+        {
+            if (rbCliente.SelectedItem.Value == "0")
+            {
+                PanelCliEspecial.Visible = true;
+                Cliente.Visible = true;
+                txtEspecial.Visible = true;
+                if (rbTipoPagamento.SelectedItem.Value == "0")
+                {
+                    txtParcelas.Visible = false;
+                    lblParcelas.Visible = false;
+                }
+                else
+                {
+                    txtParcelas.Visible = true;
+                    lblParcelas.Visible = true;
+                }
+
+                Panel4.Visible = false;
+                btnFim.Visible = true;
+            }
+            else
+            {
+                Panel4.Visible = false;
+                PanelCliEspecial.Visible = true;
+                Cliente.Visible = false;
+                txtEspecial.Visible = false;
+                if (rbTipoPagamento.SelectedItem.Value == "0")
+                {
+                    txtParcelas.Visible = false;
+                    lblParcelas.Visible = false;
+                }
+                else
+                {
+                    txtParcelas.Visible = true;
+                    lblParcelas.Visible = true;
+                }
+
+
+                btnFim.Visible = true;
+            }
+        }
+
+        protected void btnFim_Click(object sender, EventArgs e)
+        {
+
+            Financeiro financeiro = new Financeiro();
+            FinanceiroBuss financeiroBuss = new FinanceiroBuss();
+
+            //TODO:VERIFICAR COMO VINCULAR UMA LISTA DE PRODUTOS A UM ID DE FINANCEIRO
+
+
+            bool executou = false;
+
+            if ((rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2") && txtParcelas.Text == "")
+            {
+                lblMsg.Text = "Preencha o campo Nome do cliente especial<BR>";
+                lblMsg.Text += "Preencha o campo N° de parcelas";
+                return;
+            }
+
+            if (rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2")
+            {
+                lblMsg.Text = "Preencha o campo N° de parcelas";
+                return;
+            }
+
+            foreach (GridViewRow linha in grProds.Rows)
+            {
+               
+                if (linha.Visible == true)
+                {
+                    //ATUALIZA O ESTOQUE DO PRODUTO
+                    Estoque estoque = new Estoque();
+                    Produto produto = new Produto();
+                    RelEstoqueProduto relEstoque = new RelEstoqueProduto();
+
+                    ProdutoBuss prodBuss = new ProdutoBuss();
+                    produto = prodBuss.ObterProdutoPorId(Convert.ToInt32(linha.Cells[1].Text));
+
+                    EstoqueBuss estoqBuss = new EstoqueBuss();
+                    relEstoque = estoqBuss.ObterEstoqueProdutoPorIdProd(produto.IdProduto);
+                    estoque = estoqBuss.ObterEstoquePorId(relEstoque.IdEstoque);
+
+                    //diminuir estoque do produto
+                    estoque.Quantidade = estoque.Quantidade - Convert.ToInt32(linha.Cells[4].Text);
+                    int statusEstoque = VerificarStatusEstoque(relEstoque, estoque);
+
+                    estoqBuss.AtualizarEstoque(estoque.Id, estoque.Quantidade, statusEstoque);
+                }
+            }
+
+            financeiro.ValorTotal = Convert.ToDecimal(lblTotal.Text);
+            financeiro.TipoPagamento = Convert.ToInt32(rbTipoPagamento.SelectedItem.Value); //0=dinheiro 1=cartão de credito 2=cheque
+
+            if (txtParcelas.Text != "")
+            {
+                financeiro.Parcelas = Convert.ToInt32(txtParcelas.Text);
+            }
+            else
+            {
+                financeiro.Parcelas = SqlInt32.Null;
+            }
+
+            if (txtEspecial.Text != "")
+            {
+                financeiro.NomeCliente = txtEspecial.Text;
+            }
+            else
+            {
+                financeiro.NomeCliente = SqlString.Null;
+            }
+
+            financeiro.TipoTransacao = 1; //Tipo Transação 1=Venda de Produtos 2=Consultas
+            financeiro.Usuario = usuario.Id;
+            financeiro.TipoResponsavel = 1; //Vendedor=1 Veterinaria=2
+
+            executou = financeiroBuss.InserirRegistroFinanceiro(financeiro);
+
+            if (executou)
+            {
+                grProds.DataSource = null;
+                grProds.DataBind();
+                btnEnviar.Visible = false;
+                btnFim.Visible = false;
+                txtEspecial.Text = "";
+                txtParcelas.Text = "";
+                lblMsg.Text = "Registro de compra efetuado com sucesso";
+                lblTotal.Text = "";
+                btnSalvar.Visible = false;
+                PanelCliEspecial.Visible = false;
+            }
+        }
+
+        private int VerificarStatusEstoque(RelEstoqueProduto relEstoque, Estoque estoque)
+        {
+            Produto produto = new Produto();
+            ProdutoBuss prodBuss = new ProdutoBuss();
+
+            produto = prodBuss.ObterProdutoPorId(relEstoque.IdProduto);
+            int estoqueMedio = (produto.EstoqueMax + produto.EstoqueMin)/2;
+
+            if (estoque.Quantidade >= produto.EstoqueMax)
+                estoque.Status = 3;
+
+            else if (estoque.Quantidade == estoqueMedio)
+                estoque.Status = 2;
+
+            else
+                estoque.Status = 1;
+
+            return estoque.Status;
+            
         }
     }
 }

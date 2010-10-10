@@ -1,5 +1,5 @@
-ï»¿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="RegistrarPagamentoProdutos.aspx.cs" Inherits="WebUI.RegistrarPagamentoProdutos" %>
-
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="RegistrarPagamentoProdutos.aspx.cs" Inherits="WebUI.RegistrarPagamentoProdutos" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <table style="width:100%;">
@@ -64,6 +64,16 @@
                     <asp:Label ID="lblTotal" runat="server" Font-Bold="true" Visible="false" ForeColor="Blue"></asp:Label>
                     </td>
                     </tr>
+                    <tr>
+                    <td>
+                    <asp:Panel ID="PanelCliEspecial" runat="server" Visible="false">
+                    <asp:Label ID="Cliente" Text="Nome do cliente especial" runat="server"></asp:Label>
+                    &nbsp;&nbsp;<asp:TextBox ID="txtEspecial" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="lblParcelas" Text="N° de parcelas" runat="server"></asp:Label>
+                    &nbsp;&nbsp;<asp:TextBox ID="txtParcelas" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </asp:Panel>
+                    </td>
+                    </tr>
                      <tr>
                     <td>
                      <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
@@ -73,7 +83,8 @@
                                  <asp:TemplateField>  
                                 <HeaderStyle  Width="5%"/>                      
                                 <ItemTemplate>
-                                <asp:LinkButton ID="lexcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton></ItemTemplate></asp:TemplateField><asp:BoundField HeaderText="CÃ³digo" DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
+                                <asp:LinkButton ID="lexcluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_produto") %>'></asp:LinkButton></ItemTemplate></asp:TemplateField>
+                                <asp:BoundField HeaderText="Código" DataField="id_produto" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
                                 <HeaderStyle BackColor="DarkBlue" ForeColor="White"></HeaderStyle>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
@@ -81,7 +92,7 @@
                                 <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
-                                <asp:BoundField HeaderText="PreÃ§o UnitÃ¡rio" DataField="valunit" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <asp:BoundField HeaderText="Preço Unitário" DataField="valunit" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                                 <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%"></HeaderStyle>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 </asp:BoundField>
@@ -101,9 +112,57 @@
                     </td>
                     </tr>
                     <tr>
+                    <td><asp:Button ID="btnSalvar" runat="server" Text="Opções de compra" 
+                                Visible="false" onclick="btnSalvar_Click" />&nbsp;&nbsp;
+                                <asp:Button ID="btnFim" runat="server" Text="Finalizar Compra" 
+                                Visible="false" onclick="btnFim_Click" />
+                    </td>
+                    </tr>
+                    <tr>
                     <td>
                     </td>
                     </tr>
+                     <tr>
+                     <td>
+                     
+                     <asp:Panel ID="Panel4" runat="server" Visible="false">
+    <table>
+    <tr>
+    <td style="width: 112px">
+    Cliente especial? <br />
+    <asp:RadioButtonList ID="rbCliente" runat="server" Width="50px">
+    <asp:ListItem Text="Sim" Value="0"></asp:ListItem>
+    <asp:ListItem Text="Não" Value="1" Selected="True"></asp:ListItem>
+    </asp:RadioButtonList>
+    </td> 
+    <td>Tipo de pagamento:<br />
+    <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="200px">
+    <asp:ListItem Text="Dinheiro" Value="0"></asp:ListItem>
+    <asp:ListItem Text="Cartão de crédito" Value="1"></asp:ListItem>
+    <asp:ListItem Text="Cheque" Value="2"></asp:ListItem>
+    </asp:RadioButtonList>  
+    </td>
+    </tr>
+    <tr>
+    <td style="width: 112px">
+    <asp:Button ID="btnEnviar" runat="server" Text="Ok" onclick="btnEnviar_Click1" 
+            Width="90px" />
+    </td>
+    </tr>
+    </table>    
+    </asp:Panel>
+                     
+                     
+                     
+                     
+                     </td>
+                     </tr>
+                    <td>
+   
+    </td>
+    </tr>
+    </table>    
+                    
                     <tr>
                     <td>
                        <asp:Panel ID="panel3" runat="server" Visible="false" Width="196px"><table style="border-color: #FF0000; width: 100%; border-style: solid";>
@@ -149,11 +208,11 @@
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField HeaderText="DescriÃ§Ã£o" DataField="descricao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <asp:BoundField HeaderText="Descrição" DataField="descricao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField HeaderText="PreÃ§o UnitÃ¡rio" DataField="preco_venda" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                        <asp:BoundField HeaderText="Preço Unitário" DataField="preco_venda" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                         <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="5%" HorizontalAlign="Center"></HeaderStyle>
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>                                             
@@ -177,8 +236,7 @@
                         <td style="height: 23px; width: 550px;">
                       <asp:Button ID="addProd" runat="server" Text="Adicionar Produto" 
                                 onclick="addProd_Click" Visible="false" Width="189px" />                    
-                        &nbsp;<asp:Button ID="btnSalvar" runat="server" Text="Salvar Nota Fiscal" 
-                                Visible="false" onclick="btnSalvar_Click" />
+                        &nbsp;
                         </td>
                     </tr>     
                     <tr>
@@ -200,7 +258,14 @@
                         <td style="height: 23px; width: 319px">
                             &nbsp;</td></tr><tr>
                         <td style="width: 324px">                         
-                            &nbsp;</td></tr></table></td></tr><tr>
+                            &nbsp;</td>
+                            </tr>
+                            </table>
+                            </td>
+                            </tr>
+                            <tr>
             <td style="width: 863px">
-                &nbsp;</td></tr></table>
-                </asp:Content>
+                &nbsp;</td>
+                </tr>
+                </table>
+    </asp:Content>
