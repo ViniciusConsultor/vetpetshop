@@ -14,15 +14,6 @@ namespace WebUI {
     public partial class RegistrarPagamentoConsulta {
         
         /// <summary>
-        /// gdvConsultas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvConsultas;
-        
-        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>
@@ -32,75 +23,102 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// pnlConsultas control.
+        /// gdvConsultas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlConsultas;
+        protected global::System.Web.UI.WebControls.GridView gdvConsultas;
         
         /// <summary>
-        /// lblProprietario control.
+        /// pnPgConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProprietario;
+        protected global::System.Web.UI.WebControls.Panel pnPgConsulta;
         
         /// <summary>
-        /// lblAnimal control.
+        /// rbCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAnimal;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbCliente;
         
         /// <summary>
-        /// txtDataConsulta control.
+        /// rbTipoPagamento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDataConsulta;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbTipoPagamento;
         
         /// <summary>
-        /// txtValor control.
+        /// lblCli control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValor;
+        protected global::System.Web.UI.WebControls.Label lblCli;
         
         /// <summary>
-        /// rblStatus control.
+        /// txtNomeCli control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblStatus;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeCli;
         
         /// <summary>
-        /// btnAlterar control.
+        /// espaco control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAlterar;
+        protected global::System.Web.UI.WebControls.Panel espaco;
         
         /// <summary>
-        /// btnCancelar control.
+        /// lblParcela control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.Label lblParcela;
+        
+        /// <summary>
+        /// txtParcelas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParcelas;
+        
+        /// <summary>
+        /// btnEnviar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEnviar;
+        
+        /// <summary>
+        /// btnConfirmar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
     }
 }

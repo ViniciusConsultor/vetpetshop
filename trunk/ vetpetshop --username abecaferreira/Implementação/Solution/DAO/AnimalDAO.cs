@@ -843,7 +843,98 @@ namespace DAO
             return executou;
         }
 
-        public bool RegistrarPagamento(Int32 idConsulta)
+        public DataTable ListarConsultasAPagar(DataTable tabela)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarConsultasAPagar";
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_consulta"] = dr.GetInt32(0);
+                _linhaTabela["nm_cliente"] = dr.GetString(1);
+                _linhaTabela["nm_animal"] = dr.GetString(2);
+                if (dr.IsDBNull(3))
+                {
+                    _linhaTabela["dataconsulta"] = "";
+                }
+                else
+                {
+                    _linhaTabela["dataconsulta"] = dr.GetDateTime(3).ToString("dd/MM/yyyy");
+                }
+                if (dr.IsDBNull(4))
+                {
+                    _linhaTabela["valor"] = "";
+                }
+                else
+                {
+                    _linhaTabela["valor"] = dr.GetDecimal(4);
+                }
+                if (dr.GetInt32(5) == 0)
+                {
+                    _linhaTabela["status"] = "Agendada";
+                }
+                if (dr.GetInt32(5) == 1)
+                {
+                    _linhaTabela["status"] = "Desmarcada";
+                }
+                if (dr.GetInt32(5) == 2)
+                {
+                    _linhaTabela["status"] = "Finalizada";
+                }
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
+        public Consulta ListarConsultaAnimalAPagar(Int32 idConsulta)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarConsultaAnimalAPagar";
+
+
+            SqlParameter pIdConsulta = new SqlParameter("@IdConsulta", SqlDbType.Int);
+
+            pIdConsulta.Value = idConsulta;
+
+            cmd.Parameters.Add(pIdConsulta);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            Consulta consulta = new Consulta();
+
+            while (dr.Read())
+            {
+                consulta.idUsuario = dr.GetInt32(0);
+                consulta.Valor = dr.GetDecimal(1);
+            }    
+
+            return consulta;
+        }
+
+        public bool AlteraStatusConsultaPaga(Int32 idConsulta)
         {
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -854,14 +945,17 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "spuAtualizarPagamentoConsulta";
+                cmd.CommandText = "spuAlteraStatusConsultaPaga";
 
                 SqlParameter pIdConsulta = new SqlParameter("@IdConsulta", SqlDbType.Int);
+                SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
 
                 pIdConsulta.Value = idConsulta;
+                pStatus.Value = 2;
 
                 cmd.Parameters.Add(pIdConsulta);
-
+                cmd.Parameters.Add(pStatus);
+                
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
                 executou = true;
@@ -885,5 +979,6 @@ namespace DAO
             return executou;
         
         }
+
     }
 }

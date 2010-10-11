@@ -33,13 +33,12 @@ namespace WebUI
             if (!IsPostBack)
             {
                 CarregarConsultas();
-                //CarregarVacinacoes();
             }
         }
 
         protected void CarregarConsultas()
         {
-            DataTable tabelaPreenchida = PreencherConsultas();
+            DataTable tabelaPreenchida = PreencherConsultasAPagar();
 
             if (tabelaPreenchida.Rows.Count != 0)
             {
@@ -48,7 +47,7 @@ namespace WebUI
             }
         }
 
-        private DataTable PreencherConsultas()
+        private DataTable PreencherConsultasAPagar()
         {
             Animal animal = new Animal();
 
@@ -57,7 +56,7 @@ namespace WebUI
             tabela = MontarTabelaConsultas();
 
             AnimalBuss animalBuss = new AnimalBuss();
-            tabelaPreenchida = animalBuss.ListarConsultasAnimais(tabela);
+            tabelaPreenchida = animalBuss.ListarConsultasAPagar(tabela);
             return tabelaPreenchida;
         }
 
@@ -86,40 +85,117 @@ namespace WebUI
         {
             if (e.CommandName == "registrar") 
             {
-                PreenchePagamentoConsulta(e.CommandArgument.ToString());
+                lblMsg.Text = "";
+                pnPgConsulta.Visible = true;
+                ViewState["hdnCodConsulta"] = e.CommandArgument.ToString();
             }
-
         }
 
-        public void PreenchePagamentoConsulta(string idConsulta)
-        {
-            AnimalBuss animalBuss = new AnimalBuss();
-            List<Animal> lstAnimal = new List<Animal>();
-
-            //lstAnimal = animalBuss.ListaConsultaByPK(Convert.ToInt32(idConsulta));
-
-        
-        }
-
-        public bool RegistrarPagamento(string idConsulta)
+        public bool RegistraPagamento(Int32 idConsulta)
         {
             bool executou = false;
+            bool executou2 = false;
 
-            AnimalBuss animalBuss = new AnimalBuss();
+            Financeiro financeiro = new Financeiro();
+            FinanceiroBuss financeiroBus = new FinanceiroBuss();
 
-            executou = animalBuss.RegistrarPagamento(Convert.ToInt32(idConsulta));
+            Animal animal = new Animal();
+            AnimalBuss animalBus = new AnimalBuss();
+
+            Consulta consulta = new Consulta();
+            
+            consulta = animalBus.ListarConsultaAnimalAPagar(idConsulta);
+
+            financeiro.ValorTotal = consulta.Valor;
+            financeiro.Usuario = consulta.idUsuario;
+            financeiro.TipoPagamento = Convert.ToInt32(rbTipoPagamento.SelectedItem.Value);
+            financeiro.TipoResponsavel = 2;
+            financeiro.TipoTransacao = 2;
+
+            if (txtNomeCli.Text != "")
+            {
+                financeiro.NomeCliente = txtNomeCli.Text;
+            }
+            else
+            {
+                financeiro.NomeCliente = "";
+            }
+            if (txtParcelas.Text != "")
+            {
+                financeiro.Parcelas = Convert.ToInt32(txtParcelas.Text);
+            }
+            else 
+            {
+                financeiro.Parcelas = 0;
+            }
+
+            executou = financeiroBus.InserirRegistroFinanceiro(financeiro);
 
             if (executou)
             {
-                //CarregarVacinacoes();
+                executou2 = animalBus.AlteraStatusConsultaPaga(idConsulta);
+                
+                if (executou2) 
+                {
+                    lblMsg.Text = "Pagamento registrado com sucesso";
+                    pnPgConsulta.Visible = false;
+                    espaco.Visible = false;
+                    lblCli.Visible = false;
+                    lblParcela.Visible = false;
+                    txtNomeCli.Text = string.Empty;
+                    txtParcelas.Text = string.Empty;
+                    txtNomeCli.Visible = false;
+                    txtParcelas.Visible = false;
+                    btnConfirmar.Visible = false;
+                    btnEnviar.Visible = true;
+                    rbCliente.SelectedIndex = 1;
+                    rbTipoPagamento.SelectedIndex = 2;
+                    
+                    CarregarConsultas();
+                }
             }
-
-
 
             return executou;
         
         }
 
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            if (rbCliente.SelectedItem.Value == "0")
+            {
+                lblCli.Visible = true;
+                txtNomeCli.Visible = true;
+            }
+            if (rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2")
+            {
+                lblParcela.Visible = true;
+                txtParcelas.Visible = true;
+            }
+
+            if (txtParcelas.Visible == true && txtNomeCli.Visible == true)
+            {
+                espaco.Visible = true;
+            }
+
+            if (rbCliente.SelectedItem.Value == "1" && rbTipoPagamento.SelectedItem.Value == "0")
+            {
+                Int32 idConsulta;
+                idConsulta = Convert.ToInt32(ViewState["hdnCodConsulta"]);
+                RegistraPagamento(idConsulta);
+            }
+            else 
+            {
+                btnEnviar.Visible = false;
+                btnConfirmar.Visible = true;
+            }
+        }
+
+        protected void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            Int32 idConsulta;
+            idConsulta = Convert.ToInt32(ViewState["hdnCodConsulta"]);
+            RegistraPagamento(idConsulta);
+        }
 
     }
 }
