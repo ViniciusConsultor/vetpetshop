@@ -20,7 +20,7 @@
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
                         <td style="height: 23px; width: 273px">
-                            <asp:Button ID="btnOk" runat="server" Text="Nova Nota Fiscal" 
+                            <asp:Button ID="btnOk" runat="server" Text="Novo Pedido de Compra" 
                                 Width="189px" onclick="btnOk_Click" />
                         </td>
                     </tr>
@@ -106,7 +106,7 @@
                         <td style="height: 23px; width: 550px;">
                       <asp:Button ID="addProd" runat="server" Text="Adicionar Produto" 
                                 onclick="addProd_Click" Visible="false" Width="189px" />                    
-                        &nbsp;<asp:Button ID="btnSalvar" runat="server" Text="Salvar Nota Fiscal" 
+                        &nbsp;<asp:Button ID="btnSalvar" runat="server" Text="Salvar Pedido de Compra" 
                                 Visible="false" onclick="btnSalvar_Click" />
                         </td>
                     </tr>     

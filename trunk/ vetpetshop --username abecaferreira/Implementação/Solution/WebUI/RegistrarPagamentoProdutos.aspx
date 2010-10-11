@@ -70,15 +70,15 @@
                     <asp:Label ID="Cliente" Text="Nome do cliente especial" runat="server"></asp:Label>
                     &nbsp;&nbsp;<asp:TextBox ID="txtEspecial" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="lblParcelas" Text="N° de parcelas" runat="server"></asp:Label>
-                    &nbsp;&nbsp;<asp:TextBox ID="txtParcelas" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
-                    </asp:Panel>
+                    &nbsp;&nbsp;<asp:TextBox ID="txtParcelas" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;</asp:Panel>
                     </td>
                     </tr>
                      <tr>
                     <td>
                      <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
-                                AlternatingRowStyle-BackColor="LightSteelBlue">
+                                AlternatingRowStyle-BackColor="LightSteelBlue" 
+                            onrowcommand="grProds_RowCommand">
                                 <Columns>
                                  <asp:TemplateField>  
                                 <HeaderStyle  Width="5%"/>                      
@@ -217,9 +217,9 @@
                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
                         </asp:BoundField>                                             
                         </Columns>
-                        </asp:GridView>                       
+                        </asp:GridView>
+                         </div>                       
                         &nbsp;</td>
-                        </div>
                         </tr>
                         <tr>
                         <td style="width: 550px;">

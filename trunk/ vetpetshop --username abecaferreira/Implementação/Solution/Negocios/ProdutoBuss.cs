@@ -70,5 +70,14 @@ namespace Negocios
            _lista = this.produtoDAO.ListarProduto(nome, id);
            return _lista;
        }
+
+       public List<Produto> ListarProdutoEmEstoque(string nome, int id)
+       {
+           List<Produto> _lista = new List<Produto>();
+
+           _lista = this.produtoDAO.ListarProdutoEmEstoque(nome, id);
+           return _lista;
+       }
+       
     }
 }

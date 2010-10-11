@@ -75,39 +75,87 @@ namespace WebUI
 
             tabelaPreenchida = estoqueBuss.ListarEstoque(tabela);
 
-           
+
             grEstoque.DataSource = tabelaPreenchida;
             grEstoque.DataBind();
 
             foreach (GridViewRow linha in grEstoque.Rows)
             {
-                 Estoque estoque = new Estoque();
-                 estoque = estoqueBuss.ObterEstoquePorId(Convert.ToInt32(linha.Cells[0].Text));
+                Estoque estoque = new Estoque();
+                estoque = estoqueBuss.ObterEstoquePorId(Convert.ToInt32(linha.Cells[0].Text));
 
-                 if (estoque.Status == 3)
-                 {
-                     linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#33CC66");
-                     
-                     //linha.Font.Bold = true;
-                 }
+                if (estoque.Status == 3)
+                {
+                    linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#33CC66");
 
-                 else if (estoque.Status == 2)
-                 {
-                     linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFF99");
-                     //#ffd700
-                     //linha.Font.Bold = true;
-                 }
+                    //linha.Font.Bold = true;
+                }
 
-                 else if (estoque.Status == 1)
-                 {
-                     linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffd700");                     
-                 }
+                else if (estoque.Status == 2)
+                {
+                    linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#6495ED");
+                    //#ffd700
+                    //linha.Font.Bold = true;
+                }
+
+                else if (estoque.Status == 1)
+                {
+                    linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffd700");
+                }
             }
         }
 
         protected void grEstoque_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ddlTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTipo.SelectedItem.Value != "0")
+            {
+                GrupoProdutoBuss grupoBuss = new GrupoProdutoBuss();
+
+
+                DataTable tabela = MontarTabela();
+                DataTable tabelaPreenchida = new DataTable();
+
+                EstoqueBuss estoqueBuss = new EstoqueBuss();
+
+                tabelaPreenchida = estoqueBuss.ListarEstoque(tabela, Convert.ToInt32(ddlTipo.SelectedItem.Value));
+
+
+                grEstoque.DataSource = tabelaPreenchida;
+                grEstoque.DataBind();
+
+                foreach (GridViewRow linha in grEstoque.Rows)
+                {
+                    Estoque estoque = new Estoque();
+                    estoque = estoqueBuss.ObterEstoquePorId(Convert.ToInt32(linha.Cells[0].Text));
+
+                    if (estoque.Status == 3)
+                    {
+                        linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#33CC66");
+
+                        //linha.Font.Bold = true;
+                    }
+
+                    else if (estoque.Status == 2)
+                    {
+                        linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#6495ED");
+                        //#ffd700
+                        //linha.Font.Bold = true;
+                    }
+
+                    else if (estoque.Status == 1)
+                    {
+                        linha.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffd700");
+                    }
+                }
+            }
+
+            else
+                PreencherTabela();
         }
     }
 }
