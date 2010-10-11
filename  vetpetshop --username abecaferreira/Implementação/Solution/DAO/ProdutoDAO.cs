@@ -432,5 +432,63 @@ namespace DAO
 
         }
 
+        public List<Produto> ListarProdutoEmEstoque(string nome, int id)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarProdutosEmEstoque";
+
+            SqlParameter pTipo = new SqlParameter("@Tipo", SqlDbType.Int, 4);
+            SqlParameter pnomeNome = new SqlParameter("@Nome", SqlDbType.VarChar, 100);
+
+            pnomeNome.Value = nome;
+            pTipo.Value = id;
+
+            cmd.Parameters.Add(pnomeNome);
+            cmd.Parameters.Add(pTipo);
+
+            List<Produto> lista = new List<Produto>();
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                Produto produto = new Produto();
+                produto.IdProduto = dr.GetInt32(0);
+                produto.NomeGrupo = dr.GetString(10);
+                produto.Nome = dr.GetString(3);
+                produto.EstoqueMin = dr.GetInt32(4);
+                produto.EstoqueMax = dr.GetInt32(5);
+                produto.Descricao = dr.GetString(6);
+                produto.PrecoCusto = dr.GetDecimal(7);
+
+                if (dr.IsDBNull(8))
+                {
+                    produto.DataValidade = null;
+                }
+                else
+                {
+                    produto.DataValidade = dr.GetDateTime(8);
+                }
+
+                produto.PrecoVenda = dr.GetDecimal(9);
+
+                lista.Add(produto);
+            }
+
+
+            dr.Close();
+            conn.Close();
+
+            return lista;
+
+        }
+
     }
 }

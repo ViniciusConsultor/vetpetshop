@@ -97,7 +97,7 @@ namespace WebUI
 
             List<Produto> _lista = new List<Produto>();
             ProdutoBuss produtoBuss = new ProdutoBuss();
-            _lista = produtoBuss.ListarProdutos(nome, IdGrupo);
+            _lista = produtoBuss.ListarProdutoEmEstoque(nome, IdGrupo);
 
             foreach (Produto prod in _lista)
             {
@@ -340,11 +340,11 @@ namespace WebUI
                 return;
             }
 
-            if (rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2")
-            {
-                lblMsg.Text = "Preencha o campo N° de parcelas";
-                return;
-            }
+            //if (rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2")
+            //{
+            //    lblMsg.Text = "Preencha o campo N° de parcelas";
+            //    return;
+            //}
 
             foreach (GridViewRow linha in grProds.Rows)
             {
@@ -432,6 +432,30 @@ namespace WebUI
 
             return estoque.Status;
             
+        }
+
+        protected void grProds_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "excluir")
+            {
+                HtmlTextWriterTag html = new HtmlTextWriterTag();
+                WebControl wc = new WebControl(html);
+                wc = ((WebControl)e.CommandSource);
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);
+
+                row.Visible = false;
+
+                //grProds.DeleteRow(row.RowIndex);
+
+                foreach (GridViewRow linha in grProds.Rows)
+                {
+                    if (linha.Visible != false)
+                    {
+                        valorTotal += Convert.ToDecimal(linha.Cells[5].Text);
+                        lblTotal.Text = valorTotal.ToString();
+                    }
+                }
+            }
         }
     }
 }

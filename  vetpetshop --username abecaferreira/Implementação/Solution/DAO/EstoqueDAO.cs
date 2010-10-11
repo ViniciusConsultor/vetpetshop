@@ -12,9 +12,9 @@ namespace DAO
     {
         private DatabaseHelper databaseHelper;
 
-         public EstoqueDAO()
+        public EstoqueDAO()
         {
-            databaseHelper = new DatabaseHelper();    
+            databaseHelper = new DatabaseHelper();
         }
 
         public void InserirEstoque(Entidade.Estoque estoque, int idProd)
@@ -60,7 +60,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }         
+            }
         }
 
         public RelEstoqueProduto ObterEstoqueProdutoPorId(int idProd)
@@ -81,7 +81,7 @@ namespace DAO
                 pId.Value = idProd;
 
                 cmd.Parameters.Add(pId);
-                
+
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
@@ -178,15 +178,16 @@ namespace DAO
                 pId.Value = idEstoque;
 
                 cmd.Parameters.Add(pId);
-                
+
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
 
                 while (dr.Read())
                 {
+                    estoque.Id = dr.GetInt32(0);
                     estoque.Status = dr.GetInt16(1);
-                    estoque.Quantidade = dr.GetInt32(2);                   
+                    estoque.Quantidade = dr.GetInt32(2);
                 }
 
                 dr.Close();
@@ -235,6 +236,45 @@ namespace DAO
                 _linhaTabela["min"] = dr.GetInt32(3).ToString();
                 _linhaTabela["max"] = dr.GetInt32(4).ToString();
                 _linhaTabela["quantidade"] = dr.GetInt32(5).ToString();
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
+        public DataTable ListarEstoque(DataTable tabela, int idGrupo)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarEstoquePorGrupo";
+
+            SqlParameter pIdGrupo = new SqlParameter("@IdGrupo", SqlDbType.Int, 4);
+            pIdGrupo.Value = idGrupo;
+
+            cmd.Parameters.Add(pIdGrupo);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_estoque"] = dr.GetInt32(0).ToString();
+                _linhaTabela["tipo"] = dr.GetString(1);
+                _linhaTabela["nm_produto"] = dr.GetString(3);
+                _linhaTabela["min"] = dr.GetInt32(4).ToString();
+                _linhaTabela["max"] = dr.GetInt32(5).ToString();
+                _linhaTabela["quantidade"] = dr.GetInt32(6).ToString();
 
                 tabela.Rows.Add(_linhaTabela);
             }

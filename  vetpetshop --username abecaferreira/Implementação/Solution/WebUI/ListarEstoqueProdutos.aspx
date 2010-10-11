@@ -9,7 +9,8 @@
         <tr>
             <td style="width: 863px">
                 Listar por&nbsp;&nbsp;
-                <asp:DropDownList ID="ddlTipo" runat="server" Width="140px">
+                <asp:DropDownList ID="ddlTipo" runat="server" Width="140px" AutoPostBack="true" 
+                    onselectedindexchanged="ddlTipo_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -28,7 +29,7 @@
                             &nbsp;</td>
                         <td style="width: 127px">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estoque médio</td>
-                        <td style="width: 35px; background-color:#FFFF99;">
+                        <td style="width: 35px; background-color:#6495ED;">
                             &nbsp;</td>
                         <td style="width: 137px">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estoque máximo</td>
@@ -66,6 +67,7 @@
                 <table style="width: 100%; height: 228px;">
                     <tr>
                         <td style="width: 100%; height: 23px">
+                        <div style="OVERFLOW: auto; HEIGHT: 300px; width: 690px">
                          <asp:GridView ID="grEstoque" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%"  
                                 onselectedindexchanged="grEstoque_SelectedIndexChanged" >
@@ -96,6 +98,7 @@
                                 </asp:BoundField>        
                                 </Columns>
                                 </asp:GridView>
+                                </div>
                         
                         </td>
                     </tr>

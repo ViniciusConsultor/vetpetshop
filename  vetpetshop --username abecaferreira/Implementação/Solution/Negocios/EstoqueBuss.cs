@@ -47,5 +47,12 @@ namespace Negocios
 
             return tabelaPreenchida;
         }
+
+        public DataTable ListarEstoque(System.Data.DataTable tabela, int idGrupo)
+        {
+            DataTable tabelaPreenchida = this.estoqueDAO.ListarEstoque(tabela, idGrupo);
+
+            return tabelaPreenchida;
+        }
     }
 }
