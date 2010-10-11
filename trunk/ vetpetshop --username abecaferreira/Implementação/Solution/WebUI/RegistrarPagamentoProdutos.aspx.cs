@@ -150,7 +150,7 @@ namespace WebUI
             ProdutoBuss produtoBuss = new ProdutoBuss();
             Produto produto = new Produto();
 
-            nota = notabuss.ObterUltimoRegistroNota();
+            //nota = notabuss.ObterUltimoRegistroNota();
 
             int idProd = (int)Session["idProd"];
             produto = produtoBuss.ObterProdutoPorId(idProd);
