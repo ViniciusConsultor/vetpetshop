@@ -1,5 +1,8 @@
-Ôªø<%@ Page Title="" Language="C#" MasterPageFile="~/Vetpetshop.Master" AutoEventWireup="true" CodeBehind="RegistrarPagamentoConsulta.aspx.cs" Inherits="WebUI.RegistrarPagamentoConsulta" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Vetpetshop.Master" AutoEventWireup="true" CodeBehind="RegistrarPagamentoConsulta.aspx.cs" Inherits="WebUI.RegistrarPagamentoConsulta" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<p><asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label></p>
+<br />
 <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
     AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
     <Columns>
@@ -14,7 +17,7 @@
     <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
         Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
         </asp:BoundField>
-        <asp:BoundField DataField="nm_cliente" HeaderText="Propriet√°rio" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+        <asp:BoundField DataField="nm_cliente" HeaderText="Propriet·rio" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
         Wrap="False"/>
         <ItemStyle HorizontalAlign="Center" Wrap="False"/>
         </asp:BoundField>
@@ -42,60 +45,44 @@
     <HeaderStyle BackColor="DarkBlue" />
     </asp:GridView>
     
-    <p><asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label></p>
+    <asp:Panel runat="server" ID="pnPgConsulta" Visible="false">
+    <table>
+    <tr>
+    <td style="width: 112px">
+    Cliente especial? <br />
+    <asp:RadioButtonList ID="rbCliente" runat="server" Width="50px">
+    <asp:ListItem Text="Sim" Value="0"></asp:ListItem>
+    <asp:ListItem Text="N„o" Value="1" Selected="True"></asp:ListItem>
+    </asp:RadioButtonList>
+    </td> 
+    <td style="width: 200px">Tipo de pagamento:<br />
+    <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="200px">
+    <asp:ListItem Text="Dinheiro" Value="0"></asp:ListItem>
+    <asp:ListItem Text="Cart„o de crÈdito" Value="1"></asp:ListItem>
+    <asp:ListItem Text="Cheque" Value="2"></asp:ListItem>
+    </asp:RadioButtonList>
+    </td>
+    <td>
+        <asp:Label ID="lblCli" Text="Nome Cliente:" runat="server" Visible="false"></asp:Label>
+        <asp:TextBox runat="server" ID="txtNomeCli" Visible="false"></asp:TextBox>
+        <asp:Panel runat="server" ID="espaco" Visible="false">
         <br />
-        <asp:Panel ID="pnlConsultas" runat="server" Visible="False">
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Propriet√°rio:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:Label ID="lblProprietario" runat="server"></asp:Label>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Animal:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:Label ID="lblAnimal" runat="server"></asp:Label>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Data da Consulta:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:TextBox ID="txtDataConsulta" runat="server"></asp:TextBox>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Valor da Consulta:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Status da Consulta:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3" Width="300px">
-                        <asp:ListItem Text="Agendada" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; padding-left:200px; width:300px;">
-                    <asp:Button ID="btnAlterar" runat="server" Text="Alterar" onclick="btnAlterar_Click"/>&nbsp;
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click"/>   
-                </div>
-            </div>
+        <br />
+        <br />
         </asp:Panel>
-    
+        <asp:Label ID="lblParcela" Text="N∫ Parcelas:" runat="server" Visible="false"></asp:Label>&nbsp;&nbsp;
+        <asp:TextBox runat="server" ID="txtParcelas" Visible="false"></asp:TextBox>
+    </td>
+    </tr>
+    <tr>
+    <td style="width: 112px">
+    <asp:Button ID="btnEnviar" runat="server" Text="Ok" Width="90px" 
+            onclick="btnEnviar_Click" />
+    <asp:Button ID="btnConfirmar" runat="server" Text="Ok" Width="90px" 
+            onclick="btnConfirmar_Click" Visible="false"/>
+    </td>
+    </tr>
+    </table>    
+    </asp:Panel>
     
 </asp:Content>

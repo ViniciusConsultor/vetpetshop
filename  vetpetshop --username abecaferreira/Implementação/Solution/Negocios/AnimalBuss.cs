@@ -121,9 +121,27 @@ namespace Negocios
             return executou;
         }
 
-        public bool RegistrarPagamento(Int32 idConsulta) 
+        public DataTable ListarConsultasAPagar(DataTable tabela)
         {
-            bool executou = this.animalDAO.RegistrarPagamento(idConsulta);
+            DataTable tabelaPreenchida = new DataTable();
+
+            tabelaPreenchida = this.animalDAO.ListarConsultasAPagar(tabela);
+            return tabelaPreenchida;
+        }
+
+        public Consulta ListarConsultaAnimalAPagar(Int32 idConsulta)
+        {
+            Consulta consulta = new Consulta();
+
+            consulta = animalDAO.ListarConsultaAnimalAPagar(idConsulta);
+
+            return consulta;
+        
+        }
+
+        public bool AlteraStatusConsultaPaga(Int32 idConsulta)
+        {
+            bool executou = animalDAO.AlteraStatusConsultaPaga(idConsulta);
             return executou;
         }
     }
