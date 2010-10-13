@@ -89,7 +89,7 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "ObterUltimoFinanceiroVendaRegistrado";              
+                cmd.CommandText = "spsObterUltimoRegistroVendaProdutos";              
 
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
