@@ -55,6 +55,8 @@ namespace WebUI
 
         protected void Buscar_Click(object sender, EventArgs e)
         {
+            lblMsg.Text = "";
+
             DataTable tabelaPreenchida = new DataTable();
             lblRegistros.Text = "";
 
@@ -374,6 +376,8 @@ namespace WebUI
             financeiro.ValorTotal = Convert.ToDecimal(lblTotal.Text);
             financeiro.TipoPagamento = Convert.ToInt32(rbTipoPagamento.SelectedItem.Value); //0=dinheiro 1=cartão de credito 2=cheque
 
+            
+
             if (txtParcelas.Text != "")
             {
                 financeiro.Parcelas = Convert.ToInt32(txtParcelas.Text);
@@ -398,6 +402,23 @@ namespace WebUI
 
             executou = financeiroBuss.InserirRegistroFinanceiro(financeiro);
 
+            Financeiro financeiroRegistrado = new Financeiro();
+            financeiroRegistrado = financeiroBuss.ObterFinanceiroVendaRegistrado();
+
+            foreach (GridViewRow linha in grProds.Rows)
+            {
+
+                if (linha.Visible == true)
+                {
+                    RelFinanceiroProduto relFinanceiroProduto = new RelFinanceiroProduto();
+                    relFinanceiroProduto.IdFinanceiro = financeiroRegistrado.Id;
+                    relFinanceiroProduto.IdProduto = Convert.ToInt32(linha.Cells[1].Text);
+
+                    financeiroBuss.InserirRelFinanceiroProduto(relFinanceiroProduto);                    
+                }
+            }
+
+            
             if (executou)
             {
                 grProds.DataSource = null;
@@ -410,6 +431,7 @@ namespace WebUI
                 lblTotal.Text = "";
                 btnSalvar.Visible = false;
                 PanelCliEspecial.Visible = false;
+                lblValor.Visible = false;
             }
         }
 

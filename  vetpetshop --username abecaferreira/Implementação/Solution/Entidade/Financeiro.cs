@@ -8,6 +8,7 @@ namespace Entidade
 {
     public class Financeiro
     {
+        public int Id { get; set; }
         public decimal ValorTotal { get; set; }
         public int TipoPagamento { get; set; }
         public int TipoTransacao { get; set; }
