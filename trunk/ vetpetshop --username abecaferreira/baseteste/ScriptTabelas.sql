@@ -197,6 +197,21 @@ CONSTRAINT  FK_ProdutoNotaFiscal_Produto		FOREIGN KEY(IdProduto)			REFERENCES  P
 CONSTRAINT  FK_ProdutoNotaFiscal_NotaFiscal		FOREIGN KEY(IdNotaFiscal)		REFERENCES  NotaFiscal(Id)
 )
 
+
+CREATE TABLE FinanceiroProduto
+(
+Id					INT IDENTITY(1,1)			NOT NULL,
+IdFinanceiro		INT							NULL,
+IdProduto			INT							NULL,
+DataTransacao		DATETIME
+CONSTRAINT	PK_FinanceiroProduto				PRIMARY KEY(Id),
+CONSTRAINT	FK_Financeiro_Produto				FOREIGN KEY(IdProduto)			REFERENCES Produto(Id),
+CONSTRAINT	FK_Financeiro_Financeiro			FOREIGN KEY(IdFinanceiro)		REFERENCES Financeiro(Id),
+)
+
+
+
+
 SET @error = @@ERROR
 IF @@ERROR = 0 AND @error = 0
 BEGIN
