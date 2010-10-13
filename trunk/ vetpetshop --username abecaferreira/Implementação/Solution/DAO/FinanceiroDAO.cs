@@ -77,5 +77,96 @@ namespace DAO
             return executou;
         }
 
+
+        public Financeiro ObterFinanceiroVendaRegistrado()
+        {
+            Financeiro financeiro = new Financeiro();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ObterUltimoFinanceiroVendaRegistrado";              
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                //if(!dr.Read())
+                //    return null;
+
+                while (dr.Read())
+                {
+                    financeiro.Id = dr.GetInt32(0);
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return financeiro;
+        }
+
+        public void InserirRelFinanceiroProduto(RelFinanceiroProduto relFinanceiroProduto)
+        {
+            //bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spiInserirRelFinanceiroProduto";
+
+                SqlParameter pIdFinanceiro = new SqlParameter("@IdFinanceiro", SqlDbType.Int, 4);
+                SqlParameter pIdProduto = new SqlParameter("IdProduto", SqlDbType.Int, 4);
+
+                pIdFinanceiro.Value = relFinanceiroProduto.IdFinanceiro;
+                pIdProduto.Value = relFinanceiroProduto.IdProduto;
+
+                cmd.Parameters.Add(pIdFinanceiro);
+                cmd.Parameters.Add(pIdProduto);
+                
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+               // executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+           // return executou;
+        }
     }
 }

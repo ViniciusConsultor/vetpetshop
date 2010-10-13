@@ -57,6 +57,7 @@
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelEstoqueProduto.cs" />
+    <Compile Include="RelFinanceiroProduto.cs" />
     <Compile Include="RelProdutoNotaFiscal.cs" />
     <Compile Include="TipoAnimal.cs" />
     <Compile Include="Usuario.cs" />
