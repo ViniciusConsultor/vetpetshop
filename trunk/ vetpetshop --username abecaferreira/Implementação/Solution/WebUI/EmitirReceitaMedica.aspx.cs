@@ -62,42 +62,17 @@ namespace WebUI
 
         protected void gdvConsultas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "alterar")
+            if (e.CommandName == "selecionar")
             {
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
-                pnlConsultas.Visible = true;
-           
+                          
                 HtmlTextWriterTag html = new HtmlTextWriterTag();
                 WebControl wc = new WebControl(html);
                 wc = ((WebControl)e.CommandSource);
 
-                GridViewRow row = ((GridViewRow)wc.NamingContainer);
-
-                lblProprietario.Text = row.Cells[3].Text;
-                lblAnimal.Text = row.Cells[4].Text;
-                txtDataConsulta.Text = string.Format("{0:d}", row.Cells[5].Text);
-                txtValor.Text = row.Cells[6].Text;
-
-                if (row.Cells[7].Text == "Agendada")
-                {
-                    rblStatus.SelectedIndex = 0;
-                }
-                else if (row.Cells[7].Text == "Desmarcada")
-                {
-                    rblStatus.SelectedIndex = 1;
-                }
-                else
-                {
-                    rblStatus.SelectedIndex = 2;
-                }
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);              
             }
-
-            if (e.CommandName == "excluir") 
-            { 
-                ViewState["id_consulta"] = e.CommandArgument.ToString();
-                ExcluirConsulta(Convert.ToInt32(ViewState["id_consulta"]));              
-            }
-           
+                       
         }
 
          protected void ExcluirConsulta(int id)
@@ -141,11 +116,11 @@ namespace WebUI
             return _tabela;
         }
 
-        protected void btnAlterar_Click(object sender, EventArgs e)
+        protected void btnListar_Click(object sender, EventArgs e)
         {
 
 
-            if (txtDataConsulta.Text != "")
+            /*if (txtDataConsulta.Text != "")
             {
                 datConsulta = System.DateTime.ParseExact(txtDataConsulta.Text, "dd/MM/yyyy", null);
             }
@@ -161,31 +136,8 @@ namespace WebUI
             else
             {
                 lblMsg.Text = "Selecione um animal para o agendamento da consulta";
-            }
-        }
-
-        protected void AlterarAgendamentoConsulta()
-        {
-            decimal valor = 0;
-            AnimalBuss animalBuss = new AnimalBuss();
-
-            bool executou;
-
-            if (! string.IsNullOrEmpty(txtValor.Text))
-            { 
-            valor = Convert.ToDecimal(txtValor.Text);
-            }
-
-            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datConsulta, valor, rblStatus.SelectedIndex);
-
-            if (executou)
-            {
-                CarregarConsultas();
-            }
-
-            pnlConsultas.Visible = false;
-            lblMsg.Text = "Alteração realizada com sucesso";
-        }
+            }*/
+        }        
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {

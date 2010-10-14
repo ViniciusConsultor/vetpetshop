@@ -1,32 +1,50 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="EmitirReceitaMedica.aspx.cs" Inherits="WebUI.EmitirReceitaMedica" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="EmitirReceitaMedica.aspx.cs" Inherits="WebUI.EmitirReceitaMedica" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="padding: 20px 10px 10px 20px; width:100%;">
-        <br />
+        <div style="width:100%; height:30px;">
+            <div style="float:left; width:70px; height:30px;">
+                Propriet·rio:
+            </div>
+            <div style="float:left; width:300px; height:30px;">
+                <asp:TextBox ID="txtProprietario" runat="server" Width="300px"></asp:TextBox> 
+            </div>
+            <div style="float:left; width:100px; height:30px; padding-left:5px;">
+                Data da Consulta:
+            </div>
+            <div style="float:left; width:200px; height:30px;">
+                <asp:TextBox ID="txtDataConsulta" runat="server"></asp:TextBox>   
+            </div>
+        </div>            
+        <div style="width:100%; height:10px;"></div>
+        <div style="width:100%; height:30px;">
+            <div style="float:left; padding-left:10px; width:300px;">
+                <asp:Button ID="btnListar" runat="server" Text="Listar" onclick="btnListar_Click"/>&nbsp;
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click"/>   
+            </div>
+        </div>        
+        <div style="width:100%; height:30px; text-align:center;">
+            <div style=" margin-top:7px;"> 
+                <asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label>
+            </div>            
+        </div>         
         <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
         AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("id_consulta") %>'>
+                        <asp:LinkButton ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("id_consulta") %>'>
                         </asp:LinkButton>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />
-                </asp:TemplateField>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');">
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center" />
-                </asp:TemplateField>
+                </asp:TemplateField>                
                 <asp:BoundField DataField="id_consulta" visible="False">
                     <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                     Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
                 </asp:BoundField>
-                <asp:BoundField DataField="nm_cliente" HeaderText="Propriet√°rio" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                <asp:BoundField DataField="nm_cliente" HeaderText="Propriet·rio" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                     Wrap="False"/>
                     <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                 </asp:BoundField>
@@ -52,63 +70,7 @@
             </Columns>
             <AlternatingRowStyle BackColor="LightSteelBlue" />
             <HeaderStyle BackColor="DarkBlue" />
-        </asp:GridView><br />                
-        <p>
-            <asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label>
-        </p>
-        <br />
-        <asp:Panel ID="pnlConsultas" runat="server" Visible="False">
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Propriet√°rio:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:Label ID="lblProprietario" runat="server"></asp:Label>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Animal:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:Label ID="lblAnimal" runat="server"></asp:Label>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Data da Consulta:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:TextBox ID="txtDataConsulta" runat="server"></asp:TextBox>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Valor da Consulta:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; width:200px; height:30px;">
-                    Status da Consulta:
-                </div>
-                <div style="float:left; width:300px; height:30px;">
-                    <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3" Width="300px">
-                        <asp:ListItem Text="Agendada" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>   
-                </div>
-            </div>
-            <div style="width:100%; height:30px;">
-                <div style="float:left; padding-left:200px; width:300px;">
-                    <asp:Button ID="btnAlterar" runat="server" Text="Alterar" onclick="btnAlterar_Click"/>&nbsp;
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click"/>   
-                </div>
-            </div>
-        </asp:Panel>        
+        </asp:GridView>           
     </div>    
 </asp:Content>
 
