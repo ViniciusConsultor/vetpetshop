@@ -11,5 +11,6 @@ namespace Entidade
         public int IdProduto { get; set; }
         public int IdFinanceiro { get; set; }
         public DateTime DataTransacao { get; set; }
+        public int QuantidadeVendida { get; set; }
     }
 }

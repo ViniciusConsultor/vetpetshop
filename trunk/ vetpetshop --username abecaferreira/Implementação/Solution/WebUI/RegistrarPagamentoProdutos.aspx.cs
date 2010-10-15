@@ -413,6 +413,7 @@ namespace WebUI
                     RelFinanceiroProduto relFinanceiroProduto = new RelFinanceiroProduto();
                     relFinanceiroProduto.IdFinanceiro = financeiroRegistrado.Id;
                     relFinanceiroProduto.IdProduto = Convert.ToInt32(linha.Cells[1].Text);
+                    relFinanceiroProduto.QuantidadeVendida = Convert.ToInt32(linha.Cells[4].Text);
 
                     financeiroBuss.InserirRelFinanceiroProduto(relFinanceiroProduto);                    
                 }
