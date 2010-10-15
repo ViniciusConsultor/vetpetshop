@@ -138,13 +138,16 @@ namespace DAO
                 cmd.CommandText = "spiInserirRelFinanceiroProduto";
 
                 SqlParameter pIdFinanceiro = new SqlParameter("@IdFinanceiro", SqlDbType.Int, 4);
-                SqlParameter pIdProduto = new SqlParameter("IdProduto", SqlDbType.Int, 4);
+                SqlParameter pIdProduto = new SqlParameter("@IdProduto", SqlDbType.Int, 4);
+                SqlParameter pQuantidade = new SqlParameter("@QuantidadeVendida", SqlDbType.Int, 4);
 
                 pIdFinanceiro.Value = relFinanceiroProduto.IdFinanceiro;
                 pIdProduto.Value = relFinanceiroProduto.IdProduto;
+                pQuantidade.Value = relFinanceiroProduto.QuantidadeVendida;
 
                 cmd.Parameters.Add(pIdFinanceiro);
                 cmd.Parameters.Add(pIdProduto);
+                cmd.Parameters.Add(pQuantidade);
                 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
