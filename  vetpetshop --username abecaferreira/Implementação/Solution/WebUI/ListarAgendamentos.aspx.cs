@@ -89,6 +89,7 @@ namespace WebUI
         {
             if (e.CommandName == "alterar")
             {
+                lblMsg.Text = string.Empty;
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = true;
                 pnlVacinacao.Visible = false;
@@ -119,7 +120,8 @@ namespace WebUI
             }
 
             if (e.CommandName == "excluir") 
-            { 
+            {
+                lblMsg.Text = string.Empty;
                 ViewState["id_consulta"] = e.CommandArgument.ToString();
                 ExcluirConsulta(Convert.ToInt32(ViewState["id_consulta"]));              
             }
