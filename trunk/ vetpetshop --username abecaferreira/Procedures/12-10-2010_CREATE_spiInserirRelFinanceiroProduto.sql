@@ -7,7 +7,8 @@ GO
 
 CREATE PROCEDURE [dbo].[spiInserirRelFinanceiroProduto]
 	@IdFinanceiro INT,
-	@IdProduto INT
+	@IdProduto INT,
+	@QuantidadeVendida INT
 AS
 BEGIN
 	
@@ -15,13 +16,15 @@ BEGIN
 	(
 	IdFinanceiro,
 	IdProduto,
-	DataTransacao
+	DataTransacao,
+	Quantidade
 	)
 	VALUES
 	(
 	@IdFinanceiro,
 	@IdProduto,
-	GETDATE()
+	GETDATE(),
+	@QuantidadeVendida
 	)
 END
 GO
