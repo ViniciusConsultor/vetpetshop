@@ -171,5 +171,60 @@ namespace DAO
 
            // return executou;
         }
+
+        public List<Financas> ListarFinancasPetShop(int ano)
+        {
+            List<Financas> lista = new List<Financas>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsFinancasPorAno";
+
+                SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
+                pAno.Value = ano;
+
+                cmd.Parameters.Add(pAno);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                //if(!dr.Read())
+                //    return null;
+
+                while (dr.Read())
+                {
+                    Financas financas = new Financas();
+                    financas.Mes = dr.GetInt32(0);
+                    financas.Valor = dr.GetDecimal(1);
+
+                    lista.Add(financas);
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lista;
+        }
     }
 }
