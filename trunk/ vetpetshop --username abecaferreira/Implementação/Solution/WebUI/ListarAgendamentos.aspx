@@ -27,7 +27,7 @@
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="id_consulta" visible="False">
+                        <asp:BoundField DataField="id_consulta" visible="true" HeaderText="Código">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                     Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
                                     </asp:BoundField>
