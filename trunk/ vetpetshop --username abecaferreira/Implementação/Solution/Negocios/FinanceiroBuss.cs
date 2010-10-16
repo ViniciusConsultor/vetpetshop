@@ -35,11 +35,27 @@ namespace Negocios
             this.financeiroDAO.InserirRelFinanceiroProduto(relFinanceiroProduto);
         }
 
-        public List<Financas> ListarFinancasPetShop(int ano)
+        public List<Financas> ListarInvestimentos(int ano)
         {
             List<Financas> lista = new List<Financas>();
 
-            lista = this.financeiroDAO.ListarFinancasPetShop(ano);
+            lista = this.financeiroDAO.ListarInvestimentos(ano);
+            return lista;
+        }
+
+        public List<Financas> ListarVendas(int ano)
+        {
+            List<Financas> lista = new List<Financas>();
+
+            lista = this.financeiroDAO.ListarVendas(ano);
+            return lista;
+        }
+
+        public List<FinancasEstoque> ListarFinancasEstoque(int ano)
+        {
+            List<FinancasEstoque> lista = new List<FinancasEstoque>();
+
+            lista = this.financeiroDAO.ListarFinancasEstoque(ano);
             return lista;
         }
     }
