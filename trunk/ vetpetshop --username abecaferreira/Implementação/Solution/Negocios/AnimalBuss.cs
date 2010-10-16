@@ -100,6 +100,13 @@ namespace Negocios
             return tabelaPreenchida;
         }
 
+        public DataTable ListarDadosReceitaMedica(Int32 idConsulta)
+        {
+            DataTable tabelaPreenchida = new DataTable();
+
+            tabelaPreenchida = this.animalDAO.ListarDadosReceitaMedica(idConsulta);
+            return tabelaPreenchida;
+        }
         public DataTable ListarConsultasAnimais2(DataTable tabela, string proprietario, DateTime dataconsulta)
         {
             DataTable tabelaPreenchida = new DataTable();
