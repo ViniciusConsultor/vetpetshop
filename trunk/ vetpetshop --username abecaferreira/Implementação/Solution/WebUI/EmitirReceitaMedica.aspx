@@ -66,8 +66,12 @@
                 <HeaderStyle BackColor="DarkBlue" />
             </asp:GridView> 
         </div>         
-        
-        <div style="height:15px; width:100%"></div>          
+        <div style="height:15px; width:100%"></div>
+        <div style="width:100%">
+            <asp:Panel ID="pnlProduto" runat="server">
+            
+            </asp:Panel>
+        </div>          
     </div>    
 </asp:Content>
 
