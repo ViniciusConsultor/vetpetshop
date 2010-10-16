@@ -557,19 +557,16 @@ namespace DAO
 
             try
             { 
-             
+            
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "spsListarDadosReceitaMedica";
-                         
+              
             SqlParameter pIdConsulta = new SqlParameter("@IdConsultaAnimal", SqlDbType.Int, 4);
-
             pIdConsulta.Value = IdConsulta;
-
             cmd.Parameters.Add(pIdConsulta);
              
             SqlDataAdapter da;
-
             da = new SqlDataAdapter(cmd);
 
             conn.Open();
