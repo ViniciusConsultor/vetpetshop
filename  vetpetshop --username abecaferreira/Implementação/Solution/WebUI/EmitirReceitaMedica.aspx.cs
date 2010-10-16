@@ -117,7 +117,14 @@ namespace WebUI
 
             CarregarConsultas();
 
-            lblMsg.Text = "Dados carregados";
+            if (!(gdvConsultas.Rows.Count > 0)) 
+            {
+                lblMsg.Text = "Não foram encontrados registros com os critérios informados";
+            }
+            else
+            {
+                lblMsg.Text = "";
+            }
         }        
 
         protected void btnCancelar_Click(object sender, EventArgs e)
