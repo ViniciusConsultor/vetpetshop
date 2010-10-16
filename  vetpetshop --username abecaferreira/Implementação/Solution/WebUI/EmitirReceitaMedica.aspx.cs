@@ -16,6 +16,7 @@ namespace WebUI
     {
         public DateTime datConsulta;
         public string proprietario;
+        public DataTable dtRegistro;
         Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,6 +45,15 @@ namespace WebUI
             }
         }
 
+        protected DataTable CarregarDadosReceitaMedica(Int32 idConsulta)
+        {
+            AnimalBuss animalBuss = new AnimalBuss();
+            DataTable tabelaPreenchida = new DataTable();
+
+            tabelaPreenchida = animalBuss.ListarDadosReceitaMedica(idConsulta);
+            return tabelaPreenchida;            
+        }
+
         private DataTable PreencherConsultas()
         {
             Animal animal = new Animal();
@@ -67,7 +77,9 @@ namespace WebUI
                 WebControl wc = new WebControl(html);
                 wc = ((WebControl)e.CommandSource);
 
-                GridViewRow row = ((GridViewRow)wc.NamingContainer);              
+                GridViewRow row = ((GridViewRow)wc.NamingContainer);
+
+                dtRegistro = CarregarDadosReceitaMedica(Convert.ToInt32(ViewState["id_consulta"]));
             }
                        
         }         

@@ -547,6 +547,54 @@ namespace DAO
 
             return tabela;
         }
+
+        public DataTable ListarDadosReceitaMedica(Int32 IdConsulta)
+        {
+            DataSet dsRegistros = new DataSet();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            { 
+             
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarDadosReceitaMedica";
+                         
+            SqlParameter pIdConsulta = new SqlParameter("@IdConsultaAnimal", SqlDbType.Int, 4);
+
+            pIdConsulta.Value = IdConsulta;
+
+            cmd.Parameters.Add(pIdConsulta);
+             
+            SqlDataAdapter da;
+
+            da = new SqlDataAdapter(cmd);
+
+            conn.Open();
+
+            da.Fill(dsRegistros);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+
+            finally
+            {
+
+                conn.Close();
+
+            }
+                        
+            return dsRegistros.Tables[0];
+        }
+
+
         public DataTable ListarVacinacoesAnimais(DataTable tabela)
         {
 
