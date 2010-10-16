@@ -479,6 +479,74 @@ namespace DAO
             return tabela;
         }
 
+        public DataTable ListarConsultasAnimais2(DataTable tabela, string proprietario, DateTime dataconsulta)
+        {
+
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarConsultasAnimais2";
+
+            SqlParameter pNome = new SqlParameter("@Nome", SqlDbType.VarChar, 50);
+                    
+            SqlParameter pDatConsulta = new SqlParameter("@Data", SqlDbType.SmallDateTime);
+
+            pNome.Value = proprietario;
+
+            if (dataconsulta == DateTime.MinValue)
+            {
+                pDatConsulta.Value = SqlDateTime.Null;
+            }
+            else
+            {
+                pDatConsulta.Value = dataconsulta;
+            }
+
+            cmd.Parameters.Add(pNome);
+            cmd.Parameters.Add(pDatConsulta);
+            
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["id_consulta"] = dr.GetInt32(0);
+                _linhaTabela["nm_cliente"] = dr.GetString(1);
+                _linhaTabela["nm_animal"] = dr.GetString(2);
+                if (dr.IsDBNull(3))
+                {
+                    _linhaTabela["dataconsulta"] = "";
+                }
+                else
+                {
+                    _linhaTabela["dataconsulta"] = dr.GetDateTime(3).ToString("dd/MM/yyyy");
+                }                
+                if (dr.GetInt32(4) == 0)
+                {
+                    _linhaTabela["status"] = "Agendada";                                      
+                }
+                if (dr.GetInt32(4) == 1)
+                {
+                    _linhaTabela["status"] = "Desmarcada"; 
+                }
+                if (dr.GetInt32(4) == 2)
+                {
+                    _linhaTabela["status"] = "Finalizada"; 
+                }
+                
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
         public DataTable ListarVacinacoesAnimais(DataTable tabela)
         {
 

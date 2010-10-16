@@ -15,6 +15,7 @@ namespace WebUI
     public partial class EmitirReceitaMedica : System.Web.UI.Page
     {
         public DateTime datConsulta;
+        public string proprietario;
         Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace WebUI
             tabela = MontarTabelaConsultas();
 
             AnimalBuss animalBuss = new AnimalBuss();
-            tabelaPreenchida = animalBuss.ListarConsultasAnimais(tabela);
+            tabelaPreenchida = animalBuss.ListarConsultasAnimais2(tabela, proprietario, datConsulta);
             return tabelaPreenchida;
         }
 
@@ -73,27 +74,7 @@ namespace WebUI
                 GridViewRow row = ((GridViewRow)wc.NamingContainer);              
             }
                        
-        }
-
-         protected void ExcluirConsulta(int id)
-         {
-             bool executou = false;
-
-             AnimalBuss animalBus = new AnimalBuss();
-
-             executou = animalBus.ExcluirConsulta(id);
-
-             if (executou)
-             {
-                 lblMsg.Text = "Consulta excluída com sucesso!";
-                 CarregarConsultas();
-             }
-             else
-             {
-                 lblMsg.Text = "A exclusão não foi efetuada. Falha de conexão com o banco de dados";
-             }
-
-         }
+        }         
        
         private DataTable MontarTabelaConsultas()
         {
@@ -116,25 +97,30 @@ namespace WebUI
 
         protected void btnListar_Click(object sender, EventArgs e)
         {
-            CarregarConsultas();
+            //Limpa e recarrega o grid
+            gdvConsultas.DataSource = null;
+            gdvConsultas.DataBind();
 
-            /*if (txtDataConsulta.Text != "")
+            if (txtDataConsulta.Text != "")
             {
                 datConsulta = System.DateTime.ParseExact(txtDataConsulta.Text, "dd/MM/yyyy", null);
             }
             else
             {
-                lblMsg.Text = "Digite a data da próxima consulta";
+                datConsulta = DateTime.MinValue;
             }
 
-            if (ViewState["id_consulta"] != null)
+            if (txtProprietario.Text != "")
             {
-                AlterarAgendamentoConsulta();
+                proprietario = txtProprietario.Text;
             }
             else
             {
-                lblMsg.Text = "Selecione um animal para o agendamento da consulta";
-            }*/
+                proprietario = "";
+            }
+
+            CarregarConsultas();
+                        
         }        
 
         protected void btnCancelar_Click(object sender, EventArgs e)
