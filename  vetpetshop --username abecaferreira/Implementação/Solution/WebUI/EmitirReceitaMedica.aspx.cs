@@ -30,11 +30,7 @@ namespace WebUI
             usuario = (Usuario)Session["User"];
             UsuarioBuss usuarioBuss = new UsuarioBuss();
             usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-
-            //if (!IsPostBack)
-            //{
-            //    CarregarConsultas();               
-            //}
+                       
         }
 
         protected void CarregarConsultas()
@@ -120,7 +116,8 @@ namespace WebUI
             }
 
             CarregarConsultas();
-                        
+
+            lblMsg.Text = "Dados carregados";
         }        
 
         protected void btnCancelar_Click(object sender, EventArgs e)
