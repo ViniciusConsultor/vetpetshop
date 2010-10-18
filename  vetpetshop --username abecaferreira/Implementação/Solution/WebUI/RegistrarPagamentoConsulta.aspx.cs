@@ -212,7 +212,7 @@ namespace WebUI
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
-            if (txtBusca.Text != string.Empty)
+            if (txtBusca.Text != "")
             {
                 CarregarConsultas(txtBusca.Text);
             }

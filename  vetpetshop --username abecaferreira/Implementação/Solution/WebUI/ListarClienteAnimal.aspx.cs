@@ -22,25 +22,25 @@ namespace WebUI
                 usuario = (Usuario)Session["User"];
                 UsuarioBuss usuarioBuss = new UsuarioBuss();
                 usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-            }
 
-            #region Criação de Menu
-            if (usuario.TipoUsuario == 2)
-            {
-                Menu menu = (Menu)Page.Master.FindControl("Menu1");
-                SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
-                menu.DataSource = siteVeterinario;
-                menu.DataBind();
+                #region Criação de Menu
+                if (usuario.TipoUsuario == 2)
+                {
+                    Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                    SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
+                    menu.DataSource = siteVeterinario;
+                    menu.DataBind();
+                }
+                if (usuario.TipoUsuario == 3)
+                {
+                    Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                    SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
+                    menu.DataSource = siteVendedor;
+                    menu.DataBind();
+
+                }
+                #endregion
             }
-            if (usuario.TipoUsuario == 3)
-            {
-                Menu menu = (Menu)Page.Master.FindControl("Menu1");
-                SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
-                menu.DataSource = siteVendedor;
-                menu.DataBind();
-            
-            }
-            #endregion
 
             if (Convert.ToString(ViewState["hdnMSG"]) != string.Empty) 
             {
@@ -116,10 +116,6 @@ namespace WebUI
         {
             if (e.Row.RowType ==  DataControlRowType.DataRow)
             {
-                if (e.Row.Cells[6].Text == "01/01/0001")
-                {
-                    e.Row.Cells[6].Text = "";
-                }
                 if (e.Row.Cells[7].Text == "01/01/0001")
                 {
                     e.Row.Cells[7].Text = "";
@@ -127,6 +123,10 @@ namespace WebUI
                 if (e.Row.Cells[8].Text == "01/01/0001")
                 {
                     e.Row.Cells[8].Text = "";
+                }
+                if (e.Row.Cells[9].Text == "01/01/0001")
+                {
+                    e.Row.Cells[9].Text = "";
                 }
                 
                 e.Row.Cells[2].Text = BuscarProprietarioAnimal(Convert.ToInt32(e.Row.Cells[2].Text)); 
