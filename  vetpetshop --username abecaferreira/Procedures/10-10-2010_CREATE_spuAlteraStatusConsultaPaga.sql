@@ -4,7 +4,8 @@ GO
 
 CREATE PROCEDURE [dbo].spuAlteraStatusConsultaPaga
 	
-@IdConsulta int,	
+@IdConsulta int,
+@IdFinanceiro int,	
 @Status int
 
 AS
@@ -14,7 +15,8 @@ SET NOCOUNT ON
 BEGIN
 	
 	UPDATE dbo.ConsultaVeterinaria SET 
-	Status = @Status
+	Status = @Status,
+	IdFinanceiro = @IdFinanceiro
 	WHERE Id = @IdConsulta
 	
 END
