@@ -68,6 +68,15 @@ namespace WebUI {
         protected global::AjaxControlToolkit.TabPanel tabPanel1;
         
         /// <summary>
+        /// lblRegistrosClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegistrosClientes;
+        
+        /// <summary>
         /// ObjectDataSource1 control.
         /// </summary>
         /// <remarks>
@@ -93,6 +102,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel tabPanel2;
+        
+        /// <summary>
+        /// lblRegistrosAnimais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegistrosAnimais;
         
         /// <summary>
         /// ObjectDataSource2 control.

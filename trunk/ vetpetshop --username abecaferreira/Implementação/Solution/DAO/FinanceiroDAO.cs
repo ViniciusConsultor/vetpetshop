@@ -446,5 +446,51 @@ namespace DAO
 
             return lista;
         }
+
+        public Int32 ObterUltimoRegistroFinanceiroConsulta()
+        {
+            Int32 idInserido = 0;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterUltimoRegistroFinanceiroConsulta";
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                //if(!dr.Read())
+                //    return null;
+
+                while (dr.Read())
+                {
+                    idInserido = dr.GetInt32(0);
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return idInserido;
+        }
     }
 }

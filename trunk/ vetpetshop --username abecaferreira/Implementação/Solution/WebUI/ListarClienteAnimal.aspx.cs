@@ -13,19 +13,40 @@ namespace WebUI
 {
     public partial class ListarClienteAnimal : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                usuario = (Usuario)Session["User"];
+                UsuarioBuss usuarioBuss = new UsuarioBuss();
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+            }
+
             #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
-            menu.DataSource = siteVendedor;
-            menu.DataBind();
+            if (usuario.TipoUsuario == 2)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
+                menu.DataSource = siteVeterinario;
+                menu.DataBind();
+            }
+            if (usuario.TipoUsuario == 3)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
+                menu.DataSource = siteVendedor;
+                menu.DataBind();
+            
+            }
             #endregion
 
             if (Convert.ToString(ViewState["hdnMSG"]) != string.Empty) 
             {
                 lblMsg.Text = Convert.ToString(ViewState["hdnMSG"]); 
             }
+            
         }
 
         protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -93,7 +114,6 @@ namespace WebUI
 
         protected void grAnimais_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
             if (e.Row.RowType ==  DataControlRowType.DataRow)
             {
                 if (e.Row.Cells[6].Text == "01/01/0001")

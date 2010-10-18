@@ -75,5 +75,12 @@ namespace Negocios
 
             return lista;
         }
+
+        public Int32 ObterUltimoRegistroFinanceiroConsulta()
+        {
+            Int32 idInserido; 
+            idInserido = this.financeiroDAO.ObterUltimoRegistroFinanceiroConsulta();
+            return idInserido;
+        }
     }
 }

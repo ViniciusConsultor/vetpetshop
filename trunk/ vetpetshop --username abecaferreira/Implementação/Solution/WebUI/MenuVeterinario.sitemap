@@ -7,7 +7,7 @@
     <siteMapNode url="~/ListarAgendamentos.aspx" title="Listar Agendamentos"  description="Listar Agendamentos" />  
     <siteMapNode url="~/ManterCadastroCliente.aspx" title="Manter Cadastro Cliente"  description="Página de cadastro de clientes e animais" />
     <siteMapNode url="~/ListarClienteAnimal.aspx" title="Listar Cliente/Animal"  description="Listar clientes e animais" />
-    <siteMapNode url="~/RegistrarPagamentoConsulta.aspx" title="Registrar Pagamento Consulta"  description="Registrar Pagamento Consulta" />
+    <siteMapNode url="~/RegistrarPagamentoConsulta.aspx" title="Registrar Consultas"  description="Registrar Consultas" />
     <siteMapNode url="~/EmitirReceitaMedica.aspx" title="Emitir Receita Médica"  description="Emissão de Receitas Médicas" />
     </siteMapNode>
 </siteMap>

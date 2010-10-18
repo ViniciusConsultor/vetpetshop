@@ -135,11 +135,11 @@ namespace Negocios
             return executou;
         }
 
-        public DataTable ListarConsultasAPagar(DataTable tabela)
+        public DataTable ListarConsultasAPagar(DataTable tabela, string nomeAnimal)
         {
             DataTable tabelaPreenchida = new DataTable();
 
-            tabelaPreenchida = this.animalDAO.ListarConsultasAPagar(tabela);
+            tabelaPreenchida = this.animalDAO.ListarConsultasAPagar(tabela,nomeAnimal);
             return tabelaPreenchida;
         }
 
@@ -153,9 +153,9 @@ namespace Negocios
         
         }
 
-        public bool AlteraStatusConsultaPaga(Int32 idConsulta)
+        public bool AlteraStatusConsultaPaga(Int32 idConsulta, Int32 idFinanceiro)
         {
-            bool executou = animalDAO.AlteraStatusConsultaPaga(idConsulta);
+            bool executou = animalDAO.AlteraStatusConsultaPaga(idConsulta, idFinanceiro);
             return executou;
         }
     }

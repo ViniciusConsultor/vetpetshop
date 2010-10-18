@@ -319,15 +319,14 @@ h3 {
     width:50%;
 } 
 
-div.scroll
+.scroll
 {
+	border:1px solid #B8B8B8;
 	clear:right;
 	margin-top:5px;
 	max-height:350px;
-	border:1px solid #b8b8b8;
 	overflow:scroll;
 }
-
 
 
 table {border-collapse:collapse; font-size:10px;}
