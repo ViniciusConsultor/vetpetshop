@@ -956,7 +956,7 @@ namespace DAO
             return executou;
         }
 
-        public DataTable ListarConsultasAPagar(DataTable tabela)
+        public DataTable ListarConsultasAPagar(DataTable tabela, string nomeAnimal)
         {
 
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -966,6 +966,12 @@ namespace DAO
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "spsListarConsultasAPagar";
+
+            SqlParameter pNomeAnimal = new SqlParameter("@NomeAnimal", SqlDbType.VarChar, 50);
+
+            pNomeAnimal.Value = nomeAnimal;
+
+            cmd.Parameters.Add(pNomeAnimal);
 
             conn.Open();
 
@@ -1025,7 +1031,6 @@ namespace DAO
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "spsListarConsultaAnimalAPagar";
 
-
             SqlParameter pIdConsulta = new SqlParameter("@IdConsulta", SqlDbType.Int);
 
             pIdConsulta.Value = idConsulta;
@@ -1047,7 +1052,7 @@ namespace DAO
             return consulta;
         }
 
-        public bool AlteraStatusConsultaPaga(Int32 idConsulta)
+        public bool AlteraStatusConsultaPaga(Int32 idConsulta, Int32 idFinanceiro)
         {
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -1061,12 +1066,15 @@ namespace DAO
                 cmd.CommandText = "spuAlteraStatusConsultaPaga";
 
                 SqlParameter pIdConsulta = new SqlParameter("@IdConsulta", SqlDbType.Int);
+                SqlParameter pIdFinanceiro = new SqlParameter("@IdFinanceiro", SqlDbType.Int);
                 SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
 
                 pIdConsulta.Value = idConsulta;
+                pIdFinanceiro.Value = idFinanceiro;
                 pStatus.Value = 2;
 
                 cmd.Parameters.Add(pIdConsulta);
+                cmd.Parameters.Add(pIdFinanceiro);
                 cmd.Parameters.Add(pStatus);
                 
                 conn.Open();

@@ -20,7 +20,7 @@
         </td>
         <td style="width:1%;"></td>
         <td>
-            <asp:Button ID="BtnBuscar" runat="server" Text="Listar" />
+            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" />
         </td>
      </tr>
      <tr>
@@ -34,6 +34,7 @@
   </HeaderTemplate>
   <ContentTemplate>
     <div id="divClientes" class="scroll">
+    <center><asp:Label ID="lblRegistrosClientes" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                 SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
                 <SelectParameters>
@@ -130,6 +131,7 @@
   </HeaderTemplate>
   <ContentTemplate>
         <div id="divAnimais" class="scroll">
+        <center><asp:Label ID="lblRegistrosAnimais" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
                 SelectMethod="ListarAnimaisCadastrados" TypeName="Negocios.AnimalBuss">
                 <SelectParameters>

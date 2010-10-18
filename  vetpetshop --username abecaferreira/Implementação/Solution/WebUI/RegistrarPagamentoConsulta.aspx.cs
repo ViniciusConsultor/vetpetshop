@@ -9,45 +9,51 @@ using System.Web.UI.WebControls;
 using Entidade;
 using Negocios;
 using System.Data;
+using System.Data.SqlTypes;
 
 namespace WebUI
 {
     public partial class RegistrarPagamentoConsulta : System.Web.UI.Page
     {
-        //public DateTime datConsulta, datVacinacao;
-        //Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Criação de Menu
             Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteVet = (SiteMapDataSource)Page.Master.FindControl("vet");
-            menu.DataSource = siteVet;
+            SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
+            menu.DataSource = siteVeterinario;
             menu.DataBind();
             #endregion
 
-            //usuario = (Usuario)Session["User"];
-            //UsuarioBuss usuarioBuss = new UsuarioBuss();
-            //usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-
             if (!IsPostBack)
             {
-                CarregarConsultas();
+                usuario = (Usuario)Session["User"];
+                UsuarioBuss usuarioBuss = new UsuarioBuss();
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+                CarregarConsultas(string.Empty);
             }
         }
 
-        protected void CarregarConsultas()
+        protected void CarregarConsultas(string nomeAnimal)
         {
-            DataTable tabelaPreenchida = PreencherConsultasAPagar();
+            DataTable tabelaPreenchida = PreencherConsultasAPagar(nomeAnimal);
 
             if (tabelaPreenchida.Rows.Count != 0)
             {
                 gdvConsultas.DataSource = tabelaPreenchida;
                 gdvConsultas.DataBind();
             }
+            else 
+            {
+                gdvConsultas.Visible = false;
+                lblRegistros.Visible = true;
+                lblRegistros.Text = "Nenhum registro encontrado.";
+            }
         }
 
-        private DataTable PreencherConsultasAPagar()
+        private DataTable PreencherConsultasAPagar(string nomeAnimal)
         {
             Animal animal = new Animal();
 
@@ -56,7 +62,7 @@ namespace WebUI
             tabela = MontarTabelaConsultas();
 
             AnimalBuss animalBuss = new AnimalBuss();
-            tabelaPreenchida = animalBuss.ListarConsultasAPagar(tabela);
+            tabelaPreenchida = animalBuss.ListarConsultasAPagar(tabela,nomeAnimal);
             return tabelaPreenchida;
         }
 
@@ -118,7 +124,7 @@ namespace WebUI
             }
             else
             {
-                financeiro.NomeCliente = "";
+                financeiro.NomeCliente = null;
             }
             if (txtParcelas.Text != "")
             {
@@ -126,15 +132,22 @@ namespace WebUI
             }
             else 
             {
-                financeiro.Parcelas = 0;
+                financeiro.Parcelas = SqlInt32.Null;
             }
 
             executou = financeiroBus.InserirRegistroFinanceiro(financeiro);
 
             if (executou)
             {
-                executou2 = animalBus.AlteraStatusConsultaPaga(idConsulta);
-                
+                int idInserido;
+
+                idInserido = financeiroBus.ObterUltimoRegistroFinanceiroConsulta();
+
+                if (idInserido != 0)
+                {
+                    executou2 = animalBus.AlteraStatusConsultaPaga(idConsulta,idInserido);                
+                }
+
                 if (executou2) 
                 {
                     lblMsg.Text = "Pagamento registrado com sucesso";
@@ -150,8 +163,8 @@ namespace WebUI
                     btnEnviar.Visible = true;
                     rbCliente.SelectedIndex = 1;
                     rbTipoPagamento.SelectedIndex = 2;
-                    
-                    CarregarConsultas();
+
+                    CarregarConsultas(string.Empty);
                 }
             }
 
@@ -195,6 +208,20 @@ namespace WebUI
             Int32 idConsulta;
             idConsulta = Convert.ToInt32(ViewState["hdnCodConsulta"]);
             RegistraPagamento(idConsulta);
+        }
+
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            if (txtBusca.Text != string.Empty)
+            {
+                CarregarConsultas(txtBusca.Text);
+            }
+            else 
+            {
+                CarregarConsultas(string.Empty);
+            }
+
+            lblMsg.Text = "";
         }
 
     }
