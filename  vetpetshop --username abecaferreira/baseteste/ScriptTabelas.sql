@@ -100,7 +100,7 @@ CREATE TABLE ConsultaVeterinaria
 Id				INT IDENTITY(1,1)				NOT NULL,
 IdUsuario		INT								NOT NULL,
 IdFinanceiro	INT								NULL,
-Valor			DECIMAL(9,2)							NULL,
+Valor			DECIMAL(9,2)					NULL,
 Data			DATETIME						NOT NULL,
 [Status]		INT								NOT NULL, --Agendada Realizada Não Realizada
 CONSTRAINT  PK_ConsultaVeterinaria				PRIMARY KEY(Id),
