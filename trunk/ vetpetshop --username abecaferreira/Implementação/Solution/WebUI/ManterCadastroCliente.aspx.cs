@@ -15,21 +15,36 @@ namespace WebUI
 {
     public partial class ManterCadastroCliente : System.Web.UI.Page
     {
-        public DateTime datNascimento, datIniVacinacao, datFimVacinacao;
+        Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
-            menu.DataSource = siteVendedor;
-            menu.DataBind();
-            #endregion
-            
             lblMsg.Text = "";
 
             if (!IsPostBack)
             {
+                usuario = (Usuario)Session["User"];
+                UsuarioBuss usuarioBuss = new UsuarioBuss();
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+                #region Criação de Menu
+                if (usuario.TipoUsuario == 2)
+                {
+                    Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                    SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
+                    menu.DataSource = siteVeterinario;
+                    menu.DataBind();
+                }
+                if (usuario.TipoUsuario == 3)
+                {
+                    Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                    SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
+                    menu.DataSource = siteVendedor;
+                    menu.DataBind();
+
+                }
+                #endregion
+
                 CarregaListaTipoAnimal();
 
                 string CodCliente = Request.Params["CodCliente"];
@@ -431,7 +446,6 @@ namespace WebUI
 
         }
 
-
         protected void PreencheAlterarAnimal(Int32 CodAnimal)
         {
 
@@ -551,8 +565,6 @@ namespace WebUI
             }
             //AlterarCadastroCliente();
         }
-
-
 
         protected void BtnUpdateAni_Click(object sender, EventArgs e)
         {
