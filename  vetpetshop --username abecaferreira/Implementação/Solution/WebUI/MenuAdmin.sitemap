@@ -8,7 +8,7 @@
         <siteMapNode url="~/CadastroPedidoDeCompra.aspx" title="Cadastrar Pedido de Compra"  description="" />
         <siteMapNode url="~/ListaPedidoDeCompra.aspx" title="Listar Pedidos de Compras"  description="" />
         <siteMapNode url="~/ListarEstoqueProdutos.aspx" title="Listar Estoque"  description="" />
-        <siteMapNode url="~/ConsultaEstatistica.aspx" title="Consultar Estatísticas"  description="" />
-        <siteMapNode url="~/ControlaFinancas.aspx" title="Controlar Finanças"  description="" />
+        <siteMapNode url="~/ConsultarEstatisticas.aspx" title="Consultar Estatísticas"  description="" />
+        <siteMapNode url="~/ControlarFinancas.aspx" title="Controlar Finanças"  description="" />
     </siteMapNode>
 </siteMap>
