@@ -58,5 +58,22 @@ namespace Negocios
             lista = this.financeiroDAO.ListarFinancasEstoque(ano);
             return lista;
         }
+
+        public List<FinancasLucro> ListarFinancasLucro(int ano)
+        {
+            List<FinancasLucro> lista = new List<FinancasLucro>();
+
+            lista = this.financeiroDAO.ListarFinancasLucro(ano);
+            return lista;
+        }
+
+        public List<FinancasValorAReceber> ListarValorReceber(int ano)
+        {
+            List<FinancasValorAReceber> lista = new List<FinancasValorAReceber>();
+
+            lista = this.financeiroDAO.ListarValorReceber(ano);
+
+            return lista;
+        }
     }
 }
