@@ -58,7 +58,7 @@ CREATE TABLE Financeiro
 (
 Id					INT IDENTITY(1,1)	NOT NULL,
 IdUsuario		    INT				    NOT NULL,
-ValorTotal			DECIMAL				NULL,
+ValorTotal			DECIMAL(9,2)				NULL,
 TipoPagamento 		INT					NOT NULL, -- Cheque Dinheiro Cartão
 Parcelas            INT                 NULL,     -- Quantidade de Parcelas (cartão, cheque)
 TipoTransacao 		INT					NOT NULL, -- Venda Consulta
@@ -77,9 +77,9 @@ Nome				VARCHAR(50)			NULL,
 EstoqueMin			INT					NULL,
 EstoqueMax			INT					NULL,
 Descricao			VARCHAR(200)		NULL,
-PrecoCusto			DECIMAL				NULL,
+PrecoCusto			DECIMAL(9,2)		NULL,
 DataValidade		DATETIME			NOT NULL,
-PrecoVenda			DECIMAL				NULL,
+PrecoVenda			DECIMAL(9,2)				NULL,
 CONSTRAINT  PK_Produto					PRIMARY KEY(Id),
 CONSTRAINT  FK_Produto_Grupo			FOREIGN KEY(IdGrupo)			REFERENCES	Grupo(Id),
 CONSTRAINT  FK_Produto_Financeiro		FOREIGN KEY(IdFinanceiro)		REFERENCES  Financeiro(Id)
@@ -100,7 +100,7 @@ CREATE TABLE ConsultaVeterinaria
 Id				INT IDENTITY(1,1)				NOT NULL,
 IdUsuario		INT								NOT NULL,
 IdFinanceiro	INT								NULL,
-Valor			DECIMAL							NULL,
+Valor			DECIMAL(9,2)							NULL,
 Data			DATETIME						NOT NULL,
 [Status]		INT								NOT NULL, --Agendada Realizada Não Realizada
 CONSTRAINT  PK_ConsultaVeterinaria				PRIMARY KEY(Id),
@@ -114,23 +114,6 @@ Id				INT IDENTITY(1,1)		NOT NULL,
 Nome			VARCHAR(50)				NOT NULL,
 CONSTRAINT  PK_TipoAnimal				PRIMARY KEY(Id)
 )
-
-CREATE TABLE Animal 
-(
-Id					INT IDENTITY(1,1)			NOT NULL,
-IdTipoAnimal		INT							NOT NULL,
-IdCliente			INT							NOT NULL,
-Peso				DECIMAL(9,2)				NOT NULL,
-Sexo				VARCHAR(10)					NULL,
-Raca				VARCHAR(50)					NULL,
-Nome				VARCHAR(50)					NOT NULL,
-DataFimVacinacao	DATETIME					NULL,
-DataNascimento		DATETIME					NULL,
-DataProxVacinacao	DATETIME					NULL,
-CONSTRAINT  PK_Animal							PRIMARY KEY(Id),
-CONSTRAINT  FK_Animal_TipoAnimal				FOREIGN KEY(IdTipoAnimal)  REFERENCES  TipoAnimal(Id),
-CONSTRAINT  FK_Animal_IdCliente					FOREIGN KEY(IdCliente)  REFERENCES  Cliente(Id)
-) 
 
 CREATE TABLE Cliente 
 (
@@ -150,6 +133,23 @@ CEP                 VARCHAR(20)                 NULL,
 CONSTRAINT  PK_Cliente							PRIMARY KEY(Id),
 )
 
+CREATE TABLE Animal 
+(
+Id					INT IDENTITY(1,1)			NOT NULL,
+IdTipoAnimal		INT							NOT NULL,
+IdCliente			INT							NOT NULL,
+Peso				DECIMAL(9,2)				NOT NULL,
+Sexo				VARCHAR(10)					NULL,
+Raca				VARCHAR(50)					NULL,
+Nome				VARCHAR(50)					NOT NULL,
+DataFimVacinacao	DATETIME					NULL,
+DataNascimento		DATETIME					NULL,
+DataProxVacinacao	DATETIME					NULL,
+CONSTRAINT  PK_Animal							PRIMARY KEY(Id),
+CONSTRAINT  FK_Animal_TipoAnimal				FOREIGN KEY(IdTipoAnimal)  REFERENCES  TipoAnimal(Id),
+CONSTRAINT  FK_Animal_IdCliente					FOREIGN KEY(IdCliente)  REFERENCES  Cliente(Id)
+) 
+
 CREATE TABLE ConsultaAnimal 
 (
 Id					INT IDENTITY(1,1)				NOT NULL,
@@ -167,7 +167,7 @@ IdVendedor			INT							NOT NULL,
 IdAdministrador		INT							NOT NULL,
 IdUsuario			INT							NOT NULL,
 DataCadastro		DATETIME					NOT NULL,
-Valor				DECIMAL						NOT NULL,
+Valor				DECIMAL(9,2)						NOT NULL,
 [Status]			INT							NOT NULL, --Emitida Recebida
 DataRecebimento		DATETIME					NOT NULL,
 CONSTRAINT  PK_NotaFiscal						PRIMARY KEY(Id),
