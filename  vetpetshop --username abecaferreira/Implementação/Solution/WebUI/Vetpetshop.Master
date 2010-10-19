@@ -46,7 +46,7 @@
                 <!-- // #sidebar -->
                 
                 <div id="principal">
-                	<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
                     </asp:ToolkitScriptManager>
                 	<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">     
                     </asp:ContentPlaceHolder>
