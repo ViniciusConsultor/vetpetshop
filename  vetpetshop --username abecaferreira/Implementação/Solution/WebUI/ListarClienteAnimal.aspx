@@ -17,7 +17,6 @@
         </td>
         <td style="width:20%;">
             <asp:TextBox ID="txtBusca" runat="server" Width="100%"></asp:TextBox>
-            <asp:MaskedEditValidator ID="MaskedEditValidator1" runat="server" ToolTip="Nome sem caracteres especiais" ControlToValidate="txtBusca" ValidationExpression="^[. 0-9a-zA-Z ç Ç ã Ã õ Õ Ê ê Â â Ô ô ó Ó ò Ò á à Á À é è È É Í ì í Ì î ú û Ú ù Ùº ª ]+$"></asp:MaskedEditValidator>
         </td>
         <td style="width:1%;"></td>
         <td>
