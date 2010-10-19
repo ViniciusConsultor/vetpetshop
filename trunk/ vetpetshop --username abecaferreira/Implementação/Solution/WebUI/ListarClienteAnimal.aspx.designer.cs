@@ -41,6 +41,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtBusca;
         
         /// <summary>
+        /// MaskedEditValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditValidator MaskedEditValidator1;
+        
+        /// <summary>
         /// BtnBuscar control.
         /// </summary>
         /// <remarks>
