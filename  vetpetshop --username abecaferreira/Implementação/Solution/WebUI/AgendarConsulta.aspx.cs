@@ -14,6 +14,9 @@ namespace WebUI
 {
     public partial class AgendarConsulta : System.Web.UI.Page
     {
+        decimal Valor;
+        int tipoCons;
+        public DateTime datProxVacinacao; 
         public DateTime datConsulta;
         Usuario usuario = new Usuario();
 
@@ -55,6 +58,7 @@ namespace WebUI
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblMsg.Text = "";
             Int32 idCliente;
             idCliente = Int32.Parse(ddlClientes.SelectedValue);
             ddlAnimal.Enabled = true;
@@ -66,7 +70,7 @@ namespace WebUI
             {
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
-                txtData.Text = "";
+                //txtData.Text = "";
                 pnlAnimal.Visible = false;
             }
 
@@ -96,7 +100,7 @@ namespace WebUI
             if (idAnimal != 0)
             {
                 pnlAnimal.Visible = true;
-                CarregarGrid(idAnimal);
+               // CarregarGrid(idAnimal);
                 txtData.Enabled = true;               
 
             }
@@ -155,14 +159,27 @@ namespace WebUI
             Int32 idAnimal;
             idAnimal = Int32.Parse(ddlAnimal.SelectedItem.Value);
 
-            if (txtData.Text != "")
+            if (Panel1.Visible == true)
             {
-                datConsulta = System.DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", null);
+                if (txtData.Text == "")
+                {
+                    lblMsg.Text = "Digite a data consulta";
+                    return;
+                }
+
+                datConsulta = System.DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", null); 
             }
-            else
+
+            if (PanelVacina.Visible == true)
             {
-                lblMsg.Text = "Digite a data consulta";
-            }
+                if (txtDataVacinacao.Text == "")
+                {
+                    lblMsg.Text = "Digite a data da próxima vacinação";
+                    return;
+                }
+
+                datProxVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
+            }           
 
             if (idAnimal != 0)
             {
@@ -178,29 +195,64 @@ namespace WebUI
         protected void AgendamentoConsulta(Int32 idAnimal)
         {
             Int32 Status;
-            Decimal Valor = 0;
+            
             AnimalBuss animalBuss = new AnimalBuss();
 
             if (!string.IsNullOrEmpty(txtValor.Text))
             {
-            Valor = Convert.ToDecimal(txtValor.Text);
+                Valor = Convert.ToDecimal(txtValor.Text);
             }
+
+            //if (!string.IsNullOrEmpty(txtDataVacinacao.Text))
+            //{
+            //    datProxVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
+            //}
 
             Status = Convert.ToInt32(rblStatus.SelectedItem.Value);
 
+            if (rbTipo.SelectedItem.Value == "1")
+                tipoCons = 1;
+            else
+                tipoCons = 2;
+
             bool executou;
             
-            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status);
+            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status, tipoCons, datProxVacinacao);
 
             if (executou)
             {
-                CarregarGrid(idAnimal);
+                //CarregarGrid(idAnimal);
+                txtDataVacinacao.Text = "";
+                txtData.Text = "";
+                lblMsg.Text = "Agendamento realizado com sucesso";
+                txtValor.Text = "";
+                //ddlAnimal.SelectedIndex = ddlAnimal.Items.IndexOf(ddlAnimal.Items.FindByText(""));
+                ddlClientes.SelectedIndex = ddlClientes.Items.IndexOf(ddlClientes.Items.FindByText("Selecione"));
+                ddlAnimal.Items.Clear();
+                ddlAnimal.Enabled = false;
+                rbTipo.SelectedIndex = rbTipo.Items.IndexOf(rbTipo.Items.FindByValue("1"));
+                PanelVacina.Visible = false;
+                Panel1.Visible = true;
             }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DefaultVeterinario.aspx");
+        }
+
+        protected void rbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rbTipo.SelectedItem.Value == "2")
+            {
+                PanelVacina.Visible = true;
+                Panel1.Visible = false;
+            }
+            else
+            {
+                PanelVacina.Visible = false;
+                Panel1.Visible = true; 
+            }
         }
     }
 }

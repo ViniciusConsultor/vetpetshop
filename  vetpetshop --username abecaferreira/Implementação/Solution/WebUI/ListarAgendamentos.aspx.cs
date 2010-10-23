@@ -32,6 +32,7 @@ namespace WebUI
 
             if (!IsPostBack)
             {
+                lblMsg.Text = "";
                 CarregarConsultas();
                 CarregarVacinacoes();
             }
@@ -140,6 +141,7 @@ namespace WebUI
              {
                  lblMsg.Text = "Consulta excluída com sucesso!";
                  CarregarConsultas();
+                 CarregarVacinacoes();
              }
              else
              {
@@ -173,15 +175,19 @@ namespace WebUI
         {
             DataTable _tabela = new DataTable();
 
-            DataColumn coluna0 = new DataColumn("id_animal");
+            DataColumn coluna0 = new DataColumn("id_consulta");
             DataColumn coluna1 = new DataColumn("nm_cliente");
-            DataColumn coluna2 = new DataColumn("nm_animal");
+            DataColumn coluna2 = new DataColumn("nm_animal");            
             DataColumn coluna3 = new DataColumn("datavacinacao");
+            DataColumn coluna4 = new DataColumn("valor");
+            DataColumn coluna5 = new DataColumn("status");
       
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
             _tabela.Columns.Add(coluna2);
             _tabela.Columns.Add(coluna3);
+            _tabela.Columns.Add(coluna4);
+            _tabela.Columns.Add(coluna5);
 
             return _tabela;
         }
@@ -196,7 +202,7 @@ namespace WebUI
             }
             else
             {
-                lblMsg.Text = "Digite a data da próxima consulta";
+                lblMsg.Text = "Preencha a data da próxima consulta";
             }
 
             if (ViewState["id_consulta"] != null)
@@ -217,10 +223,10 @@ namespace WebUI
             }
             else
             {
-                lblMsg.Text = "Digite a data da vacinação";
+                lblMsg.Text = "Preencha o campo data de vacinação";
             }
 
-            if (ViewState["id_animal"] != null)
+            if (ViewState["id_consulta"] != null)
             {
                 AlterarAgendamentoVacinacao();
             }
@@ -232,11 +238,19 @@ namespace WebUI
 
         protected void AlterarAgendamentoVacinacao()
         {
+            decimal valor = 0;
             AnimalBuss animalBuss = new AnimalBuss();
 
             bool executou;
 
-            executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
+            if (!string.IsNullOrEmpty(txtValorVacina.Text))
+            {
+                valor = Convert.ToDecimal(txtValorVacina.Text);
+            }
+
+            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datVacinacao, valor, rbStatusVacina.SelectedIndex);
+
+            //executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
 
             if (executou)
             {
@@ -291,7 +305,7 @@ namespace WebUI
         {
             if (e.CommandName == "alterar")
             {
-                ViewState["id_animal"] = e.CommandArgument.ToString();
+                ViewState["id_consulta"] = e.CommandArgument.ToString();
                 pnlConsultas.Visible = false;
                 pnlVacinacao.Visible = true;
 
@@ -303,14 +317,28 @@ namespace WebUI
 
                 lblClienteVac.Text = row.Cells[3].Text;
                 lblAnimalVac.Text = row.Cells[4].Text;
-                txtDataVacinacao.Text = string.Format("{0:d}", row.Cells[5].Text);               
+                txtDataVacinacao.Text = string.Format("{0:d}", row.Cells[5].Text);
+                txtValorVacina.Text = row.Cells[6].Text;
+
+                if (row.Cells[7].Text == "Agendada")
+                {
+                    rbStatusVacina.SelectedIndex = 0;
+                }
+                else if (row.Cells[7].Text == "Desmarcada")
+                {
+                    rbStatusVacina.SelectedIndex = 1;
+                }
+                else
+                {
+                    rbStatusVacina.SelectedIndex = 2;
+                }
             }
 
             if (e.CommandName == "excluir")
             {
-                ViewState["id_animal"] = e.CommandArgument.ToString();
+                ViewState["id_consulta"] = e.CommandArgument.ToString();
                 datVacinacao = DateTime.MinValue;
-                ExcluirVacinacao();
+                ExcluirConsulta(Convert.ToInt32(ViewState["id_consulta"]));
             }
 
         }
