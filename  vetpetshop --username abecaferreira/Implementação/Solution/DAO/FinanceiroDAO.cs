@@ -492,5 +492,171 @@ namespace DAO
 
             return idInserido;
         }
+
+        public List<FinancasConsultas> ListarFinancasConsultas(int ano)
+        {
+            List<FinancasConsultas> lista = new List<FinancasConsultas>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsFinancasConsultasPorAno";
+
+                SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
+                pAno.Value = ano;
+
+                cmd.Parameters.Add(pAno);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                //if(!dr.Read())
+                //    return null;
+
+                while (dr.Read())
+                {
+                    FinancasConsultas financas = new FinancasConsultas();
+                    financas.Mes = dr.GetInt32(0);
+                    financas.Valor = dr.GetDecimal(1);
+
+                    lista.Add(financas);
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lista;
+            
+        }
+
+        public List<FinancasVacinas> ListarFinancasVacinas(int ano)
+        {
+            List<FinancasVacinas> lista = new List<FinancasVacinas>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsFinancasVacinasPorAno";
+
+                SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
+                pAno.Value = ano;
+
+                cmd.Parameters.Add(pAno);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                //if(!dr.Read())
+                //    return null;
+
+                while (dr.Read())
+                {
+                    FinancasVacinas financas = new FinancasVacinas();
+                    financas.Mes = dr.GetInt32(0);
+                    financas.Valor = dr.GetDecimal(1);
+
+                    lista.Add(financas);
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lista;  
+        }
+
+        public List<FinancasFaturamento> ListarFinancasFaturamento(int ano)
+        {
+            List<FinancasFaturamento> lista = new List<FinancasFaturamento>();
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsFinancasFaturamentoPorAno";
+
+                SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
+                pAno.Value = ano;
+
+                cmd.Parameters.Add(pAno);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+                //if(!dr.Read())
+                //    return null;
+
+                while (dr.Read())
+                {
+                    FinancasFaturamento financas = new FinancasFaturamento();
+                    financas.Mes = dr.GetInt32(0);
+                    financas.Valor = dr.GetDecimal(1);
+
+                    lista.Add(financas);
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return lista;  
+        }
     }
 }

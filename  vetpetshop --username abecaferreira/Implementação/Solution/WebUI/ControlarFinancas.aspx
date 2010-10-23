@@ -4,15 +4,16 @@
     <h3></h3>
   <table width="100%">
     <tr>
-    <td></td>
-    <td style="width: 15%">
-        <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
+    <td colspan="3">
+    <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
+    </td>
+    <td style="width: 15%">        
     </td>
     </tr>
     <tr>
-        <td style="width:6%;">
+        <td style="width:15%;">
             <asp:Label ID="ano" runat="server" Text="Ano"></asp:Label>            
-        </td>
+        &nbsp;de referência</td>
         <td style="width:15%;">
         <asp:DropDownList ID="ddlAno" runat="server"></asp:DropDownList>
         </td>
@@ -22,9 +23,10 @@
         </td>
      </tr>
      <tr>
-     <td><br /></td>
+     <td style="width: 15%"><br /></td>
      </tr>
   </table>
+  <asp:Panel ID="PanelFinancas" runat="server" Visible="false">
   <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
   <asp:TabPanel ID="tabPanel1" runat="server">
   <HeaderTemplate>
@@ -297,7 +299,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Total" runat="server" Text="Total" Font-Bold="True" ForeColor="Blue"></asp:Label>
+                    <asp:Label ID="Total" runat="server" Text="Total R$" Font-Bold="True" ForeColor="Blue"></asp:Label>
                 </td>
                 <td style="width: 98px">
                     <asp:Label ID="lblTotaInvest" runat="server" ForeColor="Blue"></asp:Label>
@@ -332,20 +334,14 @@
                 <td>
                     
                 </td>
-                <td>
-                    Investimento
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsultas" runat="server" ForeColor="Blue" Text="Consultas"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacinas" runat="server" ForeColor="Blue" Text="Vacinas"></asp:Label>
                 </td>
                 <td>
-                    Vendas
-                </td>
-                <td>
-                    Estoques
-                </td>
-                 <td>
-                    Lucro
-                </td>
-                 <td>
-                    Valor a Receber
+                    <asp:Label ID="lblFaturamento" runat="server" ForeColor="Blue" Text="Faturamento"></asp:Label>
                 </td>
             </tr>
             
@@ -353,251 +349,183 @@
                 <td>
                     Janeiro
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsJan" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacJan" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
-                </td>
+                    <asp:Label ID="lblFatJan" runat="server"></asp:Label>
+                </td>               
             </tr>
             <tr>
                 <td>
                     Fevereiro
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsFev" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacFev" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatFev" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     Março
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsMar" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacMar" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatMar" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     Abril
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsAbr" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacAbr" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatAbr" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     Maio
                 </td>
-               <td>
-                    &nbsp;
+               <td style="width: 140px">
+                    <asp:Label ID="lblConsMai" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacMai" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatMai" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     Junho
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsJun" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacJun" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
-                </td>
+                    <asp:Label ID="lblFatJun" runat="server"></asp:Label>
+                </td>                
              </tr>
                 <tr>
                 <td>
                     Julho
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsJul" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacJul" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatJul" runat="server"></asp:Label>
                 </td>
               </tr>
                 <tr>
                 <td>
                     Agosto
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsAgo" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacAgo" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatAgo" runat="server"></asp:Label>
                 </td>
              </tr>
                 <tr>
                 <td>
                     Setembro
                 </td>
-               <td>
-                    &nbsp;
+               <td style="width: 140px">
+                    <asp:Label ID="lblConsSet" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacSet" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
-                </td>
+                    <asp:Label ID="lblFatSet" runat="server"></asp:Label>
+                </td>                
             </tr>
              <tr>
                 <td>
                     Outubro
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsOut" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacOut" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatOut" runat="server"></asp:Label>
                 </td>
             </tr>
              <tr>
                 <td>
                     Novembro
                 </td>
-                <td>
-                    &nbsp;
+                <td style="width: 140px">
+                    <asp:Label ID="lblConsNov" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacNov" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatNov" runat="server"></asp:Label>
                 </td>
             </tr>
              <tr>
                 <td>
                     Dezembro
                 </td>
-               <td>
-                    &nbsp;
+               <td style="width: 140px">
+                    <asp:Label ID="lblConsDez" runat="server"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblVacDez" runat="server"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                 <td>
-                    &nbsp;
+                    <asp:Label ID="lblFatDez" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Total" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="lblTotal" runat="server" Text="Total R$" Font-Bold="True" 
+                        ForeColor="Blue"></asp:Label>
+                </td>
+                <td style="width: 140px">
+                    <asp:Label ID="lblTotalCons" runat="server" ForeColor="Blue"></asp:Label>
+                </td>
+                <td style="width: 123px">
+                    <asp:Label ID="lblTotalVac" runat="server" ForeColor="Blue"></asp:Label>
                 </td>
                 <td>
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
+                    <asp:Label ID="lblTotalFat" runat="server" ForeColor="Blue"></asp:Label>
                 </td>
             </tr>
         </table>
@@ -606,5 +534,6 @@
   </ContentTemplate>
   </asp:TabPanel>
   </asp:TabContainer> 
+  </asp:Panel>
   <br /><br /><br /><br />
  </asp:Content>
