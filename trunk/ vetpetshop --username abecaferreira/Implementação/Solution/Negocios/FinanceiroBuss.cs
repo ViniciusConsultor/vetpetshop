@@ -82,5 +82,32 @@ namespace Negocios
             idInserido = this.financeiroDAO.ObterUltimoRegistroFinanceiroConsulta();
             return idInserido;
         }
+
+        public List<FinancasConsultas> ListarFinancasConsultas(int ano)
+        {
+            List<FinancasConsultas> lista = new List<FinancasConsultas>();
+
+            lista = this.financeiroDAO.ListarFinancasConsultas(ano);
+
+            return lista;
+        }
+
+        public List<FinancasVacinas> ListaFinancasVacinas(int ano)
+        {
+            List<FinancasVacinas> lista = new List<FinancasVacinas>();
+
+            lista = this.financeiroDAO.ListarFinancasVacinas(ano);
+
+            return lista;
+        }
+
+        public List<FinancasFaturamento> ListarFinancasFaturamento(int ano)
+        {
+            List<FinancasFaturamento> lista = new List<FinancasFaturamento>();
+
+            lista = this.financeiroDAO.ListarFinancasFaturamento(ano);
+
+            return lista;
+        }
     }
 }
