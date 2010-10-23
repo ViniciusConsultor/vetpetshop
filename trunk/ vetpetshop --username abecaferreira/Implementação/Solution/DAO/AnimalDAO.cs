@@ -610,9 +610,10 @@ namespace DAO
             while (dr.Read())
             {
                 DataRow _linhaTabela = tabela.NewRow();
-                _linhaTabela["id_animal"] = dr.GetInt32(0);
+                _linhaTabela["id_consulta"] = dr.GetInt32(0);
                 _linhaTabela["nm_cliente"] = dr.GetString(1);
                 _linhaTabela["nm_animal"] = dr.GetString(2);
+                
                 if (dr.IsDBNull(3))
                 {
                     _linhaTabela["datavacinacao"] = "";
@@ -621,7 +622,22 @@ namespace DAO
                 {
                     _linhaTabela["datavacinacao"] = dr.GetDateTime(3).ToString("dd/MM/yyyy");
                 }
-                
+
+                _linhaTabela["valor"] = dr.GetDecimal(4);
+
+                if (dr.GetInt32(5) == 0)
+                {
+                    _linhaTabela["status"] = "Agendada";
+                }
+                if (dr.GetInt32(5) == 1)
+                {
+                    _linhaTabela["status"] = "Desmarcada";
+                }
+                if (dr.GetInt32(5) == 2)
+                {
+                    _linhaTabela["status"] = "Finalizada";
+                }
+
                 tabela.Rows.Add(_linhaTabela);
             }
 
@@ -713,12 +729,15 @@ namespace DAO
                 {
                     pDatConsulta.Value = dataconsulta;
                 }
-               
+
+                pValor.Value = valor;
+
+                cmd.Parameters.Add(pValor);
 
                 cmd.Parameters.Add(new SqlParameter("@id_consulta", SqlDbType.Int)).Value = id_consulta;
                 cmd.Parameters.Add(new SqlParameter("@id_usuario", SqlDbType.Int)).Value = id_usuario;
                 cmd.Parameters.Add(pDatConsulta);
-                cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = valor;
+                //cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = valor;
                 cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Int)).Value = status;
 
                 conn.Open();
@@ -895,7 +914,7 @@ namespace DAO
             return executou;
         }
 
-        public bool AgendamentoConsulta(Int32 idUsuario, Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status)
+        public bool AgendamentoConsulta(Int32 idUsuario, Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status, int tipo, DateTime dataVacinacao)
         {
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -911,12 +930,18 @@ namespace DAO
                 SqlParameter pidUsuario = new SqlParameter("@IdUsuario", SqlDbType.Int);
                 SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
                 SqlParameter pValor = new SqlParameter("@Valor", SqlDbType.Decimal);
+                pValor.Precision = 7;
+                pValor.Scale = 2; 
                 SqlParameter pDatConsulta = new SqlParameter("@Data", SqlDbType.SmallDateTime);
                 SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
+                SqlParameter pTipo = new SqlParameter("@Tipo", SqlDbType.Int);
+                SqlParameter pDataVacinacao = new SqlParameter("@DataVacinacao", SqlDbType.SmallDateTime);
 
                 pidUsuario.Value = idUsuario;
                 pIdAnimal.Value = idAnimal;
+
                 pValor.Value = Valor;
+
                 if (datConsulta == DateTime.MinValue)
                 {
                     pDatConsulta.Value = SqlDateTime.Null;
@@ -925,14 +950,26 @@ namespace DAO
                 {
                     pDatConsulta.Value = datConsulta;
                 }
+
+                if (dataVacinacao == DateTime.MinValue)
+                {
+                    pDataVacinacao.Value = SqlDateTime.Null;
+                }
+                else
+                {
+                    pDataVacinacao.Value = dataVacinacao;
+                }
+
                 pStatus.Value = status;
 
                 cmd.Parameters.Add(new SqlParameter("@idUsuario", SqlDbType.Int)).Value = idUsuario;
                 cmd.Parameters.Add(new SqlParameter("@idAnimal", SqlDbType.Int)).Value = idAnimal;
-                cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = Valor;
+                //cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = Valor;
                 cmd.Parameters.Add(pDatConsulta);
                 cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Int)).Value = status;
-
+                cmd.Parameters.Add(new SqlParameter("@Tipo", SqlDbType.Int)).Value = tipo;
+                cmd.Parameters.Add(pValor);
+                cmd.Parameters.Add(pDataVacinacao);
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
                 executou = true;

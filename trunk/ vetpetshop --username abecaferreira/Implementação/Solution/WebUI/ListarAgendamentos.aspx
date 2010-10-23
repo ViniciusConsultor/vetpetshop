@@ -27,7 +27,7 @@
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="id_consulta" visible="true" HeaderText="Código">
+                        <asp:BoundField DataField="id_consulta" visible="false" HeaderText="Código">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                     Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
                                     </asp:BoundField>
@@ -69,14 +69,14 @@
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("id_animal") %>'>
+                                    <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("id_consulta") %>'>
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_animal") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');">
+                                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');">
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" />
@@ -90,10 +90,18 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="nm_animal" HeaderText="Animal" SortExpression="nm_animal"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                 Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
-                            </asp:BoundField>
+                            </asp:BoundField>                            
                             <asp:BoundField HeaderText="Data de Vacinação" DataField="datavacinacao"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
-                            </asp:BoundField>                           
+                            </asp:BoundField>    
+                            <asp:BoundField DataField="valor" HeaderText="Valor" SortExpression="valor"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                            </asp:BoundField>
+                             <asp:BoundField HeaderText="Status" DataField="status">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False" BackColor="DarkBlue"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>                       
                         </Columns>
                         <AlternatingRowStyle BackColor="LightSteelBlue" />
                         <HeaderStyle BackColor="DarkBlue" />
@@ -179,7 +187,27 @@
                 <div style="float:left; width:300px; height:30px;">
                     <asp:TextBox ID="txtDataVacinacao" runat="server"></asp:TextBox>   
                 </div>
-            </div>            
+            </div>           
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
+                    Valor da Consulta:
+                </div>
+                <div style="float:left; width:300px; height:30px;">
+                    <asp:TextBox ID="txtValorVacina" runat="server"></asp:TextBox>   
+                </div>
+            </div> 
+            <div style="width:100%; height:30px;">
+                <div style="float:left; width:200px; height:30px;">
+                    Status da Consulta:
+                </div>
+                <div style="float:left; width:300px; height:30px;">
+                    <asp:RadioButtonList ID="rbStatusVacina" runat="server" RepeatColumns="3" Width="300px">
+                        <asp:ListItem Text="Agendada" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
+                    </asp:RadioButtonList>   
+                </div>
+            </div>
             <div style="width:100%; height:30px;">
                 <div style="float:left; padding-left:200px; width:300px;">
                     <asp:Button ID="btnAlterarVac" runat="server" Text="Alterar" onclick="btnAlterarVac_Click"/>&nbsp;

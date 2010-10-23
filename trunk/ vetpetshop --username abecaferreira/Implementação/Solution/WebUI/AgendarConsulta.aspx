@@ -43,11 +43,32 @@
                     <tr>
                         <td style="width: 58px; height: 23px">
                             &nbsp;</td>
-                        <td style="height: 23px; width: 690px">
-                            Data do agendamento</td>
+                        <td style="height: 23px; width: 690px"><br />
+                            <br />
+                            Tipo de agendamento</td>
                             <td style="width: 500px; height: 23px">
-                         <asp:TextBox ID="txtData" runat="server" Width="189px" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox>
-                        </td>
+                                &nbsp;
+                                <asp:RadioButtonList ID="rbTipo" runat="server"  AutoPostBack="true" RepeatColumns="2"
+                                    onselectedindexchanged="rbTipo_SelectedIndexChanged" Width="403px">
+                                <asp:ListItem Text="Agendamento de consulta" Selected="True" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Agendamento de vacinação" Value="2"></asp:ListItem>                                
+                                </asp:RadioButtonList></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>
+                         <asp:Panel ID="PanelVacina" runat="server" Visible="false">
+                        <td style="height: 23px; width: 690px">
+                            Data da próxima vacinação</td>
+                            <td style="width: 500px; height: 23px">
+                                &nbsp;<asp:TextBox ID="txtDataVacinacao" runat="server" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox></td>
+                           </asp:Panel>
+                           <asp:Panel ID="Panel1" runat="server">
+                        <td style="height: 23px; width: 690px">
+                            Data da consulta</td>
+                            <td style="width: 500px; height: 23px">
+                                &nbsp;<asp:TextBox ID="txtData" runat="server" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox></td>
+                           </asp:Panel>
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">
@@ -65,12 +86,20 @@
                             Status da consulta</td>
                             <td style="width: 500px; height: 23px">
                                 <asp:RadioButtonList ID="rblStatus" runat="server" RepeatColumns="3" 
-                                    Enabled="False">
+                                    Enabled="False" Width="375px">
                                 <asp:ListItem Text="Agendada" Selected="True" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
                                 </asp:RadioButtonList>
                         </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>                        
+                    </tr>
+                    <tr>
+                        <td style="width: 58px; height: 23px">
+                            &nbsp;</td>                           
                     </tr>
                     <tr>
                         <td style="width: 58px; height: 23px">

@@ -129,9 +129,9 @@ namespace Negocios
             return _lista;
         }
 
-        public bool AgendamentoConsulta(Int32 idUsuario,Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status)
+        public bool AgendamentoConsulta(Int32 idUsuario,Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status, int tipo, DateTime dataVacinacao)
         {
-            bool executou = this.animalDAO.AgendamentoConsulta(idUsuario, idAnimal, Valor, datConsulta, status);
+            bool executou = this.animalDAO.AgendamentoConsulta(idUsuario, idAnimal, Valor, datConsulta, status, tipo, dataVacinacao);
             return executou;
         }
 
