@@ -299,6 +299,10 @@ namespace WebUI
                     lblParcelas.Visible = true;
                 }
 
+                decimal desconto = Convert.ToDecimal(lblTotal.Text) * Convert.ToDecimal(0.93);
+                
+                lblTotal.Text = desconto.ToString("0.##");
+
                 Panel4.Visible = false;
                 btnFim.Visible = true;
             }
@@ -318,6 +322,7 @@ namespace WebUI
                     txtParcelas.Visible = true;
                     lblParcelas.Visible = true;
                 }
+
 
 
                 btnFim.Visible = true;
@@ -424,7 +429,8 @@ namespace WebUI
             {
                 grProds.DataSource = null;
                 grProds.DataBind();
-                btnEnviar.Visible = false;
+                //btnEnviar.Visible = false;
+                Panel4.Visible = false;
                 btnFim.Visible = false;
                 txtEspecial.Text = "";
                 txtParcelas.Text = "";
