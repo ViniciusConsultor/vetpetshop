@@ -33,6 +33,23 @@ namespace WebUI
             if (!IsPostBack)
             {
                 CarregaListaTipoProduto();
+                CarregaClientes();
+            }
+        }
+
+        private void CarregaClientes()
+        {
+            ClienteBuss clienteBuss = new ClienteBuss();
+            List<Cliente> lista = new List<Cliente>();
+
+            ListItem _item = new ListItem("Selecione", "");
+            ddlClienteEspecial.Items.Add(_item);
+
+            lista = clienteBuss.ListarDDLClientes();
+            foreach (Cliente cli in lista)
+            {
+                ListItem item = new ListItem(cli.Nome, cli.IdCliente.ToString());
+                ddlClienteEspecial.Items.Add(item);
             }
         }
 
@@ -287,7 +304,7 @@ namespace WebUI
             {
                 PanelCliEspecial.Visible = true;
                 Cliente.Visible = true;
-                txtEspecial.Visible = true;
+                ddlClienteEspecial.Visible = true;
                 if (rbTipoPagamento.SelectedItem.Value == "0")
                 {
                     txtParcelas.Visible = false;
@@ -311,7 +328,7 @@ namespace WebUI
                 Panel4.Visible = false;
                 PanelCliEspecial.Visible = true;
                 Cliente.Visible = false;
-                txtEspecial.Visible = false;
+                ddlClienteEspecial.Visible = false;
                 if (rbTipoPagamento.SelectedItem.Value == "0")
                 {
                     txtParcelas.Visible = false;
@@ -392,9 +409,9 @@ namespace WebUI
                 financeiro.Parcelas = SqlInt32.Null;
             }
 
-            if (txtEspecial.Text != "")
+            if (ddlClienteEspecial.SelectedItem.Value != "")
             {
-                financeiro.NomeCliente = txtEspecial.Text;
+                financeiro.NomeCliente = ddlClienteEspecial.SelectedItem.Text;
             }
             else
             {
@@ -432,7 +449,7 @@ namespace WebUI
                 //btnEnviar.Visible = false;
                 Panel4.Visible = false;
                 btnFim.Visible = false;
-                txtEspecial.Text = "";
+                ddlClienteEspecial.SelectedIndex = ddlClienteEspecial.Items.IndexOf(ddlClienteEspecial.Items.FindByValue("")); 
                 txtParcelas.Text = "";
                 lblMsg.Text = "Registro de compra efetuado com sucesso";
                 lblTotal.Text = "";
