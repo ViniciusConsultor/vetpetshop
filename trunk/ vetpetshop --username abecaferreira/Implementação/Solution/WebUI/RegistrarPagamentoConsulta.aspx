@@ -78,13 +78,16 @@
     <tr>
     <td style="width: 112px">
     Cliente especial? <br />
-    <asp:RadioButtonList ID="rbCliente" runat="server" Width="50px">
+    <asp:RadioButtonList ID="rbCliente" runat="server" Width="50px" AutoPostBack="true" 
+            onselectedindexchanged="rbCliente_SelectedIndexChanged">
     <asp:ListItem Text="Sim" Value="0"></asp:ListItem>
     <asp:ListItem Text="Não" Value="1" Selected="True"></asp:ListItem>
     </asp:RadioButtonList>
     </td> 
     <td style="width: 200px">Tipo de pagamento:<br />
-    <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="200px">
+    <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="200px" 
+            AutoPostBack="true" 
+            onselectedindexchanged="rbTipoPagamento_SelectedIndexChanged">
     <asp:ListItem Text="Dinheiro" Value="0"></asp:ListItem>
     <asp:ListItem Text="Cartão de crédito" Value="1"></asp:ListItem>
     <asp:ListItem Text="Cheque" Value="2"></asp:ListItem>
@@ -92,22 +95,28 @@
     </td>
     <td>
         <asp:Label ID="lblCli" Text="Nome Cliente:" runat="server" Visible="false"></asp:Label>
-        <asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="250px" Visible="false"></asp:DropDownList>
+        <asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="250px" 
+            Visible="false" AutoPostBack="true" 
+            onselectedindexchanged="ddlClienteEspecial_SelectedIndexChanged"></asp:DropDownList><br /><br /><br />
+            <asp:Label ID="lblDesconto" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>
         <asp:Panel runat="server" ID="espaco" Visible="false">
         <br />
         <br />
         <br />
+        
         </asp:Panel>
+        <br />
+        <br />
         <asp:Label ID="lblParcela" Text="Nº Parcelas:" runat="server" Visible="false"></asp:Label>&nbsp;&nbsp;
         <asp:TextBox runat="server" ID="txtParcelas" Visible="false"></asp:TextBox>
     </td>
     </tr>
     <tr>
     <td style="width: 112px">
-    <asp:Button ID="btnEnviar" runat="server" Text="Ok" Width="90px" 
-            onclick="btnEnviar_Click" />
-    <asp:Button ID="btnConfirmar" runat="server" Text="Ok" Width="90px" 
-            onclick="btnConfirmar_Click" Visible="false"/>
+   <!-- <asp:Button ID="btnEnviar" runat="server" Text="Ok" Width="90px" 
+            onclick="btnEnviar_Click" /> -->
+    <asp:Button ID="btnConfirmar" runat="server" Text="Finalizar Registro" Width="110px" 
+            onclick="btnConfirmar_Click"/>
     </td>
     </tr>
     </table>    

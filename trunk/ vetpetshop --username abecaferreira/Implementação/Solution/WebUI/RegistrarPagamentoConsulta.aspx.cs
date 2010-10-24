@@ -108,6 +108,9 @@ namespace WebUI
         {
             if (e.CommandName == "registrar") 
             {
+                lblDesconto.Text = "";
+                lblTotal.Text = "";
+                btnConfirmar.Visible = true;
                 lblMsg.Text = "";
                 pnPgConsulta.Visible = true;
                 ViewState["hdnCodConsulta"] = e.CommandArgument.ToString();
@@ -129,7 +132,17 @@ namespace WebUI
             
             consulta = animalBus.ListarConsultaAnimalAPagar(idConsulta);
 
-            financeiro.ValorTotal = consulta.Valor;
+            if (rbCliente.SelectedItem.Value == "0")
+            {
+                decimal desconto = Convert.ToDecimal(consulta.Valor) * Convert.ToDecimal(0.93);
+                lblTotal.Text = desconto.ToString("0.##");
+                financeiro.ValorTotal = Convert.ToDecimal(lblTotal.Text);
+            }
+            else
+            {
+                financeiro.ValorTotal = consulta.Valor;
+            }
+
             financeiro.Usuario = consulta.idUsuario;
             financeiro.TipoPagamento = Convert.ToInt32(rbTipoPagamento.SelectedItem.Value);
             financeiro.TipoResponsavel = 2;
@@ -141,8 +154,9 @@ namespace WebUI
             }
             else
             {
-                financeiro.NomeCliente = null;
+                financeiro.NomeCliente = SqlString.Null;
             }
+
             if (txtParcelas.Text != "")
             {
                 financeiro.Parcelas = Convert.ToInt32(txtParcelas.Text);
@@ -239,6 +253,65 @@ namespace WebUI
             }
 
             lblMsg.Text = "";
+        }
+
+        protected void ddlClienteEspecial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 idConsulta;
+            AnimalBuss animalBus = new AnimalBuss();
+            idConsulta = Convert.ToInt32(ViewState["hdnCodConsulta"]);
+            lblDesconto.Text = "Total com desconto R$: ";
+
+            Consulta consulta = new Consulta();
+
+            consulta = animalBus.ListarConsultaAnimalAPagar(idConsulta);
+
+            decimal desconto = Convert.ToDecimal(consulta.Valor) * Convert.ToDecimal(0.93);
+
+            lblTotal.Text = desconto.ToString("0.##");
+
+        }
+
+        protected void rbCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtParcelas.Text = "";
+            ddlClienteEspecial.SelectedIndex = ddlClienteEspecial.Items.IndexOf(ddlClienteEspecial.Items.FindByValue("")); 
+
+            if (rbCliente.SelectedItem.Value == "1")
+            {
+                lblTotal.Text = "";
+                lblDesconto.Text = "";
+                ddlClienteEspecial.Visible = false;
+                lblCli.Visible = false;
+            }
+            else
+            {
+                lblCli.Visible = true;
+                ddlClienteEspecial.Visible = true;
+                lblDesconto.Text = "";
+                lblTotal.Text = "";
+            }
+        }
+
+        protected void rbTipoPagamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtParcelas.Text = "";
+
+            if (rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2")
+            {
+                lblParcela.Visible = true;
+                txtParcelas.Visible = true;
+            }
+            else
+            {
+                lblParcela.Visible = false;
+                txtParcelas.Visible = false;
+            }
+
+            if (txtParcelas.Visible == true && ddlClienteEspecial.Visible == true)
+            {
+                espaco.Visible = true;
+            }
         }
 
     }
