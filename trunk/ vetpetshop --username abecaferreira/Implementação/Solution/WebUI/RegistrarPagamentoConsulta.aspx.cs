@@ -33,6 +33,23 @@ namespace WebUI
                 usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
 
                 CarregarConsultas(string.Empty);
+                CarregaClientes();
+            }
+        }
+
+        private void CarregaClientes()
+        {
+            ClienteBuss clienteBuss = new ClienteBuss();
+            List<Cliente> lista = new List<Cliente>();
+
+            ListItem _item = new ListItem("Selecione", "");
+            ddlClienteEspecial.Items.Add(_item);
+
+            lista = clienteBuss.ListarDDLClientes();
+            foreach (Cliente cli in lista)
+            {
+                ListItem item = new ListItem(cli.Nome, cli.IdCliente.ToString());
+                ddlClienteEspecial.Items.Add(item);
             }
         }
 
@@ -118,9 +135,9 @@ namespace WebUI
             financeiro.TipoResponsavel = 2;
             financeiro.TipoTransacao = 2;
 
-            if (txtNomeCli.Text != "")
+            if (ddlClienteEspecial.SelectedItem.Value != "")
             {
-                financeiro.NomeCliente = txtNomeCli.Text;
+                financeiro.NomeCliente = ddlClienteEspecial.SelectedItem.Text;
             }
             else
             {
@@ -155,9 +172,9 @@ namespace WebUI
                     espaco.Visible = false;
                     lblCli.Visible = false;
                     lblParcela.Visible = false;
-                    txtNomeCli.Text = string.Empty;
+                    ddlClienteEspecial.SelectedIndex = ddlClienteEspecial.Items.IndexOf(ddlClienteEspecial.Items.FindByValue(""));
                     txtParcelas.Text = string.Empty;
-                    txtNomeCli.Visible = false;
+                    ddlClienteEspecial.Visible = false;
                     txtParcelas.Visible = false;
                     btnConfirmar.Visible = false;
                     btnEnviar.Visible = true;
@@ -177,7 +194,7 @@ namespace WebUI
             if (rbCliente.SelectedItem.Value == "0")
             {
                 lblCli.Visible = true;
-                txtNomeCli.Visible = true;
+                ddlClienteEspecial.Visible = true;
             }
             if (rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2")
             {
@@ -185,7 +202,7 @@ namespace WebUI
                 txtParcelas.Visible = true;
             }
 
-            if (txtParcelas.Visible == true && txtNomeCli.Visible == true)
+            if (txtParcelas.Visible == true && ddlClienteEspecial.Visible == true)
             {
                 espaco.Visible = true;
             }

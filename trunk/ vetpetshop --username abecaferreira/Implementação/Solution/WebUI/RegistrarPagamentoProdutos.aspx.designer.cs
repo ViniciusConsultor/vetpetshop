@@ -95,13 +95,13 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label Cliente;
         
         /// <summary>
-        /// txtEspecial control.
+        /// ddlClienteEspecial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEspecial;
+        protected global::System.Web.UI.WebControls.DropDownList ddlClienteEspecial;
         
         /// <summary>
         /// lblParcelas control.

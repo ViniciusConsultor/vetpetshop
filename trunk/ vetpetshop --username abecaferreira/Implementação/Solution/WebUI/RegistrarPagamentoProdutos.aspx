@@ -68,9 +68,10 @@
                     <td>
                     <asp:Panel ID="PanelCliEspecial" runat="server" Visible="false">
                     <asp:Label ID="Cliente" Text="Nome do cliente especial" runat="server"></asp:Label>
-                    &nbsp;&nbsp;<asp:TextBox ID="txtEspecial" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="lblParcelas" Text="N° de parcelas" runat="server"></asp:Label>
-                    &nbsp;&nbsp;<asp:TextBox ID="txtParcelas" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;</asp:Panel>
+                    &nbsp;&nbsp;<asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="250px"></asp:DropDownList>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;
+                 <asp:Label ID="lblParcelas" Text="N° de parcelas" runat="server"></asp:Label>
+                    &nbsp;&nbsp;<asp:TextBox ID="txtParcelas" runat="server" Width="50px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;</asp:Panel>
                     </td>
                     </tr>
                      <tr>

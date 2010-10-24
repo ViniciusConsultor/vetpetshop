@@ -92,7 +92,7 @@
     </td>
     <td>
         <asp:Label ID="lblCli" Text="Nome Cliente:" runat="server" Visible="false"></asp:Label>
-        <asp:TextBox runat="server" ID="txtNomeCli" Visible="false"></asp:TextBox>
+        <asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="250px" Visible="false"></asp:DropDownList>
         <asp:Panel runat="server" ID="espaco" Visible="false">
         <br />
         <br />
