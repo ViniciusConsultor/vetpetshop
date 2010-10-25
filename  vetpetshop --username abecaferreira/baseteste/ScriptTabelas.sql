@@ -211,6 +211,13 @@ CONSTRAINT	FK_Financeiro_Produto				FOREIGN KEY(IdProduto)			REFERENCES Produto(
 CONSTRAINT	FK_Financeiro_Financeiro			FOREIGN KEY(IdFinanceiro)		REFERENCES Financeiro(Id),
 )
 
+CREATE TABLE HistoricoEstoque
+(
+IdEstoque			INT							NOT NULL,
+DataEstoque			DATETIME					NULL,
+CONSTRAINT	FK_HistoricoEstoque_Estoque			FOREIGN KEY(IdEstoque)			REFERENCES Estoque(Id),
+)
+
 
 
 
