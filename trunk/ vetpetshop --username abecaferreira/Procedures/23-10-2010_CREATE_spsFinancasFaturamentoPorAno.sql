@@ -10,10 +10,10 @@ CREATE PROCEDURE [dbo].[spsFinancasFaturamentoPorAno]
 AS
 BEGIN
 
-	SELECT MONTH(f.DataTransacao) AS MES, SUM(cv.Valor) AS ValorTotal FROM ConsultaVeterinaria cv
+	SELECT MONTH(f.DataTransacao) AS MES, SUM(f.ValorTotal) AS ValorTotal FROM ConsultaVeterinaria cv
 	INNER JOIN Financeiro f ON F.Id = cv.IdFinanceiro
-	WHERE IdFinanceiro IS NOT NULL AND YEAR(DataTransacao) = @Ano
-	GROUP BY MONTH(F.DataTransacao)
+	WHERE IdFinanceiro IS NOT NULL AND YEAR(DataTransacao) = @Ano AND MONTH(f.DataTransacao) = MONTH(cv.Data)
+	GROUP BY MONTH(f.DataTransacao)
 	
 END
 GO
