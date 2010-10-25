@@ -22,16 +22,16 @@
             <td style="width: 863px; height: 24px;">
                 <table style="width:100%;">
                     <tr>
-                        <td style="width: 145px" class="style2">
+                        <td style="width: 109px" class="style2">
                             Estoque mínimo/crítico
                         </td>
                         <td style="width: 35px; background-color:#ffd700;">
                             &nbsp;</td>
-                        <td style="width: 127px">
+                        <td style="width: 100px">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estoque médio</td>
                         <td style="width: 35px; background-color:#6495ED;">
                             &nbsp;</td>
-                        <td style="width: 137px">
+                        <td style="width: 100px">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estoque máximo</td>
                         <td style="width: 35px; background-color:#33CC66;">
                             &nbsp;</td>
@@ -39,15 +39,15 @@
                             &nbsp;</td>
                     </tr>
                     <tr>
-                        <td style="width: 145px" class="style2">
+                        <td style="width: 109px" class="style2">
                             &nbsp;</td>
                         <td>
                             &nbsp;</td>
-                        <td style="width: 127px">
+                        <td style="width: 100px">
                             &nbsp;</td>
                         <td>
                             &nbsp;</td>
-                        <td style="width: 137px">
+                        <td style="width: 100px">
                             &nbsp;</td>
                         <td">
                             &nbsp;</td>

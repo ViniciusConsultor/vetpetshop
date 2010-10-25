@@ -488,7 +488,7 @@ namespace WebUI
             if (estoque.Quantidade < estoqueMedio && estoque.Quantidade > produto.EstoqueMin)
                 estoque.Status = 2;
 
-            else
+            if (estoque.Quantidade == produto.EstoqueMin || estoque.Quantidade < produto.EstoqueMin)
                 estoque.Status = 1;
 
             return estoque.Status;

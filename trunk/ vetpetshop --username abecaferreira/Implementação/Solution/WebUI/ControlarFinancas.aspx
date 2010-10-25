@@ -534,6 +534,34 @@
   </ContentTemplate>
   </asp:TabPanel>
   </asp:TabContainer> 
+  <br />
+  <br />
+  <h2>Lista de Transações com Desconto - Clientes Especiais</h2>
+  <br />
+  <asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label>
+  <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="false" 
+                                HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
+                                AlternatingRowStyle-BackColor="LightSteelBlue">
+                                <Columns>
+                                <asp:BoundField HeaderText="Cliente" DataField="cliente" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Data da Transação" DataField="dt_transacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Tipo de Transação" DataField="tipo_transacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Valor Total" DataField="valor" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:BoundField>          
+                                </Columns>
+                                </asp:GridView>
+  
   </asp:Panel>
   <br /><br /><br /><br />
  </asp:Content>
