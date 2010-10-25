@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidade;
 using Negocios;
+using System.Data;
 
 namespace WebUI
 {
@@ -59,6 +60,7 @@ namespace WebUI
             listaFinancasLucro = financeiroBuss.ListarFinancasLucro(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaValorReceber = financeiroBuss.ListarValorReceber(Convert.ToInt32(ddlAno.SelectedItem.Value));
 
+            #region Ano selecionado não possui registros
             if (listaFinancasEstoque.Count == 0 && listaFinancasInvestimento.Count == 0 && listaFinancasVenda.Count == 0 && listaFinancasLucro.Count == 0 && listaValorReceber.Count == 0)
             {
                 lblInvestimentoJan.Text = "0.00";
@@ -127,6 +129,7 @@ namespace WebUI
                 lblTotalValor.Text = "0.00";
                 lblTotalVendas.Text = "0.00";
             }
+            #endregion
 
             #region Investimento
             foreach (Financas finan in listaFinancasInvestimento)
@@ -647,7 +650,7 @@ namespace WebUI
             listaFinancasVacinas = finanBuss.ListaFinancasVacinas(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaFinancasFaturamento = finanBuss.ListarFinancasFaturamento(Convert.ToInt32(ddlAno.SelectedItem.Value));
 
-
+            #region Ano selecionado não possui registros
             if (listaFinancasConsultas.Count == 0 && listaFinancasVacinas.Count == 0 && listaFinancasFaturamento.Count == 0)
             {
 
@@ -691,6 +694,7 @@ namespace WebUI
                 lblFatDez.Text = "0.00";
                 lblTotalFat.Text = "0.00";
             }
+            #endregion
 
 
             #region Consultas
@@ -1012,8 +1016,50 @@ namespace WebUI
 
             ListarFinancasPetShop();
             ListarFinancasConsultorio();
+            PreencherTabela();
 
             PanelFinancas.Visible = true;
+        }
+
+        private DataTable MontarTabela()
+        {
+            DataTable _tabela = new DataTable();
+
+            DataColumn _coluna0 = new DataColumn("cliente");
+            DataColumn _coluna1 = new DataColumn("dt_transacao");
+            DataColumn _coluna2 = new DataColumn("tipo_transacao");
+            DataColumn _coluna3 = new DataColumn("valor");
+            
+            _tabela.Columns.Add(_coluna0);
+            _tabela.Columns.Add(_coluna1);
+            _tabela.Columns.Add(_coluna2);
+            _tabela.Columns.Add(_coluna3);
+
+            return _tabela;        
+            
+        }
+
+        private void PreencherTabela()
+        {
+            DataTable tabela = new DataTable();
+            DataTable tabelaPreenchida = new DataTable();
+            FinanceiroBuss finanBuss = new FinanceiroBuss();
+
+            tabela = MontarTabela();
+            tabelaPreenchida = finanBuss.ListarClientesEspeciais(tabela, Convert.ToInt32(ddlAno.SelectedItem.Value));
+
+            if (tabelaPreenchida.Rows.Count != 0)
+            {
+                grClientes.Visible = true;
+                grClientes.DataSource = tabelaPreenchida;
+                grClientes.DataBind();
+            }
+            else
+            {
+                lblRegistros.Visible = true;
+                lblRegistros.Text = "Não há registros de transações com desconto para o ano selecionado";
+            }
+
         }
     }
 }

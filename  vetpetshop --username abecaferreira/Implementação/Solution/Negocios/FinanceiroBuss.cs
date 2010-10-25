@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAO;
 using Entidade;
+using System.Data;
 
 namespace Negocios
 {
@@ -108,6 +109,15 @@ namespace Negocios
             lista = this.financeiroDAO.ListarFinancasFaturamento(ano);
 
             return lista;
+        }
+
+        public DataTable ListarClientesEspeciais(DataTable tabela, int ano)
+        {
+            DataTable _table = new DataTable();
+
+            _table = this.financeiroDAO.ListarClientesEspeciais(tabela, ano);
+
+            return _table;
         }
     }
 }

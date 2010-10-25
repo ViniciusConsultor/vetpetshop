@@ -196,8 +196,12 @@ namespace WebUI
                             if (estoque.Quantidade < estoqueMedio && estoque.Quantidade > prod.EstoqueMin)
                                 estoque.Status = 2;
 
-                            else
+                            //else
+                            //    estoque.Status = 1;
+
+                            if (estoque.Quantidade == prod.EstoqueMin || estoque.Quantidade < prod.EstoqueMin)
                                 estoque.Status = 1;
+
                         }
 
                         else
@@ -225,7 +229,7 @@ namespace WebUI
                             if (estoque.Quantidade < estoqueMedio && estoque.Quantidade > prod.EstoqueMin)
                                 estoque.Status = 2;
 
-                            else
+                            if (estoque.Quantidade == prod.EstoqueMin || estoque.Quantidade < prod.EstoqueMin)
                                 estoque.Status = 1;
 
 
@@ -249,8 +253,11 @@ namespace WebUI
                         if (Convert.ToInt32(linha.Cells[3].Text) < estoqueMedio && Convert.ToInt32(linha.Cells[3].Text) > prod.EstoqueMin)
                             estoque.Status = 2;
 
-                        else
+                        //else
+                        //    estoque.Status = 1;
+                        if (Convert.ToInt32(linha.Cells[3].Text) == prod.EstoqueMin || Convert.ToInt32(linha.Cells[3].Text) < prod.EstoqueMin)
                             estoque.Status = 1;
+
 
                         estoque.Quantidade = estoque.Quantidade + Convert.ToInt32(linha.Cells[3].Text);
 
