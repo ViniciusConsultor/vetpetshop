@@ -658,5 +658,60 @@ namespace DAO
 
             return lista;  
         }
+
+        public DataTable ListarClientesEspeciais(DataTable tabela, int ano)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarFinanceiroClientesEspeciaisPorAno";
+
+            SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
+
+            pAno.Value = ano;
+
+            cmd.Parameters.Add(pAno);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["cliente"] = dr.GetString(0);
+                _linhaTabela["dt_transacao"] = dr.GetDateTime(1).ToString("dd/MM/yyyy");
+
+                if (dr.GetInt32(2).Equals(1))
+                    _linhaTabela["tipo_transacao"] = "Venda de produtos";
+
+                else if (dr.GetInt32(2).Equals(2))
+                {
+                    if (!dr.IsDBNull(3))
+                    { 
+                        if (dr.GetInt32(3).Equals(1))
+                           _linhaTabela["tipo_transacao"] = "Consulta";
+                        else
+                            _linhaTabela["tipo_transacao"] = "Vacina";
+                    }
+
+                    else
+                        _linhaTabela["tipo_transacao"] = "";
+                }
+
+                _linhaTabela["valor"] = dr.GetDecimal(4).ToString();
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
     }
 }
