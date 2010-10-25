@@ -64,6 +64,7 @@ Parcelas            INT                 NULL,     -- Quantidade de Parcelas (car
 TipoTransacao 		INT					NOT NULL, -- Venda Consulta
 TipoResponsavel 	INT					NOT NULL, -- Veterinario Vendedor Administrador
 DataTransacao   	DATETIME			NOT NULL,
+NomeCliente			VARCHAR(100)		NULL,
 CONSTRAINT  PK_Financeiro				PRIMARY KEY(Id),
 CONSTRAINT  FK_Financeiro_Usuario		FOREIGN KEY(IdUsuario)     REFERENCES  Usuario(Id)
 )
@@ -79,7 +80,7 @@ EstoqueMax			INT					NULL,
 Descricao			VARCHAR(200)		NULL,
 PrecoCusto			DECIMAL(9,2)		NULL,
 DataValidade		DATETIME			NOT NULL,
-PrecoVenda			DECIMAL(9,2)				NULL,
+PrecoVenda			DECIMAL(9,2)		NULL,
 CONSTRAINT  PK_Produto					PRIMARY KEY(Id),
 CONSTRAINT  FK_Produto_Grupo			FOREIGN KEY(IdGrupo)			REFERENCES	Grupo(Id),
 CONSTRAINT  FK_Produto_Financeiro		FOREIGN KEY(IdFinanceiro)		REFERENCES  Financeiro(Id)
@@ -203,7 +204,8 @@ CREATE TABLE FinanceiroProduto
 Id					INT IDENTITY(1,1)			NOT NULL,
 IdFinanceiro		INT							NULL,
 IdProduto			INT							NULL,
-DataTransacao		DATETIME
+DataTransacao		DATETIME					NULL,
+Quantidade			INT							NULL,
 CONSTRAINT	PK_FinanceiroProduto				PRIMARY KEY(Id),
 CONSTRAINT	FK_Financeiro_Produto				FOREIGN KEY(IdProduto)			REFERENCES Produto(Id),
 CONSTRAINT	FK_Financeiro_Financeiro			FOREIGN KEY(IdFinanceiro)		REFERENCES Financeiro(Id),
