@@ -467,10 +467,19 @@ namespace WebUI
             produto = prodBuss.ObterProdutoPorId(relEstoque.IdProduto);
             int estoqueMedio = (produto.EstoqueMax + produto.EstoqueMin)/2;
 
+            //if (estoque.Quantidade >= produto.EstoqueMax)
+            //    estoque.Status = 3;
+
+            //else if (estoque.Quantidade == estoqueMedio)
+            //    estoque.Status = 2;
+
+            //else
+            //    estoque.Status = 1;
+
             if (estoque.Quantidade >= produto.EstoqueMax)
                 estoque.Status = 3;
 
-            else if (estoque.Quantidade == estoqueMedio)
+            else if (estoque.Quantidade == estoqueMedio || estoque.Quantidade < produto.EstoqueMax)
                 estoque.Status = 2;
 
             else
