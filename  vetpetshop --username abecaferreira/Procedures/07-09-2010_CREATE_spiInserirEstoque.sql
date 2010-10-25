@@ -18,6 +18,9 @@ BEGIN
 	SELECT @IdEst = SCOPE_IDENTITY()
 	
 	INSERT INTO EstoqueProduto(IdEstoque, IdProduto) VALUES (@IdEst, @IdProd) 
+	
+	INSERT INTO HistoricoEstoque (IdEstoque, DataEstoque) VALUES (@IdEst,GETDATE())
+	
 END
 
 SET NOCOUNT OFF
