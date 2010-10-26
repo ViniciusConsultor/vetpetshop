@@ -16,7 +16,7 @@
             <asp:Label ID="lblBusca" runat="server" Text="Nome" Font-Bold="true"></asp:Label>
         </td>
         <td style="width:20%;">
-            <asp:TextBox ID="txtBusca" runat="server" Width="100%"></asp:TextBox>
+            <asp:TextBox ID="txtBusca" runat="server" Width="100%"></asp:TextBox> 
         </td>
         <td style="width:1%;"></td>
         <td>
@@ -131,7 +131,8 @@
   </HeaderTemplate>
   <ContentTemplate>
         <div id="divAnimais" class="scroll">
-        <center><asp:Label ID="lblRegistrosAnimais" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
+        <center><asp:Label ID="lblRegistrosAnimais" runat="server" Visible="False" 
+                Font-Bold="True"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
                 SelectMethod="ListarAnimaisCadastrados" TypeName="Negocios.AnimalBuss">
                 <SelectParameters>
@@ -142,55 +143,57 @@
             <asp:GridView ID="grAnimais" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" PageSize="15" Width="100%" OnRowDataBound="grAnimais_RowDataBound"  onrowcommand="grAnimais_RowCommand">
                 <Columns>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField>
                     <ItemTemplate>
                     <asp:LinkButton ID="alterar" runat="server" Text="Alterar" CommandName="alterar" CommandArgument='<%# Eval("IdAnimal") %>'></asp:LinkButton>
                     </ItemTemplate> 
+                        <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField>
                     <ItemTemplate>
                     <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdAnimal") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton>
                     </ItemTemplate> 
+                        <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
                     <asp:BoundField DataField="IdCliente" HeaderText="Proprietário" SortExpression="Proprietário">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                     </asp:BoundField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                     </asp:BoundField>
                     <asp:BoundField DataField="Sexo" HeaderText="Sexo" SortExpression="Sexo">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>
                     </asp:BoundField>
                     <asp:BoundField DataField="Peso" HeaderText="Peso" SortExpression="Peso">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>    
                     </asp:BoundField>
                     <asp:BoundField DataField="Raca" HeaderText="Raca" SortExpression="Raca">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>    
                     </asp:BoundField>
                     <asp:BoundField DataField="DataFimVacinacao" HeaderText="Fim Vacinação" SortExpression="DataFimVacinacao" DataFormatString="{0:d}">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>    
                     </asp:BoundField>
                     <asp:BoundField DataField="DataNascimento" HeaderText="Nascimento" SortExpression="DataNascimento" DataFormatString="{0:d}">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>    
                     </asp:BoundField>
                     <asp:BoundField DataField="DataProxVacinacao" HeaderText="Prox. Vacinação" SortExpression="DataProxVacinacao" DataFormatString="{0:d}">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False"/>
-                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>    
+                        <ItemStyle HorizontalAlign="Center" Wrap="False"/>    
                     </asp:BoundField>
                 </Columns>
                 <HeaderStyle BackColor="DarkBlue" />
