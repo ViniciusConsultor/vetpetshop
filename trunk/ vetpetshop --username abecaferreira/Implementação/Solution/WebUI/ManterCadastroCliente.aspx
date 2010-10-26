@@ -23,7 +23,6 @@
                         <td style="height: 23px; width: 383px">
                             Nome do Cliente*</td>
                         <td style="height: 23px; width: 392px">
-                         <asp:RequiredFieldValidator ID="rqrNomeCliente" ControlToValidate="txtNomeCli" runat="server" ErrorMessage="Preencha o campo Nome do Cliente" Display="None"></asp:RequiredFieldValidator>
                          <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
                         </td>
                         <td style="height: 23px; width: 138px">
@@ -57,7 +56,6 @@
                         <td style="height: 23px; width: 518px">
                             Sexo*</td>
                             <td style="width: 58px; height: 23px">
-                            <asp:RequiredFieldValidator ID="vldSexo" ControlToValidate="ddlSexoCliente" runat="server" ErrorMessage="Selecione o sexo do cliente" Display="None"></asp:RequiredFieldValidator>               
                             <asp:DropDownList ID="ddlSexoCliente" runat="server" width="189px">
                             <asp:ListItem Value="">Selecione</asp:ListItem>
                             <asp:ListItem Value="Masculino">Masculino</asp:ListItem>
@@ -125,7 +123,6 @@
                         <td style="height: 23px; width: 518px">
                             CEP</td>
                             <td style="width: 58px; height: 23px">
-                         <asp:RegularExpressionValidator ID="vldCEP2" runat="server" ControlToValidate="txtCep" ErrorMessage="Campo CEP deve conter 8 dígitos." ValidationExpression="^[\s\S]{8,8}$" Display="None"></asp:RegularExpressionValidator>
                          <asp:TextBox ID="txtCep" runat="server" Width="189px"></asp:TextBox>
                         </td>
                     </tr>
@@ -135,11 +132,7 @@
                         <td style="height: 23px; width: 383px">
                             E-mail*</td>
                         <td style="height: 23px; width: 392px">
-                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtEmail" runat="server" ErrorMessage="Preencha o campo E-mail." Display="None"></asp:RequiredFieldValidator>
                          <asp:TextBox ID="txtEmail" runat="server" Width="189px"></asp:TextBox>
-                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
-                            ErrorMessage="E-mail inválido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                            Width="105px" Display="None"></asp:RegularExpressionValidator>
                         </td>
                         <td style="height: 23px; width: 138px">
                             &nbsp;</td>
