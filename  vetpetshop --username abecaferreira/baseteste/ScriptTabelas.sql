@@ -73,7 +73,7 @@ CREATE TABLE Produto
 (
 Id					INT IDENTITY(1,1)	NOT NULL,	
 IdGrupo				INT					NOT NULL,
-IdFinanceiro		INT					NOT NULL,
+IdFinanceiro		INT				    NULL,
 Nome				VARCHAR(50)			NULL,
 EstoqueMin			INT					NULL,
 EstoqueMax			INT					NULL,
@@ -164,11 +164,11 @@ CONSTRAINT  FK_ConsultaAnimal_Animal				FOREIGN KEY(IdAnimal)	 REFERENCES  Anima
 CREATE TABLE NotaFiscal 
 (
 Id					INT IDENTITY(1,1)			NOT NULL,
-IdVendedor			INT							NOT NULL,
-IdAdministrador		INT							NOT NULL,
+IdVendedor			INT							NULL,
+IdAdministrador		INT							NULL,
 IdUsuario			INT							NOT NULL,
-DataCadastro		DATETIME					NOT NULL,
-Valor				DECIMAL(9,2)						NOT NULL,
+DataCadastro		DATETIME					NULL,
+Valor				DECIMAL(9,2)				NULL,
 [Status]			INT							NOT NULL, --Emitida Recebida
 DataRecebimento		DATETIME					NOT NULL,
 CONSTRAINT  PK_NotaFiscal						PRIMARY KEY(Id),
