@@ -19,7 +19,7 @@ BEGIN
 	FROM Financeiro f
 	LEFT JOIN ConsultaVeterinaria cv ON cv.IdFinanceiro = f.Id
 	WHERE  f.NomeCliente IS NOT NULL AND YEAR(f.DataTransacao) = @Ano
-	ORDER BY f.NomeCliente
+	ORDER BY F.DataTransacao
 	
 END
 GO
