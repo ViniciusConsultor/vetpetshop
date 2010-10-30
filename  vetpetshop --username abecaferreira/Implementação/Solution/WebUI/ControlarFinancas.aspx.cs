@@ -52,16 +52,16 @@ namespace WebUI
             List<Financas> listaFinancasVenda = new List<Financas>();
             List<FinancasEstoque> listaFinancasEstoque = new List<FinancasEstoque>();
             List<FinancasLucro> listaFinancasLucro = new List<FinancasLucro>();
-            List<FinancasValorAReceber> listaValorReceber = new List<FinancasValorAReceber>();
+           // List<FinancasValorAReceber> listaValorReceber = new List<FinancasValorAReceber>();
 
             listaFinancasInvestimento = financeiroBuss.ListarInvestimentos(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaFinancasVenda = financeiroBuss.ListarVendas(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaFinancasEstoque = financeiroBuss.ListarFinancasEstoque(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaFinancasLucro = financeiroBuss.ListarFinancasLucro(Convert.ToInt32(ddlAno.SelectedItem.Value));
-            listaValorReceber = financeiroBuss.ListarValorReceber(Convert.ToInt32(ddlAno.SelectedItem.Value));
+            //listaValorReceber = financeiroBuss.ListarValorReceber(Convert.ToInt32(ddlAno.SelectedItem.Value));
 
             #region Ano selecionado não possui registros
-            if (listaFinancasEstoque.Count == 0 && listaFinancasInvestimento.Count == 0 && listaFinancasVenda.Count == 0 && listaFinancasLucro.Count == 0 && listaValorReceber.Count == 0)
+            if (listaFinancasEstoque.Count == 0 && listaFinancasInvestimento.Count == 0 && listaFinancasVenda.Count == 0 && listaFinancasLucro.Count == 0)
             {
                 lblInvestimentoJan.Text = "0.00";
                 lblInvestimentoFev.Text = "0.00";
@@ -537,106 +537,106 @@ namespace WebUI
             }
             #endregion
 
-            #region Valor a Receber
-            foreach (FinancasValorAReceber finValor in listaValorReceber)
-            {
+            //#region Valor a Receber
+            //foreach (FinancasValorAReceber finValor in listaValorReceber)
+            //{
 
-                if (finValor.Mes == 1)
-                {
-                    lblValorJan.Text = finValor.Valor.ToString();
-                }
-                if (lblValorJan.Text == "")
-                    lblValorJan.Text = "0.00";
+            //    if (finValor.Mes == 1)
+            //    {
+            //        lblValorJan.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorJan.Text == "")
+            //        lblValorJan.Text = "0.00";
 
-                if (finValor.Mes == 2)
-                {
-                    lblValorFev.Text = finValor.Valor.ToString();
-                }
-                if (lblValorFev.Text == "")
-                    lblValorFev.Text = "0.00";
+            //    if (finValor.Mes == 2)
+            //    {
+            //        lblValorFev.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorFev.Text == "")
+            //        lblValorFev.Text = "0.00";
 
-                if (finValor.Mes == 3)
-                {
-                    lblValorMar.Text = finValor.Valor.ToString();
-                }
-                if (lblValorMar.Text == "")
-                    lblValorMar.Text = "0.00";
+            //    if (finValor.Mes == 3)
+            //    {
+            //        lblValorMar.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorMar.Text == "")
+            //        lblValorMar.Text = "0.00";
 
-                if (finValor.Mes == 4)
-                {
-                    lblValorAbr.Text = finValor.Valor.ToString();
-                }
-                if (lblValorAbr.Text == "")
-                    lblValorAbr.Text = "0.00";
+            //    if (finValor.Mes == 4)
+            //    {
+            //        lblValorAbr.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorAbr.Text == "")
+            //        lblValorAbr.Text = "0.00";
 
-                if (finValor.Mes == 5)
-                {
-                    lblValorMai.Text = finValor.Valor.ToString();
-                }
-                if (lblValorMai.Text == "")
-                    lblValorMai.Text = "0.00";
+            //    if (finValor.Mes == 5)
+            //    {
+            //        lblValorMai.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorMai.Text == "")
+            //        lblValorMai.Text = "0.00";
 
-                if (finValor.Mes == 6)
-                {
-                    lblValorJun.Text = finValor.Valor.ToString();
-                }
-                if (lblValorJun.Text == "")
-                    lblValorJun.Text = "0.00";
+            //    if (finValor.Mes == 6)
+            //    {
+            //        lblValorJun.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorJun.Text == "")
+            //        lblValorJun.Text = "0.00";
 
-                if (finValor.Mes == 7)
-                {
-                    lblValorJul.Text = finValor.Valor.ToString();
-                }
-                if (lblValorJul.Text == "")
-                    lblValorJul.Text = "0.00";
+            //    if (finValor.Mes == 7)
+            //    {
+            //        lblValorJul.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorJul.Text == "")
+            //        lblValorJul.Text = "0.00";
 
-                if (finValor.Mes == 8)
-                {
-                    lblValorAgo.Text = finValor.Valor.ToString();
-                }
-                if (lblValorAgo.Text == "")
-                    lblValorAgo.Text = "0.00";
+            //    if (finValor.Mes == 8)
+            //    {
+            //        lblValorAgo.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorAgo.Text == "")
+            //        lblValorAgo.Text = "0.00";
 
-                if (finValor.Mes == 9)
-                {
-                    lblValorSet.Text = finValor.Valor.ToString();
-                }
-                if (lblValorSet.Text == "")
-                    lblValorSet.Text = "0.00";
+            //    if (finValor.Mes == 9)
+            //    {
+            //        lblValorSet.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorSet.Text == "")
+            //        lblValorSet.Text = "0.00";
 
-                if (finValor.Mes == 10)
-                {
-                    lblValotOut.Text = finValor.Valor.ToString();
-                }
-                if (lblValotOut.Text == "")
-                    lblValotOut.Text = "0.00";
+            //    if (finValor.Mes == 10)
+            //    {
+            //        lblValotOut.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValotOut.Text == "")
+            //        lblValotOut.Text = "0.00";
 
-                if (finValor.Mes == 11)
-                {
-                    lblValorNov.Text = finValor.Valor.ToString();
-                }
-                if (lblValorNov.Text == "")
-                    lblValorNov.Text = "0.00";
+            //    if (finValor.Mes == 11)
+            //    {
+            //        lblValorNov.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorNov.Text == "")
+            //        lblValorNov.Text = "0.00";
 
-                if (finValor.Mes == 12)
-                {
-                    lblValorDez.Text = finValor.Valor.ToString();
-                }
-                if (lblValorDez.Text == "")
-                    lblValorDez.Text = "0.00";
+            //    if (finValor.Mes == 12)
+            //    {
+            //        lblValorDez.Text = finValor.Valor.ToString();
+            //    }
+            //    if (lblValorDez.Text == "")
+            //        lblValorDez.Text = "0.00";
 
 
-                decimal totalValorReceber = Convert.ToDecimal(lblValorJan.Text) +
-                    Convert.ToDecimal(lblValorFev.Text) + Convert.ToDecimal(lblValorMar.Text) +
-                    Convert.ToDecimal(lblValorAbr.Text) + Convert.ToDecimal(lblValorMai.Text) +
-                    Convert.ToDecimal(lblValorJun.Text) + Convert.ToDecimal(lblValorJul.Text) +
-                    Convert.ToDecimal(lblValorAgo.Text) + Convert.ToDecimal(lblValorSet.Text) +
-                    Convert.ToDecimal(lblValotOut.Text) + Convert.ToDecimal(lblValorNov.Text) + Convert.ToDecimal(lblValorDez.Text);
+            //    decimal totalValorReceber = Convert.ToDecimal(lblValorJan.Text) +
+            //        Convert.ToDecimal(lblValorFev.Text) + Convert.ToDecimal(lblValorMar.Text) +
+            //        Convert.ToDecimal(lblValorAbr.Text) + Convert.ToDecimal(lblValorMai.Text) +
+            //        Convert.ToDecimal(lblValorJun.Text) + Convert.ToDecimal(lblValorJul.Text) +
+            //        Convert.ToDecimal(lblValorAgo.Text) + Convert.ToDecimal(lblValorSet.Text) +
+            //        Convert.ToDecimal(lblValotOut.Text) + Convert.ToDecimal(lblValorNov.Text) + Convert.ToDecimal(lblValorDez.Text);
 
-                lblTotalValor.Text = totalValorReceber.ToString();
+            //    lblTotalValor.Text = totalValorReceber.ToString();
 
-            }
-            #endregion
+            //}
+            //#endregion
         }
 
         private void ListarFinancasConsultorio()
@@ -1005,6 +1005,7 @@ namespace WebUI
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
+            lblRegistros.Text = "";
             lblMsg.Text = "";
 
             if (ddlAno.SelectedItem.Value == "0")
@@ -1056,6 +1057,8 @@ namespace WebUI
             }
             else
             {
+                grClientes.DataSource = null;
+                grClientes.DataBind();
                 lblRegistros.Visible = true;
                 lblRegistros.Text = "Não há registros de transações com desconto para o ano selecionado";
             }
