@@ -12,8 +12,8 @@
     </tr>
     <tr>
         <td style="width:15%;">
-            <asp:Label ID="ano" runat="server" Text="Ano"></asp:Label>            
-        &nbsp;de referência</td>
+            <asp:Label ID="ano" runat="server" Text="Ano de referência"></asp:Label>            
+        &nbsp;</td>
         <td style="width:15%;">
         <asp:DropDownList ID="ddlAno" runat="server"></asp:DropDownList>
         </td>
@@ -37,284 +37,285 @@
         <asp:Panel ID="PanelAno" runat="server">
         <table style="width: 100%;">
             <tr>
-                <td>
+                <td style="width: 154px">
                     
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                    <asp:Label ID="invest" runat="server" ForeColor="Blue" Text="Investimento"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                    <asp:Label ID="venda" runat="server" ForeColor="Blue" Text="Vendas"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="estoque" runat="server" ForeColor="Blue" Text="Estoque"></asp:Label>
                 </td>
-                 <td>
+                 <td style="width: 104px">
                     <asp:Label ID="lucro" runat="server" ForeColor="Blue" Text="Lucro"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="valoareceber" runat="server" ForeColor="Blue" Text="Valor a Receber"></asp:Label>
+                    <asp:Label ID="valoareceber" runat="server" ForeColor="Blue" 
+                         Text="Valor a Receber" Visible="False"></asp:Label>
                 </td>
             </tr>
             
             <tr>
-                <td>
+                <td style="width: 154px">
                     Janeiro
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoJan" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasJan" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueJan" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroJan" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorJan" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorJan" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 154px">
                     Fevereiro
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoFev" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasFev" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueFev" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroFev" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorFev" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorFev" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 154px">
                     Março
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoMar" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasMar" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                    <asp:Label ID="lblEstoqueMar" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroMar" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorMar" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorMar" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 154px">
                     Abril
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoAbr" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasAbr" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueAbr" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroAbr" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorAbr" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorAbr" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 154px">
                     Maio
                 </td>
-               <td style="width: 98px">
+               <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoMai" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasMai" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueMai" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroMai" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorMai" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorMai" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 154px">
                     Junho
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoJun" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasJun" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueJun" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroJun" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorJun" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorJun" runat="server" Visible="False"></asp:Label>
                 </td>
              </tr>
                 <tr>
-                <td>
+                <td style="width: 154px">
                     Julho
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoJul" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasJul" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueJul" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroJul" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorJul" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorJul" runat="server" Visible="False"></asp:Label>
                 </td>
               </tr>
                 <tr>
-                <td>
+                <td style="width: 154px">
                     Agosto
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoAgo" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasAgo" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueAgo" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroAgo" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorAgo" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorAgo" runat="server" Visible="False"></asp:Label>
                 </td>
              </tr>
                 <tr>
-                <td>
+                <td style="width: 154px">
                     Setembro
                 </td>
-               <td style="width: 98px">
+               <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoSet" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasSet" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueSet" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroSet" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorSet" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorSet" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
              <tr>
-                <td>
+                <td style="width: 154px">
                     Outubro
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoOut" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasOut" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueOut" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                    <asp:Label ID="lblLucroOut" runat="server"></asp:Label>
                 </td>
                  <td>
-                   <asp:Label ID="lblValotOut" runat="server"></asp:Label>
+                   <asp:Label ID="lblValotOut" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
              <tr>
-                <td>
+                <td style="width: 154px">
                     Novembro
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoNov" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasNov" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueNov" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblLucroNov" runat="server"></asp:Label>
                 </td>
                  <td>
-                    <asp:Label ID="lblValorNov" runat="server"></asp:Label>
+                    <asp:Label ID="lblValorNov" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
              <tr>
-                <td>
+                <td style="width: 154px">
                     Dezembro
                 </td>
-               <td style="width: 98px">
+               <td style="width: 106px">
                     <asp:Label ID="lblInvestimentoDez" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblVendasDez" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblEstoqueDez" runat="server"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                    <asp:Label ID="lblLucroDez" runat="server"></asp:Label>
                 </td>
                  <td>
-                   <asp:Label ID="lblValorDez" runat="server"></asp:Label>
+                   <asp:Label ID="lblValorDez" runat="server" Visible="False"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 154px">
                     <asp:Label ID="Total" runat="server" Text="Total R$" Font-Bold="True" ForeColor="Blue"></asp:Label>
                 </td>
-                <td style="width: 98px">
+                <td style="width: 106px">
                     <asp:Label ID="lblTotaInvest" runat="server" ForeColor="Blue"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 103px">
                     <asp:Label ID="lblTotalVendas" runat="server" ForeColor="Blue"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 107px">
                     <asp:Label ID="lblTotalEstoque" runat="server" ForeColor="Blue"></asp:Label>
                 </td>
-                <td>
+                <td style="width: 104px">
                     <asp:Label ID="lblTotalLucro" runat="server" ForeColor="Blue"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="lblTotalValor" runat="server" ForeColor="Blue"></asp:Label>
+                    <asp:Label ID="lblTotalValor" runat="server" ForeColor="Blue" Visible="False"></asp:Label>
                 </td>
             </tr>
         </table>

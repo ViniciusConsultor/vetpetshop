@@ -67,7 +67,6 @@ namespace WebUI
 
             executou = notaBuss.InserirNotaFiscal(usuario.Id);
 
-
             if (executou)
             {
                 nota = notaBuss.ObterUltimoRegistroNota();
@@ -78,6 +77,7 @@ namespace WebUI
                 Panel2.Visible = true;
                 lblCod.Text = nota.Id.ToString();
                 lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                btnOk.Enabled = false;
             }
         }
 
@@ -172,7 +172,7 @@ namespace WebUI
                 wc = ((WebControl)e.CommandSource);
                 GridViewRow row = ((GridViewRow)wc.NamingContainer);
                 row.Font.Bold = true;
-                //row.ForeColor = System.Drawing.Color.Red;
+                row.ForeColor = System.Drawing.Color.Red;
 
                 Panel1.Visible = false;
                 // grUsuarios.Visible = false;
@@ -312,6 +312,7 @@ namespace WebUI
             btnSalvar.Visible = false;            
 
             lblMsg.Text = "Nota fiscal cadastrada com sucesso";
+            btnOk.Enabled = true;
         }
 
         protected void grUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
