@@ -23,6 +23,6 @@ BEGIN
 	FROM Estoque e INNER JOIN EstoqueProduto ep ON ep.IdEstoque = e.Id
 	INNER JOIN Produto p ON p.Id = ep.IdProduto
 	INNER JOIN Grupo g ON G.Id = p.IdGrupo	
-	WHERE g.Id = @IdGrupo		
+	WHERE g.Id = @IdGrupo AND e.Quantidade >= 0
 END
 GO
