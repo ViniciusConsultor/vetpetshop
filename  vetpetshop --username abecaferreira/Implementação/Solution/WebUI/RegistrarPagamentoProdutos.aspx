@@ -65,6 +65,11 @@
                     </td>
                     </tr>
                     <tr>
+                    <td>&nbsp;<asp:Label ID="Label1" runat="server" Font-Bold="true" Visible="false" Text="" ForeColor="Blue"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label2" runat="server" Font-Bold="true" Visible="false" ForeColor="Blue"></asp:Label>
+                    </td>
+                    </tr>
+                    <tr>
                     <td>
                     <asp:Panel ID="PanelCliEspecial" runat="server" Visible="false">
                     <asp:Label ID="Cliente" Text="Nome do cliente especial" runat="server"></asp:Label>

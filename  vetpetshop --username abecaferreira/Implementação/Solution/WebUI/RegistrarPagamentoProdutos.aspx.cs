@@ -16,6 +16,7 @@ namespace WebUI
         Usuario usuario = new Usuario();
         int idProd;
         decimal valorTotal = 0;
+        decimal valorReal = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -247,7 +248,7 @@ namespace WebUI
             
             lblTotal.Text = valorTotal.ToString();
 
-   
+            Session["valor"] = valorTotal;   
         }
 
         private DataTable TabelaItems()
@@ -300,6 +301,8 @@ namespace WebUI
 
         protected void btnEnviar_Click1(object sender, EventArgs e)
         {
+            lblMsg.Text = "";
+
             if (rbCliente.SelectedItem.Value == "0")
             {
                 PanelCliEspecial.Visible = true;
@@ -317,8 +320,14 @@ namespace WebUI
                 }
 
                 decimal desconto = Convert.ToDecimal(lblTotal.Text) * Convert.ToDecimal(0.93);
-                
-                lblTotal.Text = desconto.ToString("0.##");
+                decimal valorReal = (decimal)Session["valor"];
+                //lblValor.Text = "Valor Total da Compra:";
+                lblTotal.Text = valorReal.ToString();
+                Label1.Visible = true;
+                Label2.Visible = true;
+                Label1.Text = "Valor Total com desconto:";
+                Label2.Text = desconto.ToString("0.##"); ;
+                //lblTotal.Text = desconto.ToString("0.##");
 
                 Panel4.Visible = false;
                 btnFim.Visible = true;
@@ -340,8 +349,10 @@ namespace WebUI
                     lblParcelas.Visible = true;
                 }
 
-
-
+                Label1.Text = "";
+                Label2.Text = "";
+                decimal valorReal = (decimal)Session["valor"];
+                lblTotal.Text = valorReal.ToString();
                 btnFim.Visible = true;
             }
         }
@@ -357,10 +368,29 @@ namespace WebUI
 
             bool executou = false;
 
+            if ((rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2") && txtParcelas.Text == "" && rbCliente.SelectedItem.Value == "0")
+            {
+                lblMsg.Text = "Selecione o cliente especial<BR>";
+                lblMsg.Text += "Preencha o campo N° de parcelas";
+                return;
+            }
+
             if ((rbTipoPagamento.SelectedItem.Value == "1" || rbTipoPagamento.SelectedItem.Value == "2") && txtParcelas.Text == "")
             {
-                lblMsg.Text = "Preencha o campo Nome do cliente especial<BR>";
-                lblMsg.Text += "Preencha o campo N° de parcelas";
+                //lblMsg.Text = "Preencha o campo Nome do cliente especial<BR>";
+                lblMsg.Text = "Preencha o campo N° de parcelas";
+                return;
+            }
+
+            //if (ddlClienteEspecial.SelectedItem.Value == "")
+            //{ 
+            //    lblMsg.Text = "Selecione o cliente especial";
+            //    return;
+            //}
+
+            if (rbCliente.SelectedItem.Value == "0" && ddlClienteEspecial.SelectedItem.Value == "")
+            {
+                lblMsg.Text = "Selecione o cliente especial";
                 return;
             }
 
@@ -395,7 +425,15 @@ namespace WebUI
                 }
             }
 
-            financeiro.ValorTotal = Convert.ToDecimal(lblTotal.Text);
+            if (rbCliente.SelectedItem.Value == "0")
+            {
+                financeiro.ValorTotal = Convert.ToDecimal(Label2.Text);
+            }
+            else
+            {
+                financeiro.ValorTotal = Convert.ToDecimal(lblTotal.Text);
+            }
+
             financeiro.TipoPagamento = Convert.ToInt32(rbTipoPagamento.SelectedItem.Value); //0=dinheiro 1=cartão de credito 2=cheque
 
             
@@ -456,6 +494,8 @@ namespace WebUI
                 btnSalvar.Visible = false;
                 PanelCliEspecial.Visible = false;
                 lblValor.Visible = false;
+                Label1.Text = "";
+                Label2.Text = "";
             }
         }
 
