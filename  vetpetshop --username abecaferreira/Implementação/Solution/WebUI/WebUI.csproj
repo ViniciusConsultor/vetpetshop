@@ -96,6 +96,13 @@
     <Compile Include="CadastroProduto.aspx.designer.cs">
       <DependentUpon>CadastroProduto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarEstatisticas.aspx.cs">
+      <DependentUpon>ConsultarEstatisticas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstatisticas.aspx.designer.cs">
+      <DependentUpon>ConsultarEstatisticas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ControlarFinancas.aspx.cs">
       <DependentUpon>ControlarFinancas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -249,6 +256,7 @@
     <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="CadastroPedidoDeCompra.aspx" />
     <Content Include="CadastroProduto.aspx" />
+    <Content Include="ConsultarEstatisticas.aspx" />
     <Content Include="ControlarFinancas.aspx" />
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVendedor.aspx" />

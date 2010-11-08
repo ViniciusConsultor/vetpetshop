@@ -70,6 +70,15 @@ namespace Negocios
             bool executou = this.clienteDAO.ExcluirCliente(id);
             return executou;
         }
+
+        public int[] EstBuscaSexoCliente(DateTime DataInicio, DateTime DataFim) 
+        {
+            int[] qtdCli = new int[3];
+
+            qtdCli = this.clienteDAO.EstBuscaSexoCliente(DataInicio, DataFim);
+
+            return qtdCli;        
+        }
    
     }
 
