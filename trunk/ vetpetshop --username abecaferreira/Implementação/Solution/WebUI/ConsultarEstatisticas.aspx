@@ -67,6 +67,7 @@
                 <asp:DropDownList ID="ddlVetOpcoes" runat="server" AutoPostBack="True" onselectedindexchanged="ddlVetOpcoes_SelectedIndexChanged">
                     <asp:ListItem Value="" Text="Selecione"></asp:ListItem>
                     <asp:ListItem Value="1" Text="Sexo Clientes Cadastrados"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Sexo Animais Cadastrados"></asp:ListItem>
                 </asp:DropDownList>
                 </td>
                 <td>
@@ -84,7 +85,7 @@
                &nbsp;<asp:Button ID="BtnOkVet" runat="server" Text="Buscar" onclick="btnOkVet_Click" />              
             </asp:Panel>
             <br />
-            <asp:Panel ID="PnVetSexo" runat="server" Visible="false">
+            <asp:Panel ID="PnVetSexoCliente" runat="server" Visible="false">
                 &nbsp;<asp:Label runat="server" ID="Label5" Text="Total Clientes:"></asp:Label>&nbsp;&nbsp;&nbsp;
                 &nbsp;<asp:Label runat="server" ID="Label6"></asp:Label>
                 <br />
@@ -93,6 +94,17 @@
                 <br />
                 &nbsp;<asp:Label runat="server" ID="Label9" Text="Total Mulheres:"></asp:Label>&nbsp;&nbsp;
                 &nbsp;<asp:Label runat="server" ID="Label10"></asp:Label>
+            </asp:Panel>
+            <br />
+            <asp:Panel ID="PnVetSexoAnimal" runat="server" Visible="false">
+                &nbsp;<asp:Label runat="server" ID="Label11" Text="Total Animais:"></asp:Label>&nbsp;&nbsp;&nbsp;
+                &nbsp;<asp:Label runat="server" ID="Label12"></asp:Label>
+                <br />
+                &nbsp;<asp:Label runat="server" ID="Label13" Text="Total Macho:"></asp:Label>&nbsp;&nbsp;&nbsp;
+                &nbsp;<asp:Label runat="server" ID="Label14"></asp:Label>
+                <br />
+                &nbsp;<asp:Label runat="server" ID="Label15" Text="Total Fêmea:"></asp:Label>&nbsp;&nbsp;
+                &nbsp;<asp:Label runat="server" ID="Label16"></asp:Label>
             </asp:Panel>
         </div>
   </ContentTemplate>

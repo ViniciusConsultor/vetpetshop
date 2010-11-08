@@ -71,7 +71,7 @@ namespace Negocios
             return executou;
         }
 
-        public int[] EstBuscaSexoCliente(DateTime DataInicio, DateTime DataFim) 
+        public int[] EstBuscaSexoCliente(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim) 
         {
             int[] qtdCli = new int[3];
 
