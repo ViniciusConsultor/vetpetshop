@@ -428,7 +428,7 @@ namespace DAO
             return executou;
         }
 
-        public int[] EstBuscaSexoCliente(DateTime DataInicio, DateTime DataFim) 
+        public int[] EstBuscaSexoCliente(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim) 
         {
             int[] qtdCli = new int[3];
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -444,9 +444,17 @@ namespace DAO
                 SqlParameter pDataInicio = new SqlParameter("@DataInicio", SqlDbType.DateTime);
                 SqlParameter pDataFim = new SqlParameter("@DataFim", SqlDbType.DateTime);
 
-                pDataInicio.Value = DataInicio;
-                pDataFim.Value = DataFim;
-
+                if ((DataInicio.HasValue) && (DataFim.HasValue))
+                {
+                    pDataInicio.Value = DataInicio;
+                    pDataFim.Value = DataFim;
+                }
+                else
+                {
+                    pDataInicio.Value = Convert.ToDateTime("1/1/1753");
+                    pDataFim.Value = Convert.ToDateTime("31/12/9999");   
+                }
+                
                 cmd.Parameters.Add(pDataInicio);
                 cmd.Parameters.Add(pDataFim);
 
