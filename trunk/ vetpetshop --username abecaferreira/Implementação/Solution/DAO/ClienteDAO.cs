@@ -383,9 +383,7 @@ namespace DAO
                 conn.Close();
             }
 
-
             return idCliente;
-        
         
         }
 
@@ -427,9 +425,63 @@ namespace DAO
             {
                 conn.Close();
             }
-
-
             return executou;
+        }
+
+        public int[] EstBuscaSexoCliente(DateTime DataInicio, DateTime DataFim) 
+        {
+            int[] qtdCli = new int[3];
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsEstBuscaSexoClientes";
+
+                SqlParameter pDataInicio = new SqlParameter("@DataInicio", SqlDbType.DateTime);
+                SqlParameter pDataFim = new SqlParameter("@DataFim", SqlDbType.DateTime);
+
+                pDataInicio.Value = DataInicio;
+                pDataFim.Value = DataFim;
+
+                cmd.Parameters.Add(pDataInicio);
+                cmd.Parameters.Add(pDataFim);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    for (int i = 0; i <= qtdCli.Length - 1; i++)
+                    {
+                        qtdCli[i] = dr.GetInt32(i);
+                    }
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return qtdCli;
+
         }
         
     }
