@@ -95,12 +95,11 @@
                 &nbsp;<asp:Label runat="server" ID="Label9" Text="Total Mulheres:"></asp:Label>&nbsp;&nbsp;
                 &nbsp;<asp:Label runat="server" ID="Label10"></asp:Label>
             </asp:Panel>
-            <br />
             <asp:Panel ID="PnVetSexoAnimal" runat="server" Visible="false">
-                &nbsp;<asp:Label runat="server" ID="Label11" Text="Total Animais:"></asp:Label>&nbsp;&nbsp;&nbsp;
+                &nbsp;<asp:Label runat="server" ID="Label11" Text="Total Animais:"></asp:Label>&nbsp;
                 &nbsp;<asp:Label runat="server" ID="Label12"></asp:Label>
                 <br />
-                &nbsp;<asp:Label runat="server" ID="Label13" Text="Total Macho:"></asp:Label>&nbsp;&nbsp;&nbsp;
+                &nbsp;<asp:Label runat="server" ID="Label13" Text="Total Macho:"></asp:Label>&nbsp;&nbsp;
                 &nbsp;<asp:Label runat="server" ID="Label14"></asp:Label>
                 <br />
                 &nbsp;<asp:Label runat="server" ID="Label15" Text="Total Fêmea:"></asp:Label>&nbsp;&nbsp;
