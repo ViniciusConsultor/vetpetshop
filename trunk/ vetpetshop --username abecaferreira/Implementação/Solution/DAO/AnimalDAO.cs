@@ -1138,5 +1138,69 @@ namespace DAO
         
         }
 
+        public int[] EstBuscaSexoAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            int[] qtdAni = new int[3];
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsEstBuscaSexoAnimais";
+
+                SqlParameter pDataInicio = new SqlParameter("@DataInicio", SqlDbType.DateTime);
+                SqlParameter pDataFim = new SqlParameter("@DataFim", SqlDbType.DateTime);
+
+                if ((DataInicio.HasValue) && (DataFim.HasValue))
+                {
+                    pDataInicio.Value = DataInicio;
+                    pDataFim.Value = DataFim;
+                }
+                else
+                {
+                    pDataInicio.Value = Convert.ToDateTime("1/1/1753");
+                    pDataFim.Value = Convert.ToDateTime("31/12/9999");
+                }
+
+                cmd.Parameters.Add(pDataInicio);
+                cmd.Parameters.Add(pDataFim);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    for (int i = 0; i <= qtdAni.Length - 1; i++)
+                    {
+                        qtdAni[i] = dr.GetInt32(i);
+                    }
+                }
+
+                dr.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return qtdAni;
+
+        }
+
     }
 }

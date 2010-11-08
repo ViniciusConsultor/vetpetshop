@@ -20,11 +20,6 @@ namespace WebUI
             menu.DataSource = siteAdmin;
             menu.DataBind();
             #endregion
-
-            if (!IsPostBack)
-            {
-                
-            }
         }
 
         protected void ddlPetOpcoes_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,6 +32,10 @@ namespace WebUI
             if ((ddlVetOpcoes.SelectedValue == "1") || (ddlVetOpcoes.SelectedValue == "2"))
             {
                 PnDataVet.Visible = true;
+                txtDataFimVet.Text = "";
+                txtDataInicioVet.Text = "";
+                PnVetSexoAnimal.Visible = false;
+                PnVetSexoCliente.Visible = false;
             }
             else 
             {
@@ -113,17 +112,17 @@ namespace WebUI
 
             AnimalBuss animalBus = new AnimalBuss();
 
-            qtdAni = animalBus.EstBuscaSexoCliente(DataInicio, DataFim);
+            qtdAni = animalBus.EstBuscaSexoAnimal(DataInicio, DataFim);
 
             if (qtdAni.Count() > 0)
             {
                 for (int i = 0; i < qtdAni.Length - 1; )
                 {
-                    Label6.Text = qtdAni[i].ToString();
+                    Label14.Text = qtdAni[i].ToString();
                     i++;
-                    Label8.Text = qtdAni[i].ToString();
+                    Label16.Text = qtdAni[i].ToString();
                     i++;
-                    Label10.Text = qtdAni[i].ToString();
+                    Label12.Text = qtdAni[i].ToString();
                 }
 
                 PnVetSexoAnimal.Visible = true;

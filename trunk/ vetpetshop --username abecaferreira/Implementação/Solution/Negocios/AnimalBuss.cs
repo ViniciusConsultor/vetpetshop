@@ -158,5 +158,14 @@ namespace Negocios
             bool executou = animalDAO.AlteraStatusConsultaPaga(idConsulta, idFinanceiro);
             return executou;
         }
+
+        public int[] EstBuscaSexoAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            int[] qtdAni = new int[3];
+
+            qtdAni = this.animalDAO.EstBuscaSexoAnimal(DataInicio, DataFim);
+
+            return qtdAni;
+        }
     }
 }
