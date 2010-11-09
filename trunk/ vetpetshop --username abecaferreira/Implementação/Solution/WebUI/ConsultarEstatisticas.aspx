@@ -22,7 +22,7 @@
     <b>Petshop</b>
   </HeaderTemplate>
   <ContentTemplate>
-    <div id="div1" style="padding-top:10px; padding-bottom:10px;">
+    <div id="div1" style="padding-top:10px; padding-bottom:10px;padding-left:10px;">
             <table width="100%">
                 <tr>
                 <td style="width:5%;">
@@ -31,7 +31,7 @@
                 <td style="width:15%;">
                 <asp:DropDownList ID="ddlPetOpcoes" runat="server" AutoPostBack="True" onselectedindexchanged="ddlPetOpcoes_SelectedIndexChanged">
                     <asp:ListItem Text="Selecione"></asp:ListItem>
-                    <asp:ListItem Value="1" Text="Tipos de Produtos Vendidos"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="Produtos Vendidos"></asp:ListItem>
                 </asp:DropDownList>
                 </td>
                 <td>
@@ -57,7 +57,7 @@
     <b>Consultório</b>
   </HeaderTemplate>
   <ContentTemplate>
-        <div id="div2" style="padding-top:10px; padding-bottom:10px;">
+        <div id="div2" style="padding-top:10px; padding-bottom:10px; padding-left:10px;">
             <table width="100%">
             <tr>
                 <td style="width:5%;">
@@ -66,8 +66,10 @@
                 <td style="width:15%;">
                 <asp:DropDownList ID="ddlVetOpcoes" runat="server" AutoPostBack="True" onselectedindexchanged="ddlVetOpcoes_SelectedIndexChanged">
                     <asp:ListItem Value="" Text="Selecione"></asp:ListItem>
-                    <asp:ListItem Value="1" Text="Sexo Clientes Cadastrados"></asp:ListItem>
-                    <asp:ListItem Value="2" Text="Sexo Animais Cadastrados"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="Clientes Cadastrados"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Animais Cadastrados"></asp:ListItem>
+                    <asp:ListItem Value="3" Text="Consultas Realizadas"></asp:ListItem>
+                    <asp:ListItem Value="4" Text="Vacinas Realizadas"></asp:ListItem>
                 </asp:DropDownList>
                 </td>
                 <td>
@@ -86,24 +88,182 @@
             </asp:Panel>
             <br />
             <asp:Panel ID="PnVetSexoCliente" runat="server" Visible="false">
-                &nbsp;<asp:Label runat="server" ID="Label5" Text="Total Clientes:"></asp:Label>&nbsp;&nbsp;&nbsp;
-                &nbsp;<asp:Label runat="server" ID="Label6"></asp:Label>
-                <br />
-                &nbsp;<asp:Label runat="server" ID="Label7" Text="Total Homens:"></asp:Label>&nbsp;&nbsp;&nbsp;
-                &nbsp;<asp:Label runat="server" ID="Label8"></asp:Label>
-                <br />
-                &nbsp;<asp:Label runat="server" ID="Label9" Text="Total Mulheres:"></asp:Label>&nbsp;&nbsp;
-                &nbsp;<asp:Label runat="server" ID="Label10"></asp:Label>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label5" Text="Total Clientes:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label6"></asp:Label>
+                        </td>
+                        <td style="width:80%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label7" Text="Total Homens:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label8"></asp:Label>
+                        </td>
+                        <td style="width:80%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label9" Text="Total Mulheres:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label10"></asp:Label>                
+                        </td>
+                        <td style="width:80%;"></td>
+                    </tr>
+                </table>
             </asp:Panel>
             <asp:Panel ID="PnVetSexoAnimal" runat="server" Visible="false">
-                &nbsp;<asp:Label runat="server" ID="Label11" Text="Total Animais:"></asp:Label>&nbsp;
-                &nbsp;<asp:Label runat="server" ID="Label12"></asp:Label>
-                <br />
-                &nbsp;<asp:Label runat="server" ID="Label13" Text="Total Macho:"></asp:Label>&nbsp;&nbsp;
-                &nbsp;<asp:Label runat="server" ID="Label14"></asp:Label>
-                <br />
-                &nbsp;<asp:Label runat="server" ID="Label15" Text="Total Fêmea:"></asp:Label>&nbsp;&nbsp;
-                &nbsp;<asp:Label runat="server" ID="Label16"></asp:Label>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label11" Text="Total Animais:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label12"></asp:Label>
+                        </td>
+                        <td style="width:80%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label13" Text="Total Macho:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label14"></asp:Label>
+                        </td>
+                        <td style="width:80%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label15" Text="Total Fêmea:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label16"></asp:Label>
+                        </td>
+                        <td style="width:80%;"></td>
+                    </tr>
+                 </table>
+            </asp:Panel>
+            <asp:Panel ID="PnVetConsultas" runat="server" Visible="false">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label17" Text="Total Consultas:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label18"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label19" Text="Consultas de Cães:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label20"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label21" Text="Consultas de Gatos:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label22"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label23" Text="Consultas de Peixes:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label24"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label25" Text="Consultas de Pássaros:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label26"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label27" Text="Consultas de Roedores:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label28"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                </table>
+            </asp:Panel>
+            <asp:Panel ID="PnVetVacinas" runat="server" Visible="false">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label29" Text="Total Vacinas:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label30"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label31" Text="Vacinas de Cães:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label32"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label33" Text="Vacinas de Gatos:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label34"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label35" Text="Vacinas de Peixes:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label36"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label37" Text="Vacinas de Pássaros:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label38"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label39" Text="Vacinas de Roedores:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label40"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                </table>
             </asp:Panel>
         </div>
   </ContentTemplate>

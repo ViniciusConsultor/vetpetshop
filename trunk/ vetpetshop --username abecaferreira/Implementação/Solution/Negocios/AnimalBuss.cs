@@ -167,5 +167,25 @@ namespace Negocios
 
             return qtdAni;
         }
+
+        public int[] EstBuscaConsultaAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            int[] qtdAni = new int[6];
+
+            qtdAni = this.animalDAO.EstBuscaConsultaAnimal(DataInicio, DataFim);
+
+            return qtdAni;
+        }
+
+        public int[] EstBuscaVacinaAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            int[] qtdAni = new int[6];
+
+            qtdAni = this.animalDAO.EstBuscaVacinaAnimal(DataInicio, DataFim);
+
+            return qtdAni;
+        }
+
+        
     }
 }
