@@ -198,7 +198,8 @@
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="True" 
                                 PageSize="10" 
                                 AlternatingRowStyle-BackColor="LightSteelBlue" RowStyle-Height="50px" 
-                                 onrowcommand="grProdutos_RowCommand">
+                                 onrowcommand="grProdutos_RowCommand" 
+                                 onpageindexchanging="grProdutos_PageIndexChanging">
                         <Columns>
                          <asp:TemplateField>  
                         <HeaderStyle  Width="5%"/>                      
