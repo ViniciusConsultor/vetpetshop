@@ -558,5 +558,36 @@ namespace WebUI
                 }
             }
         }
+
+        //protected void grProdutos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    DataTable tabela = Preencher();
+        //    grProdutos.PageIndex = e.NewPageIndex;
+
+        //    if (tabela.Rows.Count != 0)
+        //    {
+        //        grProdutos.Visible = true;
+        //        grProdutos.DataSource = tabela;
+        //        grProdutos.DataBind();
+        //    }
+        //}
+
+        protected void grProdutos_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        {
+          
+        }
+
+        protected void grProdutos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            DataTable tabela = Preencher();
+            grProdutos.PageIndex = e.NewPageIndex;
+
+            if (tabela.Rows.Count != 0)
+            {
+                grProdutos.Visible = true;
+                grProdutos.DataSource = tabela;
+                grProdutos.DataBind();
+            }
+        }
     }
 }
