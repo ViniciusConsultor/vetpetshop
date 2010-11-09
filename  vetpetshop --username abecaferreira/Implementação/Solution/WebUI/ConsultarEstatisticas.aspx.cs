@@ -29,19 +29,23 @@ namespace WebUI
 
         protected void ddlVetOpcoes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((ddlVetOpcoes.SelectedValue == "1") || (ddlVetOpcoes.SelectedValue == "2"))
+            if ((ddlVetOpcoes.SelectedValue == "1") || (ddlVetOpcoes.SelectedValue == "2") || (ddlVetOpcoes.SelectedValue == "3") || (ddlVetOpcoes.SelectedValue == "4"))
             {
                 PnDataVet.Visible = true;
                 txtDataFimVet.Text = "";
                 txtDataInicioVet.Text = "";
                 PnVetSexoAnimal.Visible = false;
                 PnVetSexoCliente.Visible = false;
+                PnVetConsultas.Visible = false;
+                PnVetVacinas.Visible = false;
             }
             else 
             {
                 PnDataVet.Visible = false;
                 PnVetSexoCliente.Visible = false;
                 PnVetSexoAnimal.Visible = false;
+                PnVetConsultas.Visible = false;
+                PnVetVacinas.Visible = false;
             }
         }
 
@@ -76,7 +80,99 @@ namespace WebUI
                 }
             }
 
+            if (ddlVetOpcoes.SelectedValue == "3")
+            {
+                if (txtDataInicioVet.Text != "" && txtDataFimVet.Text != "")
+                {
+                    CarregaConsultasAnimais(Convert.ToDateTime(txtDataInicioVet.Text), Convert.ToDateTime(txtDataFimVet.Text));
+                }
+                else
+                {
+                    CarregaConsultasAnimais(null, null);
+                } 
+
+            }
+
+            if (ddlVetOpcoes.SelectedValue == "4")
+            {
+                if (txtDataInicioVet.Text != "" && txtDataFimVet.Text != "")
+                {
+                    CarregaVacinasAnimais(Convert.ToDateTime(txtDataInicioVet.Text), Convert.ToDateTime(txtDataFimVet.Text));
+                }
+                else
+                {
+                    CarregaVacinasAnimais(null, null);
+                }
+
+            }
+
             
+        }
+
+        public void CarregaConsultasAnimais(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            int[] qtdAni = new int[6];
+
+            AnimalBuss animalBus = new AnimalBuss();
+
+            qtdAni = animalBus.EstBuscaConsultaAnimal(DataInicio, DataFim);
+
+            if (qtdAni.Count() > 0)
+            {
+                for (int i = 0; i < qtdAni.Length - 1; )
+                {
+                    Label18.Text = qtdAni[i].ToString();
+                    i++;
+                    Label20.Text = qtdAni[i].ToString();
+                    i++;
+                    Label22.Text = qtdAni[i].ToString();
+                    i++;
+                    Label24.Text = qtdAni[i].ToString();
+                    i++;
+                    Label26.Text = qtdAni[i].ToString();
+                    i++;
+                    Label28.Text = qtdAni[i].ToString();
+                }
+
+                PnVetConsultas.Visible = true;
+            }
+            else
+            {
+                lblMsg.Text = "Erro na busca. Tente novamente.";
+            }
+        }
+
+        public void CarregaVacinasAnimais(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            int[] qtdAni = new int[6];
+
+            AnimalBuss animalBus = new AnimalBuss();
+
+            qtdAni = animalBus.EstBuscaConsultaAnimal(DataInicio, DataFim);
+
+            if (qtdAni.Count() > 0)
+            {
+                for (int i = 0; i < qtdAni.Length - 1; )
+                {
+                    Label30.Text = qtdAni[i].ToString();
+                    i++;
+                    Label32.Text = qtdAni[i].ToString();
+                    i++;
+                    Label34.Text = qtdAni[i].ToString();
+                    i++;
+                    Label36.Text = qtdAni[i].ToString();
+                    i++;
+                    Label38.Text = qtdAni[i].ToString();
+                    i++;
+                    Label40.Text = qtdAni[i].ToString();
+                }
+
+                PnVetVacinas.Visible = true;
+            }
+            else
+            {
+                lblMsg.Text = "Erro na busca. Tente novamente.";
+            }
         }
 
         public void CarregaSexoClientes(Nullable<DateTime> DataInicio,Nullable<DateTime> DataFim)
