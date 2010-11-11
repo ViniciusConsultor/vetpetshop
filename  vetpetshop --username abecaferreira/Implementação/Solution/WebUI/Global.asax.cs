@@ -41,7 +41,8 @@ namespace WebUI
                "<br>Offending URL: " + ctx.Request.Url.ToString() +
                "<br>Source: " + exception.Source +
                "<br>Message: " + exception.Message +
-               "<br>Stack trace: " + exception.StackTrace;
+               "<br>Stack trace: " + exception.StackTrace +
+               "<br>Target: " + exception.TargetSite; 
 
             ctx.Response.Write(errorInfo);
 
