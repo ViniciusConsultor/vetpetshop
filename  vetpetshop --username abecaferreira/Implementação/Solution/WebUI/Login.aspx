@@ -102,8 +102,9 @@
             <tr>
                 <td>
                     &nbsp;</td>
-                <td>
-                    &nbsp;</td>
+                <td align="center">
+                    <A HREF="http://www.bizhostnet.com/">WEB HOSTING</A>
+</td>
                 <td>
                     &nbsp;</td>
             </tr>
