@@ -152,6 +152,9 @@
     <Compile Include="FormularioProduto.aspx.designer.cs">
       <DependentUpon>FormularioProduto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="ListaPedidoDeCompra.aspx.cs">
       <DependentUpon>ListaPedidoDeCompra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,6 +266,7 @@
     <Content Include="DefaultVeterinario.aspx" />
     <Content Include="EmitirReceitaMedica.aspx" />
     <Content Include="FormularioProduto.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="ListaPedidoDeCompra.aspx" />
     <Content Include="ListarAgendamentos.aspx" />
     <Content Include="ListarClienteAnimal.aspx" />
