@@ -25,8 +25,8 @@
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <ul id="mainNav">
-        	<li><a href="#"><asp:Label ID="lblWelcome" runat="server" Text="" Font-Bold="true"></asp:Label></label></a></li>
-        	<li class="logout"><a href="login.aspx">LOGOUT</a></li>
+        	<li><a href="#"><asp:Label ID="lblWelcome" runat="server" Text="" Font-Bold="true"></asp:Label></a></li>
+        	<li class="logout"><a href="Logout.aspx">LOGOUT</a></li>
         </ul>
         <!-- // #end mainNav -->
         

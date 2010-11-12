@@ -170,7 +170,7 @@ namespace Negocios
 
         public int[] EstBuscaConsultaAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
         {
-            int[] qtdAni = new int[6];
+            int[] qtdAni = new int[7];
 
             qtdAni = this.animalDAO.EstBuscaConsultaAnimal(DataInicio, DataFim);
 
@@ -179,7 +179,7 @@ namespace Negocios
 
         public int[] EstBuscaVacinaAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
         {
-            int[] qtdAni = new int[6];
+            int[] qtdAni = new int[7];
 
             qtdAni = this.animalDAO.EstBuscaVacinaAnimal(DataInicio, DataFim);
 

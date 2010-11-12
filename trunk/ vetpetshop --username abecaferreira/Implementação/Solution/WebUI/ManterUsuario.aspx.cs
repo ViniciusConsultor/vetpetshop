@@ -16,6 +16,7 @@ namespace WebUI
 {
     public partial class ManterUsuario : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();    
           
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +26,10 @@ namespace WebUI
             menu.DataSource = siteAdmin;
             menu.DataBind();
             #endregion
+
+            usuario = (Usuario)Session["User"];
+            UsuarioBuss usuarioBuss = new UsuarioBuss();
+            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
 
             lblMsg.Text = "";
 

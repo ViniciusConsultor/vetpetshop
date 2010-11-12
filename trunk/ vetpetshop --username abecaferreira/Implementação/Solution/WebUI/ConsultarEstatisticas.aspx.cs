@@ -12,6 +12,8 @@ namespace WebUI
 {
     public partial class ConsultarEstatisticas : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();  
+
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Criação de Menu
@@ -20,6 +22,11 @@ namespace WebUI
             menu.DataSource = siteAdmin;
             menu.DataBind();
             #endregion
+
+            usuario = (Usuario)Session["User"];
+            UsuarioBuss usuarioBuss = new UsuarioBuss();
+            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+            
         }
 
         protected void ddlPetOpcoes_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,6 +58,18 @@ namespace WebUI
 
         protected void btnOkPet_Click(object sender, EventArgs e)
         {
+            if (ddlPetOpcoes.SelectedValue == "1")
+            {
+                if (txtDataInicioVet.Text != "" && txtDataFimVet.Text != "")
+                {
+                    CarregaProdutosVendidos(Convert.ToDateTime(txtDataInicioVet.Text), Convert.ToDateTime(txtDataFimVet.Text));
+                }
+                else
+                {
+                    CarregaProdutosVendidos(null, null);
+                }
+            }
+
 
         }
 
@@ -111,7 +130,7 @@ namespace WebUI
 
         public void CarregaConsultasAnimais(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
         {
-            int[] qtdAni = new int[6];
+            int[] qtdAni = new int[7];
 
             AnimalBuss animalBus = new AnimalBuss();
 
@@ -132,6 +151,8 @@ namespace WebUI
                     Label26.Text = qtdAni[i].ToString();
                     i++;
                     Label28.Text = qtdAni[i].ToString();
+                    i++;
+                    Label42.Text = qtdAni[i].ToString();
                 }
 
                 PnVetConsultas.Visible = true;
@@ -144,7 +165,7 @@ namespace WebUI
 
         public void CarregaVacinasAnimais(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
         {
-            int[] qtdAni = new int[6];
+            int[] qtdAni = new int[7];
 
             AnimalBuss animalBus = new AnimalBuss();
 
@@ -165,6 +186,8 @@ namespace WebUI
                     Label38.Text = qtdAni[i].ToString();
                     i++;
                     Label40.Text = qtdAni[i].ToString();
+                    i++;
+                    Label44.Text = qtdAni[i].ToString();
                 }
 
                 PnVetVacinas.Visible = true;
@@ -229,7 +252,10 @@ namespace WebUI
             }
         }
 
-
+        public void CarregaProdutosVendidos(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim) 
+        {
+            //a fazer
+        }
 
 
 
