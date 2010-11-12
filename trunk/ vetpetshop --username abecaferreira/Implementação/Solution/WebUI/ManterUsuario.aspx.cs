@@ -172,6 +172,7 @@ namespace WebUI
             client.Port = 25;
             client.Host = "smtp.gmail.com";
             client.EnableSsl = true;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             client.Send(mail);
             
