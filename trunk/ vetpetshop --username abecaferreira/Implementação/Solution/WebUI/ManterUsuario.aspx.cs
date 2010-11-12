@@ -169,7 +169,7 @@ namespace WebUI
 
             SmtpClient client = new SmtpClient();
             client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "petvet1234");
-            client.Port = 587;
+            client.Port = 25;
             client.Host = "smtp.gmail.com";
             client.EnableSsl = true;
 
