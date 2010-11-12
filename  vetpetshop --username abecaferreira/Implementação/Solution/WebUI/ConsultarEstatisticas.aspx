@@ -205,6 +205,15 @@
                         </td>
                         <td style="width:70%;"></td>
                     </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label41" Text="Total Consultas Para Clientes Especiais:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label42"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
                 </table>
             </asp:Panel>
             <asp:Panel ID="PnVetVacinas" runat="server" Visible="false">
@@ -260,6 +269,15 @@
                         </td>
                         <td>
                             <asp:Label runat="server" ID="Label40"></asp:Label>
+                        </td>
+                        <td style="width:70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="Label43" Text="Total Vacinas Para Clientes Especiais:"></asp:Label>&nbsp;
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="Label44"></asp:Label>
                         </td>
                         <td style="width:70%;"></td>
                     </tr>

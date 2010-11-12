@@ -4,15 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidade;
+using Negocios;
 
 namespace WebUI
 {
     public partial class Vetpetshop : System.Web.UI.MasterPage
     {
+        Usuario usuario = new Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            usuario = (Usuario)Session["User"];
 
-            lblWelcome.Text = "Olá";
+            //string hora = DateTime.Now.ToLongTimeString();
+           
+            lblWelcome.Text = "Olá, " + usuario.Nome;
 
             string url = Request.Url.ToString().ToLower();
             if (url.EndsWith("defaultadmin.aspx"))

@@ -1204,7 +1204,7 @@ namespace DAO
 
         public int[] EstBuscaConsultaAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
         {
-            int[] qtdAni = new int[6];
+            int[] qtdAni = new int[7];
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
 
@@ -1268,7 +1268,7 @@ namespace DAO
 
         public int[] EstBuscaVacinaAnimal(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
         {
-            int[] qtdAni = new int[6];
+            int[] qtdAni = new int[7];
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
 
