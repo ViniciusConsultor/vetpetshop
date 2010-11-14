@@ -328,6 +328,15 @@ h3 {
 	overflow:scroll;
 }
 
+.escondido
+{
+	display:none;	
+}
+
+.mostrar
+{
+	display:block;
+}
 
 table {border-collapse:collapse; font-size:10px;}
 table thead tr.top td {text-transform:uppercase;text-align:center;background:#cdcdcd;}
