@@ -28,7 +28,7 @@ namespace WebUI
 
             if (txtUsu.Text == "")
             {
-                lblAviso.Text = "Preencha o campo usuário";
+                lblAviso.Text = "Preencha o campo Login";
                 return;
             }
 
@@ -59,7 +59,7 @@ namespace WebUI
 
                 else
                 {
-                    lblAviso.Text = "Usuário e/ou senha inválidos";
+                    lblAviso.Text = "Login e/ou senha inválidos";
                     return;
                 }
             }
