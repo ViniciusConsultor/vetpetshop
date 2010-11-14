@@ -87,7 +87,7 @@
     <div style="width:100%; margin:5px 0 5px 30px;">
         <ul>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:10px;margin-right:5px;">Nome*</span>
+                <span style="margin-left:15px;margin-right:5px;">Nome*</span>
                 <asp:TextBox ID="txtNomeAnimal" runat="server" Width="250px" MaxLength="50"></asp:TextBox>
                 <span style="margin-left:50px;margin-right:5px;">Sexo*</span>
                 <asp:DropDownList ID="ddlSexoAnimal" runat="server" width="100px">
@@ -97,7 +97,7 @@
                 </asp:DropDownList>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:15px;margin-right:5px;">Tipo*</span>
+                <span style="margin-left:21px;margin-right:5px;">Tipo*</span>
                 <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="100px"></asp:DropDownList>
                 <span style="margin-left:50px;margin-right:5px;">Data de Nascimento*</span>
                 <asp:TextBox ID="txtNascimento" runat="server" Width="150px" MaxLength="10"></asp:TextBox>
@@ -105,7 +105,7 @@
                 
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:15px;margin-right:5px;">Peso*(KG)</span>
+                <span style="margin-left:0px;margin-right:5px;">Peso*(KG)</span>
                 <asp:TextBox ID="txtPeso" runat="server" Width="100px" MaxLength="9"></asp:TextBox>
                 <span style="margin-left:50px;margin-right:5px;">Raça</span>
                 <asp:TextBox ID="txtRaca" runat="server" Width="150px" MaxLength="50"></asp:TextBox>
