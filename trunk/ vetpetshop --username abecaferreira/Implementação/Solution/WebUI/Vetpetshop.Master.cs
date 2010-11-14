@@ -18,8 +18,11 @@ namespace WebUI
             usuario = (Usuario)Session["User"];
 
             //string hora = DateTime.Now.ToLongTimeString();
-           
-            lblWelcome.Text = "Olá, " + usuario.Nome;
+
+            if (usuario == null)
+                Response.Redirect("Login.aspx");
+            else
+                lblWelcome.Text = "Usuário: " + usuario.Nome;
 
             string url = Request.Url.ToString().ToLower();
             if (url.EndsWith("defaultadmin.aspx"))
