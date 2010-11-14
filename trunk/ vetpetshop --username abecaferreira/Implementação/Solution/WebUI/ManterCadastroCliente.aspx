@@ -22,14 +22,14 @@
         </ul>
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">
-                <span style="margin-left:10px;margin-right:5px;">Nome*</span>
+                <span style="margin-left:11px;margin-right:5px;">Nome*</span>
                 <asp:TextBox ID="txtNomeCli" runat="server" Width="400px" MaxLength="50"></asp:TextBox>
                 <span style="margin-left:10px;"><asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" onclick="BtnBuscar_Click" ToolTip="Buscar clientes para cadastrar pets"/></span>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:18px;margin-right:5px;">CPF*</span>
+                <span style="margin-left:19px;margin-right:5px;">CPF*</span>
                 <asp:TextBox ID="txtCPF" Width="120px" runat="server" MaxLength="14"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meeCPF" runat="server" TargetControlID="txtCPF" Mask="999,999,999-99" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+                <asp:MaskedEditExtender ID="meeCPF" runat="server" TargetControlID="txtCPF" Mask="999,999,999-99" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                 <span style="margin-left:30px;margin-right:5px;">RG</span><asp:TextBox ID="txtRG" runat="server" Width="120px"></asp:TextBox>
                 <span style="margin-left:30px;margin-right:5px;">Sexo*</span>
                 <asp:DropDownList ID="ddlSexoCliente" runat="server" width="100px">
@@ -39,12 +39,12 @@
                 </asp:DropDownList>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:0px;margin-right:5px;">Telefone</span>
+                <span style="margin-left:1px;margin-right:5px;">Telefone</span>
                 <asp:TextBox ID="txtTel" runat="server" Width="200px" MaxLength="10"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meetxtTel" Mask="(99)9999-9999" runat="server" TargetControlID="txtTel" ClearMaskOnLostFocus="true" MaskType="Number"></asp:MaskedEditExtender>
+                <asp:MaskedEditExtender ID="meetxtTel" Mask="(99)9999-9999" runat="server" TargetControlID="txtTel" ClearMaskOnLostFocus="true" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                 <span style="margin-left:50px;margin-right:5px;">Celular</span>
                 <asp:TextBox ID="txtCel" runat="server" Width="200px" MaxLength="10"></asp:TextBox>        
-                <asp:MaskedEditExtender ID="meetxtCel" Mask="(99)9999-9999" runat="server" TargetControlID="txtCel" ClearMaskOnLostFocus="true" MaskType="Number"></asp:MaskedEditExtender>
+                <asp:MaskedEditExtender ID="meetxtCel" Mask="(99)9999-9999" runat="server" TargetControlID="txtCel" ClearMaskOnLostFocus="true" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:0px;margin-right:5px;">Endereço</span>
@@ -53,13 +53,13 @@
                 <asp:TextBox ID="txtBairro" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:10px;margin-right:5px;">Cidade</span>
+                <span style="margin-left:11px;margin-right:5px;">Cidade</span>
                 <asp:TextBox ID="txtCidade" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
                 <span style="margin-left:50px;margin-right:5px;">Estado</span>
                 <asp:TextBox ID="txtEstado" runat="server" Width="100px" MaxLength="20"></asp:TextBox>
                 <span style="margin-left:50px;margin-right:5px;">CEP</span>
                 <asp:TextBox ID="txtCep" runat="server" Width="100px" MaxLength="8"></asp:TextBox>
-                <asp:MaskedEditExtender runat="server" ID="meetxtCep" ClearMaskOnLostFocus="true" TargetControlID="txtCep" MaskType="Number" Mask="99999-999"></asp:MaskedEditExtender>
+                <asp:MaskedEditExtender runat="server" ID="meetxtCep" ClearMaskOnLostFocus="true" TargetControlID="txtCep" MaskType="Number" Mask="99999-999" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
             </li>            
             <li style="margin-bottom:10px;">
                 <span style="margin-left:10px;margin-right:5px;">E-mail*</span>
@@ -101,11 +101,11 @@
                 <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="100px"></asp:DropDownList>
                 <span style="margin-left:50px;margin-right:5px;">Data de Nascimento*</span>
                 <asp:TextBox ID="txtNascimento" runat="server" Width="150px" MaxLength="10"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meetxtNascimento" runat="server" TargetControlID="txtNascimento" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>                                           
+                <asp:MaskedEditExtender ID="meetxtNascimento" runat="server" TargetControlID="txtNascimento" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>                                           
                 
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:15px;margin-right:5px;">Peso*</span>
+                <span style="margin-left:15px;margin-right:5px;">Peso*(KG)</span>
                 <asp:TextBox ID="txtPeso" runat="server" Width="100px" MaxLength="9"></asp:TextBox>
                 <span style="margin-left:50px;margin-right:5px;">Raça</span>
                 <asp:TextBox ID="txtRaca" runat="server" Width="150px" MaxLength="50"></asp:TextBox>
