@@ -14,6 +14,51 @@ namespace WebUI {
     public partial class ManterCadastroCliente {
         
         /// <summary>
+        /// rfvtxtNomeCli control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtNomeCli;
+        
+        /// <summary>
+        /// rfvtxtCPF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCPF;
+        
+        /// <summary>
+        /// revtxtRG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtRG;
+        
+        /// <summary>
+        /// revtxtTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtTel;
+        
+        /// <summary>
+        /// revtxtCel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtCel;
+        
+        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>
@@ -50,6 +95,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtCPF;
         
         /// <summary>
+        /// meeCPF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meeCPF;
+        
+        /// <summary>
         /// txtRG control.
         /// </summary>
         /// <remarks>
@@ -77,6 +131,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtTel;
         
         /// <summary>
+        /// meetxtTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtTel;
+        
+        /// <summary>
         /// txtCel control.
         /// </summary>
         /// <remarks>
@@ -84,6 +147,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCel;
+        
+        /// <summary>
+        /// meetxtCel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtCel;
         
         /// <summary>
         /// txtEndereco control.

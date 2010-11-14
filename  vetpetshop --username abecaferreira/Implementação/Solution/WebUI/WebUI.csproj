@@ -211,6 +211,13 @@
     <Compile Include="ManterUsuario.aspx.designer.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MudaSenha.aspx.cs">
+      <DependentUpon>MudaSenha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MudaSenha.aspx.designer.cs">
+      <DependentUpon>MudaSenha.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecebimentoPedidoDeCompra.aspx.cs">
       <DependentUpon>RecebimentoPedidoDeCompra.aspx</DependentUpon>
@@ -283,6 +290,7 @@
     <Content Include="ManterCadastroCliente.aspx" />
     <Content Include="ManterUsuario.aspx" />
     <Content Include="MenuAdmin.sitemap" />
+    <Content Include="MudaSenha.aspx" />
     <Content Include="RecebimentoPedidoDeCompra.aspx" />
     <Content Include="RegistrarPagamentoConsulta.aspx" />
     <Content Include="RegistrarPagamentoProdutos.aspx" />
