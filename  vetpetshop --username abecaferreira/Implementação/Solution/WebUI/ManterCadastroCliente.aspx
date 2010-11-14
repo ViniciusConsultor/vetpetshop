@@ -2,18 +2,18 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
     <div style="width:87%; margin:5px 0 5px 30px;">
-        <asp:RequiredFieldValidator ID="rfvtxtNomeCli" runat="server" ControlToValidate="txtNomeCli" Display="Dynamic" ErrorMessage="Preencha o nome do cliente" SetFocusOnError="false" Enabled="false"></asp:RequiredFieldValidator>         
+        <asp:RegularExpressionValidator ID="revtxtCPF" ControlToValidate="txtCPF" runat="server" ErrorMessage="Campo CPF deve conter 11 dígitos" Display="Dynamic" ValidationExpression="^[\s\S]{11,11}$" SetFocusOnError="true"></asp:RegularExpressionValidator>
         <br />
-        <asp:RequiredFieldValidator ID="rfvtxtCPF" ControlToValidate="txtCPF" runat="server" ErrorMessage="Preencha o CPF" Display="Dynamic"></asp:RequiredFieldValidator>
-        <br />
-        <asp:RegularExpressionValidator ID="revtxtRG" ControlToValidate="txtRG" runat="server" ErrorMessage="Campo RG deve conter somente numeros" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="revtxtRG" ControlToValidate="txtRG" runat="server" ErrorMessage="Campo RG deve conter somente numeros" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator>
         <br />    
-        <asp:RegularExpressionValidator ID="revtxtTel" runat="server" ControlToValidate="txtTel" ErrorMessage="Campo telefone deve conter 10 caracteres" ValidationExpression="^[\s\S]{13,13}$" Display="Dynamic" ></asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="revtxtTel" runat="server" ControlToValidate="txtTel" ErrorMessage="Campo telefone deve conter 10 caracteres" ValidationExpression="^[\s\S]{10,10}$" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator>
         <br />
-        <asp:RegularExpressionValidator ID="revtxtCel" runat="server" ControlToValidate="txtCel" ErrorMessage="Campo celular deve conter 10 caracteres" ValidationExpression="^[\s\S]{13,13}$" Display="Dynamic" ></asp:RegularExpressionValidator>    
+        <asp:RegularExpressionValidator ID="revtxtCel" runat="server" ControlToValidate="txtCel" ErrorMessage="Campo celular deve conter 10 caracteres" ValidationExpression="^[\s\S]{10,10}$" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator>    
+        <br />
+        <asp:RegularExpressionValidator ID="revtxtEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="E-mail inválido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator>
     </div>
     <div style="width:87%;margin:5px 0 5px 30px;">
-        <ul style="margin-top:10px;">
+        <ul>
             <li>
                 <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
             </li>
@@ -28,7 +28,7 @@
             <li style="margin-bottom:10px;">
                 <span style="margin-left:18px;margin-right:5px;">CPF*</span>
                 <asp:TextBox ID="txtCPF"  MaxLength="14" Width="120px"  runat="server" TabIndex="4"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meeCPF" runat="server" TargetControlID="txtCPF" Mask="999,999,999-99" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+                <asp:MaskedEditExtender ID="meeCPF" runat="server" TargetControlID="txtCPF" Mask="999,999,999-99" ClearMaskOnLostFocus="true" MaskType="Number"></asp:MaskedEditExtender>
                 <span style="margin-left:30px;margin-right:5px;">RG</span><asp:TextBox ID="txtRG" runat="server" Width="120px"></asp:TextBox>
                 <span style="margin-left:30px;margin-right:5px;">Sexo*</span>
                 <asp:DropDownList ID="ddlSexoCliente" runat="server" width="100px">
@@ -39,11 +39,11 @@
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:0px;margin-right:5px;">Telefone</span>
-                <asp:TextBox ID="txtTel" runat="server" Width="200px"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meetxtTel" Mask="(99)9999-9999" runat="server" TargetControlID="txtTel" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+                <asp:TextBox ID="txtTel" runat="server" Width="200px" MaxLength="12"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meetxtTel" Mask="(99)9999-9999" runat="server" TargetControlID="txtTel" ClearMaskOnLostFocus="true" MaskType="Number"></asp:MaskedEditExtender>
                 <span style="margin-left:50px;margin-right:5px;">Celular</span>
-                <asp:TextBox ID="txtCel" runat="server" Width="200px"></asp:TextBox>        
-                <asp:MaskedEditExtender ID="meetxtCel" Mask="(99)9999-9999" runat="server" TargetControlID="txtCel" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+                <asp:TextBox ID="txtCel" runat="server" Width="200px" MaxLength="12"></asp:TextBox>        
+                <asp:MaskedEditExtender ID="meetxtCel" Mask="(99)9999-9999" runat="server" TargetControlID="txtCel" ClearMaskOnLostFocus="true" MaskType="Number"></asp:MaskedEditExtender>
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:0px;margin-right:5px;">Endereço</span>
@@ -74,6 +74,9 @@
     <div style="width:100%; margin:20px 0 10px 10px;">
         <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Dados do Pet do Cliente</span></b>
     </div>
+    <div style="width:100%; margin:20px 0 10px 30px;">
+        <asp:CompareValidator ID="cvtxtNascimento" runat="server" ControlToValidate="txtNascimento" Display="Dynamic" ErrorMessage="Data de Nascimento Inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator> 
+    </div>
     <div style="width:100%; margin:5px 0 5px 30px;">
         <ul>
             <li style="margin-bottom:10px;">
@@ -90,7 +93,9 @@
                 <span style="margin-left:15px;margin-right:5px;">Tipo*</span>
                 <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="100px"></asp:DropDownList>
                 <span style="margin-left:50px;margin-right:5px;">Data de Nascimento*</span>
-                <asp:TextBox ID="txtNascimento" runat="server" Width="150px" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox>                                           
+                <asp:TextBox ID="txtNascimento" runat="server" Width="150px" MaxLength="10"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meetxtNascimento" runat="server" TargetControlID="txtNascimento" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>                                           
+                
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:15px;margin-right:5px;">Peso*</span>
@@ -105,7 +110,7 @@
     <div style="width:89%; margin:20px 0 10px 10px;">
         <b><span style="margin-left:10px;margin-right:5px; font-size:x-small; font-style:normal;">* Preenchimento Obrigatório</span></b>
     </div>
-    <div style="width:55%; margin:5px 0 5px 200px;">
+    <div style="width:55%; margin:5px 0 5px 250px;">
         <asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" OnClientClick="history.back();" /> &nbsp;
         <asp:Button Width="20%" ID="btnSalvar" runat="server" Text="Salvar" onclick="btnSalvar_Click" />
         <asp:Button Width="20%" ID="btnSalvar2" runat="server" Text="Salvar" onclick="btnSalvar2_Click" Visible="false" />
