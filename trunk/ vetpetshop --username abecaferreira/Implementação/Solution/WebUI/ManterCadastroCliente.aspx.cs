@@ -515,30 +515,36 @@ namespace WebUI
 
             if (txtNomeCli.Text == "")
             {
-                lblMsg.Text = "Preencha o nome do cliente";
+                erro1.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o nome do cliente";
                 return;
             }
 
             if (txtCPF.Text == "")
             {
-                lblMsg.Text = "Preencha o cpf do cliente";
+                erro2.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o cpf do cliente";
                 return;
             }
 
             if (ddlSexoCliente.SelectedIndex == 0)
             {
-                lblMsg.Text = "Preencha o sexo do cliente";
+                erro3.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o sexo do cliente";
                 return;
             }
 
             if (txtTel.Text == "")
             {
-                lblMsg.Text = "Preencha o telefone do cliente";
+                erro4.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o telefone do cliente";
                 return;
             }
             if (txtEmail.Text == "")
             {
-                lblMsg.Text = "Preencha o email do cliente";
+                erro5.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o email do cliente";
+                return;
             }
 
 
@@ -592,46 +598,51 @@ namespace WebUI
 
             if (txtNomeAnimal.Text == "")
             {
-                lblMsg.Text = "Preencha o nome do animal";
+                erro6.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o nome do animal";
                 return;
             }
 
             if (txtPeso.Text == "")
             {
-                lblMsg.Text = "Preencha o peso do animal";
+                erro7.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o peso do animal";
                 return;
             }
 
             if (txtNascimento.Text == "")
             {
-                lblMsg.Text = "Preencha a data de nascimento do animal";
+                erro8.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha a data de nascimento do animal";
                 return;
             }
 
             if (ddlTipoAnimal.SelectedIndex == 0)
             {
-                lblMsg.Text = "Preencha o tipo do animal";
+                erro9.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o tipo do animal";
                 return;
             }
 
             if (ddlSexoAnimal.SelectedIndex == 0)
             {
-                lblMsg.Text = "Preencha o sexo do animal";
+                erro10.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o sexo do animal";
                 return;
             }
 
-            if (txtNascimento.Text != string.Empty)
-            {
-                try
-                {
-                    txtNascimento.Text = Convert.ToString(System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null));
-                }
-                catch
-                {
-                    lblMsg.Text = "Data de nascimento inválida";
-                    return;
-                }
-            }
+            //if (txtNascimento.Text != string.Empty)
+            //{
+            //    try
+            //    {
+            //        txtNascimento.Text = Convert.ToString(System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null));
+            //    }
+            //    catch
+            //    {
+            //        lblMsg.Text = "Data de nascimento inválida";
+            //        return;
+            //    }
+            //}
 
             #endregion
 
