@@ -125,30 +125,35 @@ namespace WebUI
 
                 if (txtNomeCli.Text == "")
                 {
-                    lblMsg.Text = "Preencha o nome do cliente";
+                    erro1.Attributes["class"] = "mostrar";
+                    //lblMsg.Text = "Preencha o nome do cliente";
                     return;
                 }
 
                 if (txtCPF.Text == "")
                 {
-                    lblMsg.Text = "Preencha o cpf do cliente";
+                    erro2.Attributes["class"] = "mostrar";
+                    //lblMsg.Text = "Preencha o cpf do cliente";
                     return;
                 }
 
                 if (ddlSexoCliente.SelectedIndex == 0)
                 {
-                    lblMsg.Text = "Preencha o sexo do cliente";
+                    erro3.Attributes["class"] = "mostrar";
+                    //lblMsg.Text = "Preencha o sexo do cliente";
                     return;
                 }
 
                 if (txtTel.Text == "")
                 {
-                    lblMsg.Text = "Preencha o telefone do cliente";
+                    erro4.Attributes["class"] = "mostrar";
+                    //lblMsg.Text = "Preencha o telefone do cliente";
                     return;
                 }
                 if (txtEmail.Text == "")
                 {
-                    lblMsg.Text = "Preencha o email do cliente";
+                    erro5.Attributes["class"] = "mostrar";
+                    //lblMsg.Text = "Preencha o email do cliente";
                     return;
                 }
             
