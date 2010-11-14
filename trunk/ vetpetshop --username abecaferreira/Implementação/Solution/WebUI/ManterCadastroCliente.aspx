@@ -1,269 +1,117 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ManterCadastroCliente.aspx.cs" Inherits="WebUI.ManterCadastroCliente" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
-
-    <table style="width:100%;">
-        <tr>
-            <td style="width: 100%;">
+    <div style="width:87%; margin:5px 0 5px 30px;">
+        <asp:RequiredFieldValidator ID="rfvtxtNomeCli" runat="server" ControlToValidate="txtNomeCli" Display="Dynamic" ErrorMessage="Preencha o nome do cliente" SetFocusOnError="false" Enabled="false"></asp:RequiredFieldValidator>         
+        <br />
+        <asp:RequiredFieldValidator ID="rfvtxtCPF" ControlToValidate="txtCPF" runat="server" ErrorMessage="Preencha o CPF" Display="Dynamic"></asp:RequiredFieldValidator>
+        <br />
+        <asp:RegularExpressionValidator ID="revtxtRG" ControlToValidate="txtRG" runat="server" ErrorMessage="Campo RG deve conter somente numeros" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
+        <br />    
+        <asp:RegularExpressionValidator ID="revtxtTel" runat="server" ControlToValidate="txtTel" ErrorMessage="Campo telefone deve conter 10 caracteres" ValidationExpression="^[\s\S]{13,13}$" Display="Dynamic" ></asp:RegularExpressionValidator>
+        <br />
+        <asp:RegularExpressionValidator ID="revtxtCel" runat="server" ControlToValidate="txtCel" ErrorMessage="Campo celular deve conter 10 caracteres" ValidationExpression="^[\s\S]{13,13}$" Display="Dynamic" ></asp:RegularExpressionValidator>    
+    </div>
+    <div style="width:87%;margin:5px 0 5px 30px;">
+        <ul style="margin-top:10px;">
+            <li>
                 <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 246px; width: 863px">
-                <table style="width: 100%; height: 228px;">
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                        </td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                        </td>
-                        <td style="height: 23px; width: 383px">
-                            Nome do Cliente*</td>
-                        <td style="height: 23px; width: 392px">
-                         <asp:TextBox ID="txtNomeCli" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                        <td style="height: 23px; width: 138px">
-                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
-                                onclick="BtnBuscar_Click" />
-                        </td>
-                        <td style="height: 23px; width: 142px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            CPF*</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtCPF" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            RG</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtRG" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Sexo*</td>
-                            <td style="width: 58px; height: 23px">
-                            <asp:DropDownList ID="ddlSexoCliente" runat="server" width="189px">
-                            <asp:ListItem Value="">Selecione</asp:ListItem>
-                            <asp:ListItem Value="Masculino">Masculino</asp:ListItem>
-                            <asp:ListItem Value="Feminino">Feminino</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>                                                                               
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Telefone*</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtTel" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Celular</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtCel" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Endereço</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtEndereco" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Bairro</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtBairro" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Cidade</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtCidade" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            Estado</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtEstado" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            CEP</td>
-                            <td style="width: 58px; height: 23px">
-                         <asp:TextBox ID="txtCep" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 383px">
-                            E-mail*</td>
-                        <td style="height: 23px; width: 392px">
-                         <asp:TextBox ID="txtEmail" runat="server" Width="189px"></asp:TextBox>
-                        </td>
-                        <td style="height: 23px; width: 138px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td align="center" colspan="3" style="height: 23px; ">
-                            <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" 
-                                Text="Adicionar Animal" />
-                        </td>
-                        <td style="height: 23px; width: 142px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td colspan="3" style="height: 23px; ">
-                            <asp:Panel ID="pnlPet" runat="server" Visible="False" style="width:500px;" 
-                                Width="456px">
-                               <table>
-                                   <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Nome do Animal*</td>
-                                        <td style="height: 23px; width: 392px">
-                                         <asp:TextBox ID="txtNomeAnimal" runat="server" Width="189px"></asp:TextBox>
-                                        </td>                                        
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Sexo do Animal*</td>
-                                        <td style="height: 23px; width: 330px">
-                                            <asp:DropDownList ID="ddlSexoAnimal" runat="server" width="189px">
+            </li>
+        </ul>
+        <ul style="margin-top:10px;">
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:10px;margin-right:5px;">Nome*</span>
+                <asp:TextBox ID="txtNomeCli" runat="server" Width="400px"></asp:TextBox>
+                <span style="margin-left:10px;"><asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" 
+                    onclick="BtnBuscar_Click" ToolTip="Buscar clientes para cadastrar pets"/></span>
+            </li>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:18px;margin-right:5px;">CPF*</span>
+                <asp:TextBox ID="txtCPF"  MaxLength="14" Width="120px"  runat="server" TabIndex="4"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meeCPF" runat="server" TargetControlID="txtCPF" Mask="999,999,999-99" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+                <span style="margin-left:30px;margin-right:5px;">RG</span><asp:TextBox ID="txtRG" runat="server" Width="120px"></asp:TextBox>
+                <span style="margin-left:30px;margin-right:5px;">Sexo*</span>
+                <asp:DropDownList ID="ddlSexoCliente" runat="server" width="100px">
+                    <asp:ListItem Value="">Selecione</asp:ListItem>
+                    <asp:ListItem Value="Masculino">Masculino</asp:ListItem>
+                    <asp:ListItem Value="Feminino">Feminino</asp:ListItem>
+                </asp:DropDownList>
+            </li>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:0px;margin-right:5px;">Telefone</span>
+                <asp:TextBox ID="txtTel" runat="server" Width="200px"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meetxtTel" Mask="(99)9999-9999" runat="server" TargetControlID="txtTel" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+                <span style="margin-left:50px;margin-right:5px;">Celular</span>
+                <asp:TextBox ID="txtCel" runat="server" Width="200px"></asp:TextBox>        
+                <asp:MaskedEditExtender ID="meetxtCel" Mask="(99)9999-9999" runat="server" TargetControlID="txtCel" ClearMaskOnLostFocus="false" MaskType="Number"></asp:MaskedEditExtender>
+            </li>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:0px;margin-right:5px;">Endereço</span>
+                <asp:TextBox ID="txtEndereco" runat="server" Width="300px"></asp:TextBox>
+                <span style="margin-left:50px;margin-right:5px;">Bairro</span>
+                <asp:TextBox ID="txtBairro" runat="server" Width="150px"></asp:TextBox>
+            </li>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:10px;margin-right:5px;">Cidade</span>
+                <asp:TextBox ID="txtCidade" runat="server" Width="150px"></asp:TextBox>
+                <span style="margin-left:50px;margin-right:5px;">Estado</span>
+                <asp:TextBox ID="txtEstado" runat="server" Width="100px"></asp:TextBox>
+                <span style="margin-left:50px;margin-right:5px;">CEP</span>
+                <asp:TextBox ID="txtCep" runat="server" Width="100px"></asp:TextBox>
+            </li>            
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:10px;margin-right:5px;">E-mail*</span>
+                <asp:TextBox ID="txtEmail" runat="server" Width="200px"></asp:TextBox>
+            </li>
+        </ul>
+    </div>
+    
+    <div style="width:50%; margin:5px 0 5px 280px;">
+        <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" Text="Adicionar Animal" />
+    </div>
+    
+    <asp:Panel ID="pnlPet" runat="server" Visible="False" Width="90%">
+    <div style="width:100%; margin:20px 0 10px 10px;">
+        <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Dados do Pet do Cliente</span></b>
+    </div>
+    <div style="width:100%; margin:5px 0 5px 30px;">
+        <ul>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:10px;margin-right:5px;">Nome*</span>
+                <asp:TextBox ID="txtNomeAnimal" runat="server" Width="250px"></asp:TextBox>
+                <span style="margin-left:50px;margin-right:5px;">Sexo*</span>
+                <asp:DropDownList ID="ddlSexoAnimal" runat="server" width="100px">
                                             <asp:ListItem Value="">Selecione</asp:ListItem>
                                             <asp:ListItem Value="Masculino">Masculino</asp:ListItem>
                                             <asp:ListItem Value="Feminino">Feminino</asp:ListItem>
                                             </asp:DropDownList>
-                                        </td>                                                                               
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Tipo do Animal*</td>
-                                        <td style="height: 23px; width: 330px">
-                                            <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="189px">
-                                            </asp:DropDownList>
-                                        </td>                                                                               
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Data de Nascimento*</td>
-                                        <td style="height: 23px; width: 330px">
-                                            <asp:TextBox ID="txtNascimento" runat="server" Width="189px" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox>                                           
-                                        </td>                                                                               
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Peso*</td>
-                                        <td style="height: 23px; width: 392px">
-                                         <asp:TextBox ID="txtPeso" runat="server" Width="189px"></asp:TextBox>
-                                        </td>                                        
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 23px; width: 337px">
-                                            Raça</td>
-                                        <td style="height: 23px; width: 392px">
-                                         <asp:TextBox ID="txtRaca" runat="server" Width="189px"></asp:TextBox>
-                                        </td>                                        
-                                    </tr>
-                               </table>
-                            </asp:Panel>                             
-                        </td>
-                        <td style="height: 23px; width: 142px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 518px">
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 337px">
-                        </td>
-                        <td align="center" style="height: 23px; width: 392px">
-                         * Preenchimento Obrigatório.         
-                        </td>                                        
-                    </tr>
-                    <tr>
-                        <td style="width: 58px; height: 23px">
-                            &nbsp;</td>
-                        <td style="height: 23px; width: 337px">
-                        </td>
-                        <td align="center" style="height: 23px; width: 392px">
-                        <asp:Button width="30%" ID="btnCancelar" runat="server" Text="Cancelar" 
-                                 OnClientClick="window.history.back();" /> &nbsp;
-                        <asp:Button  width="30%" ID="btnSalvar" runat="server" Text="Salvar" 
-                            onclick="btnSalvar_Click" />
-                        <asp:Button  width="30%" ID="btnSalvar2" runat="server" Text="Salvar" 
-                            onclick="btnSalvar2_Click" Visible="false" />
-                        <asp:Button  width="30%" ID="BtnUpdateCli" runat="server" Text="Salvar" 
-                            onclick="BtnUpdateCli_Click" Visible="false" />
-                        <asp:Button  width="30%" ID="BtnUpdateAni" runat="server" Text="Salvar" 
-                            onclick="BtnUpdateAni_Click" Visible="false" />         
-                        </td>                                        
-                    </tr>
-                    <tr>
-                        <td style="width: 58px">
-                            </td>
-                        <td style="width: 383px">
-                            </td>
-                        <td style="width: 392px">
-                            </td>
-                        <td style="width: 138px">
-                            </td>
-                    </tr>
-                </table>
-            </td>
-            <td style="height: 246px; width: 80px">
-            </td>
-            <td style="height: 246px">
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 863px">
-                &nbsp;</td>
-            <td style="width: 80px">
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-    </table>
+            </li>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:15px;margin-right:5px;">Tipo*</span>
+                <asp:DropDownList ID="ddlTipoAnimal" runat="server" width="100px"></asp:DropDownList>
+                <span style="margin-left:50px;margin-right:5px;">Data de Nascimento*</span>
+                <asp:TextBox ID="txtNascimento" runat="server" Width="150px" onblur="TestaField(this)" onfocus="inField()" MaxLength="10" Tipo="DATE"></asp:TextBox>                                           
+            </li>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:15px;margin-right:5px;">Peso*</span>
+                <asp:TextBox ID="txtPeso" runat="server" Width="100px"></asp:TextBox>
+                <span style="margin-left:50px;margin-right:5px;">Raça</span>
+                <asp:TextBox ID="txtRaca" runat="server" Width="150px"></asp:TextBox>
+            </li>
+        </ul>    
+    
+    </div>
+    </asp:Panel>                             
+    <div style="width:89%; margin:20px 0 10px 10px;">
+        <b><span style="margin-left:10px;margin-right:5px; font-size:x-small; font-style:normal;">* Preenchimento Obrigatório</span></b>
+    </div>
+    <div style="width:55%; margin:5px 0 5px 200px;">
+        <asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" OnClientClick="history.back();" /> &nbsp;
+        <asp:Button Width="20%" ID="btnSalvar" runat="server" Text="Salvar" onclick="btnSalvar_Click" />
+        <asp:Button Width="20%" ID="btnSalvar2" runat="server" Text="Salvar" onclick="btnSalvar2_Click" Visible="false" />
+        <asp:Button Width="20%" ID="BtnUpdateCli" runat="server" Text="Salvar" onclick="BtnUpdateCli_Click" Visible="false" />
+        <asp:Button Width="20%" ID="BtnUpdateAni" runat="server" Text="Salvar" onclick="BtnUpdateAni_Click" Visible="false" />         
+    </div>                        
     
     <asp:Button ID="ButtonPp" runat="server" style="display:none" />
     <asp:ModalPopupExtender 
@@ -311,7 +159,7 @@
         <div align="center">
             <br />
             <asp:Button id="btpVoltar" Text="Voltar" runat="server" 
-                 OnClientClick="window.history.back();"/>
+                 OnClientClick="history.back();"/>
         </div>
         
     </asp:Panel>
