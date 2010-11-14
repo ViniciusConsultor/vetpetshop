@@ -14,22 +14,13 @@ namespace WebUI {
     public partial class ManterCadastroCliente {
         
         /// <summary>
-        /// rfvtxtNomeCli control.
+        /// revtxtCPF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtNomeCli;
-        
-        /// <summary>
-        /// rfvtxtCPF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCPF;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtCPF;
         
         /// <summary>
         /// revtxtRG control.
@@ -57,6 +48,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtCel;
+        
+        /// <summary>
+        /// revtxtEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtEmail;
         
         /// <summary>
         /// lblMsg control.
@@ -230,6 +230,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel pnlPet;
         
         /// <summary>
+        /// cvtxtNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvtxtNascimento;
+        
+        /// <summary>
         /// txtNomeAnimal control.
         /// </summary>
         /// <remarks>
@@ -264,6 +273,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNascimento;
+        
+        /// <summary>
+        /// meetxtNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtNascimento;
         
         /// <summary>
         /// txtPeso control.
