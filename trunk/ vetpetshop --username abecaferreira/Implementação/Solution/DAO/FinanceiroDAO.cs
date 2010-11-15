@@ -282,60 +282,60 @@ namespace DAO
             return lista;
         }
 
-        public List<FinancasEstoque> ListarFinancasEstoque(int ano)
-        {
-            List<FinancasEstoque> lista = new List<FinancasEstoque>();
-            string stringConexao = databaseHelper.GetConnectionString("conexao");
-            SqlConnection conn = new SqlConnection(stringConexao);
+        //public List<FinancasEstoque> ListarFinancasEstoque(int ano)
+        //{
+        //    List<FinancasEstoque> lista = new List<FinancasEstoque>();
+        //    string stringConexao = databaseHelper.GetConnectionString("conexao");
+        //    SqlConnection conn = new SqlConnection(stringConexao);
 
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "spsFinancasEstoquePorAno";
+        //    try
+        //    {
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.Connection = conn;
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = "spsFinancasEstoquePorAno";
 
-                SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
-                pAno.Value = ano;
+        //        SqlParameter pAno = new SqlParameter("@Ano", SqlDbType.Int, 4);
+        //        pAno.Value = ano;
 
-                cmd.Parameters.Add(pAno);
+        //        cmd.Parameters.Add(pAno);
 
-                conn.Open();
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+        //        conn.Open();
+        //        SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
 
-                //if(!dr.Read())
-                //    return null;
+        //        //if(!dr.Read())
+        //        //    return null;
 
-                while (dr.Read())
-                {
-                    FinancasEstoque financas = new FinancasEstoque();
-                    financas.Mes = dr.GetInt32(0);
-                    financas.Valor = dr.GetDecimal(1);
+        //        while (dr.Read())
+        //        {
+        //            FinancasEstoque financas = new FinancasEstoque();
+        //            financas.Mes = dr.GetInt32(0);
+        //            financas.Valor = dr.GetDecimal(1);
 
-                    lista.Add(financas);
-                }
+        //            lista.Add(financas);
+        //        }
 
-                dr.Close();
-            }
+        //        dr.Close();
+        //    }
 
-            catch (SqlException ex)
-            {
-                //throw new Exception("Servidor SQL Erro: " + ex.Number);
-                throw new Exception(ex.Message);
-            }
+        //    catch (SqlException ex)
+        //    {
+        //        //throw new Exception("Servidor SQL Erro: " + ex.Number);
+        //        throw new Exception(ex.Message);
+        //    }
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
 
-            return lista;
-        }
+        //    return lista;
+        //}
 
         public List<FinancasLucro> ListarFinancasLucro(int ano)
         {
