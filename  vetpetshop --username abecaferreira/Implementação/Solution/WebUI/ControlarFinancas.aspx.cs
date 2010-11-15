@@ -50,18 +50,18 @@ namespace WebUI
             FinanceiroBuss financeiroBuss = new FinanceiroBuss();
             List<Financas> listaFinancasInvestimento = new List<Financas>();
             List<Financas> listaFinancasVenda = new List<Financas>();
-            List<FinancasEstoque> listaFinancasEstoque = new List<FinancasEstoque>();
+           // List<FinancasEstoque> listaFinancasEstoque = new List<FinancasEstoque>();
             List<FinancasLucro> listaFinancasLucro = new List<FinancasLucro>();
            // List<FinancasValorAReceber> listaValorReceber = new List<FinancasValorAReceber>();
 
             listaFinancasInvestimento = financeiroBuss.ListarInvestimentos(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaFinancasVenda = financeiroBuss.ListarVendas(Convert.ToInt32(ddlAno.SelectedItem.Value));
-            listaFinancasEstoque = financeiroBuss.ListarFinancasEstoque(Convert.ToInt32(ddlAno.SelectedItem.Value));
+            //listaFinancasEstoque = financeiroBuss.ListarFinancasEstoque(Convert.ToInt32(ddlAno.SelectedItem.Value));
             listaFinancasLucro = financeiroBuss.ListarFinancasLucro(Convert.ToInt32(ddlAno.SelectedItem.Value));
             //listaValorReceber = financeiroBuss.ListarValorReceber(Convert.ToInt32(ddlAno.SelectedItem.Value));
 
             #region Ano selecionado não possui registros
-            if (listaFinancasEstoque.Count == 0 && listaFinancasInvestimento.Count == 0 && listaFinancasVenda.Count == 0 && listaFinancasLucro.Count == 0)
+            if (listaFinancasInvestimento.Count == 0 && listaFinancasVenda.Count == 0 && listaFinancasLucro.Count == 0)
             {
                 lblInvestimentoJan.Text = "0.00";
                 lblInvestimentoFev.Text = "0.00";
@@ -335,106 +335,106 @@ namespace WebUI
             }
             #endregion
 
-            #region Estoque
-            foreach (FinancasEstoque finEstoq in listaFinancasEstoque)
-            {
+            //#region Estoque
+            //foreach (FinancasEstoque finEstoq in listaFinancasEstoque)
+            //{
 
-                if (finEstoq.Mes == 1)
-                {
-                    lblEstoqueJan.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueJan.Text == "")
-                    lblEstoqueJan.Text = "0.00";
+            //    if (finEstoq.Mes == 1)
+            //    {
+            //        lblEstoqueJan.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueJan.Text == "")
+            //        lblEstoqueJan.Text = "0.00";
 
-                if (finEstoq.Mes == 2)
-                {
-                    lblEstoqueFev.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueFev.Text == "")
-                    lblEstoqueFev.Text = "0.00";
+            //    if (finEstoq.Mes == 2)
+            //    {
+            //        lblEstoqueFev.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueFev.Text == "")
+            //        lblEstoqueFev.Text = "0.00";
 
-                if (finEstoq.Mes == 3)
-                {
-                    lblEstoqueMar.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueMar.Text == "")
-                    lblEstoqueMar.Text = "0.00";
+            //    if (finEstoq.Mes == 3)
+            //    {
+            //        lblEstoqueMar.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueMar.Text == "")
+            //        lblEstoqueMar.Text = "0.00";
 
-                if (finEstoq.Mes == 4)
-                {
-                    lblEstoqueAbr.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueAbr.Text == "")
-                    lblEstoqueAbr.Text = "0.00";
+            //    if (finEstoq.Mes == 4)
+            //    {
+            //        lblEstoqueAbr.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueAbr.Text == "")
+            //        lblEstoqueAbr.Text = "0.00";
 
-                if (finEstoq.Mes == 5)
-                {
-                    lblEstoqueMai.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueMai.Text == "")
-                    lblEstoqueMai.Text = "0.00";
+            //    if (finEstoq.Mes == 5)
+            //    {
+            //        lblEstoqueMai.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueMai.Text == "")
+            //        lblEstoqueMai.Text = "0.00";
 
-                if (finEstoq.Mes == 6)
-                {
-                    lblEstoqueJun.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueJun.Text == "")
-                    lblEstoqueJun.Text = "0.00";
+            //    if (finEstoq.Mes == 6)
+            //    {
+            //        lblEstoqueJun.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueJun.Text == "")
+            //        lblEstoqueJun.Text = "0.00";
 
-                if (finEstoq.Mes == 7)
-                {
-                    lblEstoqueJul.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueJul.Text == "")
-                    lblEstoqueJul.Text = "0.00";
+            //    if (finEstoq.Mes == 7)
+            //    {
+            //        lblEstoqueJul.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueJul.Text == "")
+            //        lblEstoqueJul.Text = "0.00";
 
-                if (finEstoq.Mes == 8)
-                {
-                    lblEstoqueAgo.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueAgo.Text == "")
-                    lblEstoqueAgo.Text = "0.00";
+            //    if (finEstoq.Mes == 8)
+            //    {
+            //        lblEstoqueAgo.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueAgo.Text == "")
+            //        lblEstoqueAgo.Text = "0.00";
 
-                if (finEstoq.Mes == 9)
-                {
-                    lblEstoqueSet.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueSet.Text == "")
-                    lblEstoqueSet.Text = "0.00";
+            //    if (finEstoq.Mes == 9)
+            //    {
+            //        lblEstoqueSet.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueSet.Text == "")
+            //        lblEstoqueSet.Text = "0.00";
 
-                if (finEstoq.Mes == 10)
-                {
-                    lblEstoqueOut.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueOut.Text == "")
-                    lblEstoqueOut.Text = "0.00";
+            //    if (finEstoq.Mes == 10)
+            //    {
+            //        lblEstoqueOut.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueOut.Text == "")
+            //        lblEstoqueOut.Text = "0.00";
 
-                if (finEstoq.Mes == 11)
-                {
-                    lblEstoqueNov.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueNov.Text == "")
-                    lblEstoqueNov.Text = "0.00";
+            //    if (finEstoq.Mes == 11)
+            //    {
+            //        lblEstoqueNov.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueNov.Text == "")
+            //        lblEstoqueNov.Text = "0.00";
 
-                if (finEstoq.Mes == 12)
-                {
-                    lblEstoqueDez.Text = finEstoq.Valor.ToString();
-                }
-                if (lblEstoqueDez.Text == "")
-                    lblEstoqueDez.Text = "0.00";
+            //    if (finEstoq.Mes == 12)
+            //    {
+            //        lblEstoqueDez.Text = finEstoq.Valor.ToString();
+            //    }
+            //    if (lblEstoqueDez.Text == "")
+            //        lblEstoqueDez.Text = "0.00";
 
 
-                decimal totalEstoque = Convert.ToDecimal(lblEstoqueJan.Text) +
-                    Convert.ToDecimal(lblEstoqueFev.Text) + Convert.ToDecimal(lblEstoqueMar.Text) +
-                    Convert.ToDecimal(lblEstoqueAbr.Text) + Convert.ToDecimal(lblEstoqueMai.Text) +
-                    Convert.ToDecimal(lblEstoqueJun.Text) + Convert.ToDecimal(lblEstoqueJul.Text) +
-                    Convert.ToDecimal(lblEstoqueAgo.Text) + Convert.ToDecimal(lblEstoqueSet.Text) +
-                    Convert.ToDecimal(lblEstoqueOut.Text) + Convert.ToDecimal(lblEstoqueNov.Text) + Convert.ToDecimal(lblEstoqueDez.Text);
+            //    decimal totalEstoque = Convert.ToDecimal(lblEstoqueJan.Text) +
+            //        Convert.ToDecimal(lblEstoqueFev.Text) + Convert.ToDecimal(lblEstoqueMar.Text) +
+            //        Convert.ToDecimal(lblEstoqueAbr.Text) + Convert.ToDecimal(lblEstoqueMai.Text) +
+            //        Convert.ToDecimal(lblEstoqueJun.Text) + Convert.ToDecimal(lblEstoqueJul.Text) +
+            //        Convert.ToDecimal(lblEstoqueAgo.Text) + Convert.ToDecimal(lblEstoqueSet.Text) +
+            //        Convert.ToDecimal(lblEstoqueOut.Text) + Convert.ToDecimal(lblEstoqueNov.Text) + Convert.ToDecimal(lblEstoqueDez.Text);
 
-                lblTotalEstoque.Text = totalEstoque.ToString();
+            //    lblTotalEstoque.Text = totalEstoque.ToString();
 
-            }
-            #endregion
+            //}
+            //#endregion
 
             #region Lucro
             foreach (FinancasLucro finLucro in listaFinancasLucro)

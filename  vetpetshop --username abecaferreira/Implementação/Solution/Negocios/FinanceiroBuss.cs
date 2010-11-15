@@ -52,13 +52,13 @@ namespace Negocios
             return lista;
         }
 
-        public List<FinancasEstoque> ListarFinancasEstoque(int ano)
-        {
-            List<FinancasEstoque> lista = new List<FinancasEstoque>();
+        //public List<FinancasEstoque> ListarFinancasEstoque(int ano)
+        //{
+        //    List<FinancasEstoque> lista = new List<FinancasEstoque>();
 
-            lista = this.financeiroDAO.ListarFinancasEstoque(ano);
-            return lista;
-        }
+        //    lista = this.financeiroDAO.ListarFinancasEstoque(ano);
+        //    return lista;
+        //}
 
         public List<FinancasLucro> ListarFinancasLucro(int ano)
         {
