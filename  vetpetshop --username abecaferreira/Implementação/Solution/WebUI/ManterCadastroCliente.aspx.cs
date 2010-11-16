@@ -577,6 +577,7 @@ namespace WebUI
                 txtEmail.Text = "";
                 txtEndereco.Text = "";
                 txtBairro.Text = "";
+                txtCidade.Text = "";
                 txtEstado.Text = "";
                 txtCep.Text = "";
             }

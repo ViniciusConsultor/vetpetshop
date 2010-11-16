@@ -31,7 +31,7 @@ namespace WebUI
             usuario = (Usuario)Session["User"];
             UsuarioBuss usuarioBuss = new UsuarioBuss();
             usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-
+            
             if (!IsPostBack)
             {
                 CarregarClientes();
@@ -62,8 +62,11 @@ namespace WebUI
             Int32 idCliente;
             idCliente = Int32.Parse(ddlClientes.SelectedValue);
             ddlAnimal.Enabled = true;
+            pnlAnimal.Visible = false;
             if (idCliente != 0)
             {
+                erro2.Attributes["class"] = "escondido";
+                ddlAnimal.Items.Clear();
                 CarregarAnimaisCliente(idCliente);
             }
             else
@@ -83,13 +86,24 @@ namespace WebUI
             _listaAnimais = animalBus.ListarDDLAnimais(idCliente);
 
             ListItem _item = new ListItem("Selecione", "0");
-            ddlAnimal.Items.Insert(0, _item);
 
-            foreach (Animal Animal in _listaAnimais)
+            if (_listaAnimais.Count() > 0)
             {
-                ListItem item = new ListItem(Animal.Nome.ToString(), Animal.IdAnimal.ToString());
-                ddlAnimal.Items.Add(item);
+                ddlAnimal.Items.Insert(0, _item);
+
+                foreach (Animal Animal in _listaAnimais)
+                {
+                    ListItem item = new ListItem(Animal.Nome.ToString(), Animal.IdAnimal.ToString());
+                    ddlAnimal.Items.Add(item);
+                }
             }
+            else 
+            {
+                ListItem _itemVazio = new ListItem("Cliente não possui animais cadastrados", "0");
+                ddlAnimal.Items.Insert(0, _itemVazio);
+                ddlAnimal.Enabled = false;
+            }
+            
 
         }
 
@@ -99,10 +113,10 @@ namespace WebUI
             idAnimal = Int32.Parse(ddlAnimal.SelectedValue);
             if (idAnimal != 0)
             {
+                erro1.Attributes["class"] = "escondido";
+                CarregarGrid(idAnimal);
                 pnlAnimal.Visible = true;
-               // CarregarGrid(idAnimal);
-                txtData.Enabled = true;               
-
+                txtData.Enabled = true;
             }
             else
             {
@@ -121,6 +135,10 @@ namespace WebUI
             {
                 gdvAnimal.DataSource = tabelaPreenchida;
                 gdvAnimal.DataBind();
+            }
+            else 
+            {
+                pnlAnimal.Visible = false;
             }
         }
 
@@ -142,14 +160,16 @@ namespace WebUI
             DataTable _tabela = new DataTable();
 
             DataColumn coluna0 = new DataColumn("id_consulta");
-            DataColumn coluna1 = new DataColumn("dataconsulta");
-            DataColumn coluna2 = new DataColumn("status");
-            DataColumn coluna3 = new DataColumn("valor");
+            DataColumn coluna1 = new DataColumn("tipoconsulta");
+            DataColumn coluna2 = new DataColumn("dataconsulta");
+            DataColumn coluna3 = new DataColumn("status");
+            DataColumn coluna4 = new DataColumn("valor");
 
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
             _tabela.Columns.Add(coluna2);
             _tabela.Columns.Add(coluna3);
+            _tabela.Columns.Add(coluna4);
        
             return _tabela;
         }
@@ -157,38 +177,47 @@ namespace WebUI
         protected void btnAgendar_Click(object sender, EventArgs e)
         {
             Int32 idAnimal;
-            idAnimal = Int32.Parse(ddlAnimal.SelectedItem.Value);
 
             if (Panel1.Visible == true)
             {
-                if (txtData.Text == "")
-                {
-                    lblMsg.Text = "Digite a data consulta";
-                    return;
-                }
+                //if (txtData.Text == "")
+                //{
+                //    lblMsg.Text = "Digite a data consulta";
+                //    return;
+                //}
 
                 datConsulta = System.DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", null); 
             }
 
             if (PanelVacina.Visible == true)
             {
-                if (txtDataVacinacao.Text == "")
-                {
-                    lblMsg.Text = "Digite a data da próxima vacinação";
-                    return;
-                }
+                //if (txtDataVacinacao.Text == "")
+                //{
+                //    lblMsg.Text = "Digite a data da próxima vacinação";
+                //    return;
+                //}
 
                 datProxVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
-            }           
-
-            if (idAnimal != 0)
-            {
-                pnlAnimal.Visible = true;
-                AgendamentoConsulta(idAnimal);
             }
-            else
+
+            if (ddlClientes.SelectedItem.Value != "0")
             {
-                lblMsg.Text = "Selecione um animal para o agendamento da consulta";
+                if (ddlAnimal.SelectedItem.Value != "0")
+                {
+                    idAnimal = Int32.Parse(ddlAnimal.SelectedItem.Value);
+                    pnlAnimal.Visible = true;
+                    AgendamentoConsulta(idAnimal);
+                }
+                else
+                {
+                    erro1.Attributes["class"] = "mostrar";
+                    return;
+                }
+            }
+            else 
+            {
+                erro2.Attributes["class"] = "mostrar";
+                return;
             }
         }
 
@@ -221,7 +250,7 @@ namespace WebUI
 
             if (executou)
             {
-                //CarregarGrid(idAnimal);
+                CarregarGrid(Int32.Parse(ddlAnimal.SelectedValue));
                 txtDataVacinacao.Text = "";
                 txtData.Text = "";
                 lblMsg.Text = "Agendamento realizado com sucesso";
