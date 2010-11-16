@@ -68,7 +68,9 @@
                             &nbsp;
                                <asp:GridView ID="grProds" runat="server" AutoGenerateColumns="false" 
                                 HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
-                                onrowcommand="grProds_RowCommand" AlternatingRowStyle-BackColor="LightSteelBlue">
+                                onrowcommand="grProds_RowCommand" 
+                                AlternatingRowStyle-BackColor="LightSteelBlue" 
+                                onrowdeleting="grProds_RowDeleting">
                                 <Columns>
                                  <asp:TemplateField>  
                                 <HeaderStyle  Width="5%"/>                      
