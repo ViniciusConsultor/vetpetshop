@@ -410,6 +410,14 @@ namespace DAO
                 {
                     _linhaTabela["valor"] = dr.GetDecimal(3);
                 }
+                if (dr.IsDBNull(4))
+                {
+                    _linhaTabela["tipoconsulta"] = "";
+                }
+                else 
+                {
+                    _linhaTabela["tipoconsulta"] = dr.GetString(4);
+                }
 
                 tabela.Rows.Add(_linhaTabela);
             }
