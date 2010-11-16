@@ -33,16 +33,17 @@ namespace WebUI
         {
             ListItem liSelecione = new ListItem("Selecione", "0");
 
-            int anoAnterior = DateTime.Now.Year - 1;
+            //int anoAnterior = DateTime.Now.Year - 1;
             int anoPosterior = DateTime.Now.Year + 1;
-            ListItem liAnterior = new ListItem(anoAnterior.ToString(), anoAnterior.ToString());
+            //ListItem liAnterior = new ListItem(anoAnterior.ToString(), anoAnterior.ToString());
             ListItem liAnoAtual = new ListItem(DateTime.Now.Year.ToString(), DateTime.Now.Year.ToString());
             ListItem liPosterior = new ListItem(anoPosterior.ToString(), anoPosterior.ToString());
 
             ddlAno.Items.Add(liSelecione);
-            ddlAno.Items.Add(liPosterior);
             ddlAno.Items.Add(liAnoAtual);
-            ddlAno.Items.Add(liAnterior);            
+            ddlAno.Items.Add(liPosterior);
+            
+            //ddlAno.Items.Add(liAnterior);            
         }
 
         private void ListarFinancasPetShop()

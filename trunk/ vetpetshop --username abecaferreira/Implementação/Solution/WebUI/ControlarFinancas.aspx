@@ -339,13 +339,13 @@
                     
                 </td>
                 <td style="width: 140px">
-                    <asp:Label ID="lblConsultas" runat="server" ForeColor="Blue" Text="Consultas"></asp:Label>
+                    <asp:Label ID="lblConsultas" runat="server" ForeColor="Blue" Text="Consultas (R$)"></asp:Label>
                 </td>
                 <td style="width: 123px">
-                    <asp:Label ID="lblVacinas" runat="server" ForeColor="Blue" Text="Vacinas"></asp:Label>
+                    <asp:Label ID="lblVacinas" runat="server" ForeColor="Blue" Text="Vacinas (R$)"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="lblFaturamento" runat="server" ForeColor="Blue" Text="Faturamento"></asp:Label>
+                    <asp:Label ID="lblFaturamento" runat="server" ForeColor="Blue" Text="Faturamento (R$)"></asp:Label>
                 </td>
             </tr>
             
