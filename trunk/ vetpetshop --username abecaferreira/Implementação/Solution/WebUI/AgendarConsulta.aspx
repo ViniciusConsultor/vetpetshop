@@ -19,16 +19,16 @@
         </ul>
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">
-                <span style="margin-left:5px;margin-right:5px;">Cliente</span>
+                <span style="margin-left:5px;margin-right:5px;">Cliente:</span>
                 <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="true" width="450px" onselectedindexchanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList>
             </li>
             <li style="margin-bottom:10px;">    
-                <span style="margin-left:5px;margin-right:5px;">Animal</span>
+                <span style="margin-left:5px;margin-right:5px;">Animal:</span>
                 <asp:DropDownList Enabled="False" ID="ddlAnimal" runat="server" AutoPostBack="true" width="450px" onselectedindexchanged="ddlAnimal_SelectedIndexChanged"></asp:DropDownList>
             </li>
             <li style="margin-bottom:10px; margin-left:5px;">
                 <div style="border:1px solid #b9b9b9; width:25%;">
-                    <span style="margin-left:5px;margin-right:5px;">Tipo de agendamento</span>
+                    <span style="margin-left:5px;margin-right:5px;">Tipo de agendamento:</span>
                     <asp:RadioButtonList ID="rbTipo" runat="server"  AutoPostBack="true" onselectedindexchanged="rbTipo_SelectedIndexChanged" Width="180px">
                         <asp:ListItem Text="Agendamento de consulta" Selected="True" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Agendamento de vacinação" Value="2"></asp:ListItem>                                
@@ -37,37 +37,36 @@
             </li>
             <li style="margin-bottom:10px;">
                 <asp:Panel ID="PanelVacina" runat="server" Visible="false" Width="50%">
-                    <span style="margin-left:5px;margin-right:5px;">Data da vacinação</span>
+                    <span style="margin-left:5px;margin-right:5px;">Data da vacinação:</span>
                     <asp:TextBox ID="txtDataVacinacao" runat="server" MaxLength="10" Width="150px"></asp:TextBox>
                     <asp:MaskedEditExtender ID="meetxtDataVacinacao" runat="server" TargetControlID="txtDataVacinacao" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                 </asp:Panel>
                 <asp:Panel ID="Panel1" runat="server" Width="50%">
-                    <span style="margin-left:14px;margin-right:5px;">Data da consulta</span>
+                    <span style="margin-left:14px;margin-right:5px;">Data da consulta:</span>
                     <asp:TextBox ID="txtData" runat="server" MaxLength="10" Width="150px"></asp:TextBox>
                     <asp:MaskedEditExtender ID="meetxtData" runat="server" TargetControlID="txtData" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                 </asp:Panel>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:11px;margin-right:5px;">Valor da consulta</span>
+                <span style="margin-left:11px;margin-right:5px;">Valor da consulta:</span>
                 <asp:TextBox ID="txtValor" runat="server" Width="150px" MaxLength="9"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" CultureName="pt-BR" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
+                <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
             </li>
             <li style="margin-bottom:10px;margin-left:5px;">
                 <div style="border:1px solid #b9b9b9; width:25%;">
-                    <span style="margin-left:5px;margin-right:5px; margin-bottom:10px;">Status da consulta</span>
+                    <span style="margin-left:5px;margin-right:5px; margin-bottom:10px;">Status da consulta:</span>
                     <asp:RadioButtonList ID="rblStatus" runat="server" Enabled="False" Width="150px">
                         <asp:ListItem Text="Agendada" Selected="True" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Desmarcada" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Finalizada" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
                 </div>
-            </li>
-            
-        </ul>
+             </li>
+            </ul>
         </div>                        
         <asp:Panel ID="pnlAnimal" Visible="false" runat="server" Width="100%">
             <div style="width:100%; margin:20px 0 5px 15%;">
-                <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Consultas agendadas para este animal</span></b>
+                <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Consultas agendadas para este animal:</span></b>
             </div>
             <div class="scroll" style="width:70%; margin-left:15%; margin-top:10px;">
             <asp:GridView ID="gdvAnimal" runat="server" AutoGenerateColumns="false" HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="false">
