@@ -195,20 +195,24 @@ namespace WebUI
             {
                 foreach (GridViewRow linha in grProds.Rows)
                 {
-                    int id = Convert.ToInt32(linha.Cells[1].Text);
+                    if (linha.Visible != false)
+                    {
 
-                    produto = produtoBuss.ObterProdutoPorId(id);
-                    produto.Quantidade = Convert.ToInt32(linha.Cells[4].Text);
+                        int id = Convert.ToInt32(linha.Cells[1].Text);
 
-                    DataRow _linha = tabela.NewRow();
-                    _linha["id_produto"] = produto.IdProduto;
-                    _linha["nm_produto"] = produto.Nome;
-                    _linha["quant"] = produto.Quantidade.ToString();
-                    _linha["valunit"] = produto.PrecoVenda.ToString();
-                    decimal _valorTotalProduto = (produto.Quantidade * produto.PrecoVenda);
-                    _linha["valor"] = _valorTotalProduto.ToString();
+                        produto = produtoBuss.ObterProdutoPorId(id);
+                        produto.Quantidade = Convert.ToInt32(linha.Cells[4].Text);
 
-                    tabela.Rows.Add(_linha);
+                        DataRow _linha = tabela.NewRow();
+                        _linha["id_produto"] = produto.IdProduto;
+                        _linha["nm_produto"] = produto.Nome;
+                        _linha["quant"] = produto.Quantidade.ToString();
+                        _linha["valunit"] = produto.PrecoVenda.ToString();
+                        decimal _valorTotalProduto = (produto.Quantidade * produto.PrecoVenda);
+                        _linha["valor"] = _valorTotalProduto.ToString();
+
+                        tabela.Rows.Add(_linha);
+                    }
                 }
 
                 produto = produtoBuss.ObterProdutoPorId(idProd);
@@ -537,6 +541,10 @@ namespace WebUI
 
         protected void grProds_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            decimal valorTotal = (decimal)Session["valor"];
+            decimal valorTrue = 0;
+            decimal valorFalse = 0;
+
             if (e.CommandName == "excluir")
             {
                 HtmlTextWriterTag html = new HtmlTextWriterTag();
@@ -552,10 +560,21 @@ namespace WebUI
                 {
                     if (linha.Visible != false)
                     {
-                        valorTotal += Convert.ToDecimal(linha.Cells[5].Text);
+                        valorTrue += Convert.ToDecimal(linha.Cells[5].Text);
                         lblTotal.Text = valorTotal.ToString();
                     }
+
+                    else
+                    {
+                        valorFalse = valorFalse + Convert.ToDecimal(linha.Cells[5].Text);
+                        //lblTotal.Text = valorTotal.ToString();
+                        GridViewRow rw = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                        grProds.DeleteRow(rw.RowIndex);
+                    }
                 }
+
+                valorTotal = valorTotal - valorFalse;
+                lblTotal.Text = valorTotal.ToString();
             }
         }
 
@@ -588,6 +607,11 @@ namespace WebUI
                 grProdutos.DataSource = tabela;
                 grProdutos.DataBind();
             }
+        }
+
+        protected void grProds_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
         }
     }
 }
