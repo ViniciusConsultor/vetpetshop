@@ -32,10 +32,11 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-                lblMsg.Text = "";
                 CarregarConsultas();
                 CarregarVacinacoes();
             }
+            lblMsg.Text = "";
+            
         }
 
         protected void CarregarConsultas()

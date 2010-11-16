@@ -113,11 +113,7 @@
                 </ContentTemplate>
             </asp:TabPanel>        
         </asp:TabContainer>
-        
         <div id="divErros" style="width:95%; margin:5px 0 5px 10px;">
-        <span id="erro1" runat="server" style="display:none;"></span>
-        <span id="erro2" runat="server" style="display:none;"></span>
-        <span style="display:none;"></span>
         <span style="display:block;"><asp:CompareValidator ID="cvtxtDataVacinacao" runat="server" ControlToValidate="txtDataVacinacao" Display="Dynamic" ErrorMessage="Data da vacinação inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator></span>
         <span style="display:block;"><asp:CompareValidator ID="cvtxtDataConsulta" runat="server" ControlToValidate="txtDataConsulta" Display="Dynamic" ErrorMessage="Data da consulta inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator></span>
         </div>
@@ -140,6 +136,7 @@
                     <li style="margin-bottom:10px;">
                         <span style="margin-left:0px;margin-right:5px;">Data da Consulta:</span>
                         <asp:TextBox ID="txtDataConsulta" runat="server" MaxLength="10" Width="150px"></asp:TextBox>
+                        <asp:MaskedEditExtender ID="meetxtDataConsulta" runat="server" TargetControlID="txtDataConsulta" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                     </li>
                     <li style="margin-bottom:10px;">
                         <span style="margin-left:0px;margin-right:3px;">Valor da Consulta:</span>
@@ -158,7 +155,7 @@
                     </li>
                 </ul>
                 <div style="margin:10px 0 5px 35%; width:60%;">
-                    <asp:Button Width="20%" ID="btnAlterar" runat="server" Text="Alterar" onclick="btnAlterar_Click"/>&nbsp;
+                    <asp:Button Width="20%" ID="btnAlterar" runat="server" Text="Alterar" onclick="btnAlterar_Click" />&nbsp;
                     <asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click"/> 
                 </div>
             </div>
@@ -175,7 +172,8 @@
                     </li>
                     <li style="margin-bottom:10px;">
                         <span style="margin-left:0px;margin-right:5px;">Data da Vacinação:</span>
-                        <asp:TextBox ID="txtDataVacinacao" runat="server" MaxLength="10"></asp:TextBox>   
+                        <asp:TextBox ID="txtDataVacinacao" runat="server" MaxLength="10"></asp:TextBox>
+                        <asp:MaskedEditExtender ID="meetxtDataVacinacao" runat="server" TargetControlID="txtDataVacinacao" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>   
                     </li>
                     <li style="margin-bottom:10px;">
                         <span style="margin-left:6px;margin-right:5px;">Valor da Consulta:</span>

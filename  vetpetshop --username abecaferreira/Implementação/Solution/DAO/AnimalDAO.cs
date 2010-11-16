@@ -937,9 +937,7 @@ namespace DAO
 
                 SqlParameter pidUsuario = new SqlParameter("@IdUsuario", SqlDbType.Int);
                 SqlParameter pIdAnimal = new SqlParameter("@IdAnimal", SqlDbType.Int);
-                SqlParameter pValor = new SqlParameter("@Valor", SqlDbType.Decimal);
-                pValor.Precision = 7;
-                pValor.Scale = 2; 
+                SqlParameter pValor = new SqlParameter("@Valor", SqlDbType.Decimal); 
                 SqlParameter pDatConsulta = new SqlParameter("@Data", SqlDbType.SmallDateTime);
                 SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
                 SqlParameter pTipo = new SqlParameter("@Tipo", SqlDbType.Int);
