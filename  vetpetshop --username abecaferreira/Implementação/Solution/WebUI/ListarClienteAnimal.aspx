@@ -2,38 +2,31 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   <h3>
-        Listar Clientes e Animais Cadastrados
+      Listar Clientes e Animais Cadastrados
   </h3>
-  <table width="100%">
-    <tr>
-    <td></td>
-    <td>
-        <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
-    </td>
-    </tr>
-    <tr>
-        <td style="width:6%;">
-            <asp:Label ID="lblBusca" runat="server" Text="Nome" Font-Bold="true"></asp:Label>
-        </td>
-        <td style="width:20%;">
-            <asp:TextBox ID="txtBusca" runat="server" Width="100%"></asp:TextBox> 
-        </td>
-        <td style="width:1%;"></td>
-        <td>
-            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" />
-        </td>
-     </tr>
-     <tr>
-     <td><br /></td>
-     </tr>
-  </table>
+  <div style="width:100%;margin: 10px 10px 10px 20px;">
+    <ul>
+        <li>
+            <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>          
+        </li>
+    </ul>    
+  </div>
+  <div style="margin: 10px 10px 10px 20px; width:95%;">
+        <ul style="margin-top:10px;">
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:0px;margin-right:10px;">Nome:</span> 
+                <asp:TextBox ID="txtBusca" runat="server" Width="200px"></asp:TextBox>
+                &nbsp;&nbsp;&nbsp;<asp:Button Width="10%" ID="BtnBuscar" runat="server" Text="Buscar" />
+            </li>
+        </ul>
+                   
   <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1">
   <asp:TabPanel ID="tabPanel1" runat="server">
   <HeaderTemplate>
     <b>Clientes</b>
   </HeaderTemplate>
   <ContentTemplate>
-    <div id="divClientes" class="scroll">
+    <div id="divClientes" class="scroll" style="margin: 10px 0 10px 0;">
     <center><asp:Label ID="lblRegistrosClientes" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                 SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
@@ -42,8 +35,8 @@
                         DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-            <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" PageSize="15" Width="100%" onrowcommand="grClientes_RowCommand">
+            <asp:GridView ID="grClientes" runat="server" AllowPaging="false" 
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" Width="100%" onrowcommand="grClientes_RowCommand">
                 <Columns>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
@@ -130,7 +123,7 @@
     <b>Animais</b>
   </HeaderTemplate>
   <ContentTemplate>
-        <div id="divAnimais" class="scroll">
+        <div id="divAnimais" class="scroll" style="margin: 10px 0 10px 0;">
         <center><asp:Label ID="lblRegistrosAnimais" runat="server" Visible="False" 
                 Font-Bold="True"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
@@ -202,5 +195,7 @@
         </div>
   </ContentTemplate>
   </asp:TabPanel>
-  </asp:TabContainer> 
+  </asp:TabContainer>
+  </div>
+   
  </asp:Content>
