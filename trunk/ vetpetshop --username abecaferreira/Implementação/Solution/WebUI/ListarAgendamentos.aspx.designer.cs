@@ -59,24 +59,6 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.GridView gdvVacinacoes;
         
         /// <summary>
-        /// erro1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro1;
-        
-        /// <summary>
-        /// erro2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro2;
-        
-        /// <summary>
         /// cvtxtDataVacinacao control.
         /// </summary>
         /// <remarks>
@@ -138,6 +120,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDataConsulta;
+        
+        /// <summary>
+        /// meetxtDataConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtDataConsulta;
         
         /// <summary>
         /// txtValor control.
@@ -219,6 +210,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDataVacinacao;
+        
+        /// <summary>
+        /// meetxtDataVacinacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtDataVacinacao;
         
         /// <summary>
         /// txtValorVacina control.
