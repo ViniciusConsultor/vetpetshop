@@ -3,34 +3,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3>
     Registrar Pagamento de Consultas
-</h3>
-<table width="100%">
-    <tr>
-    <td></td>
-    <td>
-    </td>
-    </tr>
-    <tr>
-        <td style="width:6%;">
-            <asp:Label ID="lblBusca" runat="server" Text="Nome" Font-Bold="true"></asp:Label>
-        </td>
-        <td style="width:20%;">
-            <asp:TextBox ID="txtBusca" runat="server" Width="100%"></asp:TextBox>
-        </td>
-        <td style="width:1%;"></td>
-        <td>
-            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" 
-                onclick="BtnBuscar_Click" />
-        </td>
-     </tr>
-     <tr>
-     <td><br /></td>
-     </tr>
-</table>
-<p><asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label></p>
+    </h3>
+    <div style="width:100%;margin: 10px 10px 10px 20px;">
+        <ul>
+            <li>
+                <asp:Label ID="lblMsg" runat="server" Font-Bold="true" ForeColor="red"></asp:Label>
+            </li>
+        </ul>    
+    </div>
+    <div style="margin: 10px 10px 10px 20px; width:95%;">
+        <ul style="margin-top:10px;">
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:0px;margin-right:10px;">Nome:</span>         
+                <asp:TextBox ID="txtBusca" runat="server" Width="250px" MaxLength="50"></asp:TextBox>
+                &nbsp;&nbsp;&nbsp;<asp:Button Width="10%" ID="BtnBuscar" runat="server" Text="Buscar" onclick="BtnBuscar_Click" />
+            </li>
+        </ul>
+        
 <center><asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
-<div class="scroll">
-    <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="True" 
+<div class="scroll" style="margin: 10px 0 10px 0;">
+    <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="false" 
         AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
         <Columns>
         <asp:TemplateField>
@@ -72,53 +64,47 @@
         <HeaderStyle BackColor="DarkBlue" />
         </asp:GridView>
     </div>
-    <br /> 
+    
     <asp:Panel runat="server" ID="pnPgConsulta" Visible="false">
-    <table>
-    <tr>
-    <td style="width: 112px">
-    Cliente especial? <br />
-    <asp:RadioButtonList ID="rbCliente" runat="server" Width="50px" AutoPostBack="true" 
-            onselectedindexchanged="rbCliente_SelectedIndexChanged">
-    <asp:ListItem Text="Sim" Value="0"></asp:ListItem>
-    <asp:ListItem Text="Não" Value="1" Selected="True"></asp:ListItem>
-    </asp:RadioButtonList>
-    </td> 
-    <td style="width: 200px">Tipo de pagamento:<br />
-    <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="200px" 
-            AutoPostBack="true" 
-            onselectedindexchanged="rbTipoPagamento_SelectedIndexChanged">
-    <asp:ListItem Text="Dinheiro" Value="0"></asp:ListItem>
-    <asp:ListItem Text="Cartão de crédito" Value="1"></asp:ListItem>
-    <asp:ListItem Text="Cheque" Value="2"></asp:ListItem>
-    </asp:RadioButtonList>
-    </td>
-    <td>
-        <asp:Label ID="lblCli" Text="Nome Cliente:" runat="server" Visible="false"></asp:Label>
-        <asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="250px" 
-            Visible="false" AutoPostBack="true" 
-            onselectedindexchanged="ddlClienteEspecial_SelectedIndexChanged"></asp:DropDownList><br /><br /><br />
-            <asp:Label ID="lblDesconto" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>&nbsp;&nbsp;&nbsp;<asp:Label ID="lblTotal" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>
-        <asp:Panel runat="server" ID="espaco" Visible="false">
-        <br />
-        <br />
-        <br />
-        
-        </asp:Panel>
-        <br />
-        <br />
-        <asp:Label ID="lblParcela" Text="Nº Parcelas:" runat="server" Visible="false"></asp:Label>&nbsp;&nbsp;
-        <asp:TextBox runat="server" ID="txtParcelas" Visible="false"></asp:TextBox>
-    </td>
-    </tr>
-    <tr>
-    <td style="width: 112px">
-   <!-- <asp:Button ID="btnEnviar" runat="server" Text="Ok" Width="90px" 
-            onclick="btnEnviar_Click" /> -->
-    <asp:Button ID="btnConfirmar" runat="server" Text="Finalizar Registro" Width="110px" 
-            onclick="btnConfirmar_Click"/>
-    </td>
-    </tr>
-    </table>    
-    </asp:Panel>   
+    <div style="margin: 10px 5px 10px 5px; width:100%;">
+        <ul style="margin-top:10px;">
+            <li style="margin-bottom:10px; margin-left:5px;">
+                <asp:Label ID="lblDesconto" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>
+                &nbsp;
+                <asp:Label ID="lblTotal" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>
+            </li>
+            <li style="margin-bottom:10px; margin-left:5px;">
+                <div style="border:1px solid #b9b9b9; width:20%;">
+                    <span style="margin-left:0px;margin-right:10px;">Cliente especial?</span>
+                    <asp:RadioButtonList ID="rbCliente" runat="server" Width="100%" AutoPostBack="true" onselectedindexchanged="rbCliente_SelectedIndexChanged">
+                    <asp:ListItem Text="Sim" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="Não" Value="1" Selected="True"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+            </li>
+            <li style="margin-bottom:10px; margin-left:5px;">
+                <div style="border:1px solid #b9b9b9; width:20%;">
+                    <span style="margin-left:0px;margin-right:10px;">Tipo de pagamento:</span>
+                    <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="100%" AutoPostBack="true" onselectedindexchanged="rbTipoPagamento_SelectedIndexChanged">
+                        <asp:ListItem Text="Dinheiro" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Cartão de crédito" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Cheque" Value="2"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+            </li>
+            <li style="margin-bottom:10px; margin-left:5px;">
+                <asp:Label ID="lblCli" Text="Nome Cliente:" runat="server" Visible="false"></asp:Label>&nbsp;
+                <asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="450px" Visible="false" AutoPostBack="true" onselectedindexchanged="ddlClienteEspecial_SelectedIndexChanged"></asp:DropDownList>
+            </li>
+            <li style="margin-bottom:10px; margin-left:16px;">
+                <asp:Label ID="lblParcela" Text="Nº Parcelas:" runat="server" Visible="false"></asp:Label>&nbsp;
+                <asp:TextBox runat="server" ID="txtParcelas" Visible="false" Width="100px" MaxLength="3"></asp:TextBox>
+            </li>
+         </ul>
+         <div style="margin: 10px 0px 5px 40%;">
+            <asp:Button ID="btnConfirmar" runat="server" Text="Finalizar" Width="20%" onclick="btnConfirmar_Click"/>
+         </div>
+      </div>                
+     </asp:Panel>
+    </div>  
 </asp:Content>
