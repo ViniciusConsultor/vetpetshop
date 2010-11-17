@@ -328,6 +328,15 @@ h3 {
 	overflow:scroll;
 }
 
+.scrollmini
+{
+	border:1px solid #B8B8B8;
+	clear:right;
+	margin-top:5px;
+	max-height:200px;
+	overflow:scroll;
+}
+
 .escondido
 {
 	display:none;
