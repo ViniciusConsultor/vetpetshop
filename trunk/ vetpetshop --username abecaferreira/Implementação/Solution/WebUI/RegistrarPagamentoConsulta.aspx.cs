@@ -183,7 +183,6 @@ namespace WebUI
                 {
                     lblMsg.Text = "Pagamento registrado com sucesso";
                     pnPgConsulta.Visible = false;
-                    espaco.Visible = false;
                     lblCli.Visible = false;
                     lblParcela.Visible = false;
                     ddlClienteEspecial.SelectedIndex = ddlClienteEspecial.Items.IndexOf(ddlClienteEspecial.Items.FindByValue(""));
@@ -191,7 +190,6 @@ namespace WebUI
                     ddlClienteEspecial.Visible = false;
                     txtParcelas.Visible = false;
                     btnConfirmar.Visible = false;
-                    btnEnviar.Visible = true;
                     rbCliente.SelectedIndex = 1;
                     rbTipoPagamento.SelectedIndex = 2;
 
@@ -218,7 +216,7 @@ namespace WebUI
 
             if (txtParcelas.Visible == true && ddlClienteEspecial.Visible == true)
             {
-                espaco.Visible = true;
+                //espaco.Visible = true;
             }
 
             if (rbCliente.SelectedItem.Value == "1" && rbTipoPagamento.SelectedItem.Value == "0")
@@ -229,7 +227,6 @@ namespace WebUI
             }
             else 
             {
-                btnEnviar.Visible = false;
                 btnConfirmar.Visible = true;
             }
         }
@@ -310,7 +307,7 @@ namespace WebUI
 
             if (txtParcelas.Visible == true && ddlClienteEspecial.Visible == true)
             {
-                espaco.Visible = true;
+                //espaco.Visible = true;
             }
         }
 
