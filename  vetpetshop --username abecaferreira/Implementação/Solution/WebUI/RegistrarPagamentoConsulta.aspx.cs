@@ -59,6 +59,7 @@ namespace WebUI
 
             if (tabelaPreenchida.Rows.Count != 0)
             {
+                divConsultas.Attributes["class"] = "scroll";
                 gdvConsultas.DataSource = tabelaPreenchida;
                 gdvConsultas.DataBind();
             }
@@ -67,6 +68,7 @@ namespace WebUI
                 gdvConsultas.Visible = false;
                 lblRegistros.Visible = true;
                 lblRegistros.Text = "Nenhum registro encontrado.";
+                divConsultas.Attributes["class"] = "escondido";
             }
         }
 
@@ -214,11 +216,6 @@ namespace WebUI
                 txtParcelas.Visible = true;
             }
 
-            if (txtParcelas.Visible == true && ddlClienteEspecial.Visible == true)
-            {
-                //espaco.Visible = true;
-            }
-
             if (rbCliente.SelectedItem.Value == "1" && rbTipoPagamento.SelectedItem.Value == "0")
             {
                 Int32 idConsulta;
@@ -257,7 +254,7 @@ namespace WebUI
             Int32 idConsulta;
             AnimalBuss animalBus = new AnimalBuss();
             idConsulta = Convert.ToInt32(ViewState["hdnCodConsulta"]);
-            lblDesconto.Text = "Total com desconto R$: ";
+            lblDesconto.Text = "Total com desconto: R$";
 
             Consulta consulta = new Consulta();
 

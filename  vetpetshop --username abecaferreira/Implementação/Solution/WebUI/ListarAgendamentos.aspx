@@ -67,7 +67,7 @@
                 </HeaderTemplate>
                 <ContentTemplate>
                 <div class="scroll" style="margin: 10px 0 10px 0;">
-                    <asp:GridView ID="gdvVacinacoes" runat="server" AllowPaging="True" AutoGenerateColumns="False" Width="100%" 
+                    <asp:GridView ID="gdvVacinacoes" runat="server" AllowPaging="false" AutoGenerateColumns="False" Width="100%" 
                         OnRowCommand="gdvVacinacoes_RowCommand" >
                         <Columns>
                             <asp:TemplateField>

@@ -20,10 +20,9 @@
             </li>
         </ul>
         
-<center><asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
-<div class="scroll" style="margin: 10px 0 10px 0;">
-    <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="false" 
-        AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
+<center style=" margin: 20px 0 0 0;"><asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
+<div runat="server" id="divConsultas" class="scroll" style="margin: 10px 0 10px 0;">
+    <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="false" AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
         <Columns>
         <asp:TemplateField>
         <ItemTemplate>
@@ -66,11 +65,13 @@
     </div>
     
     <asp:Panel runat="server" ID="pnPgConsulta" Visible="false">
-    <div style="margin: 10px 5px 10px 5px; width:100%;">
+    <div id="divErros" style="width:100%; margin:10px 0 0 10px;">
+         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtParcelas" ControlToValidate="txtParcelas" runat="server" ErrorMessage="Campo parcelas deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
+    </div>  
+    <div style="margin: 0px 5px 10px 5px; width:100%;">
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px; margin-left:5px;">
                 <asp:Label ID="lblDesconto" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>
-                &nbsp;
                 <asp:Label ID="lblTotal" runat="server" Font-Bold="true" ForeColor="Blue"></asp:Label>
             </li>
             <li style="margin-bottom:10px; margin-left:5px;">

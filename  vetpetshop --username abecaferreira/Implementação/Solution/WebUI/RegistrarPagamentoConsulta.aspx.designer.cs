@@ -50,6 +50,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblRegistros;
         
         /// <summary>
+        /// divConsultas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divConsultas;
+        
+        /// <summary>
         /// gdvConsultas control.
         /// </summary>
         /// <remarks>
@@ -66,6 +75,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnPgConsulta;
+        
+        /// <summary>
+        /// revtxtParcelas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtParcelas;
         
         /// <summary>
         /// lblDesconto control.
