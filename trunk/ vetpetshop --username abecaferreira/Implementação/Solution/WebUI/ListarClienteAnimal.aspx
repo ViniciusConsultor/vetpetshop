@@ -15,11 +15,10 @@
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">
                 <span style="margin-left:0px;margin-right:10px;">Nome:</span> 
-                <asp:TextBox ID="txtBusca" runat="server" Width="200px"></asp:TextBox>
+                <asp:TextBox ID="txtBusca" runat="server" Width="200px" MaxLength="50"></asp:TextBox>
                 &nbsp;&nbsp;&nbsp;<asp:Button Width="10%" ID="BtnBuscar" runat="server" Text="Buscar" />
             </li>
-        </ul>
-                   
+        </ul>   
   <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1">
   <asp:TabPanel ID="tabPanel1" runat="server">
   <HeaderTemplate>
