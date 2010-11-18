@@ -12,13 +12,12 @@ namespace WebUI
 {
     public partial class RecebimentoPedidoDeCompra : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
             int tipoUser = (int)Session["tipoUser"];
 
-            #region Criação de Menu Admin
+            #region Criação de Menu
             if (tipoUser == 1)
             {
                 Menu menu = (Menu)Page.Master.FindControl("Menu1");
@@ -26,15 +25,16 @@ namespace WebUI
                 menu.DataSource = siteAdmin;
                 menu.DataBind();
             }
-            #endregion
-
-            #region Criação de Menu Vend
-            if (tipoUser == 3)
+            else if (tipoUser == 3)
             {
                 Menu menu = (Menu)Page.Master.FindControl("Menu1");
                 SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
                 menu.DataSource = siteAdmin;
                 menu.DataBind();
+            }
+            else 
+            {
+                Response.Redirect("Login.aspx");
             }
             #endregion
 
