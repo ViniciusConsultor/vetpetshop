@@ -325,7 +325,7 @@ h3 {
 	clear:right;
 	margin-top:5px;
 	max-height:350px;
-	overflow:scroll;
+	overflow:auto;
 }
 
 .scrollmini
@@ -334,7 +334,7 @@ h3 {
 	clear:right;
 	margin-top:5px;
 	max-height:200px;
-	overflow:scroll;
+	overflow:auto;
 }
 
 .escondido
