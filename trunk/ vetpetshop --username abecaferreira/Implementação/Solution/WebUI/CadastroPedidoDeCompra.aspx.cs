@@ -34,8 +34,9 @@ namespace WebUI
             string quantidade = Request.Params["quant"];
 
             if (!IsPostBack)
+            {
                 CarregaListaTipoProduto();
-
+            }
         }
 
         private void CarregaListaTipoProduto()
@@ -53,10 +54,16 @@ namespace WebUI
                 ListItem item = new ListItem(grupo.Nome.ToString(), grupo.Id.ToString());
                 ddlTipo.Items.Add(item);
             }
+
         }
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
+            if (lblDescVal.Visible == true)
+            {
+                lblDescVal.Visible = false;
+            }
+            
             grProds.DataSource = null;
             grProds.DataBind();
 
@@ -84,6 +91,12 @@ namespace WebUI
         protected void addProd_Click(object sender, EventArgs e)
         {
             Panel1.Visible = true;
+
+            if (grUsuarios.Rows.Count > 0)
+            {
+               divUsuarios.Attributes["class"] = "scrollmini";
+               grUsuarios.Visible = true;
+            }
         }
 
         protected void Buscar_Click(object sender, EventArgs e)
@@ -96,6 +109,7 @@ namespace WebUI
                 grUsuarios.Visible = true;
                 grUsuarios.DataSource = tabelaPreenchida;
                 grUsuarios.DataBind();
+                divUsuarios.Attributes["class"] = "scrollmini";
             }
             else
             {
@@ -209,6 +223,8 @@ namespace WebUI
                 _linha["valor"] = _valorTotalProduto.ToString();
 
                 tabela.Rows.Add(_linha);
+
+                divProds.Attributes["class"] = "scrollmini";
             }
 
             else
@@ -251,6 +267,7 @@ namespace WebUI
 
 
             grUsuarios.Visible = false;
+            divUsuarios.Attributes["class"] = "escondido";
             grProds.Visible = true;
             grProds.DataSource = tabela;
             grProds.DataBind();
@@ -267,6 +284,7 @@ namespace WebUI
             if (grProds.Rows.Count != 0)
                 btnSalvar.Visible = true;
             lblTotal.Text = valorTotal.ToString();
+            lblDescVal.Visible = true;
 
             Session["valorTotal"] = valorTotal;
 
@@ -318,8 +336,9 @@ namespace WebUI
             addProd.Visible = false;
             btnSalvar.Visible = false;            
 
-            lblMsg.Text = "Nota fiscal cadastrada com sucesso";
+            lblMsg.Text = "Pedido de compra cadastrado com sucesso!";
             btnOk.Enabled = true;
+            divProds.Attributes["class"] = "escondido";
         }
 
         protected void grUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)

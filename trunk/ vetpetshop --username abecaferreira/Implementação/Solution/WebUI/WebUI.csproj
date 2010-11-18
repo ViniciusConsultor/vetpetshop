@@ -68,13 +68,6 @@
     <Compile Include="AgendarConsulta.aspx.designer.cs">
       <DependentUpon>AgendarConsulta.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgendarVacinacao.aspx.cs">
-      <DependentUpon>AgendarVacinacao.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgendarVacinacao.aspx.designer.cs">
-      <DependentUpon>AgendarVacinacao.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CadastroGrupoProduto.aspx.cs">
       <DependentUpon>CadastroGrupoProduto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -269,7 +262,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgendarConsulta.aspx" />
-    <Content Include="AgendarVacinacao.aspx" />
     <Content Include="CadastroGrupoProduto.aspx" />
     <Content Include="CadastroPedidoDeCompra.aspx" />
     <Content Include="CadastroProduto.aspx" />
