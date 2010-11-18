@@ -20,16 +20,27 @@ namespace WebUI
           
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
-            menu.DataSource = siteAdmin;
-            menu.DataBind();
-            #endregion
-
             usuario = (Usuario)Session["User"];
             UsuarioBuss usuarioBuss = new UsuarioBuss();
-            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+            
+            if(usuario.Nome == null)
+                Response.Redirect("Login.aspx");
+            else
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+            #region Criação de Menu
+            if (usuario.TipoUsuario == 1)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            #endregion
 
             lblMsg.Text = "";
 
@@ -80,27 +91,28 @@ namespace WebUI
             #region Validações
             if (ddlTipoUsu.SelectedItem.Text == "Selecione")
             {
-                lblMsg.Text = "Selecione um tipo de usuário";
+                erro1.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Selecione um tipo de usuário";
                 return;
             }
 
-            if (txtNomeUsu.Text == "")
-            {
-                lblMsg.Text = "Preencha o nome de usuário";
-                return;
-            }
+            //if (txtNomeUsu.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o nome de usuário";
+            //    return;
+            //}
 
-            if (txtNomePro.Text == "")
-            {
-                lblMsg.Text = "Preencha o nome do profissional";
-                return;
-            }            
+            //if (txtNomePro.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o nome do profissional";
+            //    return;
+            //}            
 
-            if (txtSenha.Text == "")
-            {
-                lblMsg.Text = "O campo senha deve estar preenchido";
-                return;
-            }
+            //if (txtSenha.Text == "")
+            //{
+            //    lblMsg.Text = "O campo senha deve estar preenchido";
+            //    return;
+            //}
             #endregion
 
             if (ddlTipoUsu.SelectedItem.Value == "Admin")
@@ -141,7 +153,7 @@ namespace WebUI
                 txtNomeUsu.Text = "";
                 txtNomePro.Text = "";
                 txtEmail.Text = "";
-                ddlTipoUsu.SelectedItem.Value = "";
+                ddlTipoUsu.SelectedIndex = 0;
                 ExibeGrid();
             }
 
@@ -264,6 +276,17 @@ namespace WebUI
             //    // This will be the back ground color of the GridView Control
             //    e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='White'");
             //}
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultAdmin.aspx");
+        }
+
+        protected void ddlTipoUsu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTipoUsu.SelectedItem.Value != "")
+                erro1.Attributes["class"] = "escondido";
         }      
     }
 }

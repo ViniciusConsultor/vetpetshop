@@ -16,7 +16,10 @@ namespace WebUI
         {
             if (!IsPostBack)
             {
-               
+                Usuario usuario = new Usuario();
+                usuario = (Usuario)Session["User"];
+                if(usuario != null)
+                    Session.Remove("User");
             }
         }
 
@@ -25,22 +28,21 @@ namespace WebUI
             UsuarioBuss usuarioBus = new UsuarioBuss();
             Usuario usuario = new Usuario();
 
+            //if (txtUsu.Text == "")
+            //{
+            //    lblAviso.Text = "Preencha o campo login";
+            //    return;
+            //}
 
-            if (txtUsu.Text == "")
-            {
-                lblAviso.Text = "Preencha o campo Login";
-                return;
-            }
+            //if (txtSenha.Text == "")
+            //{
+            //    lblAviso.Text = "Preencha o campo senha";
+            //    return;
+            //}
 
-            if (txtSenha.Text == "")
+            if (txtUsu.Text != "" && txtSenhaUsu.Text != "")
             {
-                lblAviso.Text = "Preencha o campo senha";
-                return;
-            }
-
-            if (txtUsu.Text != "" && txtSenha.Text != "")
-            {
-                usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenha.Text);
+                usuario = usuarioBus.EfetuarLogin(txtUsu.Text, txtSenhaUsu.Text);
 
                 if (usuario != null)
                 {

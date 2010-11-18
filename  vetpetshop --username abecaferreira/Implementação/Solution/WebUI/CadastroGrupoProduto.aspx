@@ -22,10 +22,10 @@
             </li>
         </ul>
     </div>
-    <div style="width:100%; margin:20px 0 10px 10px;">
-        <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;"><asp:Label ID="lblLista" runat="server" Font-Bold="true" Text="Lista de grupos cadastrados"></asp:Label></span></b>
+    <div style="width:100%; margin:20px 0 10px 20px;">
+        <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;"><asp:Label ID="lblLista" runat="server" Font-Bold="true" Text="Lista de grupos cadastrados:"></asp:Label></span></b>
     </div>        
-    <div class="scroll" style="width: 80%; margin: 0 0 5px 30px;">
+    <div id="divGrupos" runat="server" class="scroll" style="width: 90%; margin: 0 0 5px 5%;">
         <asp:GridView ID="grGrupos" Width="100%" runat="server" AutoGenerateColumns="false" HeaderStyle-BackColor="DarkBlue" AllowPaging="false" onrowcommand="grGrupos_RowCommand" onrowdatabound="grGrupos_RowDataBound" AlternatingRowStyle-BackColor="LightSteelBlue">
         <Columns>
         <asp:TemplateField>  

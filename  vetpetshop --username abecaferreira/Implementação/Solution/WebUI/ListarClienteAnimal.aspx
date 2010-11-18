@@ -47,7 +47,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdCliente") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton>
+                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdCliente") %>' OnClientClick="return confirm('Deseja excluir o cliente selecionado?');"></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
@@ -145,7 +145,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                     <ItemTemplate>
-                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdAnimal") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');"></asp:LinkButton>
+                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("IdAnimal") %>' OnClientClick="return confirm('Deseja excluir o animal selecionado?');"></asp:LinkButton>
                     </ItemTemplate> 
                         <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
