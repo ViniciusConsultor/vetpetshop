@@ -19,19 +19,30 @@ namespace WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            usuario = (Usuario)Session["User"];
+            UsuarioBuss usuarioBuss = new UsuarioBuss();
+            
+            if(usuario.Nome == null)
+                Response.Redirect("Login.aspx");
+            else
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
             #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
-            menu.DataSource = siteVeterinario;
-            menu.DataBind();
+            if (usuario.TipoUsuario == 2)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
+                menu.DataSource = siteVeterinario;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             #endregion
 
             if (!IsPostBack)
             {
-                usuario = (Usuario)Session["User"];
-                UsuarioBuss usuarioBuss = new UsuarioBuss();
-                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-
                 CarregarConsultas(string.Empty);
                 CarregaClientes();
             }
@@ -306,6 +317,11 @@ namespace WebUI
             {
                 //espaco.Visible = true;
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultVeterinario.aspx");
         }
 
     }
