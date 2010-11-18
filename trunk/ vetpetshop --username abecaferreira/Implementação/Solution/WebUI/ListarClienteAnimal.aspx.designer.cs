@@ -23,6 +23,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
+        /// regtxtBusca control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtBusca;
+        
+        /// <summary>
         /// txtBusca control.
         /// </summary>
         /// <remarks>
@@ -59,6 +68,15 @@ namespace WebUI {
         protected global::AjaxControlToolkit.TabPanel tabPanel1;
         
         /// <summary>
+        /// divClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divClientes;
+        
+        /// <summary>
         /// lblRegistrosClientes control.
         /// </summary>
         /// <remarks>
@@ -93,6 +111,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel tabPanel2;
+        
+        /// <summary>
+        /// divAnimais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAnimais;
         
         /// <summary>
         /// lblRegistrosAnimais control.

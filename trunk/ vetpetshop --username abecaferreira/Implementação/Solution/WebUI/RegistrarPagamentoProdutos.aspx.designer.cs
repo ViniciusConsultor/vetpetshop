@@ -32,6 +32,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// regtxtNome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtNome;
+        
+        /// <summary>
         /// txtNome control.
         /// </summary>
         /// <remarks>
@@ -57,6 +66,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// lblRegistros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegistros;
         
         /// <summary>
         /// lblValor control.
@@ -104,6 +122,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel PanelCliEspecial;
         
         /// <summary>
+        /// revtxtParcelas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtParcelas;
+        
+        /// <summary>
         /// Cliente control.
         /// </summary>
         /// <remarks>
@@ -140,6 +167,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtParcelas;
         
         /// <summary>
+        /// divProds control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divProds;
+        
+        /// <summary>
         /// grProds control.
         /// </summary>
         /// <remarks>
@@ -147,6 +183,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grProds;
+        
+        /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
         /// btnSalvar control.
@@ -165,6 +210,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFim;
+        
+        /// <summary>
+        /// diverro1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl diverro1;
         
         /// <summary>
         /// Panel4 control.
@@ -212,6 +266,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel panel3;
         
         /// <summary>
+        /// revtxtQuant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtQuant;
+        
+        /// <summary>
         /// txtQuant control.
         /// </summary>
         /// <remarks>
@@ -230,6 +293,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Button btnQuant;
         
         /// <summary>
+        /// divLstProds control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLstProds;
+        
+        /// <summary>
         /// grProdutos control.
         /// </summary>
         /// <remarks>
@@ -246,14 +318,5 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button addProd;
-        
-        /// <summary>
-        /// lblRegistros control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegistros;
     }
 }

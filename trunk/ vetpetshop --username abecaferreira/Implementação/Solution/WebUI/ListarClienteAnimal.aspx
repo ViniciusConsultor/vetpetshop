@@ -11,7 +11,10 @@
         </li>
     </ul>    
   </div>
-  <div style="margin: 10px 10px 10px 20px; width:95%;">
+  <div style="width:95%; margin:10px 0 0 20px;">
+    <span style="display:block;"><asp:RegularExpressionValidator ID="regtxtBusca" runat="server" ControlToValidate="txtBusca" Display="Dynamic" ErrorMessage="Campo nome não deve conter caracteres especiais" ValidationExpression="^[. 0-9a-zA-Z ç Ç ã Ã õ Õ Ê ê Â â Ô ô ó Ó ò Ò á à Á À é è È É Í ì í Ì î ú û Ú ù Ùº ª ]+$"></asp:RegularExpressionValidator></span>
+  </div>
+  <div style="margin: 10px 10px 20px 20px; width:95%;">
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">
                 <span style="margin-left:0px;margin-right:10px;">Nome:</span> 
@@ -25,8 +28,8 @@
     <b>Clientes</b>
   </HeaderTemplate>
   <ContentTemplate>
-    <div id="divClientes" class="scroll" style="margin: 10px 0 10px 0;">
-    <center><asp:Label ID="lblRegistrosClientes" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
+    <div id="divClientes" runat="server" class="scroll" style="margin: 10px 0 10px 0;">
+    <center><asp:Label ID="lblRegistrosClientes" runat="server" Text="Registros não encontrados" Visible="false" Font-Bold="true"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                 SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
                 <SelectParameters>
@@ -34,7 +37,7 @@
                         DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-            <asp:GridView ID="grClientes" runat="server" AllowPaging="false" 
+            <asp:GridView ID="grClientes" runat="server" AllowPaging="false"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" Width="100%" onrowcommand="grClientes_RowCommand">
                 <Columns>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center">
@@ -122,9 +125,8 @@
     <b>Animais</b>
   </HeaderTemplate>
   <ContentTemplate>
-        <div id="divAnimais" class="scroll" style="margin: 10px 0 10px 0;">
-        <center><asp:Label ID="lblRegistrosAnimais" runat="server" Visible="False" 
-                Font-Bold="True"></asp:Label></center>
+        <div id="divAnimais" runat="server" class="scroll" style="margin: 10px 0 10px 0;">
+        <center><asp:Label ID="lblRegistrosAnimais" runat="server" Visible="False" Text="Registros não encontrados" Font-Bold="True"></asp:Label></center>
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
                 SelectMethod="ListarAnimaisCadastrados" TypeName="Negocios.AnimalBuss">
                 <SelectParameters>

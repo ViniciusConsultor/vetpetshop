@@ -42,11 +42,11 @@ namespace WebUI
                 #endregion
             }
 
-            if (Convert.ToString(ViewState["hdnMSG"]) != string.Empty) 
+            if (Convert.ToString(ViewState["hdnMSG"]) != string.Empty)
             {
-                lblMsg.Text = Convert.ToString(ViewState["hdnMSG"]); 
+                lblMsg.Text = Convert.ToString(ViewState["hdnMSG"]);
             }
-            
+
         }
 
         protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -130,10 +130,9 @@ namespace WebUI
                 }
                 
                 e.Row.Cells[2].Text = BuscarProprietarioAnimal(Convert.ToInt32(e.Row.Cells[2].Text)); 
-                
             }
+
         }
-    
 
         protected string BuscarProprietarioAnimal(int IdCliente)
         {
