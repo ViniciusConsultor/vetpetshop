@@ -267,7 +267,7 @@ namespace WebUI
             }
 
 
-            if (grProds.Rows.Count != 0)
+            if (grProds.Rows.Count > 0)
             {
                 divProds.Attributes["class"] = "scrollmini";
                 lblTotal.Visible = true;
@@ -369,7 +369,7 @@ namespace WebUI
             else
             {
                 Panel4.Visible = false;
-                PanelCliEspecial.Visible = true;
+                PanelCliEspecial.Visible = false;
                 Cliente.Visible = false;
                 ddlClienteEspecial.Visible = false;
                 if (rbTipoPagamento.SelectedItem.Value == "0")
@@ -381,6 +381,7 @@ namespace WebUI
                 {
                     txtParcelas.Visible = true;
                     lblParcelas.Visible = true;
+                    PanelCliEspecial.Visible = true;
                 }
 
                 Label1.Text = "";

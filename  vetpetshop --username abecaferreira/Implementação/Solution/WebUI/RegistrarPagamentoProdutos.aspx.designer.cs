@@ -167,6 +167,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtParcelas;
         
         /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
+        
+        /// <summary>
         /// divProds control.
         /// </summary>
         /// <remarks>
@@ -176,13 +185,13 @@ namespace WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divProds;
         
         /// <summary>
-        /// Panel2 control.
+        /// grProds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.GridView grProds;
         
         /// <summary>
         /// btnSalvar control.
@@ -228,15 +237,6 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbCliente;
-        
-        /// <summary>
-        /// grProds control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grProds;
         
         /// <summary>
         /// rbTipoPagamento control.

@@ -10,6 +10,9 @@
             </li>
         </ul>    
     </div>
+    <div style="width:95%; margin:10px 0 0 20px;">
+        <span style="display:block;"><asp:RegularExpressionValidator ID="regtxtNomeGrupo" runat="server" ControlToValidate="txtNomeGrupo" Display="Dynamic" ErrorMessage="Campo nome não deve conter caracteres especiais" ValidationExpression="^[. 0-9a-zA-Z ç Ç ã Ã õ Õ Ê ê Â â Ô ô ó Ó ò Ò á à Á À é è È É Í ì í Ì î ú û Ú ù Ùº ª ]+$"></asp:RegularExpressionValidator></span>
+    </div>
     <div style="margin: 10px 10px 10px 20px; width:95%;">
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">

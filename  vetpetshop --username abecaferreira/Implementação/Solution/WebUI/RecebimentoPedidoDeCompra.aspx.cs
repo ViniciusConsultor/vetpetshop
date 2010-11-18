@@ -91,12 +91,12 @@ namespace WebUI
             if (nota.Status == 1)
             {
                 ddlStatus.Items.Add(li1);
-                btnOk.Text = "Registrar Recebimento de Pedido";
+                btnOk.Text = "Confirmar Recebimento do Pedido";
             }
             else
             {
                 ddlStatus.Items.Add(li0);
-                btnOk.Text = "Alterar Status de Pedido"; 
+                btnOk.Text = "Alterar Status do Pedido"; 
             }
 
             //ddlStatus.Items.Add(li0);

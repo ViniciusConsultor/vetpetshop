@@ -58,9 +58,54 @@
         </div>
         </asp:Panel>
      
-<div id="divProds" runat="server" class="escondido" style="width:98%; margin: 10px 5px 10px 5px;">             
-</div>
-    <asp:Panel ID="Panel2" runat="server" Visible="false">  
+    <asp:Panel ID="Panel2" runat="server" Visible="false">
+    <div id="divProds" runat="server" class="escondido" style="width:98%; margin: 10px 5px 10px 5px;">             
+    <asp:GridView ID="grProds" runat="server" AllowPaging="false" 
+            AlternatingRowStyle-BackColor="LightSteelBlue" AutoGenerateColumns="false" 
+            HeaderStyle-BackColor="DarkBlue" onrowcommand="grProds_RowCommand" 
+            onrowdeleting="grProds_RowDeleting" Visible="false" Width="100%">
+            <Columns>
+                <asp:TemplateField>
+                    <HeaderStyle Width="5%" />
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lexcluir" runat="server" 
+                            CommandArgument='<%# Eval("id_produto") %>' CommandName="excluir" 
+                            Text="Excluir"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" 
+                    HeaderStyle-ForeColor="White" HeaderText="Código">
+                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" />
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:BoundField DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" 
+                    HeaderStyle-ForeColor="White" HeaderText="Nome do Produto" 
+                    ItemStyle-HorizontalAlign="Center">
+                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" />
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:BoundField DataField="valunit" HeaderStyle-BackColor="DarkBlue" 
+                    HeaderStyle-ForeColor="White" HeaderText="Preço Unitário" 
+                    ItemStyle-HorizontalAlign="Center">
+                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" />
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:BoundField DataField="quant" HeaderStyle-BackColor="DarkBlue" 
+                    HeaderStyle-ForeColor="White" HeaderText="Quantidade" 
+                    ItemStyle-HorizontalAlign="Center">
+                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" />
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:BoundField DataField="valor" HeaderStyle-BackColor="DarkBlue" 
+                    HeaderStyle-ForeColor="White" HeaderText="Subtotal" 
+                    ItemStyle-HorizontalAlign="Center">
+                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" />
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+            </Columns>
+            <HeaderStyle BackColor="DarkBlue" />
+        </asp:GridView>
+    </div>
     <div style="width:100%; margin: 10px 0 10px 5px;">              
          <asp:Button Width="20%" ID="btnSalvar" runat="server" Text="Opções de Compra" Visible="false" onclick="btnSalvar_Click" />&nbsp;&nbsp;
          <asp:Button Width="20%" ID="btnFim" runat="server" Text="Finalizar Compra" Visible="false" onclick="btnFim_Click" />
@@ -80,51 +125,6 @@
                         <asp:ListItem Text="Sim" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Não" Value="1" Selected="True"></asp:ListItem>
                         </asp:RadioButtonList>
-                        <asp:GridView ID="grProds" runat="server" AllowPaging="false" 
-                            AlternatingRowStyle-BackColor="LightSteelBlue" AutoGenerateColumns="false" 
-                            HeaderStyle-BackColor="DarkBlue" onrowcommand="grProds_RowCommand" 
-                            onrowdeleting="grProds_RowDeleting" Visible="false" Width="100%">
-                            <Columns>
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="5%" />
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lexcluir" runat="server" 
-                                            CommandArgument='<%# Eval("id_produto") %>' CommandName="excluir" 
-                                            Text="Excluir"></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="id_produto" HeaderStyle-BackColor="DarkBlue" 
-                                    HeaderStyle-ForeColor="White" HeaderText="Código">
-                                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="nm_produto" HeaderStyle-BackColor="DarkBlue" 
-                                    HeaderStyle-ForeColor="White" HeaderText="Nome do Produto" 
-                                    ItemStyle-HorizontalAlign="Center">
-                                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="valunit" HeaderStyle-BackColor="DarkBlue" 
-                                    HeaderStyle-ForeColor="White" HeaderText="Preço Unitário" 
-                                    ItemStyle-HorizontalAlign="Center">
-                                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="20%" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="quant" HeaderStyle-BackColor="DarkBlue" 
-                                    HeaderStyle-ForeColor="White" HeaderText="Quantidade" 
-                                    ItemStyle-HorizontalAlign="Center">
-                                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="15%" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="valor" HeaderStyle-BackColor="DarkBlue" 
-                                    HeaderStyle-ForeColor="White" HeaderText="Subtotal" 
-                                    ItemStyle-HorizontalAlign="Center">
-                                    <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                            </Columns>
-                            <HeaderStyle BackColor="DarkBlue" />
-                        </asp:GridView>
                     </div>
                 </li>
                 <li style="margin-bottom:10px; margin-left:5px;">
@@ -140,7 +140,7 @@
             </ul>
             <div>
             <center>
-                <asp:Button ID="btnEnviar" runat="server" Text="Confirmar" onclick="btnEnviar_Click1" Width="20%" />
+                <asp:Button ID="btnEnviar" runat="server" Text="Confirmar" onclick="btnEnviar_Click1" Width="20%" />&nbsp;&nbsp;
                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="20%" onclick="btnCancelar_Click" />
             </center>
             </div>
