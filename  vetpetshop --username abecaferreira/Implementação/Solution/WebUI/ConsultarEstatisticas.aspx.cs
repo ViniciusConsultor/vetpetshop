@@ -16,17 +16,21 @@ namespace WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
-            menu.DataSource = siteAdmin;
-            menu.DataBind();
-            #endregion
-
             usuario = (Usuario)Session["User"];
-            UsuarioBuss usuarioBuss = new UsuarioBuss();
-            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-            
+
+            #region Criação de Menu
+            if (usuario.TipoUsuario == 1)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            #endregion
         }
 
         protected void ddlPetOpcoes_SelectedIndexChanged(object sender, EventArgs e)

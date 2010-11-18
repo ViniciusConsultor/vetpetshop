@@ -26,7 +26,7 @@ namespace WebUI
                 menu.DataSource = siteAdmin;
                 menu.DataBind();
             }
-            if (usuario.TipoUsuario == 3)
+            else if (usuario.TipoUsuario == 3)
             {
                 Menu menu = (Menu)Page.Master.FindControl("Menu1");
                 SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");

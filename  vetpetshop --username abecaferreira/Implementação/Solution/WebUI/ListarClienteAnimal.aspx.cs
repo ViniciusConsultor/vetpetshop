@@ -21,7 +21,11 @@ namespace WebUI
             {
                 usuario = (Usuario)Session["User"];
                 UsuarioBuss usuarioBuss = new UsuarioBuss();
-                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+                if (usuario == null)
+                    Response.Redirect("Login.aspx");
+                else
+                    usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
 
                 #region Criação de Menu
                 if (usuario.TipoUsuario == 2)
@@ -31,13 +35,17 @@ namespace WebUI
                     menu.DataSource = siteVeterinario;
                     menu.DataBind();
                 }
-                if (usuario.TipoUsuario == 3)
+                else if (usuario.TipoUsuario == 3)
                 {
                     Menu menu = (Menu)Page.Master.FindControl("Menu1");
                     SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
                     menu.DataSource = siteVendedor;
                     menu.DataBind();
 
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
                 }
                 #endregion
             }

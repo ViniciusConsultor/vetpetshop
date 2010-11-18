@@ -11,12 +11,8 @@ namespace WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Redirect("Login.aspx");
         }
 
-        protected void btnOk_Click(object sender, EventArgs e)
-        {
-            txtNome.Text = "Bruno Abecassis Ferreira";
-        }
     }
 }

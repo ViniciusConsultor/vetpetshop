@@ -37,7 +37,7 @@ namespace WebUI
                 menu.DataSource = siteVeterinario;
                 menu.DataBind();
             }
-            if (usuario.TipoUsuario == 3)
+            else if (usuario.TipoUsuario == 3)
             {
                 Menu menu = (Menu)Page.Master.FindControl("Menu1");
                 SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");

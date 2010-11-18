@@ -23,7 +23,7 @@ namespace WebUI
             usuario = (Usuario)Session["User"];
             UsuarioBuss usuarioBuss = new UsuarioBuss();
 
-            if (usuario.Nome == null)
+            if (usuario == null)
                 Response.Redirect("Login.aspx");
             else
                 usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);

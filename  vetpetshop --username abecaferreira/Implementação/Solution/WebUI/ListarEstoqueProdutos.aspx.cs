@@ -12,16 +12,25 @@ namespace WebUI
 {
     public partial class ListarEstoqueProdutos : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu Admin
+            usuario = (Usuario)Session["User"];
 
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
-            menu.DataSource = siteAdmin;
-            menu.DataBind();
+            #region Criação de Menu
+            if (usuario.TipoUsuario == 1)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             #endregion
-
 
             if (!IsPostBack)
             {
