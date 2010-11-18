@@ -14,6 +14,10 @@ namespace WebUI
         {
             Usuario usuario = (Usuario)Session["Usuario"];
             Session["User"] = usuario;
+
+            if (usuario == null)
+                Response.Redirect("Login.aspx");
+
             if (usuario.TipoUsuario != 3)
                 Response.Redirect("Login.aspx");
         }

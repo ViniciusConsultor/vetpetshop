@@ -20,12 +20,9 @@ namespace WebUI
             if (!IsPostBack)
             {
                 usuario = (Usuario)Session["User"];
-                UsuarioBuss usuarioBuss = new UsuarioBuss();
 
                 if (usuario == null)
                     Response.Redirect("Login.aspx");
-                else
-                    usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
 
                 #region Criação de Menu
                 if (usuario.TipoUsuario == 2)
