@@ -14,7 +14,7 @@
         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtRG" ControlToValidate="txtRG" runat="server" ErrorMessage="Campo RG deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtTel" runat="server" ControlToValidate="txtTel" ErrorMessage="Campo telefone deve conter 10 caracteres" ValidationExpression="^[\s\S]{10,10}$" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtCel" runat="server" ControlToValidate="txtCel" ErrorMessage="Campo celular deve conter 10 caracteres" ValidationExpression="^[\s\S]{10,10}$" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator></span>  
-        <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="E-mail inválido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
+        <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Campo E-mail inválido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtCEP" ControlToValidate="txtCEP" runat="server" ErrorMessage="Campo CEP deve conter 8 dígitos" Display="Dynamic" ValidationExpression="^[\s\S]{8,8}$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
     </div>
     <div style="width:87%;margin:5px 0 5px 30px;">
@@ -71,8 +71,10 @@
         </ul>
     </div>
     
-    <div style="width:50%; margin:5px 0 5px 280px;">
-        <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" Text="Adicionar Animal" />
+    <div style="width:87%;margin:5px 0 5px 30px;">
+        <center>
+            <asp:Button ID="btnNovoPet" runat="server" onclick="btnNovoPet_Click" Text="Adicionar Animal" />
+        </center>
     </div>
     
     <asp:Panel ID="pnlPet" runat="server" Visible="False" Width="90%">
@@ -119,12 +121,15 @@
     <div style="width:89%; margin:20px 0 10px 10px;">
         <b><span style="margin-left:10px;margin-right:5px; font-size:x-small; font-style:normal;">* Preenchimento Obrigatório</span></b>
     </div>
-    <div style="width:55%; margin:5px 0 5px 250px;">
+    <div style="width:87%;margin:5px 0 5px 30px;">
+    <center>
         <asp:Button Width="20%" ID="btnSalvar" runat="server" Text="Salvar" onclick="btnSalvar_Click" />
         <asp:Button Width="20%" ID="btnSalvar2" runat="server" Text="Salvar" onclick="btnSalvar2_Click" Visible="false" />
         <asp:Button Width="20%" ID="BtnUpdateCli" runat="server" Text="Salvar" onclick="BtnUpdateCli_Click" Visible="false" />
         <asp:Button Width="20%" ID="BtnUpdateAni" runat="server" Text="Salvar" onclick="BtnUpdateAni_Click" Visible="false" />
-        &nbsp;<asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" OnClientClick="history.back();" />
+        &nbsp;<asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" 
+            onclick="btnCancelar_Click" />
+    </center>    
     </div>                        
     
     <asp:Button ID="ButtonPp" runat="server" style="display:none" />

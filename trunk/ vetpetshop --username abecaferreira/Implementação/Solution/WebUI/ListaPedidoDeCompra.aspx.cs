@@ -16,10 +16,9 @@ namespace WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             usuario = (Usuario)Session["User"];
-            
-            #region Criação de Menu Admin
+
+            #region Criação de Menu
             if (usuario.TipoUsuario == 1)
             {
                 Menu menu = (Menu)Page.Master.FindControl("Menu1");
@@ -27,15 +26,16 @@ namespace WebUI
                 menu.DataSource = siteAdmin;
                 menu.DataBind();
             }
-            #endregion
-
-            #region Criação de Menu Vend
             if (usuario.TipoUsuario == 3)
             {
                 Menu menu = (Menu)Page.Master.FindControl("Menu1");
                 SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
                 menu.DataSource = siteAdmin;
                 menu.DataBind();
+            }
+            else 
+            {
+                Response.Redirect("Login.aspx");
             }
             #endregion
 
@@ -70,9 +70,16 @@ namespace WebUI
             tabela = MontarTabela();
             tabelaPreenchida = notaBuss.ListarPedidosDeCompras(tabela);
 
-
-            grPedidos.DataSource = tabelaPreenchida;
-            grPedidos.DataBind();
+            if (tabelaPreenchida.Rows.Count > 0)
+            {
+                grPedidos.DataSource = tabelaPreenchida;
+                grPedidos.DataBind();
+            }
+            else 
+            {
+                lblRegistros.Visible = true;
+                divPedidos.Attributes["class"] = "escondido";
+            }
         }
 
         protected void grPedidos_RowCommand(object sender, GridViewCommandEventArgs e)

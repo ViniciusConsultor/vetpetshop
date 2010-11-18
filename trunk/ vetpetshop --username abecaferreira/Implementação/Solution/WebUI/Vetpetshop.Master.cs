@@ -17,8 +17,6 @@ namespace WebUI
         {
             usuario = (Usuario)Session["User"];
 
-            //string hora = DateTime.Now.ToLongTimeString();
-
             if (usuario == null)
                 Response.Redirect("Login.aspx");
             else

@@ -25,7 +25,11 @@ namespace WebUI
             {
                 usuario = (Usuario)Session["User"];
                 UsuarioBuss usuarioBuss = new UsuarioBuss();
-                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+                if (usuario == null)
+                    Response.Redirect("Login.aspx");
+                else
+                    usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
 
                 #region Criação de Menu
                 if (usuario.TipoUsuario == 2)
@@ -41,8 +45,12 @@ namespace WebUI
                     SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
                     menu.DataSource = siteVendedor;
                     menu.DataBind();
-
                 }
+                else 
+                {
+                    Response.Redirect("Login.aspx");
+                }
+
                 #endregion
 
                 CarregaListaTipoAnimal();
@@ -700,6 +708,17 @@ namespace WebUI
         protected void btnSalvar2_Click(object sender, EventArgs e)
         {
             RealizaCadastroAnimal();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            usuario = (Usuario)Session["User"];
+
+            if (usuario.TipoUsuario == 2)
+                Response.Redirect("DefaultVeterinario.aspx");
+
+            if (usuario.TipoUsuario == 3)
+                Response.Redirect("DefaultVendedor.aspx");
         }
 
     }
