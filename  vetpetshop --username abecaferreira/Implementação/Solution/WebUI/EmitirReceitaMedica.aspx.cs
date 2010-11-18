@@ -21,16 +21,29 @@ namespace WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteVet = (SiteMapDataSource)Page.Master.FindControl("vet");
-            menu.DataSource = siteVet;
-            menu.DataBind();
-            #endregion
 
             usuario = (Usuario)Session["User"];
             UsuarioBuss usuarioBuss = new UsuarioBuss();
-            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+            
+            if (usuario == null)
+                Response.Redirect("Login.aspx");
+            else
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+            #region Criação de Menu
+            if (usuario.TipoUsuario == 2)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteVet = (SiteMapDataSource)Page.Master.FindControl("vet");
+                menu.DataSource = siteVet;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            #endregion
+
                        
         }
 

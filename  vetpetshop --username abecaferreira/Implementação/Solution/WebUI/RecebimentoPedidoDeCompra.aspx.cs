@@ -17,6 +17,9 @@ namespace WebUI
 
             int tipoUser = (int)Session["tipoUser"];
 
+            if (tipoUser == null)
+                Response.Redirect("Login.aspx");
+
             #region Criação de Menu
             if (tipoUser == 1)
             {
