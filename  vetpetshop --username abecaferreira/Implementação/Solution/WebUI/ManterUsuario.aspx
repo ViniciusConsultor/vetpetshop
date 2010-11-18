@@ -63,7 +63,7 @@
     <div style="width:100%; margin:15px 0 10px 20px;">
         <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;"><asp:Label ID="lblCadastrados" runat="server" Font-Bold="true" Text="Lista de usuários cadastrados:"></asp:Label></span></b>
     </div>
-    <div class="scroll" style="width: 90%; margin: 5px 0 20px 5%;">
+    <div class="scrollmini" style="width: 90%; margin: 5px 0 20px 5%;">
         <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                     HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="false" RowStyle-Height="20px" 
                     onrowcommand="grUsuarios_RowCommand" AlternatingRowStyle-BackColor="LightSteelBlue" 

@@ -2,13 +2,13 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="" title="Administrador"  description="">
         <siteMapNode url="~/DefaultAdmin.aspx" title="Principal"  description="Pagina inicial do admin" />
-        <siteMapNode url="~/ManterUsuario.aspx" title="Manter Usuário"  description="" />
-        <siteMapNode url="~/CadastroGrupoProduto.aspx" title="Manter Grupo de Produto"  description="" />
-        <siteMapNode url="~/CadastroProduto.aspx" title="Manter Cadastro Produto"  description="" />
-        <siteMapNode url="~/CadastroPedidoDeCompra.aspx" title="Cadastrar Pedido de Compra"  description="" />
-        <siteMapNode url="~/ListaPedidoDeCompra.aspx" title="Listar Pedidos de Compras"  description="" />
-        <siteMapNode url="~/ListarEstoqueProdutos.aspx" title="Listar Estoque"  description="" />
-        <siteMapNode url="~/ConsultarEstatisticas.aspx" title="Consultar Estatísticas"  description="" />
-        <siteMapNode url="~/ControlarFinancas.aspx" title="Controlar Finanças"  description="" />
+        <siteMapNode url="~/ManterUsuario.aspx" title="Manter Usuário"  description="Manter cadastro de usuários" />
+        <siteMapNode url="~/CadastroGrupoProduto.aspx" title="Manter Grupo de Produto"  description="Manter cadastro de grupo de produtos" />
+        <siteMapNode url="~/CadastroProduto.aspx" title="Manter Cadastro Produto"  description="Manter cadastro de produtos" />
+        <siteMapNode url="~/CadastroPedidoDeCompra.aspx" title="Cadastrar Pedido de Compra"  description="Cadastrar pedidos de compra" />
+        <siteMapNode url="~/ListaPedidoDeCompra.aspx" title="Listar Pedidos de Compra"  description="Listar pedidos de compras cadastrados" />
+        <siteMapNode url="~/ListarEstoqueProdutos.aspx" title="Listar Estoque"  description="Listar estoque de produtos" />
+        <siteMapNode url="~/ConsultarEstatisticas.aspx" title="Consultar Estatísticas"  description="Consultar estatísticas" />
+        <siteMapNode url="~/ControlarFinancas.aspx" title="Controlar Finanças"  description="Controlar finanças" />
     </siteMapNode>
 </siteMap>
