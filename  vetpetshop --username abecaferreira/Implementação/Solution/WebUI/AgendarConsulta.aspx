@@ -102,9 +102,11 @@
             </asp:GridView>
         </div>        
         </asp:Panel>    
-        <div style="width:60%; margin:5px 0 5px 250px;">
+        <div style="width:100%; margin:5px 0 5px 10px;">
+            <center>
             <asp:Button Width="20%" ID="btnAgendar" runat="server" Text="Agendar" onclick="btnAgendar_Click" />
             &nbsp;
             <asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click" />
+            </center>
         </div>
 </asp:Content>

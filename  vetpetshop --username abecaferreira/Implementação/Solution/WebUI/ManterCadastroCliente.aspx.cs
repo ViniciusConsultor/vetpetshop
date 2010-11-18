@@ -21,37 +21,39 @@ namespace WebUI
         {
             lblMsg.Text = "";
 
+            usuario = (Usuario)Session["User"];
+            UsuarioBuss usuarioBuss = new UsuarioBuss();
+
+            if (usuario == null)
+                Response.Redirect("Login.aspx");
+            else
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+            #region Criação de Menu
+            if (usuario.TipoUsuario == 2)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
+                menu.DataSource = siteVeterinario;
+                menu.DataBind();
+            }
+            if (usuario.TipoUsuario == 3)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
+                menu.DataSource = siteVendedor;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            #endregion
+
             if (!IsPostBack)
             {
-                usuario = (Usuario)Session["User"];
-                UsuarioBuss usuarioBuss = new UsuarioBuss();
-
-                if (usuario == null)
-                    Response.Redirect("Login.aspx");
-                else
-                    usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
-
-                #region Criação de Menu
-                if (usuario.TipoUsuario == 2)
-                {
-                    Menu menu = (Menu)Page.Master.FindControl("Menu1");
-                    SiteMapDataSource siteVeterinario = (SiteMapDataSource)Page.Master.FindControl("vet");
-                    menu.DataSource = siteVeterinario;
-                    menu.DataBind();
-                }
-                if (usuario.TipoUsuario == 3)
-                {
-                    Menu menu = (Menu)Page.Master.FindControl("Menu1");
-                    SiteMapDataSource siteVendedor = (SiteMapDataSource)Page.Master.FindControl("vend");
-                    menu.DataSource = siteVendedor;
-                    menu.DataBind();
-                }
-                else 
-                {
-                    Response.Redirect("Login.aspx");
-                }
-
-                #endregion
+                
 
                 CarregaListaTipoAnimal();
 

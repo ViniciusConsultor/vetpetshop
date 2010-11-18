@@ -4,14 +4,14 @@
     <h3>
         Listar Agendamentos
     </h3>
-    <div style="margin: 10px 10px 10px 20px; width:95%;">
+    <div style="margin: 10px 10px 20px 20px; width:95%;">
         <asp:TabContainer ID="tabAgendamentos" runat="server" ActiveTabIndex="0"  OnActiveTabChanged="tabAgendamentos_OnActiveTabChanged" AutoPostBack="true" Width="100%">
             <asp:TabPanel ID="tabpnlConsultas" runat="server" OnClientClick="">
                 <HeaderTemplate><b>Consultas</b>
                 </HeaderTemplate> 
                 <ContentTemplate>
                 <div class="scroll" style="margin: 10px 0 10px 0;">
-                <asp:GridView ID="gdvConsultas" runat="server" AutoGenerateColumns="False" 
+                <asp:GridView ID="gdvConsultas" runat="server" AutoGenerateColumns="False" RowStyle-Height="30px"
                         Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
                         <Columns>
                         <asp:TemplateField>
@@ -67,7 +67,7 @@
                 </HeaderTemplate>
                 <ContentTemplate>
                 <div class="scroll" style="margin: 10px 0 10px 0;">
-                    <asp:GridView ID="gdvVacinacoes" runat="server" AllowPaging="false" AutoGenerateColumns="False" Width="100%" 
+                    <asp:GridView ID="gdvVacinacoes" runat="server" AllowPaging="false" AutoGenerateColumns="False" Width="100%" RowStyle-Height="30px"
                         OnRowCommand="gdvVacinacoes_RowCommand" >
                         <Columns>
                             <asp:TemplateField>
