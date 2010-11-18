@@ -37,7 +37,7 @@
                         DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-            <asp:GridView ID="grClientes" runat="server" AllowPaging="false"
+            <asp:GridView ID="grClientes" runat="server" AllowPaging="false" RowStyle-Height="30px"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" Width="100%" onrowcommand="grClientes_RowCommand">
                 <Columns>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center">
@@ -134,7 +134,7 @@
                         DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-            <asp:GridView ID="grAnimais" runat="server" AllowPaging="True"
+            <asp:GridView ID="grAnimais" runat="server" AllowPaging="True" RowStyle-Height="30px"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource2" PageSize="15" Width="100%" OnRowDataBound="grAnimais_RowDataBound"  onrowcommand="grAnimais_RowCommand">
                 <Columns>
                     <asp:TemplateField>
