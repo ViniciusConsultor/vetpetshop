@@ -59,10 +59,8 @@ namespace WebUI
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            if (lblDescVal.Visible == true)
-            {
-                lblDescVal.Visible = false;
-            }
+            
+            lblDescVal.Visible = false;
             
             grProds.DataSource = null;
             grProds.DataBind();

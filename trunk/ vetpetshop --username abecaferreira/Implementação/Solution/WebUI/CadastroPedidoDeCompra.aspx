@@ -78,12 +78,15 @@
     <asp:Panel ID="Panel1" runat="server" Visible="false"> 
         <div style="width:100%; margin:10px 0 10px 25px;">
             <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Busca de Produto</span></b>
-        </div>               
+        </div>
+        <div style="width:100%; margin:10px 0 0 40px;">
+            <span style="display:block;"><asp:RegularExpressionValidator ID="regtxtNome" runat="server" ControlToValidate="txtNome" Display="Dynamic" ErrorMessage="Campo nome não deve conter caracteres especiais" ValidationExpression="^[. 0-9a-zA-Z ç Ç ã Ã õ Õ Ê ê Â â Ô ô ó Ó ò Ò á à Á À é è È É Í ì í Ì î ú û Ú ù Ùº ª ]+$"></asp:RegularExpressionValidator></span>
+        </div>                
         <div style="width:100%;margin: 10px 10px 20px 30px;">
             <ul>
                 <li style="margin-bottom:10px;">
                     <span style="margin-left:10px; margin-right:5px;">Nome:</span>
-                    <asp:TextBox ID="txtNome" runat="server" Width="50%"></asp:TextBox>
+                    <asp:TextBox ID="txtNome" runat="server" Width="50%" MaxLength="50"></asp:TextBox>
                 </li>
                 <li style="margin-bottom:10px;">
                     <span style="margin-left:17px; margin-right:5px;">Tipo:</span>
@@ -99,6 +102,9 @@
             </center>    
         </div>
         <asp:Panel ID="panel3" runat="server" Visible="false">
+            <div id="divErros" style="width:100%; margin:10px 0 0 40px;">
+                 <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtQuant" ControlToValidate="txtQuant" runat="server" ErrorMessage="Campo quantidade deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
+            </div>
             <div style="margin: 15px 5px 10px 35px; width:30%; border:1px solid #b9b9b9;">
                 <ul style="margin-top:10px;">
                     <li style="margin-bottom:10px; margin-left:10px;">
