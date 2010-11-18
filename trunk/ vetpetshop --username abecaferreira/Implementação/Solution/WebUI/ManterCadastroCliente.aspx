@@ -142,7 +142,7 @@
         <h3>
             Lista de Clientes Cadastrados
         </h3>
-        <div id="divPopupClientes">
+        <div id="divPopupClientes" style="width: 100%; max-height: 400px; overflow:scroll;">
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                 SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
                 <SelectParameters>
@@ -150,9 +150,9 @@
                         DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-            <asp:GridView ID="grClientes" runat="server" AllowPaging="True" 
+            <asp:GridView ID="grClientes" runat="server" AllowPaging="false" RowStyle-Height="20px" 
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
-                HeaderStyle-BackColor="DarkBlue" PageSize="15" Width="100%" Font-Size="Small" 
+                HeaderStyle-BackColor="DarkBlue" Width="100%" Font-Size="Small" 
                 onrowcommand="grClientes_RowCommand">
                 <Columns>
                     <asp:TemplateField>
@@ -177,8 +177,7 @@
         </div>
         <div align="center">
             <br />
-            <asp:Button id="btpVoltar" Text="Voltar" runat="server" 
-                 OnClientClick="history.back();"/>
+            <asp:Button id="btpVoltar" Text="Voltar" runat="server" OnClientClick="history.back();"/>
         </div>
         
     </asp:Panel>
