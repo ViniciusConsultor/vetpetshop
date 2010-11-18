@@ -32,6 +32,42 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblAviso;
         
         /// <summary>
+        /// rfvtxtUsu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtUsu;
+        
+        /// <summary>
+        /// revtxtUsu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtUsu;
+        
+        /// <summary>
+        /// rfvtxtSenhaUsu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtSenhaUsu;
+        
+        /// <summary>
+        /// revtxtSenhaUsu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtSenhaUsu;
+        
+        /// <summary>
         /// lblUsu control.
         /// </summary>
         /// <remarks>
@@ -59,13 +95,13 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblSenha;
         
         /// <summary>
-        /// txtSenha control.
+        /// txtSenhaUsu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSenha;
+        protected global::System.Web.UI.WebControls.TextBox txtSenhaUsu;
         
         /// <summary>
         /// btnOk control.

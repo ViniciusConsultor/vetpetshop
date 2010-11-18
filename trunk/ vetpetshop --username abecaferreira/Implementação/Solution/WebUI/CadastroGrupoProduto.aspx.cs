@@ -12,13 +12,24 @@ namespace WebUI
 {
     public partial class CadastroGrupoProduto : System.Web.UI.Page
     {
+        Usuario usuario = new Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            usuario = (Usuario)Session["User"];
+
             #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
-            menu.DataSource = siteAdmin;
-            menu.DataBind();
+            if (usuario.TipoUsuario == 1)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("adm");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             #endregion
 
             if (!IsPostBack)
@@ -46,15 +57,22 @@ namespace WebUI
             DataTable tabela = MontarTabela();
             DataTable _tabelaPreenchida = grupoBuss.ListarGrupos(tabela);
 
-            if (_tabelaPreenchida.Rows.Count != 0)
+            if (_tabelaPreenchida.Rows.Count > 0)
             {
                 grGrupos.Visible = true;
                 grGrupos.DataSource = _tabelaPreenchida;
                 grGrupos.DataBind();
+                divGrupos.Attributes["class"] = "scroll";
+                lblLista.Visible = true;
             }
 
             else
+            {
                 grGrupos.Visible = false;
+                divGrupos.Attributes["class"] = "escondido";
+                lblLista.Visible = false;
+            }
+                
         }
 
         protected void btnOk_Click(object sender, EventArgs e)
