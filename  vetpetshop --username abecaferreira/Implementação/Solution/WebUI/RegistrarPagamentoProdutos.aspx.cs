@@ -36,6 +36,7 @@ namespace WebUI
                 CarregaListaTipoProduto();
                 CarregaClientes();
             }
+
         }
 
         private void CarregaClientes()
@@ -85,12 +86,15 @@ namespace WebUI
                 grProdutos.Visible = true;
                 grProdutos.DataSource = tabelaPreenchida;
                 grProdutos.DataBind();
+                divLstProds.Attributes["class"] = "scrollmini";
+                
             }
             else
             {
                 grProdutos.Visible = false;
                 lblRegistros.Visible = true;
                 lblRegistros.Text = "Nenhum registro encontrado";
+                divLstProds.Attributes["class"] = "escondido";
             }
         }
 
@@ -159,7 +163,16 @@ namespace WebUI
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            Panel4.Visible = true;
+            if (lblTotal.Text == "0,00")
+            {
+                diverro1.Attributes["class"] = "mostrar";
+                return;
+            }
+            else 
+            {
+                Panel4.Visible = true;
+                diverro1.Attributes["class"] = "escondido";
+            }
         }
 
         protected void btnQuant_Click(object sender, EventArgs e)
@@ -229,7 +242,7 @@ namespace WebUI
             }
 
 
-            grProdutos.Visible = false;
+            grProdutos.Visible = true;
             grProds.Visible = true;
             grProds.DataSource = tabela;
             grProds.DataBind();
@@ -245,9 +258,15 @@ namespace WebUI
 
             if (grProds.Rows.Count != 0)
             {
+                divProds.Attributes["class"] = "scrollmini";
                 lblTotal.Visible = true;
-                lblValor.Visible = true;                
+                lblValor.Visible = true;
                 btnSalvar.Visible = true;
+                Panel2.Visible = true;
+            }
+            else 
+            {
+                divProds.Attributes["class"] = "escondido";
             }
             
             lblTotal.Text = valorTotal.ToString();
@@ -329,7 +348,7 @@ namespace WebUI
                 lblTotal.Text = valorReal.ToString();
                 Label1.Visible = true;
                 Label2.Visible = true;
-                Label1.Text = "Valor Total com desconto:";
+                Label1.Text = "Valor Total com desconto: R$";
                 Label2.Text = desconto.ToString("0.##"); ;
                 //lblTotal.Text = desconto.ToString("0.##");
 
@@ -493,13 +512,15 @@ namespace WebUI
                 btnFim.Visible = false;
                 ddlClienteEspecial.SelectedIndex = ddlClienteEspecial.Items.IndexOf(ddlClienteEspecial.Items.FindByValue("")); 
                 txtParcelas.Text = "";
-                lblMsg.Text = "Registro de compra efetuado com sucesso";
+                lblMsg.Text = "Pagamento realizado com sucesso";
                 lblTotal.Text = "";
                 btnSalvar.Visible = false;
                 PanelCliEspecial.Visible = false;
                 lblValor.Visible = false;
                 Label1.Text = "";
                 Label2.Text = "";
+                divProds.Attributes["class"] = "escondido";
+                divLstProds.Attributes["class"] = "escondido";
             }
         }
 
@@ -575,6 +596,7 @@ namespace WebUI
 
                 valorTotal = valorTotal - valorFalse;
                 lblTotal.Text = valorTotal.ToString();
+
             }
         }
 
