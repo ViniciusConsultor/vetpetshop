@@ -20,16 +20,27 @@ namespace WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Criação de Menu
-            Menu menu = (Menu)Page.Master.FindControl("Menu1");
-            SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
-            menu.DataSource = siteAdmin;
-            menu.DataBind();
-            #endregion
-
             usuario = (Usuario)Session["User"];
             UsuarioBuss usuarioBuss = new UsuarioBuss();
-            usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+            if (usuario.Nome == null)
+                Response.Redirect("Login.aspx");
+            else
+                usuario.Id = usuarioBuss.ObterIdUsuarioPorNomeUsuario(usuario.Nome);
+
+            #region Criação de Menu
+            if (usuario.TipoUsuario == 3)
+            {
+                Menu menu = (Menu)Page.Master.FindControl("Menu1");
+                SiteMapDataSource siteAdmin = (SiteMapDataSource)Page.Master.FindControl("vend");
+                menu.DataSource = siteAdmin;
+                menu.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            #endregion
 
             if (!IsPostBack)
             {
@@ -634,6 +645,11 @@ namespace WebUI
         protected void grProds_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultVendedor.aspx");
         }
     }
 }

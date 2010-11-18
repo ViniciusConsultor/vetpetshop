@@ -105,8 +105,12 @@
                 <asp:TextBox runat="server" ID="txtParcelas" Visible="false" Width="100px" MaxLength="3"></asp:TextBox>
             </li>
          </ul>
-         <div style="margin: 10px 0px 5px 40%;">
+         <div style="width:100%;">
+         <center>
             <asp:Button ID="btnConfirmar" runat="server" Text="Finalizar" Width="20%" onclick="btnConfirmar_Click"/>
+            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="20%" 
+                 onclick="btnCancelar_Click"/>
+        </center>
          </div>
       </div>                
      </asp:Panel>
