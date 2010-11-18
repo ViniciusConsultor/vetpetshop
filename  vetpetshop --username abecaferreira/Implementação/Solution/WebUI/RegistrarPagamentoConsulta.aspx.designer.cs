@@ -23,6 +23,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
+        /// regtxtBusca control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtBusca;
+        
+        /// <summary>
         /// txtBusca control.
         /// </summary>
         /// <remarks>
@@ -77,15 +86,6 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel pnPgConsulta;
         
         /// <summary>
-        /// revtxtParcelas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtParcelas;
-        
-        /// <summary>
         /// lblDesconto control.
         /// </summary>
         /// <remarks>
@@ -120,6 +120,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbTipoPagamento;
+        
+        /// <summary>
+        /// revtxtParcelas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtParcelas;
         
         /// <summary>
         /// lblCli control.

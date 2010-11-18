@@ -183,7 +183,7 @@ namespace WebUI
 
                 if (executou2) 
                 {
-                    lblMsg.Text = "Pagamento registrado com sucesso";
+                    lblMsg.Text = "Pagamento realizado com sucesso";
                     pnPgConsulta.Visible = false;
                     lblCli.Visible = false;
                     lblParcela.Visible = false;

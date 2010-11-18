@@ -2,7 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3>
-    Registrar Pagamento de Consultas
+    Registrar Pagamento de Consulta
     </h3>
     <div style="width:100%;margin: 10px 10px 10px 20px;">
         <ul>
@@ -12,6 +12,9 @@
         </ul>    
     </div>
     <div style="margin: 10px 10px 10px 20px; width:95%;">
+        <div style="width:100%; margin:10px 0 0 0px;">
+            <span style="display:block;"><asp:RegularExpressionValidator ID="regtxtBusca" runat="server" ControlToValidate="txtBusca" Display="Dynamic" ErrorMessage="Campo nome não deve conter caracteres especiais" ValidationExpression="^[. 0-9a-zA-Z ç Ç ã Ã õ Õ Ê ê Â â Ô ô ó Ó ò Ò á à Á À é è È É Í ì í Ì î ú û Ú ù Ùº ª ]+$"></asp:RegularExpressionValidator></span>
+        </div> 
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">
                 <span style="margin-left:0px;margin-right:10px;">Nome:</span>         
@@ -64,10 +67,7 @@
         </asp:GridView>
     </div>
     
-    <asp:Panel runat="server" ID="pnPgConsulta" Visible="false">
-    <div id="divErros" style="width:100%; margin:10px 0 0 10px;">
-         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtParcelas" ControlToValidate="txtParcelas" runat="server" ErrorMessage="Campo parcelas deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
-    </div>  
+    <asp:Panel runat="server" ID="pnPgConsulta" Visible="false"> 
     <div style="margin: 0px 5px 10px 5px; width:100%;">
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px; margin-left:5px;">
@@ -87,13 +87,16 @@
                 <div style="border:1px solid #b9b9b9; width:20%;">
                     <span style="margin-left:0px;margin-right:10px;">Tipo de pagamento:</span>
                     <asp:RadioButtonList ID="rbTipoPagamento" runat="server" Width="100%" AutoPostBack="true" onselectedindexchanged="rbTipoPagamento_SelectedIndexChanged">
-                        <asp:ListItem Text="Dinheiro" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Dinheiro" Value="0" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Cartão de crédito" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Cheque" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
                 </div>
-            </li>
+            </li> 
             <li style="margin-bottom:10px; margin-left:5px;">
+                <div id="divErros" style="width:100%; margin:10px 0 10px 10px;">
+                    <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtParcelas" ControlToValidate="txtParcelas" runat="server" ErrorMessage="Campo parcelas deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
+                </div>
                 <asp:Label ID="lblCli" Text="Nome Cliente:" runat="server" Visible="false"></asp:Label>&nbsp;
                 <asp:DropDownList ID="ddlClienteEspecial" runat="server" Width="450px" Visible="false" AutoPostBack="true" onselectedindexchanged="ddlClienteEspecial_SelectedIndexChanged"></asp:DropDownList>
             </li>
