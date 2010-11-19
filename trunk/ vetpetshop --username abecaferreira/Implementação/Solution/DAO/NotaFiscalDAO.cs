@@ -386,5 +386,38 @@ namespace DAO
 
             return salvou;
         }
+
+        public void ExcluirNotasComValorNull()
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsExcluirPedidosComValorNull";
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
