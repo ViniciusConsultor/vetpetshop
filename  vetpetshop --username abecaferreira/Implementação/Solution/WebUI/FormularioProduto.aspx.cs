@@ -188,9 +188,19 @@ namespace WebUI
             produto.EstoqueMax = Convert.ToInt32(txtEstoqueMax.Text);
             produto.Descricao = txtDesc.Text;
 
-            DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
+            //DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
 
-            produto.DataValidade = dataVal;
+            if (txtAno.Text != "" && txtMes.Text != "" && txtDia.Text != "")
+            {
+                DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
+                produto.DataValidade = dataVal;
+            }
+            else
+            {
+                produto.DataValidade = DateTime.MinValue;
+            }
+
+            //produto.DataValidade = dataVal;
 
             bool executou;
             string idProd = Request.Params["idProduto"];

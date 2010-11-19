@@ -60,5 +60,11 @@ namespace Negocios
             bool executou = this.notaDAO.AtualizarPedidoCompra(idPed, status);
             return executou;
         }
+
+        public void ExcluirPedidosComValorNull()
+        {
+            this.notaDAO.ExcluirNotasComValorNull();
+        }
+       
     }
 }

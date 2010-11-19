@@ -42,7 +42,12 @@ namespace WebUI
             }
             #endregion
 
+            NotaFiscalBuss notaBuss = new NotaFiscalBuss();
+            notaBuss.ExcluirPedidosComValorNull();
+
             PreencherTabela();
+          
+
         }
 
         private DataTable MontarTabela()

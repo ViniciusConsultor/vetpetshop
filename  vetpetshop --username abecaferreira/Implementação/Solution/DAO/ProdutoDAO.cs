@@ -341,6 +341,17 @@ namespace DAO
                 pprecoVenda.Value = produto.PrecoVenda;
                 pdataVal.Value = produto.DataValidade;
 
+
+                if (produto.DataValidade == DateTime.MinValue)
+                {
+                    pdataVal.Value = SqlDateTime.Null;
+                }
+                else
+                {
+                    pdataVal.Value = produto.DataValidade;
+                }
+
+
                 cmd.Parameters.Add(new SqlParameter("@IdProduto", SqlDbType.Int)).Value = id;
                 cmd.Parameters.Add(pnomeProd);
                 cmd.Parameters.Add(pidGrupo);
