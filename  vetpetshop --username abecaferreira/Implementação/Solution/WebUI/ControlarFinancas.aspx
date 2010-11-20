@@ -1,34 +1,28 @@
-ï»¿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ControlarFinancas.aspx.cs" Inherits="WebUI.ControlarFinancas" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Vetpetshop.Master" CodeBehind="ControlarFinancas.aspx.cs" Inherits="WebUI.ControlarFinancas" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3>
-        Controlar FinanÃ§as
+        Controlar Finanças
     </h3>
-  <table width="100%">
-    <tr>
-    <td colspan="3">
-    <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
-    </td>
-    <td style="width: 15%">        
-    </td>
-    </tr>
-    <tr>
-        <td style="width:15%;">
-            <asp:Label ID="ano" runat="server" Text="Ano de referÃªncia"></asp:Label>            
-        &nbsp;</td>
-        <td style="width:15%;">
-        <asp:DropDownList ID="ddlAno" runat="server"></asp:DropDownList>
-        </td>
-        <td>
-            <asp:Button ID="BtnBuscar" runat="server" Text="Consultar" 
-                onclick="BtnBuscar_Click" />
-        </td>
-     </tr>
-     <tr>
-     <td style="width: 15%"><br /></td>
-     </tr>
-  </table>
+    <div style="width:100%;margin:5px 0 5px 30px;">
+        <ul>
+            <li>
+                <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>
+            </li>
+        </ul>
+    </div>
+    <div style="width:100%;margin:5px 0 5px 20px;">
+        <ul>
+            <li style="margin-bottom:10px;">
+                <span style="margin-left:5px;margin-right:5px;">Ano de referência:</span>
+                
+                <asp:DropDownList ID="ddlAno" runat="server" Width="15%"></asp:DropDownList>
+                &nbsp;&nbsp;<asp:Button ID="BtnBuscar" runat="server" Text="Consultar" onclick="BtnBuscar_Click" />
+            </li>
+        </ul>
+    </div>
   <asp:Panel ID="PanelFinancas" runat="server" Visible="false">
+  <div style="width: 95%; margin: 5px 0 0 2.5%;">
   <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
   <asp:TabPanel ID="tabPanel1" runat="server">
   <HeaderTemplate>
@@ -103,7 +97,7 @@
             </tr>
             <tr>
                 <td style="width: 154px">
-                    MarÃ§o
+                    Março
                 </td>
                 <td style="width: 152px">
                     <asp:Label ID="lblInvestimentoMar" runat="server"></asp:Label>
@@ -328,7 +322,7 @@
   </asp:TabPanel>
   <asp:TabPanel ID="tabPanel2" runat="server">
   <HeaderTemplate>
-    <b>ConsultÃ³rio</b>
+    <b>Consultório</b>
   </HeaderTemplate>
   <ContentTemplate>
         <div id="divAnimais">
@@ -379,7 +373,7 @@
             </tr>
             <tr>
                 <td>
-                    MarÃ§o
+                    Março
                 </td>
                 <td style="width: 140px">
                     <asp:Label ID="lblConsMar" runat="server"></asp:Label>
@@ -537,35 +531,37 @@
         </div>
   </ContentTemplate>
   </asp:TabPanel>
-  </asp:TabContainer> 
-  <br />
-  <br />
-  <h2>Lista de TransaÃ§Ãµes com Desconto - Clientes Especiais</h2>
-  <br />
-  <asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label>
-  <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="false" 
-                                HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" 
-                                AlternatingRowStyle-BackColor="LightSteelBlue">
-                                <Columns>
-                                <asp:BoundField HeaderText="Cliente" DataField="cliente" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Data da TransaÃ§Ã£o" DataField="dt_transacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Tipo de TransaÃ§Ã£o" DataField="tipo_transacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Valor Total" DataField="valor" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
-                                <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:BoundField>          
-                                </Columns>
-                                </asp:GridView>
-  
+  </asp:TabContainer>
+  </div> 
+  <div style="width:100%; margin:20px 0 10px 7px;">
+    <span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;"><b>Lista de Transações com Desconto - Clientes Especiais:</b></span>
+  </div>
+  <div class="scrollmini" style="width:95%; margin:5px 0 20px 2.5%;">
+    <center>
+       <asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label>
+    </center>
+    <asp:GridView ID="grClientes" runat="server" AutoGenerateColumns="false" 
+        HeaderStyle-BackColor="DarkBlue" Width="100%" Visible="false" AllowPaging="false" 
+        AlternatingRowStyle-BackColor="LightSteelBlue">
+        <Columns>
+        <asp:BoundField HeaderText="Cliente" DataField="cliente" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White">
+        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Data da Transação" DataField="dt_transacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Tipo de Transação" DataField="tipo_transacao" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Valor Total" DataField="valor" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+        <HeaderStyle BackColor="DarkBlue" ForeColor="White" Width="10%"></HeaderStyle>
+        <ItemStyle HorizontalAlign="Center"></ItemStyle>
+        </asp:BoundField>          
+        </Columns>
+    </asp:GridView>
+  </div>
   </asp:Panel>
-  <br /><br /><br /><br />
  </asp:Content>
