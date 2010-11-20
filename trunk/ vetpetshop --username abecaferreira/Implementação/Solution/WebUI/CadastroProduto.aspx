@@ -32,12 +32,12 @@
             <ul>
                 <li style="margin-bottom:10px;">
                     <span style="margin-left:10px;margin-right:5px;">Nome:</span>
-                    <asp:TextBox ID="txtNome" runat="server" Width="40.5%"></asp:TextBox>
+                    <asp:TextBox ID="txtNome" runat="server" Width="50%"></asp:TextBox>
                 </li>
                 <li style="margin-bottom:10px;">
                     <span style="margin-left:16px;margin-right:5px;">Tipo:</span>
-                    <asp:DropDownList ID="ddlTipo" runat="server" Width="30%" AutoPostBack="true"></asp:DropDownList>
-                    &nbsp;&nbsp;<asp:Button Width="10%" ID="Button1" runat="server" Text="Buscar" onclick="Buscar_Click" />
+                    <asp:DropDownList ID="ddlTipo" runat="server" Width="39%" AutoPostBack="true"></asp:DropDownList>
+                    &nbsp;&nbsp;&nbsp;<asp:Button Width="10%" ID="Button1" runat="server" Text="Buscar" onclick="Buscar_Click" />
                 </li>
             </ul>
         </div>
