@@ -77,12 +77,12 @@
     </div> 
     <asp:Panel ID="Panel1" runat="server" Visible="false"> 
         <div style="width:100%; margin:10px 0 10px 25px;">
-            <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Busca de Produto</span></b>
+            <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Busca de Produto:</span></b>
         </div>
         <div style="width:100%; margin:10px 0 0 40px;">
             <span style="display:block;"><asp:RegularExpressionValidator ID="regtxtNome" runat="server" ControlToValidate="txtNome" Display="Dynamic" ErrorMessage="Campo nome não deve conter caracteres especiais" ValidationExpression="^[. 0-9a-zA-Z ç Ç ã Ã õ Õ Ê ê Â â Ô ô ó Ó ò Ò á à Á À é è È É Í ì í Ì î ú û Ú ù Ùº ª ]+$"></asp:RegularExpressionValidator></span>
         </div>                
-        <div style="width:100%;margin: 10px 10px 20px 30px;">
+        <div style="width:100%;margin: 10px 10px 20px 25px;">
             <ul>
                 <li style="margin-bottom:10px;">
                     <span style="margin-left:10px; margin-right:5px;">Nome:</span>
@@ -115,7 +115,7 @@
                 </ul>
             </div>            
         </asp:Panel>
-        <div id="divUsuarios" runat="server" class="escondido" style="width:90%; margin: 10px 30px 10px 35px;">  
+        <div id="divUsuarios" runat="server" class="escondido" style="width:90%; margin: 10px 30px 20px 35px;">  
              <asp:GridView ID="grUsuarios" runat="server" AutoGenerateColumns="false" 
                         HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="false" RowStyle-Height="25px" 
                         PageSize="10" onrowcommand="grUsuarios_RowCommand" 

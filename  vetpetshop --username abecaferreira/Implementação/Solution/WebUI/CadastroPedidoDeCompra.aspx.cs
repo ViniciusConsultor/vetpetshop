@@ -42,8 +42,6 @@ namespace WebUI
             }
             #endregion
 
-            
-
             string quantidade = Request.Params["quant"];
 
             if (!IsPostBack)
@@ -67,12 +65,10 @@ namespace WebUI
                 ListItem item = new ListItem(grupo.Nome.ToString(), grupo.Id.ToString());
                 ddlTipo.Items.Add(item);
             }
-
         }
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            
             lblDescVal.Visible = false;
             
             grProds.DataSource = null;
@@ -127,6 +123,7 @@ namespace WebUI
                 grUsuarios.Visible = false;
                 lblRegistros.Visible = true;
                 lblRegistros.Text = "Nenhum registro encontrado";
+                divUsuarios.Attributes["class"] = "escondido";
             }
         }
 
@@ -282,23 +279,22 @@ namespace WebUI
             grProds.Visible = true;
             grProds.DataSource = tabela;
             grProds.DataBind();
+            divProds.Attributes["class"] = "scrollmini";
 
             panel3.Visible = false;
-
 
             foreach (GridViewRow linha in grProds.Rows)
             {
                 valorTotal += Convert.ToDecimal(linha.Cells[5].Text);
             }
 
-           
-            if (grProds.Rows.Count != 0)
+            if (valorTotal != 0)
+            {
                 btnSalvar.Visible = true;
-            lblTotal.Text = valorTotal.ToString();
-            lblDescVal.Visible = true;
-
-            Session["valorTotal"] = valorTotal;
-
+            }
+                lblTotal.Text = valorTotal.ToString();
+                lblDescVal.Visible = true;
+                Session["valorTotal"] = valorTotal;
         }
 
 
@@ -347,7 +343,7 @@ namespace WebUI
             addProd.Visible = false;
             btnSalvar.Visible = false;            
 
-            lblMsg.Text = "Pedido de compra cadastrado com sucesso!";
+            lblMsg.Text = "Pedido de compra cadastrado com sucesso";
             btnOk.Enabled = true;
             divProds.Attributes["class"] = "escondido";
         }
@@ -398,7 +394,12 @@ namespace WebUI
 
                 valorTotal = valorTotal - valorFalse;
                 lblTotal.Text = valorTotal.ToString();
-                
+
+                if (valorTotal == 0) 
+                {
+                    divProds.Attributes["class"] = "escondido";    
+                    btnSalvar.Visible = false;
+                }
             }
         }
 
