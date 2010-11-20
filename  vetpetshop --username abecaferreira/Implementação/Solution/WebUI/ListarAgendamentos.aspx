@@ -140,7 +140,7 @@
                     </li>
                     <li style="margin-bottom:10px;">
                         <span style="margin-left:0px;margin-right:3px;">Valor da Consulta:</span>
-                        <asp:TextBox ID="txtValor" runat="server" MaxLength="9" Width="150px"></asp:TextBox>
+                        <asp:TextBox ID="txtValor" runat="server" Width="150px"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender> 
                     </li>
                     <li style="margin-bottom:10px;margin-left:5px;">
@@ -177,7 +177,7 @@
                     </li>
                     <li style="margin-bottom:10px;">
                         <span style="margin-left:6px;margin-right:5px;">Valor da Consulta:</span>
-                        <asp:TextBox ID="txtValorVacina" runat="server" MaxLength="9"></asp:TextBox>
+                        <asp:TextBox ID="txtValorVacina" runat="server"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtValorVacina" runat="server" TargetControlID="txtValorVacina" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
                     </li>
                     <li style="margin-bottom:10px;margin-left:5px;">

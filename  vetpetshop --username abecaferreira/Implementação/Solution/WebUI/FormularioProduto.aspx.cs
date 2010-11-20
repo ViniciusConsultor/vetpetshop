@@ -66,15 +66,7 @@ namespace WebUI
                 txtEstoqueMin.Text = produto.EstoqueMin.ToString();
                 txtEstoqueMax.Text = produto.EstoqueMax.ToString();
                 txtDesc.Text = produto.Descricao;
-
-                if (produto.DataValidade != null)
-                {
-                    DateTime dtVal = new DateTime();
-                    dtVal = Convert.ToDateTime(produto.DataValidade.Value);
-                    txtAno.Text = dtVal.Year.ToString();
-                    txtMes.Text = dtVal.Month.ToString();
-                    txtDia.Text = dtVal.Day.ToString();
-                }
+                txtDataVal.Text = produto.DataValidade.Value.ToString("dd/MM/yyyy");
             }
         }
 
@@ -144,10 +136,9 @@ namespace WebUI
             produto.EstoqueMax = Convert.ToInt32(txtEstoqueMax.Text);
             produto.Descricao = txtDesc.Text;
 
-            if (txtAno.Text != "" && txtMes.Text != "" && txtDia.Text != "")
+            if (txtDataVal.Text != "")
             {
-                DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
-                produto.DataValidade = dataVal;
+                produto.DataValidade = Convert.ToDateTime(txtDataVal.Text);
             }
             else
             {
@@ -163,11 +154,10 @@ namespace WebUI
                 txtPrecoVenda.Text = "";
                 txtEstoqueMin.Text = "";
                 txtEstoqueMax.Text = "";
-                txtAno.Text = "";
-                txtDia.Text = "";
-                txtMes.Text = "";
+                txtDataVal.Text = "";
                 txtDesc.Text = "";
                 lblMsg.Text = "Cadastro efetuado com sucesso";
+                ddlTipoGrupo.SelectedIndex = 0;
             }
 
             else
@@ -189,19 +179,14 @@ namespace WebUI
             produto.EstoqueMax = Convert.ToInt32(txtEstoqueMax.Text);
             produto.Descricao = txtDesc.Text;
 
-            //DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
-
-            if (txtAno.Text != "" && txtMes.Text != "" && txtDia.Text != "")
+            if (txtDataVal.Text != "")
             {
-                DateTime dataVal = new DateTime((Convert.ToInt32(txtAno.Text)), (Convert.ToInt32(txtMes.Text)), Convert.ToInt32(txtDia.Text));
-                produto.DataValidade = dataVal;
+                produto.DataValidade = Convert.ToDateTime(txtDataVal.Text);
             }
             else
             {
                 produto.DataValidade = DateTime.MinValue;
             }
-
-            //produto.DataValidade = dataVal;
 
             bool executou;
             string idProd = Request.Params["idProduto"];
@@ -209,7 +194,6 @@ namespace WebUI
 
             if (executou)
             {
-                lblMsg.Text = "Produto atualizado com sucesso";
                 Response.Redirect("CadastroProduto.aspx");
             }
             else
@@ -221,6 +205,11 @@ namespace WebUI
         {
             if (ddlTipoGrupo.SelectedItem.Value != "")
                 erroTipo.Attributes["class"] = "escondido";
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DefaultAdmin.aspx");
         }
 
     }

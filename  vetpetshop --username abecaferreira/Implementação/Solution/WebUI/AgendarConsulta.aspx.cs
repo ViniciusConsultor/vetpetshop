@@ -267,7 +267,6 @@ namespace WebUI
                 txtData.Text = "";
                 lblMsg.Text = "Agendamento realizado com sucesso";
                 txtValor.Text = "";
-                //ddlAnimal.SelectedIndex = ddlAnimal.Items.IndexOf(ddlAnimal.Items.FindByText(""));
                 ddlClientes.SelectedIndex = ddlClientes.Items.IndexOf(ddlClientes.Items.FindByText("Selecione"));
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
