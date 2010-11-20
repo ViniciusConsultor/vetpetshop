@@ -156,7 +156,7 @@
                 <Columns>
                     <asp:TemplateField>
                     <ItemTemplate>
-                    <asp:LinkButton ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
+                    <asp:LinkButton ValidationGroup="false" ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
                     </ItemTemplate> 
                     </asp:TemplateField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
