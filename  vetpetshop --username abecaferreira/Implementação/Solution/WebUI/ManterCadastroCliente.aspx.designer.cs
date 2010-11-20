@@ -14,22 +14,31 @@ namespace WebUI {
     public partial class ManterCadastroCliente {
         
         /// <summary>
-        /// erro1 control.
+        /// rfvtxtNomeCli control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtNomeCli;
         
         /// <summary>
-        /// erro2 control.
+        /// regtxtNomeCli control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro2;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtNomeCli;
+        
+        /// <summary>
+        /// rfvtxtCPF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCPF;
         
         /// <summary>
         /// erro3 control.
@@ -41,22 +50,22 @@ namespace WebUI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro3;
         
         /// <summary>
-        /// erro4 control.
+        /// rfvtxtTel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtTel;
         
         /// <summary>
-        /// erro5 control.
+        /// rfvtxtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro5;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtEmail;
         
         /// <summary>
         /// revtxtCPF control.
@@ -293,31 +302,40 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel pnlPet;
         
         /// <summary>
-        /// erro6 control.
+        /// rfvtxtNomeAnimal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro6;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtNomeAnimal;
         
         /// <summary>
-        /// erro7 control.
+        /// regtxtNomeAnimal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro7;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regtxtNomeAnimal;
         
         /// <summary>
-        /// erro8 control.
+        /// rfvtxtPeso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro8;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtPeso;
+        
+        /// <summary>
+        /// rfvtxtNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtNascimento;
         
         /// <summary>
         /// erro9 control.
