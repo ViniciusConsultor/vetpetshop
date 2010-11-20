@@ -12,7 +12,7 @@ namespace WebUI
 {
     public partial class FormularioCadastroProduto : System.Web.UI.Page
     {
-        Usuario usuario = new Usuario();  
+        Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace WebUI
 
             if (usuario == null)
                 Response.Redirect("Login.aspx");
-            
+
             #region Criação de Menu
             if (usuario.TipoUsuario == 1)
             {
@@ -57,7 +57,7 @@ namespace WebUI
 
             produto = produtoBuss.ObterProdutoPorId(Convert.ToInt32(idProd));
 
-            if(produto != null)
+            if (produto != null)
             {
                 txtNome.Text = produto.Nome;
                 ddlTipoGrupo.SelectedIndex = ddlTipoGrupo.Items.IndexOf(ddlTipoGrupo.Items.FindByValue(produto.IdGrupo.ToString()));
@@ -75,22 +75,22 @@ namespace WebUI
                     txtMes.Text = dtVal.Month.ToString();
                     txtDia.Text = dtVal.Day.ToString();
                 }
-            }            
+            }
         }
 
         private void CarregaListaTipoProduto()
         {
             GrupoProdutoBuss grupoBuss = new GrupoProdutoBuss();
-            
+
             List<Grupo> _listaGrupo = new List<Grupo>();
-            _listaGrupo = grupoBuss.ListarTiposGrupo();            
+            _listaGrupo = grupoBuss.ListarTiposGrupo();
 
             ListItem _item = new ListItem("Selecione", "");
             ddlTipoGrupo.Items.Add(_item);
 
             foreach (Grupo grupo in _listaGrupo)
             {
-                ListItem  item = new ListItem(grupo.Nome.ToString(), grupo.Id.ToString());
+                ListItem item = new ListItem(grupo.Nome.ToString(), grupo.Id.ToString());
                 ddlTipoGrupo.Items.Add(item);
             }
         }
@@ -98,41 +98,42 @@ namespace WebUI
         protected void btnOk_Click(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("pt-BR");
-            ProdutoBuss produtoBuss = new ProdutoBuss();           
+            ProdutoBuss produtoBuss = new ProdutoBuss();
             Produto produto = new Produto();
             bool executou;
 
             #region
-            if (txtNome.Text == "")
-            {
-                lblMsg.Text = "Preencha o campo Nome do Produto";
-                return;
-            }
+            //if (txtNome.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o campo Nome do Produto";
+            //    return;
+            //}
             if (ddlTipoGrupo.SelectedItem.Value == "")
             {
-                lblMsg.Text = "Selecione o tipo do produto";
+                erroTipo.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Selecione o tipo do produto";
                 return;
             }
-            if (txtPrecoCusto.Text == "")
-            {
-                lblMsg.Text = "Preencha o campo Preço de Custo";
-                return;
-            }
-            if (txtPrecoVenda.Text == "")
-            {
-                lblMsg.Text = "Preencha o campo Preço de Venda";
-                return;
-            }
-            if (txtEstoqueMin.Text == "")
-            {
-                lblMsg.Text = "Preencha o campo Estoque Mínimo";
-                return;
-            }
-            if (txtEstoqueMax.Text == "")
-            {
-                lblMsg.Text = "Preencha o campo Estoque Máximo";
-                return;
-            } 
+            //if (txtPrecoCusto.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o campo Preço de Custo";
+            //    return;
+            //}
+            //if (txtPrecoVenda.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o campo Preço de Venda";
+            //    return;
+            //}
+            //if (txtEstoqueMin.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o campo Estoque Mínimo";
+            //    return;
+            //}
+            //if (txtEstoqueMax.Text == "")
+            //{
+            //    lblMsg.Text = "Preencha o campo Estoque Máximo";
+            //    return;
+            //} 
             #endregion
 
             produto.Nome = txtNome.Text;
@@ -213,8 +214,14 @@ namespace WebUI
             }
             else
                 lblMsg.Text = "Falha de conexão com o banco de dados";
-                
+
         }
-      
+
+        protected void ddlTipoGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTipoGrupo.SelectedItem.Value != "")
+                erroTipo.Attributes["class"] = "escondido";
+        }
+
     }
 }

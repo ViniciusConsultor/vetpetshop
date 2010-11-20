@@ -50,7 +50,7 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-                
+
 
                 CarregaListaTipoAnimal();
 
@@ -76,7 +76,7 @@ namespace WebUI
                     RemoveCache();
                     PreencheAlterarAnimal(Convert.ToInt32(CodAnimalAlt));
                 }
-                
+
             }
         }
 
@@ -106,7 +106,8 @@ namespace WebUI
         {
             RealizaCadastroCliente();
 
-            if (pnlPet.Visible != false) {
+            if (pnlPet.Visible != false)
+            {
                 PegaUltimoIdCliente();
                 RealizaCadastroAnimal();
             }
@@ -115,55 +116,55 @@ namespace WebUI
         protected void PegaUltimoIdCliente()
         {
             ClienteBuss clienteBus = new ClienteBuss();
-            
+
             ViewState["hdnCodCliente"] = Convert.ToString(clienteBus.PegaUltimoIdCliente());
-        
+
         }
 
         protected void RealizaCadastroCliente()
         {
 
             bool executou = false;
-           
+
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
 
             #region Validações
 
-                if (txtNomeCli.Text == "")
-                {
-                    erro1.Attributes["class"] = "mostrar";
-                    //lblMsg.Text = "Preencha o nome do cliente";
-                    return;
-                }
+            //if (txtNomeCli.Text == "")
+            //{
+            //    erro1.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o nome do cliente";
+            //    return;
+            //}
 
-                if (txtCPF.Text == "")
-                {
-                    erro2.Attributes["class"] = "mostrar";
-                    //lblMsg.Text = "Preencha o cpf do cliente";
-                    return;
-                }
+            //if (txtCPF.Text == "")
+            //{
+            //    erro2.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o cpf do cliente";
+            //    return;
+            //}
 
-                if (ddlSexoCliente.SelectedIndex == 0)
-                {
-                    erro3.Attributes["class"] = "mostrar";
-                    //lblMsg.Text = "Preencha o sexo do cliente";
-                    return;
-                }
+            if (ddlSexoCliente.SelectedIndex == 0)
+            {
+                erro3.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o sexo do cliente";
+                return;
+            }
 
-                if (txtTel.Text == "")
-                {
-                    erro4.Attributes["class"] = "mostrar";
-                    //lblMsg.Text = "Preencha o telefone do cliente";
-                    return;
-                }
-                if (txtEmail.Text == "")
-                {
-                    erro5.Attributes["class"] = "mostrar";
-                    //lblMsg.Text = "Preencha o email do cliente";
-                    return;
-                }
-            
+            //if (txtTel.Text == "")
+            //{
+            //    erro4.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o telefone do cliente";
+            //    return;
+            //}
+            //if (txtEmail.Text == "")
+            //{
+            //    erro5.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o email do cliente";
+            //    return;
+            //}
+
 
             #endregion
 
@@ -201,31 +202,31 @@ namespace WebUI
             {
                 lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
             }
-     }
+        }
 
         protected void AlterarCadastroCliente()
         {
 
             bool executou = false;
-           
+
             ClienteBuss clienteBus = new ClienteBuss();
             Cliente cliente = new Cliente();
 
             #region Validações
 
-            if (txtNomeCli.Text == "")
-            {
-                erro1.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o nome do cliente";
-                return;
-            }
+            //if (txtNomeCli.Text == "")
+            //{
+            //    erro1.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o nome do cliente";
+            //    return;
+            //}
 
-            if (txtCPF.Text == "")
-            {
-                erro2.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o cpf do cliente";
-                return;
-            }
+            //if (txtCPF.Text == "")
+            //{
+            //    erro2.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o cpf do cliente";
+            //    return;
+            //}
 
             if (ddlSexoCliente.SelectedIndex == 0)
             {
@@ -234,18 +235,18 @@ namespace WebUI
                 return;
             }
 
-            if (txtTel.Text == "")
-            {
-                erro4.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o telefone do cliente";
-                return;
-            }
-            if (txtEmail.Text == "")
-            {
-                erro5.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o email do cliente";
-                return;
-            }
+            //if (txtTel.Text == "")
+            //{
+            //    erro4.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o telefone do cliente";
+            //    return;
+            //}
+            //if (txtEmail.Text == "")
+            //{
+            //    erro5.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o email do cliente";
+            //    return;
+            //}
 
 
             #endregion
@@ -285,13 +286,13 @@ namespace WebUI
             {
                 lblMsg.Text = "A alteração não foi efetuada. Falha de conexão com o banco de dados";
             }
-     }
-        
-        protected void RemoveCache() 
+        }
+
+        protected void RemoveCache()
         {
             Cache.Remove("txtNomeCli");
             Cache.Remove("txtCPF");
-            Cache.Remove("ddlSexoCliente");    
+            Cache.Remove("ddlSexoCliente");
             Cache.Remove("txtRG");
             Cache.Remove("txtTel");
             Cache.Remove("txtCel");
@@ -300,99 +301,99 @@ namespace WebUI
             Cache.Remove("txtBairro");
             Cache.Remove("txtEstado");
             Cache.Remove("txtCep");
-            
+
             Cache.Remove("txtNomeAnimal");
             Cache.Remove("txtPeso");
             Cache.Remove("txtRaca");
             Cache.Remove("txtNascimento");
             Cache.Remove("ddlTipoAnimal");
-            Cache.Remove("ddlSexoAnimal");    
-            
+            Cache.Remove("ddlSexoAnimal");
+
         }
 
         protected void RealizaCadastroAnimal()
         {
-                    bool executou = false;
-                    string CodCliente = ViewState["hdnCodCliente"].ToString();
-                    AnimalBuss animalBus = new AnimalBuss();
-                    Animal animal = new Animal();
+            bool executou = false;
+            string CodCliente = ViewState["hdnCodCliente"].ToString();
+            AnimalBuss animalBus = new AnimalBuss();
+            Animal animal = new Animal();
 
-                    #region Validações
-     
-                    if (txtNomeAnimal.Text == "") 
-                    {
-                        erro6.Attributes["class"] = "mostrar";
-                        //lblMsg.Text = "Preencha o nome do animal";
-                        return;
-                    }
+            #region Validações
 
-                    if (txtPeso.Text == "")
-                    {
-                        erro7.Attributes["class"] = "mostrar";
-                        //lblMsg.Text = "Preencha o peso do animal";
-                        return;
-                    }
+            //if (txtNomeAnimal.Text == "") 
+            //{
+            //    erro6.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o nome do animal";
+            //    return;
+            //}
 
-                    if (txtNascimento.Text == "")
-                    {
-                        erro8.Attributes["class"] = "mostrar";
-                        //lblMsg.Text = "Preencha a data de nascimento do animal";
-                        return;
-                    }
+            //if (txtPeso.Text == "")
+            //{
+            //    erro7.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o peso do animal";
+            //    return;
+            //}
 
-                    if (ddlTipoAnimal.SelectedIndex == 0)
-                    {
-                        erro9.Attributes["class"] = "mostrar";
-                        //lblMsg.Text = "Preencha o tipo do animal";
-                        return;
-                    }
-                    
-                    if (ddlSexoAnimal.SelectedIndex == 0)
-                    {
-                        erro10.Attributes["class"] = "mostrar";
-                        //lblMsg.Text = "Preencha o sexo do animal";
-                        return;
-                    }
+            //if (txtNascimento.Text == "")
+            //{
+            //    erro8.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha a data de nascimento do animal";
+            //    return;
+            //}
 
-                    //if (txtNascimento.Text != string.Empty)
-                    //{
-                    //    try
-                    //    {
-                    //        txtNascimento.Text = Convert.ToString(System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null));
-                    //    }
-                    //    catch
-                    //    {
-                    //        lblMsg.Text = "Data de nascimento inválida";
-                    //        return;
-                    //    }
-                    //}
+            if (ddlTipoAnimal.SelectedIndex == 0)
+            {
+                erro9.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o tipo do animal";
+                return;
+            }
 
-                    #endregion
-            
-                    animal.Nome = txtNomeAnimal.Text;
-                    animal.Peso = Convert.ToDecimal(txtPeso.Text);
-                    animal.Raca = txtRaca.Text;
-                    animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
-                    animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
-                    animal.IdCliente = Convert.ToInt32(CodCliente);
-                    animal.Sexo = ddlSexoAnimal.SelectedValue;
-                    executou = animalBus.InserirAnimal(animal);
+            if (ddlSexoAnimal.SelectedIndex == 0)
+            {
+                erro10.Attributes["class"] = "mostrar";
+                //lblMsg.Text = "Preencha o sexo do animal";
+                return;
+            }
 
-                    if (executou)
-                    {
-                        lblMsg.Text = "Cadastro efetuado com sucesso";
-                        txtNomeAnimal.Text = "";
-                        txtPeso.Text = "";
-                        txtRaca.Text = "";
-                        txtNascimento.Text = "";
-                        ddlTipoAnimal.SelectedIndex = 0;
-                        ddlSexoAnimal.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
-                    }
-        }     
+            //if (txtNascimento.Text != string.Empty)
+            //{
+            //    try
+            //    {
+            //        txtNascimento.Text = Convert.ToString(System.DateTime.ParseExact(txtNascimento.Text, "dd/MM/yyyy", null));
+            //    }
+            //    catch
+            //    {
+            //        lblMsg.Text = "Data de nascimento inválida";
+            //        return;
+            //    }
+            //}
+
+            #endregion
+
+            animal.Nome = txtNomeAnimal.Text;
+            animal.Peso = Convert.ToDecimal(txtPeso.Text);
+            animal.Raca = txtRaca.Text;
+            animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
+            animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
+            animal.IdCliente = Convert.ToInt32(CodCliente);
+            animal.Sexo = ddlSexoAnimal.SelectedValue;
+            executou = animalBus.InserirAnimal(animal);
+
+            if (executou)
+            {
+                lblMsg.Text = "Cadastro efetuado com sucesso";
+                txtNomeAnimal.Text = "";
+                txtPeso.Text = "";
+                txtRaca.Text = "";
+                txtNascimento.Text = "";
+                ddlTipoAnimal.SelectedIndex = 0;
+                ddlSexoAnimal.SelectedIndex = 0;
+            }
+            else
+            {
+                lblMsg.Text = "O cadastro não foi efetuado. Falha de conexão com o banco de dados";
+            }
+        }
 
         protected void PreencheUsuario(Int32 CodCliente)
         {
@@ -401,7 +402,8 @@ namespace WebUI
 
             _listaCliente = clienteBus.PreencheUsuario(CodCliente);
 
-            foreach (Cliente cliente in _listaCliente) {
+            foreach (Cliente cliente in _listaCliente)
+            {
                 txtNomeCli.Text = cliente.Nome;
                 txtCPF.Text = cliente.CPF;
                 ddlSexoCliente.SelectedValue = cliente.Sexo;
@@ -414,7 +416,7 @@ namespace WebUI
                 txtEstado.Text = cliente.Estado;
                 txtCep.Text = cliente.CEP;
                 txtEmail.Text = cliente.Email;
-                ViewState["hdnCodCliente"] = cliente.IdCliente; 
+                ViewState["hdnCodCliente"] = cliente.IdCliente;
             }
             lblMsg.Text = "Dados Carregados";
             btnSalvar.Visible = false;
@@ -436,7 +438,8 @@ namespace WebUI
 
         }
 
-        protected void PreencheAlterarCliente(Int32 CodCliente) {
+        protected void PreencheAlterarCliente(Int32 CodCliente)
+        {
 
             ClienteBuss clienteBus = new ClienteBuss();
             List<Cliente> _listaCliente = new List<Cliente>();
@@ -520,19 +523,19 @@ namespace WebUI
 
             #region Validações
 
-            if (txtNomeCli.Text == "")
-            {
-                erro1.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o nome do cliente";
-                return;
-            }
+            //if (txtNomeCli.Text == "")
+            //{
+            //    erro1.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o nome do cliente";
+            //    return;
+            //}
 
-            if (txtCPF.Text == "")
-            {
-                erro2.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o cpf do cliente";
-                return;
-            }
+            //if (txtCPF.Text == "")
+            //{
+            //    erro2.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o cpf do cliente";
+            //    return;
+            //}
 
             if (ddlSexoCliente.SelectedIndex == 0)
             {
@@ -541,18 +544,18 @@ namespace WebUI
                 return;
             }
 
-            if (txtTel.Text == "")
-            {
-                erro4.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o telefone do cliente";
-                return;
-            }
-            if (txtEmail.Text == "")
-            {
-                erro5.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o email do cliente";
-                return;
-            }
+            //if (txtTel.Text == "")
+            //{
+            //    erro4.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o telefone do cliente";
+            //    return;
+            //}
+            //if (txtEmail.Text == "")
+            //{
+            //    erro5.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o email do cliente";
+            //    return;
+            //}
 
 
             #endregion
@@ -604,26 +607,26 @@ namespace WebUI
 
             #region Validações
 
-            if (txtNomeAnimal.Text == "")
-            {
-                erro6.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o nome do animal";
-                return;
-            }
+            //if (txtNomeAnimal.Text == "")
+            //{
+            //    erro6.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o nome do animal";
+            //    return;
+            //}
 
-            if (txtPeso.Text == "")
-            {
-                erro7.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha o peso do animal";
-                return;
-            }
+            //if (txtPeso.Text == "")
+            //{
+            //    erro7.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha o peso do animal";
+            //    return;
+            //}
 
-            if (txtNascimento.Text == "")
-            {
-                erro8.Attributes["class"] = "mostrar";
-                //lblMsg.Text = "Preencha a data de nascimento do animal";
-                return;
-            }
+            //if (txtNascimento.Text == "")
+            //{
+            //    erro8.Attributes["class"] = "mostrar";
+            //    //lblMsg.Text = "Preencha a data de nascimento do animal";
+            //    return;
+            //}
 
             if (ddlTipoAnimal.SelectedIndex == 0)
             {
@@ -661,7 +664,7 @@ namespace WebUI
             animal.DataNascimento = Convert.ToDateTime(txtNascimento.Text);
             animal.IdTipoAnimal = Convert.ToInt32(ddlTipoAnimal.SelectedValue);
             animal.Sexo = ddlSexoAnimal.SelectedValue;
-            
+
             executou = animalBus.AlterarAnimal(animal);
 
             if (executou)
