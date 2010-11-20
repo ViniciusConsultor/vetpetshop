@@ -35,10 +35,11 @@
 			<div id="container">
         		<div id="sidebar">
                 	<ul class="sideNav">
-                    	<li><asp:SiteMapDataSource ID="adm" SiteMapProvider="administrador" runat="server" ShowStartingNode="false" />
+                    	<li>
+                    	    <asp:SiteMapDataSource ID="adm" SiteMapProvider="administrador" runat="server" ShowStartingNode="false" />
                             <asp:SiteMapDataSource ID="vend" SiteMapProvider="vendedor" runat="server" ShowStartingNode="false" />
                             <asp:SiteMapDataSource ID="vet" SiteMapProvider="veterinario" runat="server" ShowStartingNode="false" />
-                            <asp:Menu ID="Menu1" runat="server" Font-Bold="true" Width="179px"></asp:Menu>
+                            <asp:Menu ID="Menu1" runat="server" Font-Bold="true" Width="179px" SkipLinkText=""></asp:Menu>
                         </li>
                     </ul>
                     <!-- // .sideNav -->

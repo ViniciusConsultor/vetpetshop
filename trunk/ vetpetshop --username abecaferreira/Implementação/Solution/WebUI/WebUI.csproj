@@ -131,13 +131,6 @@
     <Compile Include="DefaultVeterinario.aspx.designer.cs">
       <DependentUpon>DefaultVeterinario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EmitirReceitaMedica.aspx.cs">
-      <DependentUpon>EmitirReceitaMedica.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EmitirReceitaMedica.aspx.designer.cs">
-      <DependentUpon>EmitirReceitaMedica.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FormularioProduto.aspx.cs">
       <DependentUpon>FormularioProduto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -270,7 +263,6 @@
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="DefaultVendedor.aspx" />
     <Content Include="DefaultVeterinario.aspx" />
-    <Content Include="EmitirReceitaMedica.aspx" />
     <Content Include="FormularioProduto.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ListaPedidoDeCompra.aspx" />

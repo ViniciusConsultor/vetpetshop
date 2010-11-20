@@ -101,7 +101,7 @@ h1 span { display: none; }
 
 #sidebar .sideNav { width: 179px; }
 
-#sidebar .sideNav li { border-bottom: 1px solid #ddd; white-space: nowrap;}
+#sidebar .sideNav li { border-bottom: 1px solid #ddd; white-space: normal;}
 
 #sidebar .sideNav li a {
 	display: block;
