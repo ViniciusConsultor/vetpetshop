@@ -121,7 +121,7 @@
     <div style="width:89%; margin:20px 0 10px 10px;">
         <span style="margin-left:10px;margin-right:5px; font-size:x-small; font-style:normal;"><b>* Preenchimento Obrigatório</b></span>
     </div>
-    <div style="width:87%;margin:5px 0 5px 30px;">
+    <div style="width:87%;margin:5px 0 20px 30px;">
     <center>
         <asp:Button Width="20%" ID="btnSalvar" runat="server" Text="Salvar" onclick="btnSalvar_Click" />
         <asp:Button Width="20%" ID="btnSalvar2" runat="server" Text="Salvar" onclick="btnSalvar2_Click" Visible="false" />
@@ -141,7 +141,7 @@
         <h3>
             Lista de Clientes Cadastrados
         </h3>
-        <div id="divPopupClientes" style="width: 100%; max-height: 400px; overflow:scroll;">
+        <div id="divPopupClientes" style="width: 100%; max-height: 400px; overflow:auto;">
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
                 SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
                 <SelectParameters>
