@@ -49,7 +49,7 @@
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:11px;margin-right:5px;">Valor da consulta:</span>
-                <asp:TextBox ID="txtValor" runat="server" Width="150px" MaxLength="9"></asp:TextBox>
+                <asp:TextBox ID="txtValor" runat="server" Width="150px"></asp:TextBox>
                 <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
             </li>
             <li style="margin-bottom:10px;margin-left:5px;">
@@ -65,7 +65,7 @@
             </ul>
         </div>                        
         <asp:Panel ID="pnlAnimal" Visible="false" runat="server" Width="100%">
-            <div style="width:100%; margin:20px 0 5px 15%;">
+            <div style="width:100%; margin:20px 0 5px 14%;">
                 <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Consultas agendadas para este animal:</span></b>
             </div>
             <div class="scroll" style="width:70%; margin-left:15%; margin-top:10px;">
@@ -102,7 +102,7 @@
             </asp:GridView>
         </div>        
         </asp:Panel>    
-        <div style="width:100%; margin:5px 0 5px 10px;">
+        <div style="width:100%; margin:5px 0 20px 10px;">
             <center>
             <asp:Button Width="20%" ID="btnAgendar" runat="server" Text="Agendar" onclick="btnAgendar_Click" />
             &nbsp;

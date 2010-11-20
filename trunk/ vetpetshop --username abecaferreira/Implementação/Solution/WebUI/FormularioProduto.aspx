@@ -22,8 +22,6 @@
         <span style="display:block;"><asp:RequiredFieldValidator ID="rfvtxtPrecoVenda" ControlToValidate="txtPrecoVenda" runat="server" ErrorMessage="Preencha o campo Preço de Venda" Display="Dynamic"></asp:RequiredFieldValidator></span>
         <span style="display:block;"><asp:RequiredFieldValidator ID="rfvtxtEstoqueMin" ControlToValidate="txtEstoqueMin" runat="server" ErrorMessage="Preencha o campo Estoque Mínimo" Display="Dynamic"></asp:RequiredFieldValidator></span>
         <span style="display:block;"><asp:RequiredFieldValidator ID="rfvtxtEstoqueMax" ControlToValidate="txtEstoqueMax" runat="server" ErrorMessage="Preencha o campo Estoque Máximo" Display="Dynamic"></asp:RequiredFieldValidator></span>
-        <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtPrecoCusto" ControlToValidate="txtPrecoCusto" runat="server" ErrorMessage="Campo Preço de Custo deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
-        <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtPrecoVenda" ControlToValidate="txtPrecoVenda" runat="server" ErrorMessage="Campo Preço de Venda deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtEstoqueMin" ControlToValidate="txtEstoqueMin" runat="server" ErrorMessage="Campo Estoque Mínimo deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
         <span style="display:block;"><asp:RegularExpressionValidator ID="revtxtEstoqueMax" ControlToValidate="txtEstoqueMax" runat="server" ErrorMessage="Campo Estoque Máximo deve conter somente números" Display="Dynamic" ValidationExpression="^[0-9]+$" SetFocusOnError="true"></asp:RegularExpressionValidator></span>
     </div>
@@ -33,13 +31,15 @@
                 <span style="margin-left:0px;margin-right:5px;">Nome do Produto*:</span>
                 <asp:TextBox ID="txtNome" runat="server" Width="40%" MaxLength="100"></asp:TextBox>
                 <span style="margin-left:30px;margin-right:5px;">Tipo*:</span>
-                <asp:DropDownList ID="ddlTipoGrupo" runat="server" Width="20%" onselectedindexchanged="ddlTipoGrupo_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlTipoGrupo" runat="server" Width="20%" onselectedindexchanged="ddlTipoGrupo_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:12px;margin-right:5px;">Preço de Custo*:</span>
-                <asp:TextBox ID="txtPrecoCusto" runat="server" Width="20%" MaxLength="9"></asp:TextBox>
+                <asp:TextBox ID="txtPrecoCusto" runat="server" Width="20%"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meetxtPrecoCusto" runat="server" TargetControlID="txtPrecoCusto" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender> 
                 <span style="margin-left:30px;margin-right:5px;">Preço de Venda*:</span>
-                <asp:TextBox ID="txtPrecoVenda" runat="server" Width="20%" MaxLength="9"></asp:TextBox>
+                <asp:TextBox ID="txtPrecoVenda" runat="server" Width="20%"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meetxtPrecoVenda" runat="server" TargetControlID="txtPrecoVenda" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender> 
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:6px;margin-right:5px;">Estoque Mínimo*:</span>
@@ -52,12 +52,9 @@
                 <span style="margin-left:5px;margin-right:5px;">(quantidade máxima do produto em estoque)</span>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:0px;margin-right:5px;">Data de Validade*:</span>
-                <asp:TextBox ID="txtDia" runat="server" Width="23px"></asp:TextBox>
-                &nbsp;/
-                <asp:TextBox ID="txtMes" runat="server" Width="23px"></asp:TextBox>
-                &nbsp;/
-                <asp:TextBox ID="txtAno" runat="server" Width="36px"></asp:TextBox>
+                <span style="margin-left:4px;margin-right:5px;">Data de Validade:</span>
+                <asp:TextBox ID="txtDataVal" runat="server" Width="15%" MaxLength="10"></asp:TextBox>
+                <asp:MaskedEditExtender ID="meetxtDataVal" runat="server" TargetControlID="txtDataVal" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:42px;margin-right:5px;">Descrição:</span>
@@ -72,7 +69,7 @@
                 <center>
                     <asp:Button Width="15%" ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
                     <asp:Button Width="15%" ID="btnAtualizar" runat="server" Text="Atualizar" Visible="false" onclick="btnAtualizar_Click" />
-                    &nbsp;&nbsp;<asp:Button Width="15%" ID="btnCancelar" runat="server" Text="Cancelar" />
+                    &nbsp;&nbsp;<asp:Button Width="15%" ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click" />
                 </center>
             </li>
         </ul>

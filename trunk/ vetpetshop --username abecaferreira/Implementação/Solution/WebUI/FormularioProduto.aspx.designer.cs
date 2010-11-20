@@ -86,24 +86,6 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtEstoqueMax;
         
         /// <summary>
-        /// revtxtPrecoCusto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtPrecoCusto;
-        
-        /// <summary>
-        /// revtxtPrecoVenda control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtPrecoVenda;
-        
-        /// <summary>
         /// revtxtEstoqueMin control.
         /// </summary>
         /// <remarks>
@@ -149,6 +131,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtPrecoCusto;
         
         /// <summary>
+        /// meetxtPrecoCusto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtPrecoCusto;
+        
+        /// <summary>
         /// txtPrecoVenda control.
         /// </summary>
         /// <remarks>
@@ -156,6 +147,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrecoVenda;
+        
+        /// <summary>
+        /// meetxtPrecoVenda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtPrecoVenda;
         
         /// <summary>
         /// txtEstoqueMin control.
@@ -176,31 +176,22 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtEstoqueMax;
         
         /// <summary>
-        /// txtDia control.
+        /// txtDataVal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDia;
+        protected global::System.Web.UI.WebControls.TextBox txtDataVal;
         
         /// <summary>
-        /// txtMes control.
+        /// meetxtDataVal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMes;
-        
-        /// <summary>
-        /// txtAno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAno;
+        protected global::AjaxControlToolkit.MaskedEditExtender meetxtDataVal;
         
         /// <summary>
         /// txtDesc control.

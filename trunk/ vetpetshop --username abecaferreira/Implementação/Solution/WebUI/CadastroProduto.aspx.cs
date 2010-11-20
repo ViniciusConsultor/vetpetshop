@@ -78,12 +78,15 @@ namespace WebUI
                 grUsuarios.DataSource = tabelaPreenchida;
                 grUsuarios.DataBind();
                 lblLista.Visible = true;
+                divProdutos.Attributes["class"] = "scroll";
+                lblRegistros.Visible = false;
             }
             else
             {
                 grUsuarios.Visible = false;
                 lblRegistros.Visible = true;
                 lblRegistros.Text = "Nenhum registro encontrado";
+                divProdutos.Attributes["class"] = "escondido";
             }
         }
 
@@ -202,6 +205,8 @@ namespace WebUI
         protected void Button2_Click(object sender, EventArgs e)
         {
             Panel1.Visible = true;
+            divProdutos.Attributes["class"] = "escondido";
+            lblLista.Visible = false;
         }      
 
     }

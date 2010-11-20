@@ -39,10 +39,10 @@ namespace DAO
                 SqlParameter pestoqueMax = new SqlParameter("@EstoqueMax", SqlDbType.Int, 4);
                 SqlParameter pdescricao = new SqlParameter("@Descricao", SqlDbType.VarChar, 100);
                 SqlParameter pprecoCusto = new SqlParameter("@PrecoCusto", SqlDbType.Decimal);
-                pprecoCusto.Precision = 7;
+                pprecoCusto.Precision = 9;
                 pprecoCusto.Scale = 2;                    
                 SqlParameter pprecoVenda = new SqlParameter("@PrecoVenda", SqlDbType.Decimal);
-                pprecoVenda.Precision = 7;
+                pprecoVenda.Precision = 9;
                 pprecoCusto.Scale = 2;
                 SqlParameter pdataVal = new SqlParameter("@DataValidade", SqlDbType.DateTime);
 
@@ -324,10 +324,10 @@ namespace DAO
                 SqlParameter pestoqueMax = new SqlParameter("@EstoqueMax", SqlDbType.Int, 4);
                 SqlParameter pdescricao = new SqlParameter("@Descricao", SqlDbType.VarChar, 100);
                 SqlParameter pprecoCusto = new SqlParameter("@PrecoCusto", SqlDbType.Decimal);
-                pprecoCusto.Precision = 7;
+                pprecoCusto.Precision = 9;
                 pprecoCusto.Scale = 2;
                 SqlParameter pprecoVenda = new SqlParameter("@PrecoVenda", SqlDbType.Decimal);
-                pprecoVenda.Precision = 7;
+                pprecoVenda.Precision = 9;
                 pprecoCusto.Scale = 2;
                 SqlParameter pdataVal = new SqlParameter("@DataValidade", SqlDbType.DateTime);
 
