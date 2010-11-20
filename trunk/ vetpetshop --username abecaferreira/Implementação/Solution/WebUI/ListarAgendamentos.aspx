@@ -23,7 +23,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                         <ItemTemplate>
-                        <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');">
+                        <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir a consulta selecionada?');">
                         </asp:LinkButton>
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
@@ -79,7 +79,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir o registro selecionado?');">
+                                    <asp:LinkButton ID="excluir" runat="server" Text="Excluir" CommandName="excluir" CommandArgument='<%# Eval("id_consulta") %>' OnClientClick="return confirm('Deseja excluir a vacinação selecionada?');">
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" />

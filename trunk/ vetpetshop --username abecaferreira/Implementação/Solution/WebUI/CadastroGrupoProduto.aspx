@@ -22,7 +22,7 @@
             </li>
         </ul>
     </div>
-    <div style="width:100%; margin:20px 0 10px 20px;">
+    <div style="width:90%; margin:20px 0 10px 25px;">
         <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;"><asp:Label ID="lblLista" runat="server" Font-Bold="true" Text="Lista de grupos cadastrados:"></asp:Label></span></b>
     </div>        
     <div id="divGrupos" runat="server" class="scroll" style="width: 90%; margin: 0 0 5px 5%;">

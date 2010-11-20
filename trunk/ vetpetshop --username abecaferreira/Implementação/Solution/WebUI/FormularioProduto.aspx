@@ -61,11 +61,11 @@
                 <asp:TextBox ID="txtDesc" runat="server" Height="20%" TextMode="MultiLine" Width="60%" MaxLength="300"></asp:TextBox>
             </li>
             <li>
-                <div style="width:90%; margin:15px 0 10px 10px;">
+                <div style="width:90%; margin:15px 0 10px 5px;">
                     <span style="margin-left:10px;margin-right:5px; font-size:x-small; font-style:normal;"><b>* Preenchimento Obrigatório</b></span>
                 </div>
             </li>
-            <li>
+            <li style="width:95%;">
                 <center>
                     <asp:Button Width="15%" ID="btnOk" runat="server" Text="Salvar" onclick="btnOk_Click" />
                     <asp:Button Width="15%" ID="btnAtualizar" runat="server" Text="Atualizar" Visible="false" onclick="btnAtualizar_Click" />
