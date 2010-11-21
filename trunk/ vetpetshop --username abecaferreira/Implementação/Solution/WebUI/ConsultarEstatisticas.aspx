@@ -99,7 +99,6 @@
                             &nbsp;&nbsp;<asp:Button Width="10%" ID="BtnOkVet" runat="server" Text="Buscar" onclick="btnOkVet_Click" />
                        </div>              
                     </asp:Panel>
-                    <br />
                     <asp:Panel ID="PnVetSexoCliente" runat="server" Visible="false">
                         <div style="width:100%;">
                             <ul>
