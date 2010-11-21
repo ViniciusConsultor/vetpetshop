@@ -76,8 +76,6 @@ namespace WebUI
                     CarregaProdutosVendidos(null, null);
                 }
             }
-
-
         }
 
         protected void btnOkVet_Click(object sender, EventArgs e)
@@ -261,10 +259,41 @@ namespace WebUI
 
         public void CarregaProdutosVendidos(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim) 
         {
-            //a fazer
+            DataTable tabelaPreenchida = PreencherGridProdutos(DataInicio, DataFim);
+
+            if (tabelaPreenchida.Rows.Count != 0)
+            {
+                grProdutos.DataSource = tabelaPreenchida;
+                grProdutos.DataBind();
+                PnPet.Visible = true;
+            }
         }
 
+        private DataTable PreencherGridProdutos(Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            DataTable tabela = new DataTable();
+            DataTable tabelaPreenchida = new DataTable();
+            tabela = MontarTabelaProdutos();
 
+            FinanceiroBuss financeiroBus = new FinanceiroBuss();
+            tabelaPreenchida = financeiroBus.ListarProdutosVendidosPorData(tabela, DataInicio, DataFim);
+            return tabelaPreenchida;
+        }
+
+        private DataTable MontarTabelaProdutos()
+        {
+            DataTable _tabela = new DataTable();
+
+            DataColumn coluna0 = new DataColumn("nm_produto");
+            DataColumn coluna1 = new DataColumn("qtd_vendida");
+            DataColumn coluna2 = new DataColumn("nm_grupo");
+            
+            _tabela.Columns.Add(coluna0);
+            _tabela.Columns.Add(coluna1);
+            _tabela.Columns.Add(coluna2);
+            
+            return _tabela;
+        }
 
     }
 }

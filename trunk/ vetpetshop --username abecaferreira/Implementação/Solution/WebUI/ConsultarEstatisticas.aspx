@@ -41,12 +41,30 @@
                    </div>
                 </asp:Panel>
             <asp:Panel ID="PnPet" runat="server" Visible="False">
-                <div style="width:100%;">
-                    <ul>
-                        <li style="margin: 10px 0 5px 0;">
-                        </li>
-                    </ul>
-                </div>        
+                <div style="width:95%; margin: 10px 0 10px 2%;" class="scrollmini">
+                    <asp:GridView ID="grProdutos" runat="server" AllowPaging="false" RowStyle-Height="20px" 
+                        AutoGenerateColumns="False" HeaderStyle-BackColor="DarkBlue" Width="100%" Font-Size="Small">
+                        <Columns>
+                            <asp:BoundField DataField="nm_produto" HeaderText="Produto" SortExpression="nm_produto">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                    Wrap="False"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="qtd_vendida" HeaderText="Qtd Vendida" SortExpression="qtd_vendida">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                    Wrap="False"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="nm_grupo" HeaderText="Grupo" SortExpression="nm_grupo">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                    Wrap="False"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                            </asp:BoundField>
+                        </Columns>
+                        <HeaderStyle BackColor="DarkBlue" />
+                        <AlternatingRowStyle BackColor="LightSteelBlue" />
+                    </asp:GridView>
+                </div> 
             </asp:Panel>
           </div>
           </ContentTemplate>

@@ -95,6 +95,15 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.Panel PnPet;
         
         /// <summary>
+        /// grProdutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grProdutos;
+        
+        /// <summary>
         /// tabPanel2 control.
         /// </summary>
         /// <remarks>
