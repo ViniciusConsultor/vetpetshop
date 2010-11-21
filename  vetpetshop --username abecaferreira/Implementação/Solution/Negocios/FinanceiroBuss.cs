@@ -119,5 +119,14 @@ namespace Negocios
 
             return _table;
         }
+
+        public DataTable ListarProdutosVendidosPorData(DataTable tabela, Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            DataTable _table = new DataTable();
+
+            _table = this.financeiroDAO.ListarProdutosVendidosPorData(tabela, DataInicio, DataFim);
+
+            return _table;
+        }
     }
 }

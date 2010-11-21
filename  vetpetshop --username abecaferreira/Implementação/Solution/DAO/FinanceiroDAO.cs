@@ -713,5 +713,53 @@ namespace DAO
 
             return tabela;
         }
+
+        public DataTable ListarProdutosVendidosPorData(DataTable tabela, Nullable<DateTime> DataInicio, Nullable<DateTime> DataFim)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "spsListarProdutosVendidosPorData";
+
+            SqlParameter pDataInicio = new SqlParameter("@DataInicio", SqlDbType.DateTime);
+            SqlParameter pDataFim = new SqlParameter("@DataFim", SqlDbType.DateTime);
+
+            if ((DataInicio.HasValue) && (DataFim.HasValue))
+            {
+                pDataInicio.Value = DataInicio;
+                pDataFim.Value = DataFim;
+            }
+            else
+            {
+                pDataInicio.Value = Convert.ToDateTime("1/1/1753");
+                pDataFim.Value = Convert.ToDateTime("31/12/9999");
+            }
+
+            cmd.Parameters.Add(pDataInicio);
+            cmd.Parameters.Add(pDataFim);
+
+            conn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dr.Read())
+            {
+                DataRow _linhaTabela = tabela.NewRow();
+                _linhaTabela["nm_produto"] = dr.GetString(0);
+                _linhaTabela["qtd_vendida"] = dr.GetInt32(1).ToString();
+                _linhaTabela["nm_grupo"] = dr.GetString(2);
+
+                tabela.Rows.Add(_linhaTabela);
+            }
+
+            dr.Close();
+            conn.Close();
+
+            return tabela;
+        }
+
     }
 }
