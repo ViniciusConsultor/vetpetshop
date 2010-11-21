@@ -185,15 +185,6 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.TextBox txtDataVal;
         
         /// <summary>
-        /// meetxtDataVal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender meetxtDataVal;
-        
-        /// <summary>
         /// txtDesc control.
         /// </summary>
         /// <remarks>
