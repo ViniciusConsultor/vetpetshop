@@ -447,6 +447,109 @@ namespace DAO
                 conn.Close();
             }
         }
+
+        public bool AlterarSenha(int id, string senha)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spuAlterarSenha";
+
+                SqlParameter pId = new SqlParameter("@Id", SqlDbType.Int, 4);
+                SqlParameter pSenha = new SqlParameter("@Senha", SqlDbType.VarChar, 20);
+
+                pId.Value = id;
+                pSenha.Value = senha;
+
+                cmd.Parameters.Add(pId);
+                cmd.Parameters.Add(pSenha);
+
+                conn.Open();
+                int registro = cmd.ExecuteNonQuery();
+                executou = true;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return executou;
+        }
+
+        public List<Usuario> ObterUsuarioPorEmail(string email)
+        {
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            List<Usuario> lstUsuario = new List<Usuario>();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterUsuarioByEmailUsuario";
+
+                SqlParameter pEmail = new SqlParameter("@Email", SqlDbType.VarChar, 30);
+                pEmail.Value = email;
+
+                cmd.Parameters.Add(pEmail);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.Nome = dr.GetString(4);
+                    usuario.TipoUsuario = dr.GetInt32(5);
+                    usuario.Senha = dr.GetString(6);
+                    usuario.Email = dr.GetString(7);
+
+                    lstUsuario.Add(usuario);
+                }
+
+                dr.Close();
+                conn.Close();
+
+                return lstUsuario;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 
 }

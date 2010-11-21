@@ -50,8 +50,6 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-
-
                 CarregaListaTipoAnimal();
 
                 string CodCliente = Request.Params["CodCliente"];

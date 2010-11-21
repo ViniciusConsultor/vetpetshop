@@ -17,7 +17,6 @@
 <script type="text/javascript" src="style/js/jNice.js"></script>
 <script type="text/javascript" src="style/js/alerts.js"></script>
 </head>
-
 <body>
 	<div id="wrapper" runat="server">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
@@ -25,7 +24,7 @@
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <ul id="mainNav">
-        	<li><a href="#"><asp:Label ID="lblWelcome" runat="server" Text="" Font-Bold="true"></asp:Label></a></li>
+        	<li><span><asp:Label ID="lblWelcome" runat="server" Text="" Font-Bold="true"></asp:Label></span><a style="padding: 0 20px 0 0;"  href="MudaSenha.aspx">[Alterar Senha]</a></li>
         	<li class="logout"><a href="Logout.aspx">LOGOUT</a></li>
         </ul>
         <!-- // #end mainNav -->
