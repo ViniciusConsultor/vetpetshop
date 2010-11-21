@@ -53,8 +53,7 @@
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:4px;margin-right:5px;">Data de Validade:</span>
-                <asp:TextBox ID="txtDataVal" runat="server" Width="15%" MaxLength="10"></asp:TextBox>
-                <asp:MaskedEditExtender ID="meetxtDataVal" runat="server" TargetControlID="txtDataVal" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
+                <asp:TextBox ID="txtDataVal" runat="server" Width="15%" MaxLength="10" onkeypress="validaData(this,'Data inválida.\nFavor informar a data no formato DD/MM/YYYY.')"></asp:TextBox>
             </li>
             <li style="margin-bottom:10px;">
                 <span style="margin-left:42px;margin-right:5px;">Descrição:</span>
