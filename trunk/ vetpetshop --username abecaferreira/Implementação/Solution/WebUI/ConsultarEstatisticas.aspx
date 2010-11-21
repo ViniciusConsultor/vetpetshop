@@ -29,12 +29,15 @@
                     </li>
                 </ul>
                 <asp:Panel ID="PnDataPet" runat="server" Visible="False">
+                   <div style="width:100%; margin:15px 0 10px 0;">
+                        <span style="margin-left:0;margin-right:5px; font-size:small; font-style:normal;"><b>Busca por Período:</b></span>
+                   </div>
                    <div style="width:100%;">
-                   <span style="margin-left:0px;margin-right:5px;">De:</span> 
-                   <asp:TextBox ID="txtDataInicioPet" runat="server" Width="20%" MaxLength="10"></asp:TextBox>
-                   <span style="margin-left:10px;margin-right:5px;">Até:</span> 
-                   <asp:TextBox ID="txtDataFimPet" runat="server" Width="20%" MaxLength="10"></asp:TextBox>
-                   &nbsp;&nbsp;<asp:Button Width="10%" ID="btnOkPet" runat="server" Text="Buscar" onclick="btnOkPet_Click" />              
+                       <span style="margin-left:0px;margin-right:5px;">De:</span> 
+                       <asp:TextBox ID="txtDataInicioPet" runat="server" Width="20%" MaxLength="10" onkeypress="validaData(this,'Data inválida.\nFavor informar a data no formato DD/MM/YYYY.')"></asp:TextBox>
+                       <span style="margin-left:10px;margin-right:5px;">Até:</span> 
+                       <asp:TextBox ID="txtDataFimPet" runat="server" Width="20%" MaxLength="10" onkeypress="validaData(this,'Data inválida.\nFavor informar a data no formato DD/MM/YYYY.')"></asp:TextBox>
+                       &nbsp;&nbsp;<asp:Button Width="10%" ID="btnOkPet" runat="server" Text="Buscar" onclick="btnOkPet_Click" />              
                    </div>
                 </asp:Panel>
             <asp:Panel ID="PnPet" runat="server" Visible="False">
@@ -67,11 +70,14 @@
                         </li>
                     </ul>
                     <asp:Panel ID="PnDataVet" runat="server" Visible="false">
+                       <div style="width:100%; margin:15px 0 10px 0;">
+                            <span style="margin-left:0;margin-right:5px; font-size:small; font-style:normal;"><b>Busca por Período:</b></span>
+                       </div>
                        <div style="width:100%;">
                             <span style="margin-left:0px;margin-right:5px;">De:</span>
-                            <asp:TextBox ID="txtDataInicioVet" runat="server" Width="20%" MaxLength="10"></asp:TextBox>
+                            <asp:TextBox ID="txtDataInicioVet" runat="server" Width="20%" MaxLength="10" onkeypress="validaData(this,'Data inválida.\nFavor informar a data no formato DD/MM/YYYY.')"></asp:TextBox>
                             <span style="margin-left:10px;margin-right:5px;">Até:</span> 
-                            <asp:TextBox ID="txtDataFimVet" runat="server" Width="20%" MaxLength="10"></asp:TextBox>
+                            <asp:TextBox ID="txtDataFimVet" runat="server" Width="20%" MaxLength="10" onkeypress="validaData(this,'Data inválida.\nFavor informar a data no formato DD/MM/YYYY.')"></asp:TextBox>
                             &nbsp;&nbsp;<asp:Button Width="10%" ID="BtnOkVet" runat="server" Text="Buscar" onclick="btnOkVet_Click" />
                        </div>              
                     </asp:Panel>
