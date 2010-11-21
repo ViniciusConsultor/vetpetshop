@@ -68,5 +68,17 @@ namespace Negocios
             Usuario usuario = this.usuarioDAO.ObterUsuarioPorId(Id);
             return usuario;
         }
+
+        public bool AlterarSenha(int id, string senha)
+        {
+            bool executou = this.usuarioDAO.AlterarSenha(id, senha);
+            return executou;
+        }
+
+        public List<Usuario> ObterUsuarioPorEmail(string email)
+        {
+            List<Usuario> lstUsuario = this.usuarioDAO.ObterUsuarioPorEmail(email);
+            return lstUsuario;
+        }
     }
 }

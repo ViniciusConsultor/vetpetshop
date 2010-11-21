@@ -65,13 +65,24 @@ h1 span { display: none; }
 	padding: 0 20px;
 }
 
+#mainNav li span {
+	display: block;
+	float: left;
+	height: 37px;
+	font-weight: bold;
+	line-height: 37px;
+	text-decoration: none;
+	color: #646464;
+	padding: 0 3px 0 10px;
+}
+
 #mainNav li.logout {
 	float: right;
 	border-left: 1px solid #ddd;
 	border-right: none;
 }
 
-#mainNav li a:hover { background: #fdfcf6; }
+#mainNav li a:hover { color: Blue; }
 
 #mainNav li a.active, #mainNav li a.active {
 	background: #f0f0f0 url(../img/top-menu-item-bg.gif) repeat-x left top;
