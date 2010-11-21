@@ -2,6 +2,235 @@
 
 var decres = 0;
 
+
+function formataCampo(obj, mask) { 
+	var i = obj.value.length; 
+	var saida = mask.substring(0,1); 
+	var texto = mask.substring(i);
+	if (texto.substring(0,1) != saida) { 
+		obj.value += texto.substring(0,1); 
+	} 
+}
+
+function soNumero(e) { 
+	if (document.all) // Internet Explorer
+		var tecla = event.keyCode;
+	else if(document.layers) // Nestcape
+		var tecla = e.which;
+		if (tecla > 47 && tecla < 58) // numeros de 0 a 9
+			return true;
+		else
+			{
+				if (tecla != 8) // backspace
+					event.keyCode = 0;
+					//return false;
+				else
+					return true;
+			}
+}
+
+function validaData(IN_objeto, IN_msg){
+	IN_objeto.onkeypress = function () {
+		return soNumero(event);
+	}
+	
+	IN_objeto.onkeyup = function (){
+		return botaBarra(IN_objeto); 
+	}
+	
+	IN_objeto.onblur = function () { 
+		if (IN_objeto.value != ''){
+			if (criticaData(IN_objeto.value) == false){
+				alert(IN_msg);
+				IN_objeto.focus();
+				return false;
+			}
+		}
+	}
+}
+
+function botaBarra(IN_objeto){
+	if (IN_objeto.value.length != 2 && IN_objeto.value.length != 5)
+		if (IN_objeto.value.substr(IN_objeto.value.length-1,IN_objeto.value.length) == "/")
+			IN_objeto.value = IN_objeto.value.substr(0,IN_objeto.value.length-1);
+
+	if (IN_objeto.value.length == 2 || IN_objeto.value.length == 5) 
+		IN_objeto.value = IN_objeto.value + "/";
+
+
+	if (IN_objeto.value.length == 3 || IN_objeto.value.length == 6)
+		if (IN_objeto.value.substr(IN_objeto.value.length-2,IN_objeto.value.length) == "//")
+			IN_objeto.value = IN_objeto.value.substr(0,IN_objeto.value.length-2);
+}
+
+function criticaData(strinput)	
+{
+	if (strinput == ''){
+		retorno = false;
+	}
+	
+	var barra1;
+	var barra2;
+	var parte1;
+	var parte2;
+	var partedia;
+	var partemes;
+	var parteano;
+	var retorno;
+	var restobisexto;
+	var arrayultimodia;
+	var datagerada;
+	parte1=strinput.substr(0,3);
+	barra1 = parte1.search("/");
+	
+	
+	if (barra1 > 0 )
+	{
+			if (barra1 == 1) 
+			{	
+				partedia = "0" + parte1.substr(0,barra1);
+			}
+			else
+			{
+				partedia =  parte1.substr(0,barra1);
+			}
+			parte2=strinput.substr(barra1 + 1,3);
+			barra2 = parte2.search("/");
+			if (barra2 > 0)
+			{
+				
+				if (barra2 == 1) 
+				{	
+					partemes = "0" + parte2.substr(0,barra2);
+				}
+				else
+				{
+					partemes =  parte2.substr(0,barra2);
+				}
+				parteano = strinput.substr(1 + barra1 + barra2 + 1);
+				
+				if (parteano.length == 2)
+				{
+					
+					if (parseInt(parteano) > 50)
+					{
+						parteano = 19 + parteano;
+					}
+					else
+					{
+						parteano = 20 + parteano;
+					}
+					restobisexto = parteano % 4;
+					if (restobisexto != 0)
+					{
+						arrayultimodia = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+					}
+					else
+					{
+						arrayultimodia = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
+					}
+					if (partemes > 0) 
+					{
+						if (partemes <= 12)
+						{
+							if (partedia > 0)
+							{
+								if (partedia <= arrayultimodia[partemes-1])
+								{
+									datagerada = new Date(parseInt(parteano),parseInt(partemes), parseInt(partedia));
+									if (datagerada)
+									{
+										retorno = true;
+									}
+								}
+								else
+								{
+									retorno = false;
+								}
+							}
+							else
+							{
+								retorno = false;
+							}
+						}
+						else
+						{
+							retorno = false;
+						}
+					}
+					else
+					{
+						retorno = false;
+					}
+							
+				}
+				else
+				{
+					if (parteano.length == 4)
+					{	
+						restobisexto = parteano % 4;
+						if (restobisexto != 0)
+						{
+							arrayultimodia = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+						}
+						else
+						{
+							arrayultimodia = new Array(31,29,31,30,31,30,31,31,30,31,30,31);
+						}
+						if (partemes > 0) 
+						{
+							if (partemes <= 12)
+							{
+								if (partedia > 0)
+								{
+									if (partedia <= arrayultimodia[partemes-1])
+									{
+										datagerada = new Date(parseInt(parteano),parseInt(partemes), parseInt(partedia));
+										if (datagerada)
+										{
+											retorno = true;
+										}										
+									}
+									else
+									{
+										retorno = false;
+									}
+								}
+								else
+								{
+									retorno = false;
+								}
+							}
+							else
+							{
+								retorno = false;
+							}
+						}
+						else
+						{
+							retorno = false;
+						}
+					}
+					else 
+					{
+						// ano com tamanho diferente de 2 e 4
+							retorno = false;
+					}
+				}
+			}			
+			else
+			{
+				// nao achou a segunda barra ou está na terceira posicao
+				retorno = false;
+			}
+	}
+	else
+	{
+		// nao achou a primeira barra ou está na primeira posicao
+		retorno = false;
+	}
+	return retorno;
+}
  
 
 //Grupo de funções responsáveis pela ordenação das colunas nos grids
