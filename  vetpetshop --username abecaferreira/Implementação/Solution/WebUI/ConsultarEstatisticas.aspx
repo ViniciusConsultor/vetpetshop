@@ -4,7 +4,7 @@
     <h3>
         Consultar Estatísticas
     </h3>
-    <div style="width:100%;margin: 20px 10px 10px 20px;">
+    <div style="width:100%;margin: 10px 10px 10px 20px;">
         <ul>
             <li>
                 <asp:Label ID="lblMsg" runat="server" Text="" Font-Bold="true" forecolor="Red"></asp:Label>          
