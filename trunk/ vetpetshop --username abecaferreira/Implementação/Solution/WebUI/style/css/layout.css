@@ -132,6 +132,8 @@ h1 span { display: none; }
 	color: #c66653;
 }
 
+#sidebar .sideNav td { padding:0 0 0 0; margin: 0 0 0 0; border-bottom: 1px solid #ddd; }
+
 /* Breadcrumb ---------------------------------------- */
 
 h2 {
