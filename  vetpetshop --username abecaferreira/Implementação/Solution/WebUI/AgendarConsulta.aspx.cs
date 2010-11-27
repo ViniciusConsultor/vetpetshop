@@ -18,6 +18,7 @@ namespace WebUI
         int tipoCons;
         public DateTime datProxVacinacao; 
         public DateTime datConsulta;
+        string datacompleta;
         Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -47,6 +48,7 @@ namespace WebUI
             if (!IsPostBack)
             {
                 CarregarClientes();
+                CarregaListaHora();
             }
         }
 
@@ -66,6 +68,37 @@ namespace WebUI
                 ddlClientes.Items.Add(item);
             }
 
+        }
+
+        protected void CarregaListaHora()
+        {
+            ListItem itemSelecione = new ListItem("---", "");
+            ListItem item10 = new ListItem("10:00", "10:00");
+            ListItem item11 = new ListItem("10:30", "10:30");
+            ListItem item12 = new ListItem("11:00", "11:00");
+            ListItem item13 = new ListItem("11:30", "11:30");
+            ListItem item14 = new ListItem("12:00", "12:00");
+            ListItem item15 = new ListItem("13:00", "13:00");
+            ListItem item16 = new ListItem("13:30", "13:30");
+            ListItem item17 = new ListItem("14:00", "14:00");
+            ListItem item18 = new ListItem("14:30", "14:30");
+            ListItem item19 = new ListItem("15:00", "15:00");
+            ListItem item20 = new ListItem("15:30", "15:30");
+            ListItem item21 = new ListItem("16:00", "16:00");
+
+            ddlHora.Items.Add(itemSelecione);
+            ddlHora.Items.Add(item10);
+            ddlHora.Items.Add(item11);
+            ddlHora.Items.Add(item12);
+            ddlHora.Items.Add(item13);
+            ddlHora.Items.Add(item14);
+            ddlHora.Items.Add(item15);
+            ddlHora.Items.Add(item16);
+            ddlHora.Items.Add(item17);
+            ddlHora.Items.Add(item18);
+            ddlHora.Items.Add(item19);
+            ddlHora.Items.Add(item20);
+            ddlHora.Items.Add(item21);
         }
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -188,7 +221,56 @@ namespace WebUI
 
         protected void btnAgendar_Click(object sender, EventArgs e)
         {
+
             Int32 idAnimal;
+            AnimalBuss animalBuss = new AnimalBuss();
+
+            if (ddlHora.SelectedItem.Value == "")
+            {
+                lblMsg.Text = "Selecione um horário para a consulta";
+                return;
+            }
+
+            if (Panel1.Visible == true)
+            {
+                if (txtData.Text != "")
+                {
+                    string dia = txtData.Text.Substring(0, 2);
+                    string mes = txtData.Text.Substring(3, 2);
+                    string ano = txtData.Text.Substring(6, 4);
+
+                    string datacompleta = ano + "-" + mes + "-" + dia + " " + "00:00:00.000";
+
+                    bool achou = animalBuss.VerificarHoraDataConsulta(datacompleta, ddlHora.SelectedItem.Value);
+                    if (achou)
+                    {
+                        lblMsg.Text = "Já existe uma consulta nesta data com o horário selecionado. Selecione outro horário";
+                        return;
+                    }
+                }
+            }
+
+            if (PanelVacina.Visible == true)
+            {
+                if (txtDataVacinacao.Text != "")
+                {
+                    string dia = txtDataVacinacao.Text.Substring(0, 2);
+                    string mes = txtDataVacinacao.Text.Substring(3, 2);
+                    string ano = txtDataVacinacao.Text.Substring(6, 4);
+
+                    datacompleta = ano + "-" + mes + "-" + dia + " " + "00:00:00.000";
+
+                    bool achou = animalBuss.VerificarHoraDataConsulta(datacompleta, ddlHora.SelectedItem.Value);
+                    if (achou)
+                    {
+                        lblMsg.Text = "Já existe uma consulta nesta data com o horário selecionado. Selecione outro horário";
+                        return;
+                    }
+                }
+            }
+
+
+
 
             if (Panel1.Visible == true)
             {
@@ -239,11 +321,13 @@ namespace WebUI
             
             AnimalBuss animalBuss = new AnimalBuss();
 
+           
             if (!string.IsNullOrEmpty(txtValor.Text))
             {
                 Valor = Convert.ToDecimal(txtValor.Text);
             }
 
+            
             //if (!string.IsNullOrEmpty(txtDataVacinacao.Text))
             //{
             //    datProxVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
@@ -258,7 +342,7 @@ namespace WebUI
 
             bool executou;
             
-            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status, tipoCons, datProxVacinacao);
+            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status, tipoCons, datProxVacinacao,ddlHora.SelectedItem.Value);
 
             if (executou)
             {
@@ -293,6 +377,12 @@ namespace WebUI
                 PanelVacina.Visible = false;
                 Panel1.Visible = true; 
             }
+        }
+
+        protected void ddlHora_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

@@ -44,10 +44,13 @@
                 <asp:Panel ID="Panel1" runat="server" Width="50%">
                     <span style="margin-left:14px;margin-right:5px;">Data da consulta:</span>
                     <asp:TextBox ID="txtData" runat="server" MaxLength="10" Width="150px"></asp:TextBox>
-                    <asp:MaskedEditExtender ID="meetxtData" runat="server" TargetControlID="txtData" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
+                    <asp:MaskedEditExtender ID="meetxtData" runat="server" TargetControlID="txtData" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>                    
                 </asp:Panel>
             </li>
             <li style="margin-bottom:10px;">
+                <span style="margin-left:5px;margin-right:5px;">Hora:</span>  
+                <asp:DropDownList ID="ddlHora" runat="server" 
+                    onselectedindexchanged="ddlHora_SelectedIndexChanged"></asp:DropDownList>                    
                 <span style="margin-left:11px;margin-right:5px;">Valor da consulta:</span>
                 <asp:TextBox ID="txtValor" runat="server" Width="150px"></asp:TextBox>
                 <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>

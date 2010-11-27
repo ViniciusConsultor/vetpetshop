@@ -922,7 +922,7 @@ namespace DAO
             return executou;
         }
 
-        public bool AgendamentoConsulta(Int32 idUsuario, Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status, int tipo, DateTime dataVacinacao)
+        public bool AgendamentoConsulta(Int32 idUsuario, Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status, int tipo, DateTime dataVacinacao, string hora)
         {
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -942,6 +942,7 @@ namespace DAO
                 SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
                 SqlParameter pTipo = new SqlParameter("@Tipo", SqlDbType.Int);
                 SqlParameter pDataVacinacao = new SqlParameter("@DataVacinacao", SqlDbType.SmallDateTime);
+                SqlParameter pHora = new SqlParameter("@Hora", SqlDbType.VarChar, 30);
 
                 pidUsuario.Value = idUsuario;
                 pIdAnimal.Value = idAnimal;
@@ -967,6 +968,7 @@ namespace DAO
                 }
 
                 pStatus.Value = status;
+                pHora.Value = hora;
 
                 cmd.Parameters.Add(new SqlParameter("@idUsuario", SqlDbType.Int)).Value = idUsuario;
                 cmd.Parameters.Add(new SqlParameter("@idAnimal", SqlDbType.Int)).Value = idAnimal;
@@ -976,6 +978,7 @@ namespace DAO
                 cmd.Parameters.Add(new SqlParameter("@Tipo", SqlDbType.Int)).Value = tipo;
                 cmd.Parameters.Add(pValor);
                 cmd.Parameters.Add(pDataVacinacao);
+                cmd.Parameters.Add(pHora);
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
                 executou = true;
@@ -1336,5 +1339,65 @@ namespace DAO
 
         }
 
+
+        public bool VerificarHoraDataConsulta(string data, string hora)
+        {
+            bool executou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+            int linhas = 0;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsVerificarConsulta";
+
+                SqlParameter pData = new SqlParameter("@Data", SqlDbType.VarChar, 30);
+                SqlParameter pHora = new SqlParameter("@Hora", SqlDbType.VarChar, 30);
+
+                pData.Value = data;
+                pHora.Value = hora;
+
+
+                //DateTime datateste = Convert.ToDateTime(pData);
+                cmd.Parameters.Add(pData);
+                cmd.Parameters.Add(pHora);
+              
+               
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                
+                while (dr.Read())
+                {
+                    linhas = dr.GetInt32(0);
+                }
+
+                dr.Close();
+                //conn.Close();
+
+                if (linhas != 0)
+                    return true;
+                else
+                    return false;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            
+           }
     }
 }

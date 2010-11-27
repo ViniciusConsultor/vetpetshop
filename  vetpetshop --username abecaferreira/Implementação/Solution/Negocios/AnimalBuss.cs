@@ -129,9 +129,9 @@ namespace Negocios
             return _lista;
         }
 
-        public bool AgendamentoConsulta(Int32 idUsuario,Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status, int tipo, DateTime dataVacinacao)
+        public bool AgendamentoConsulta(Int32 idUsuario,Int32 idAnimal, Decimal Valor, DateTime datConsulta, Int32 status, int tipo, DateTime dataVacinacao, string hora)
         {
-            bool executou = this.animalDAO.AgendamentoConsulta(idUsuario, idAnimal, Valor, datConsulta, status, tipo, dataVacinacao);
+            bool executou = this.animalDAO.AgendamentoConsulta(idUsuario, idAnimal, Valor, datConsulta, status, tipo, dataVacinacao,hora);
             return executou;
         }
 
@@ -186,6 +186,13 @@ namespace Negocios
             return qtdAni;
         }
 
-        
+
+
+        public bool VerificarHoraDataConsulta(string data, string hora)
+        {
+           bool achou = this.animalDAO.VerificarHoraDataConsulta(data, hora);
+           return achou;
+
+        }
     }
 }
