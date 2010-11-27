@@ -1,15 +1,15 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spsListarEstoquePorGrupo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].spsListarEstoquePorGrupo
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[spsListarEstoquePorGrupo]
 	@IdGrupo INT
 AS
+
+SET NOCOUNT ON
+
 BEGIN
 	SELECT 
 	e.Id,
@@ -25,4 +25,5 @@ BEGIN
 	INNER JOIN Grupo g ON G.Id = p.IdGrupo	
 	WHERE g.Id = @IdGrupo AND e.Quantidade >= 0
 END
-GO
+
+SET NOCOUNT OFF

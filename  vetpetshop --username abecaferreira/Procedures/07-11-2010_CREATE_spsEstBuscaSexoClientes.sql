@@ -1,3 +1,5 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spsEstBuscaSexoClientes]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[spsEstBuscaSexoClientes]
 GO
@@ -7,6 +9,8 @@ CREATE PROCEDURE [dbo].[spsEstBuscaSexoClientes]
 	@DataInicio datetime,
 	@DataFim datetime
 AS
+
+SET NOCOUNT ON
 
 BEGIN
 
@@ -30,3 +34,5 @@ DECLARE @HOMEM INT,
 	SELECT @TOTAL, @HOMEM ,@MULHER  
 	
 END
+
+SET NOCOUNT OFF

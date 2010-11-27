@@ -1,13 +1,15 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spsListarFinanceiroClientesEspeciaisPorAno]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].spsListarFinanceiroClientesEspeciaisPorAno
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[spsListarFinanceiroClientesEspeciaisPorAno]
 	@Ano INT
 AS
+
+SET NOCOUNT ON
+
 BEGIN
 	
 	SELECT 
@@ -22,4 +24,5 @@ BEGIN
 	ORDER BY F.DataTransacao
 	
 END
-GO
+
+SET NOCOUNT OFF
