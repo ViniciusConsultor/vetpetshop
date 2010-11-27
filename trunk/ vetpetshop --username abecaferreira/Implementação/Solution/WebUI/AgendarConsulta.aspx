@@ -7,6 +7,7 @@
         <div id="divErros" style="width:87%; margin:5px 0 5px 30px;">
         <span id="erro1" runat="server" class="escondido" style="color:Red;">Selecione o animal desejado</span>
         <span id="erro2" runat="server" class="escondido" style="color:Red;">Selecione o cliente desejado</span>
+        <span id="erro3" runat="server" class="escondido" style="color:Red;">Selecione o horário da consulta</span>
         <span style="display:block;"><asp:CompareValidator ID="cvtxtDataVacinacao" runat="server" ControlToValidate="txtDataVacinacao" Display="Dynamic" ErrorMessage="Data da vacinação inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator></span>
         <span style="display:block;"><asp:CompareValidator ID="cvtxtData" runat="server" ControlToValidate="txtData" Display="Dynamic" ErrorMessage="Data da consulta inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator></span>
         <span style="display:block;"><asp:MaskedEditValidator ID="mevtxtValor" runat="server" ControlToValidate="txtValor" ControlExtender="meetxtValor" Display="Dynamic" TooltipMessage="Entre com o valor da consulta" IsValidEmpty="false" EmptyValueMessage="É preciso entrar com o valor da consulta" InvalidValueMessage="Valor inválido" MinimumValue="0" MinimumValueMessage="Valor mínimo é R$0,00"></asp:MaskedEditValidator></span>
@@ -48,9 +49,10 @@
                 </asp:Panel>
             </li>
             <li style="margin-bottom:10px;">
-                <span style="margin-left:5px;margin-right:5px;">Hora:</span>  
-                <asp:DropDownList ID="ddlHora" runat="server" 
-                    onselectedindexchanged="ddlHora_SelectedIndexChanged"></asp:DropDownList>                    
+                <span style="margin-left:2px;margin-right:5px;">Horário da consulta:</span>  
+                <asp:DropDownList Width="10%" ID="ddlHora" runat="server" onselectedindexchanged="ddlHora_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>                    
+            </li>
+            <li style="margin-bottom:10px;">
                 <span style="margin-left:11px;margin-right:5px;">Valor da consulta:</span>
                 <asp:TextBox ID="txtValor" runat="server" Width="150px"></asp:TextBox>
                 <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
