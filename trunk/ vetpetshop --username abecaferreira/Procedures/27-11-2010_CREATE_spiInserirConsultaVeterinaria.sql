@@ -1,12 +1,10 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spiInserirConsultaVeterinaria]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[spiInserirConsultaVeterinaria]
 
 GO
-/****** Object:  StoredProcedure [dbo].[spiInserirConsultaVeterinaria]    Script Date: 10/18/2010 22:18:01 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 CREATE PROCEDURE [dbo].[spiInserirConsultaVeterinaria]
  
 @IdUsuario		int,
