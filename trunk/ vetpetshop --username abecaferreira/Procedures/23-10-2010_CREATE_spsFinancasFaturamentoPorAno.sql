@@ -1,13 +1,15 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spsFinancasFaturamentoPorAno]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].spsFinancasFaturamentoPorAno
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[spsFinancasFaturamentoPorAno] 
 	@Ano INT
 AS
+
+SET NOCOUNT ON
+
 BEGIN
 
 	SELECT MONTH(f.DataTransacao) AS MES, SUM(f.ValorTotal) AS ValorTotal FROM ConsultaVeterinaria cv
@@ -16,4 +18,5 @@ BEGIN
 	GROUP BY MONTH(f.DataTransacao)
 	
 END
-GO
+
+SET NOCOUNT OFF

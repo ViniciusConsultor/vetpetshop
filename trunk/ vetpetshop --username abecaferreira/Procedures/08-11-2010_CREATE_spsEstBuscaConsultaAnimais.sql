@@ -1,3 +1,5 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spsEstBuscaConsultaAnimais]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].spsEstBuscaConsultaAnimais
 GO
@@ -7,6 +9,8 @@ CREATE PROCEDURE [dbo].spsEstBuscaConsultaAnimais
 	@DataInicio datetime,
 	@DataFim datetime
 AS
+
+SET NOCOUNT ON
 
 BEGIN
 
@@ -43,3 +47,5 @@ DECLARE @CACHORRO INT,
 	SELECT @TOTAL, @CACHORRO ,@GATO ,@PEIXE, @PASSARO, @ROEDOR, @CLIESP
 	
 END
+
+SET NOCOUNT OFF

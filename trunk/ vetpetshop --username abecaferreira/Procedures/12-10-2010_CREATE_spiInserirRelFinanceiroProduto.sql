@@ -1,8 +1,7 @@
+USE vetpetshop
+GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[spiInserirRelFinanceiroProduto]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].spiInserirRelFinanceiroProduto
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[spiInserirRelFinanceiroProduto]
@@ -10,6 +9,9 @@ CREATE PROCEDURE [dbo].[spiInserirRelFinanceiroProduto]
 	@IdProduto INT,
 	@QuantidadeVendida INT
 AS
+
+SET NOCOUNT ON
+
 BEGIN
 	
 	INSERT INTO FinanceiroProduto 
@@ -27,4 +29,5 @@ BEGIN
 	@QuantidadeVendida
 	)
 END
-GO
+
+SET NOCOUNT OFF
