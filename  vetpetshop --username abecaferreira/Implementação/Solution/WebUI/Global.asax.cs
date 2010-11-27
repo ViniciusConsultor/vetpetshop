@@ -32,24 +32,24 @@ namespace WebUI
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            // At this point we have information about the error
-            HttpContext ctx = HttpContext.Current;
+            //// At this point we have information about the error
+            //HttpContext ctx = HttpContext.Current;
 
-            Exception exception = ctx.Server.GetLastError();
+            //Exception exception = ctx.Server.GetLastError();
 
-            string errorInfo =
-               "<br>Offending URL: " + ctx.Request.Url.ToString() +
-               "<br>Source: " + exception.Source +
-               "<br>Message: " + exception.Message +
-               "<br>Stack trace: " + exception.StackTrace +
-               "<br>Target: " + exception.TargetSite; 
+            //string errorInfo =
+            //   "<br>Offending URL: " + ctx.Request.Url.ToString() +
+            //   "<br>Source: " + exception.Source +
+            //   "<br>Message: " + exception.Message +
+            //   "<br>Stack trace: " + exception.StackTrace +
+            //   "<br>Target: " + exception.TargetSite; 
 
-            ctx.Response.Write(errorInfo);
+            //ctx.Response.Write(errorInfo);
 
-            // --------------------------------------------------
-            // To let the page finish running we clear the error
-            // --------------------------------------------------
-            ctx.Server.ClearError();
+            //// --------------------------------------------------
+            //// To let the page finish running we clear the error
+            //// --------------------------------------------------
+            //ctx.Server.ClearError();
 
         }
 

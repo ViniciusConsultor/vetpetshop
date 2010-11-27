@@ -72,21 +72,41 @@ namespace WebUI
 
         protected void CarregaListaHora()
         {
-            ListItem itemSelecione = new ListItem("---", "");
-            ListItem item10 = new ListItem("10:00", "10:00");
-            ListItem item11 = new ListItem("10:30", "10:30");
-            ListItem item12 = new ListItem("11:00", "11:00");
-            ListItem item13 = new ListItem("11:30", "11:30");
-            ListItem item14 = new ListItem("12:00", "12:00");
-            ListItem item15 = new ListItem("13:00", "13:00");
-            ListItem item16 = new ListItem("13:30", "13:30");
-            ListItem item17 = new ListItem("14:00", "14:00");
-            ListItem item18 = new ListItem("14:30", "14:30");
-            ListItem item19 = new ListItem("15:00", "15:00");
-            ListItem item20 = new ListItem("15:30", "15:30");
-            ListItem item21 = new ListItem("16:00", "16:00");
+            ListItem itemSelecione = new ListItem("----", "");
+            ListItem item1  = new ListItem("08:00", "08:00");
+            ListItem item2 = new ListItem("08:30", "08:30");
+            ListItem item3 = new ListItem("09:00", "09:00");
+            ListItem item4 = new ListItem("09:30", "09:30");
+            ListItem item5 = new ListItem("10:00", "10:00");
+            ListItem item6 = new ListItem("10:30", "10:30");
+            ListItem item7 = new ListItem("11:00", "11:00");
+            ListItem item8 = new ListItem("11:30", "11:30");
+            ListItem item9 = new ListItem("12:00", "12:00");
+            ListItem item10 = new ListItem("13:00", "13:00");
+            ListItem item11 = new ListItem("13:30", "13:30");
+            ListItem item12 = new ListItem("14:00", "14:00");
+            ListItem item13 = new ListItem("14:30", "14:30");
+            ListItem item14 = new ListItem("15:00", "15:00");
+            ListItem item15 = new ListItem("15:30", "15:30");
+            ListItem item16 = new ListItem("16:00", "16:00");
+            ListItem item17 = new ListItem("16:30", "16:30");
+            ListItem item18 = new ListItem("17:00", "17:00");
+            ListItem item19 = new ListItem("17:30", "17:30");
+            ListItem item20 = new ListItem("18:00", "18:00");
+            ListItem item21 = new ListItem("18:30", "18:30");
+            ListItem item22 = new ListItem("19:00", "19:00");
+            ListItem item23 = new ListItem("19:30", "19:30");
 
             ddlHora.Items.Add(itemSelecione);
+            ddlHora.Items.Add(item1);
+            ddlHora.Items.Add(item2);
+            ddlHora.Items.Add(item3);
+            ddlHora.Items.Add(item4);
+            ddlHora.Items.Add(item5);
+            ddlHora.Items.Add(item6);
+            ddlHora.Items.Add(item7);
+            ddlHora.Items.Add(item8);
+            ddlHora.Items.Add(item9);
             ddlHora.Items.Add(item10);
             ddlHora.Items.Add(item11);
             ddlHora.Items.Add(item12);
@@ -99,6 +119,8 @@ namespace WebUI
             ddlHora.Items.Add(item19);
             ddlHora.Items.Add(item20);
             ddlHora.Items.Add(item21);
+            ddlHora.Items.Add(item22);
+            ddlHora.Items.Add(item23);
         }
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -227,7 +249,7 @@ namespace WebUI
 
             if (ddlHora.SelectedItem.Value == "")
             {
-                lblMsg.Text = "Selecione um horário para a consulta";
+                erro3.Attributes["class"] = "mostrar";
                 return;
             }
 
@@ -351,6 +373,7 @@ namespace WebUI
                 txtData.Text = "";
                 lblMsg.Text = "Agendamento realizado com sucesso";
                 txtValor.Text = "";
+                ddlHora.SelectedIndex = 0;
                 ddlClientes.SelectedIndex = ddlClientes.Items.IndexOf(ddlClientes.Items.FindByText("Selecione"));
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
@@ -381,8 +404,8 @@ namespace WebUI
 
         protected void ddlHora_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
+            if(ddlHora.SelectedItem.Value != "")
+                erro3.Attributes["class"] = "escondido";
         }
     }
 }
