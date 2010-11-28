@@ -143,7 +143,7 @@
                         <asp:Label ID="lblAnimal" runat="server"></asp:Label>
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:10px;margin-right:5px;">Data da Consulta:</span>
+                        <span style="margin-left:12px;margin-right:5px;">Data da Consulta:</span>
                         <asp:TextBox ID="txtDataConsulta" runat="server" MaxLength="10" Width="150px"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtDataConsulta" runat="server" TargetControlID="txtDataConsulta" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                     </li>
@@ -152,7 +152,7 @@
                         <asp:DropDownList Width="10%" ID="ddlHoraConsulta" runat="server" onselectedindexchanged="ddlHoraConsulta_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>                    
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:10px;margin-right:3px;">Valor da Consulta:</span>
+                        <span style="margin-left:12px;margin-right:3px;">Valor da Consulta:</span>
                         <asp:TextBox ID="txtValor" runat="server" Width="150px"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender> 
                     </li>
@@ -184,7 +184,7 @@
                         <asp:Label ID="lblAnimalVac" runat="server"></asp:Label>   
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:12px;margin-right:5px;">Data da Vacinação:</span>
+                        <span style="margin-left:10px;margin-right:5px;">Data da Vacinação:</span>
                         <asp:TextBox ID="txtDataVacinacao" runat="server" MaxLength="10"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtDataVacinacao" runat="server" TargetControlID="txtDataVacinacao" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>   
                     </li>
@@ -193,7 +193,7 @@
                         <asp:DropDownList Width="10%" ID="ddlHoraVacina" runat="server" onselectedindexchanged="ddlHoraVacina_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>                    
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:18px;margin-right:5px;">Valor da Consulta:</span>
+                        <span style="margin-left:16px;margin-right:5px;">Valor da Consulta:</span>
                         <asp:TextBox ID="txtValorVacina" runat="server"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtValorVacina" runat="server" TargetControlID="txtValorVacina" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
                     </li>
