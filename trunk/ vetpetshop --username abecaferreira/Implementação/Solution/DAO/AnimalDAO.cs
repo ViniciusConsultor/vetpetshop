@@ -712,7 +712,7 @@ namespace DAO
             return executou;
         }
 
-        public bool AlterarAgendamentoConsulta(Int32 id_consulta, Int32 id_usuario, DateTime dataconsulta, decimal valor, Int32 status)
+        public bool AlterarAgendamentoConsulta(Int32 id_consulta, Int32 id_usuario, DateTime dataconsulta, decimal valor, Int32 status, string horario)
         {
             bool executou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
@@ -730,6 +730,7 @@ namespace DAO
                 SqlParameter pDatConsulta = new SqlParameter("@Data", SqlDbType.SmallDateTime);
                 SqlParameter pValor = new SqlParameter("@Valor", SqlDbType.Decimal);
                 SqlParameter pStatus = new SqlParameter("@Status", SqlDbType.Int);
+                SqlParameter pHorario = new SqlParameter("@Horario", SqlDbType.VarChar, 20);
 
                 if (dataconsulta == DateTime.MinValue)
                 {
@@ -749,6 +750,7 @@ namespace DAO
                 cmd.Parameters.Add(pDatConsulta);
                 //cmd.Parameters.Add(new SqlParameter("@Valor", SqlDbType.Decimal)).Value = valor;
                 cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Int)).Value = status;
+                cmd.Parameters.Add(pHorario);
 
                 conn.Open();
                 int registro = cmd.ExecuteNonQuery();
