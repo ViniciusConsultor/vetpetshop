@@ -418,6 +418,7 @@ namespace DAO
                 {
                     _linhaTabela["tipoconsulta"] = dr.GetString(4);
                 }
+                _linhaTabela["horaconsulta"] = dr.IsDBNull(5) ? "" : dr.GetString(5);
 
                 tabela.Rows.Add(_linhaTabela);
             }
@@ -1347,7 +1348,7 @@ namespace DAO
 
         public bool VerificarHoraDataConsulta(string data, string hora)
         {
-            bool executou = false;
+            bool achou = false;
             string stringConexao = databaseHelper.GetConnectionString("conexao");
             SqlConnection conn = new SqlConnection(stringConexao);
             int linhas = 0;
@@ -1359,10 +1360,10 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "spsVerificarConsulta";
 
-                SqlParameter pData = new SqlParameter("@Data", SqlDbType.VarChar, 30);
+                SqlParameter pData = new SqlParameter("@Data", SqlDbType.DateTime);
                 SqlParameter pHora = new SqlParameter("@Hora", SqlDbType.VarChar, 30);
 
-                pData.Value = data;
+                pData.Value = Convert.ToDateTime(data);
                 pHora.Value = hora;
 
 
@@ -1380,12 +1381,11 @@ namespace DAO
                 }
 
                 dr.Close();
-                //conn.Close();
 
-                if (linhas != 0)
-                    return true;
+                if (linhas > 0)
+                    achou = true;
                 else
-                    return false;
+                    achou = false;
             }
 
             catch (SqlException ex)
@@ -1402,7 +1402,9 @@ namespace DAO
             {
                 conn.Close();
             }
+        
+          return achou;
             
-           }
+        }
     }
 }

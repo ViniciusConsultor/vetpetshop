@@ -21,11 +21,12 @@
         <ul style="margin-top:10px;">
             <li style="margin-bottom:10px;">
                 <span style="margin-left:5px;margin-right:5px;">Cliente:</span>
-                <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="true" width="450px" onselectedindexchanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList>
+                <asp:TextBox ID="txtNomeCli" runat="server" Width="395px" MaxLength="50"></asp:TextBox>
+                <span style="margin-left:10px;"><asp:Button ID="BtnBuscar" runat="server" Text="Buscar Clientes" onclick="BtnBuscar_Click" ToolTip="Buscar clientes para agendamento de consulta" ValidationGroup="false" /></span>
             </li>
             <li style="margin-bottom:10px;">    
                 <span style="margin-left:5px;margin-right:5px;">Animal:</span>
-                <asp:DropDownList Enabled="False" ID="ddlAnimal" runat="server" AutoPostBack="true" width="450px" onselectedindexchanged="ddlAnimal_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList Enabled="False" ID="ddlAnimal" runat="server" AutoPostBack="true" width="400px" onselectedindexchanged="ddlAnimal_SelectedIndexChanged"></asp:DropDownList>
             </li>
             <li style="margin-bottom:10px; margin-left:5px;">
                 <div style="border:1px solid #b9b9b9; width:25%;">
@@ -73,7 +74,7 @@
             <div style="width:100%; margin:20px 0 5px 14%;">
                 <b><span style="margin-left:10px;margin-right:5px; font-size:small; font-style:normal;">Consultas agendadas para este animal:</span></b>
             </div>
-            <div class="scroll" style="width:70%; margin-left:15%; margin-top:10px;">
+            <div class="scroll" style="width:70%; margin-left:15%; margin-top:10px; margin-bottom:10px;">
             <asp:GridView ID="gdvAnimal" runat="server" AutoGenerateColumns="false" HeaderStyle-BackColor="DarkBlue" Width="100%" AllowPaging="false">
                 <Columns>
                     <asp:BoundField DataField="id_consulta" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White"  Visible="false">
@@ -87,6 +88,11 @@
                         <ItemStyle HorizontalAlign="Center" Wrap="false"/>
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
+                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                        Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="Horário" DataField="horaconsulta" HeaderStyle-BackColor="DarkBlue" HeaderStyle-ForeColor="White" ItemStyle-HorizontalAlign="Center">
                          <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                         Wrap="False"/>
                         <ItemStyle HorizontalAlign="Center" Wrap="false"/>
@@ -114,4 +120,54 @@
             <asp:Button Width="20%" ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click" />
             </center>
         </div>
+        
+        <asp:Button ID="ButtonPp" runat="server" style="display:none" />
+    <asp:ModalPopupExtender 
+    BackgroundCssClass="modalPopup1_Background" 
+    ID="ModalPopupExtender1" TargetControlID="ButtonPp" runat="server" PopupControlID="Panel2" cancelcontrolid="btpVoltar">
+    </asp:ModalPopupExtender>
+    
+    <asp:Panel class="modalPopup1" ID="Panel2" runat="server" Style="display:block;">
+        <h3>
+            Lista de Clientes Cadastrados
+        </h3>
+        <div id="divPopupClientes" style="width: 100%; max-height: 400px; overflow:auto;">
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+                SelectMethod="ListarClientesCadastrados" TypeName="Negocios.ClienteBuss">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="txtNomeCli" ConvertEmptyStringToNull="False" 
+                        DefaultValue=" " Name="Nome" PropertyName="Text" Type="String" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <asp:GridView ID="grClientes" runat="server" AllowPaging="false" RowStyle-Height="20px" 
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" 
+                HeaderStyle-BackColor="DarkBlue" Width="100%" Font-Size="Small" 
+                onrowcommand="grClientes_RowCommand">
+                <Columns>
+                    <asp:TemplateField>
+                    <ItemTemplate>
+                    <asp:LinkButton ValidationGroup="false" ID="selecionar" runat="server" Text="Selecionar" CommandName="selecionar" CommandArgument='<%# Eval("idCliente") %>'></asp:LinkButton>
+                    </ItemTemplate> 
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
+                    <asp:BoundField DataField="CPF" HeaderText="CPF" SortExpression="CPF">
+                        <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False"/>
+                        <ItemStyle HorizontalAlign="Center" Wrap="false"/>
+                    </asp:BoundField>
+                </Columns>
+                <HeaderStyle BackColor="DarkBlue" />
+                <AlternatingRowStyle BackColor="LightSteelBlue" />
+            </asp:GridView>
+        </div>
+        <div align="center">
+            <br />
+            <asp:Button id="btpVoltar" Text="Voltar" runat="server" OnClientClick="history.back();"/>
+        </div>
+        
+    </asp:Panel>
 </asp:Content>
