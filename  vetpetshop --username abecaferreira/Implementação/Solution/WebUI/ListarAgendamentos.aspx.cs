@@ -304,7 +304,7 @@ namespace WebUI
             decimal valor = 0;
             string horario;
 
-            horario = ddlHoraVacina.SelectedItem.Value;
+            horario = ddlHoraConsulta.SelectedItem.Value;
 
             AnimalBuss animalBuss = new AnimalBuss();
 
