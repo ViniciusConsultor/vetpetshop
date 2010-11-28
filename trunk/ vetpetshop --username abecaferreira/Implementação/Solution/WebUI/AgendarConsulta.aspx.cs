@@ -47,27 +47,8 @@ namespace WebUI
 
             if (!IsPostBack)
             {
-                CarregarClientes();
                 CarregaListaHora();
             }
-        }
-
-        protected void CarregarClientes()
-        {
-
-            ClienteBuss clienteBus = new ClienteBuss();
-            List<Cliente> _listaClientes = new List<Cliente>();
-            _listaClientes = clienteBus.ListarDDLClientes();
-
-            ListItem _item = new ListItem("Selecione", "0");
-            ddlClientes.Items.Insert(0, _item);
-
-            foreach (Cliente cliente in _listaClientes)
-            {
-                ListItem item = new ListItem(cliente.Nome.ToString(), cliente.IdCliente.ToString());
-                ddlClientes.Items.Add(item);
-            }
-
         }
 
         protected void CarregaListaHora()
@@ -123,25 +104,38 @@ namespace WebUI
             ddlHora.Items.Add(item23);
         }
 
-        protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grClientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            lblMsg.Text = "";
-            Int32 idCliente;
-            idCliente = Int32.Parse(ddlClientes.SelectedValue);
-            ddlAnimal.Enabled = true;
-            pnlAnimal.Visible = false;
-            if (idCliente != 0)
+            if (e.CommandName == "selecionar")
             {
-                erro2.Attributes["class"] = "escondido";
-                ddlAnimal.Items.Clear();
-                CarregarAnimaisCliente(idCliente);
-            }
-            else
-            {
-                ddlAnimal.Items.Clear();
-                ddlAnimal.Enabled = false;
-                //txtData.Text = "";
+                lblMsg.Text = "";
+                Int32 idCliente;
+                idCliente = Int32.Parse(e.CommandArgument.ToString());
+                
+                List<Cliente> _listaCliente = new List<Cliente>();
+                ClienteBuss clienteBus = new ClienteBuss();
+                _listaCliente = clienteBus.PreencheUsuario(idCliente);
+                
+                foreach (Cliente cliente in _listaCliente)
+                {
+                    txtNomeCli.Text = cliente.Nome;
+                }
+
+                ddlAnimal.Enabled = true;
                 pnlAnimal.Visible = false;
+                if (idCliente != 0)
+                {
+                    erro2.Attributes["class"] = "escondido";
+                    ddlAnimal.Items.Clear();
+                    CarregarAnimaisCliente(idCliente);
+                }
+                else
+                {
+                    ddlAnimal.Items.Clear();
+                    ddlAnimal.Enabled = false;
+                    //txtData.Text = "";
+                    pnlAnimal.Visible = false;
+                }
             }
 
         }
@@ -229,21 +223,22 @@ namespace WebUI
             DataColumn coluna0 = new DataColumn("id_consulta");
             DataColumn coluna1 = new DataColumn("tipoconsulta");
             DataColumn coluna2 = new DataColumn("dataconsulta");
-            DataColumn coluna3 = new DataColumn("status");
-            DataColumn coluna4 = new DataColumn("valor");
+            DataColumn coluna3 = new DataColumn("horaconsulta");
+            DataColumn coluna4 = new DataColumn("status");
+            DataColumn coluna5 = new DataColumn("valor");
 
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
             _tabela.Columns.Add(coluna2);
             _tabela.Columns.Add(coluna3);
             _tabela.Columns.Add(coluna4);
+            _tabela.Columns.Add(coluna5);
        
             return _tabela;
         }
 
         protected void btnAgendar_Click(object sender, EventArgs e)
         {
-
             Int32 idAnimal;
             AnimalBuss animalBuss = new AnimalBuss();
 
@@ -257,17 +252,16 @@ namespace WebUI
             {
                 if (txtData.Text != "")
                 {
-                    string dia = txtData.Text.Substring(0, 2);
-                    string mes = txtData.Text.Substring(3, 2);
-                    string ano = txtData.Text.Substring(6, 4);
+                    bool achou = animalBuss.VerificarHoraDataConsulta(txtData.Text, ddlHora.SelectedItem.Value);
 
-                    string datacompleta = ano + "-" + mes + "-" + dia + " " + "00:00:00.000";
-
-                    bool achou = animalBuss.VerificarHoraDataConsulta(datacompleta, ddlHora.SelectedItem.Value);
                     if (achou)
                     {
                         lblMsg.Text = "Já existe uma consulta nesta data com o horário selecionado. Selecione outro horário";
                         return;
+                    }
+                    else
+                    {
+                        lblMsg.Text = "";
                     }
                 }
             }
@@ -276,23 +270,19 @@ namespace WebUI
             {
                 if (txtDataVacinacao.Text != "")
                 {
-                    string dia = txtDataVacinacao.Text.Substring(0, 2);
-                    string mes = txtDataVacinacao.Text.Substring(3, 2);
-                    string ano = txtDataVacinacao.Text.Substring(6, 4);
+                    bool achou = animalBuss.VerificarHoraDataConsulta(txtDataVacinacao.Text, ddlHora.SelectedItem.Value);
 
-                    datacompleta = ano + "-" + mes + "-" + dia + " " + "00:00:00.000";
-
-                    bool achou = animalBuss.VerificarHoraDataConsulta(datacompleta, ddlHora.SelectedItem.Value);
                     if (achou)
                     {
                         lblMsg.Text = "Já existe uma consulta nesta data com o horário selecionado. Selecione outro horário";
                         return;
                     }
+                    else
+                    {
+                        lblMsg.Text = "";
+                    }
                 }
             }
-
-
-
 
             if (Panel1.Visible == true)
             {
@@ -316,7 +306,7 @@ namespace WebUI
                 datProxVacinacao = System.DateTime.ParseExact(txtDataVacinacao.Text, "dd/MM/yyyy", null);
             }
 
-            if (ddlClientes.SelectedItem.Value != "0")
+            if (txtNomeCli.Text != "")
             {
                 if (ddlAnimal.SelectedItem.Value != "0")
                 {
@@ -364,7 +354,7 @@ namespace WebUI
 
             bool executou;
             
-            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status, tipoCons, datProxVacinacao,ddlHora.SelectedItem.Value);
+            executou = animalBuss.AgendamentoConsulta(usuario.Id , idAnimal, Valor, datConsulta, Status, tipoCons, datProxVacinacao, ddlHora.SelectedItem.Value);
 
             if (executou)
             {
@@ -374,7 +364,8 @@ namespace WebUI
                 lblMsg.Text = "Agendamento realizado com sucesso";
                 txtValor.Text = "";
                 ddlHora.SelectedIndex = 0;
-                ddlClientes.SelectedIndex = ddlClientes.Items.IndexOf(ddlClientes.Items.FindByText("Selecione"));
+                txtNomeCli.Enabled = true;
+                txtNomeCli.Text = "";
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
                 rbTipo.SelectedIndex = rbTipo.Items.IndexOf(rbTipo.Items.FindByValue("1"));
@@ -406,6 +397,11 @@ namespace WebUI
         {
             if(ddlHora.SelectedItem.Value != "")
                 erro3.Attributes["class"] = "escondido";
+        }
+
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            ModalPopupExtender1.Show();
         }
     }
 }

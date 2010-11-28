@@ -276,6 +276,19 @@ namespace WebUI
 
             AnimalBuss animalBuss = new AnimalBuss();
 
+            bool achou = animalBuss.VerificarHoraDataConsulta(txtDataVacinacao.Text, ddlHoraVacina.SelectedItem.Value);
+
+            if (achou)
+            {
+                lblMsg.Text = "Já existe uma consulta nesta data com o horário selecionado. Selecione outro horário";
+                return;
+            }
+            else
+            {
+                lblMsg.Text = "";
+            }
+                 
+
             bool executou;
 
             if (!string.IsNullOrEmpty(txtValorVacina.Text))
@@ -307,6 +320,18 @@ namespace WebUI
             horario = ddlHoraConsulta.SelectedItem.Value;
 
             AnimalBuss animalBuss = new AnimalBuss();
+
+            bool achou = animalBuss.VerificarHoraDataConsulta(txtDataConsulta.Text, ddlHoraConsulta.SelectedItem.Value);
+
+            if (achou)
+            {
+                lblMsg.Text = "Já existe uma consulta nesta data com o horário selecionado. Selecione outro horário";
+                return;
+            }
+            else
+            {
+                lblMsg.Text = "";
+            }
 
             bool executou;
 
