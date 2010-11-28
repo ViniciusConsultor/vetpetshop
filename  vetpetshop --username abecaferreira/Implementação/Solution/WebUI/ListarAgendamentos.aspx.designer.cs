@@ -59,6 +59,24 @@ namespace WebUI {
         protected global::System.Web.UI.WebControls.GridView gdvVacinacoes;
         
         /// <summary>
+        /// erro3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro3;
+        
+        /// <summary>
+        /// erro4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl erro4;
+        
+        /// <summary>
         /// cvtxtDataVacinacao control.
         /// </summary>
         /// <remarks>
@@ -129,6 +147,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.MaskedEditExtender meetxtDataConsulta;
+        
+        /// <summary>
+        /// ddlHoraConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraConsulta;
         
         /// <summary>
         /// txtValor control.
@@ -219,6 +246,15 @@ namespace WebUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.MaskedEditExtender meetxtDataVacinacao;
+        
+        /// <summary>
+        /// ddlHoraVacina control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraVacina;
         
         /// <summary>
         /// txtValorVacina control.
