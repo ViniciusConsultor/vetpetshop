@@ -742,6 +742,7 @@ namespace DAO
                 }
 
                 pValor.Value = valor;
+                pHorario.Value = horario;
 
                 cmd.Parameters.Add(pValor);
 
