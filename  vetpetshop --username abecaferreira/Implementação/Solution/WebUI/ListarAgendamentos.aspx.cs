@@ -270,6 +270,10 @@ namespace WebUI
         protected void AlterarAgendamentoVacinacao()
         {
             decimal valor = 0;
+            string horario;
+
+            horario = ddlHoraVacina.SelectedItem.Value;
+
             AnimalBuss animalBuss = new AnimalBuss();
 
             bool executou;
@@ -279,7 +283,7 @@ namespace WebUI
                 valor = Convert.ToDecimal(txtValorVacina.Text);
             }
 
-            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datVacinacao, valor, rbStatusVacina.SelectedIndex);
+            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datVacinacao, valor, rbStatusVacina.SelectedIndex, horario);
 
             //executou = animalBuss.AgendamentoVacinacao(Convert.ToInt32(ViewState["id_animal"]), datVacinacao);
 
@@ -298,6 +302,10 @@ namespace WebUI
         protected void AlterarAgendamentoConsulta()
         {
             decimal valor = 0;
+            string horario;
+
+            horario = ddlHoraVacina.SelectedItem.Value;
+
             AnimalBuss animalBuss = new AnimalBuss();
 
             bool executou;
@@ -307,7 +315,7 @@ namespace WebUI
             valor = Convert.ToDecimal(txtValor.Text);
             }
 
-            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datConsulta, valor, rblStatus.SelectedIndex);
+            executou = animalBuss.AlterarAgendamentoConsulta(Convert.ToInt32(ViewState["id_consulta"]), usuario.Id, datConsulta, valor, rblStatus.SelectedIndex, horario);
 
             if (executou)
             {

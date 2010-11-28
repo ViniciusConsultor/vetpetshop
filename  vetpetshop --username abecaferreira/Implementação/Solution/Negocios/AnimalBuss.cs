@@ -52,9 +52,9 @@ namespace Negocios
             return executou;
         }
 
-        public bool AlterarAgendamentoConsulta(Int32 id_consulta, Int32 id_usuario, DateTime dataconsulta, decimal valor, Int32 status)
+        public bool AlterarAgendamentoConsulta(Int32 id_consulta, Int32 id_usuario, DateTime dataconsulta, decimal valor, Int32 status, string horario)
         {
-            bool executou = this.animalDAO.AlterarAgendamentoConsulta(id_consulta, id_usuario, dataconsulta, valor, status);
+            bool executou = this.animalDAO.AlterarAgendamentoConsulta(id_consulta, id_usuario, dataconsulta, valor, status, horario);
             return executou;
         }
 
