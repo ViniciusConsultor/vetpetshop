@@ -30,19 +30,23 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="id_consulta" visible="False" HeaderText="Código">
                         <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                    Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="nm_cliente" HeaderText="Proprietário" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                    Wrap="False"/>
-                                    <ItemStyle HorizontalAlign="Center" Wrap="False"/>
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="nm_animal" HeaderText="Animal" SortExpression="nm_animal">
-                                    <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
-                                    Wrap="False"/>
-                                    <ItemStyle HorizontalAlign="Center" Wrap="False"/>
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta">
-                                    <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="nm_cliente" HeaderText="Proprietário" SortExpression="nm_cliente"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="nm_animal" HeaderText="Animal" SortExpression="nm_animal">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False"/>
+                                <ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                                Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="Horário" DataField="horaconsulta">
+                                <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                 Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
                                 </asp:BoundField>
                                 <asp:BoundField HeaderText="Valor" DataField="valor">
@@ -96,7 +100,10 @@
                             </asp:BoundField>                            
                             <asp:BoundField HeaderText="Data de Vacinação" DataField="datavacinacao"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                             Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
-                            </asp:BoundField>    
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="Horário" DataField="horavacinacao"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+                            Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+                            </asp:BoundField>     
                             <asp:BoundField DataField="valor" HeaderText="Valor" SortExpression="valor"><HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
                                 Wrap="False"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
                             </asp:BoundField>
@@ -114,6 +121,8 @@
             </asp:TabPanel>        
         </asp:TabContainer>
         <div id="divErros" style="width:95%; margin:5px 0 5px 10px;">
+        <span id="erro3" runat="server" class="escondido" style="color:Red;">Selecione o horário da consulta</span>
+        <span id="erro4" runat="server" class="escondido" style="color:Red;">Selecione o horário da vacinação</span>
         <span style="display:block;"><asp:CompareValidator ID="cvtxtDataVacinacao" runat="server" ControlToValidate="txtDataVacinacao" Display="Dynamic" ErrorMessage="Data da vacinação inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator></span>
         <span style="display:block;"><asp:CompareValidator ID="cvtxtDataConsulta" runat="server" ControlToValidate="txtDataConsulta" Display="Dynamic" ErrorMessage="Data da consulta inválida" Operator="GreaterThan" Type="Date" ValueToCompare="01/01/1900"></asp:CompareValidator></span>
         </div>
@@ -128,18 +137,22 @@
             <div style="width:95%;margin:15px 0 10px 10px;">
                 <ul style="margin-top:10px;">
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:0px;margin-right:10px;">Proprietário:</span>
+                        <span style="margin-left:5px;margin-right:10px;">Proprietário:</span>
                         <asp:Label ID="lblProprietario" runat="server"></asp:Label>   
                         <span style="margin-left:50px;margin-right:10px;">Animal:</span>
                         <asp:Label ID="lblAnimal" runat="server"></asp:Label>
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:0px;margin-right:5px;">Data da Consulta:</span>
+                        <span style="margin-left:10px;margin-right:5px;">Data da Consulta:</span>
                         <asp:TextBox ID="txtDataConsulta" runat="server" MaxLength="10" Width="150px"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtDataConsulta" runat="server" TargetControlID="txtDataConsulta" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:0px;margin-right:3px;">Valor da Consulta:</span>
+                        <span style="margin-left:0px;margin-right:5px;">Horário da Consulta:</span>  
+                        <asp:DropDownList Width="10%" ID="ddlHoraConsulta" runat="server" onselectedindexchanged="ddlHoraConsulta_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>                    
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <span style="margin-left:10px;margin-right:3px;">Valor da Consulta:</span>
                         <asp:TextBox ID="txtValor" runat="server" Width="150px"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtValor" runat="server" TargetControlID="txtValor" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender> 
                     </li>
@@ -165,18 +178,22 @@
             <div style="width:95%;margin:15px 0 10px 10px;">
                 <ul style="margin-top:10px;">
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:0px;margin-right:10px;">Proprietário:</span>
+                        <span style="margin-left:5px;margin-right:10px;">Proprietário:</span>
                         <asp:Label ID="lblClienteVac" runat="server"></asp:Label>   
                         <span style="margin-left:50px;margin-right:10px;">Animal:</span>
                         <asp:Label ID="lblAnimalVac" runat="server"></asp:Label>   
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:0px;margin-right:5px;">Data da Vacinação:</span>
+                        <span style="margin-left:12px;margin-right:5px;">Data da Vacinação:</span>
                         <asp:TextBox ID="txtDataVacinacao" runat="server" MaxLength="10"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtDataVacinacao" runat="server" TargetControlID="txtDataVacinacao" Mask="99/99/9999" ClearMaskOnLostFocus="false" MaskType="Number" AutoComplete="false" InputDirection="LeftToRight"></asp:MaskedEditExtender>   
                     </li>
                     <li style="margin-bottom:10px;">
-                        <span style="margin-left:6px;margin-right:5px;">Valor da Consulta:</span>
+                        <span style="margin-left:0px;margin-right:5px;">Horário da Vacinação:</span>  
+                        <asp:DropDownList Width="10%" ID="ddlHoraVacina" runat="server" onselectedindexchanged="ddlHoraVacina_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>                    
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <span style="margin-left:18px;margin-right:5px;">Valor da Consulta:</span>
                         <asp:TextBox ID="txtValorVacina" runat="server"></asp:TextBox>
                         <asp:MaskedEditExtender ID="meetxtValorVacina" runat="server" TargetControlID="txtValorVacina" Mask="999,999.99" MaskType="Number" MessageValidatorTip="true" InputDirection="RightToLeft" DisplayMoney="Left" AcceptNegative="Left" AutoComplete="false" ClearMaskOnLostFocus="true"></asp:MaskedEditExtender>
                     </li>
