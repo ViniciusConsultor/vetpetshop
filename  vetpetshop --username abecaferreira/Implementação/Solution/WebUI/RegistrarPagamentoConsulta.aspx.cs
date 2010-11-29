@@ -104,8 +104,9 @@ namespace WebUI
             DataColumn coluna1 = new DataColumn("nm_cliente");
             DataColumn coluna2 = new DataColumn("nm_animal");
             DataColumn coluna3 = new DataColumn("dataconsulta");
-            DataColumn coluna4 = new DataColumn("valor");
-            DataColumn coluna5 = new DataColumn("status");
+            DataColumn coluna4 = new DataColumn("horaconsulta");
+            DataColumn coluna5 = new DataColumn("valor");
+            DataColumn coluna6 = new DataColumn("status");
 
             _tabela.Columns.Add(coluna0);
             _tabela.Columns.Add(coluna1);
@@ -113,6 +114,7 @@ namespace WebUI
             _tabela.Columns.Add(coluna3);
             _tabela.Columns.Add(coluna4);
             _tabela.Columns.Add(coluna5);
+            _tabela.Columns.Add(coluna6);
 
             return _tabela;
         }

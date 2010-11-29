@@ -1063,6 +1063,7 @@ namespace DAO
                 {
                     _linhaTabela["status"] = "Finalizada";
                 }
+                _linhaTabela["horaconsulta"] = dr.IsDBNull(6) ? "" : dr.GetString(6);
 
                 tabela.Rows.Add(_linhaTabela);
             }

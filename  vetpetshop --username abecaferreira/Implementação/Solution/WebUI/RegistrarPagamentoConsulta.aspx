@@ -25,7 +25,7 @@
         
 <center style=" margin: 20px 0 0 0;"><asp:Label ID="lblRegistros" runat="server" Text="" Visible="false" Font-Bold="true"></asp:Label></center>
 <div runat="server" id="divConsultas" class="scroll" style="margin: 10px 0 10px 0;">
-    <asp:GridView ID="gdvConsultas" runat="server" AllowPaging="false" AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
+    <asp:GridView ID="gdvConsultas" RowStyle-Height="20px" runat="server" AllowPaging="false" AutoGenerateColumns="False" Width="100%" OnRowCommand="gdvConsultas_RowCommand" >
         <Columns>
         <asp:TemplateField>
         <ItemTemplate>
@@ -48,6 +48,10 @@
             <ItemStyle HorizontalAlign="Center" Wrap="False"/>
             </asp:BoundField>
             <asp:BoundField HeaderText="Data da Consulta" DataField="dataconsulta">
+            <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
+        Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Horário" DataField="horaconsulta">
             <HeaderStyle Font-Bold="True" Font-Italic="False" ForeColor="White" 
         Wrap="False" BackColor="DarkBlue"/><ItemStyle HorizontalAlign="Center" Wrap="False"/>
         </asp:BoundField>
