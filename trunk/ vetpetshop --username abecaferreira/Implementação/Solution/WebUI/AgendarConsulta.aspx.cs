@@ -18,7 +18,6 @@ namespace WebUI
         int tipoCons;
         public DateTime datProxVacinacao; 
         public DateTime datConsulta;
-        string datacompleta;
         Usuario usuario = new Usuario();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -49,6 +48,8 @@ namespace WebUI
             {
                 CarregaListaHora();
             }
+
+            lblMsg.Text = "";
         }
 
         protected void CarregaListaHora()
@@ -359,8 +360,6 @@ namespace WebUI
             if (executou)
             {
                 CarregarGrid(Int32.Parse(ddlAnimal.SelectedValue));
-                txtDataVacinacao.Text = "";
-                txtData.Text = "";
                 lblMsg.Text = "Agendamento realizado com sucesso";
                 txtValor.Text = "";
                 ddlHora.SelectedIndex = 0;
@@ -368,9 +367,19 @@ namespace WebUI
                 txtNomeCli.Text = "";
                 ddlAnimal.Items.Clear();
                 ddlAnimal.Enabled = false;
-                rbTipo.SelectedIndex = rbTipo.Items.IndexOf(rbTipo.Items.FindByValue("1"));
-                PanelVacina.Visible = false;
-                Panel1.Visible = true;
+                txtData.Text = "";
+                txtDataVacinacao.Text = "";
+                //PanelVacina.Visible = false;
+                //Panel1.Visible = true;
+
+                if (tipoCons == 1)
+                {
+                    rbTipo.SelectedIndex = rbTipo.Items.IndexOf(rbTipo.Items.FindByValue("1"));
+                }
+                else
+                {
+                    rbTipo.SelectedIndex = rbTipo.Items.IndexOf(rbTipo.Items.FindByValue("2"));
+                }
             }
         }
 
@@ -385,11 +394,15 @@ namespace WebUI
             {
                 PanelVacina.Visible = true;
                 Panel1.Visible = false;
+                cvtxtData.Enabled = false;
+                cvtxtDataVacinacao.Enabled = true;
             }
             else
             {
                 PanelVacina.Visible = false;
-                Panel1.Visible = true; 
+                Panel1.Visible = true;
+                cvtxtData.Enabled = true;
+                cvtxtDataVacinacao.Enabled = false;
             }
         }
 
