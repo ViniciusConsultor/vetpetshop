@@ -253,6 +253,31 @@ namespace WebUI
             {
                 int id = Convert.ToInt32(e.CommandArgument);
                 UsuarioBuss usuarioBus = new UsuarioBuss();
+
+                bool temNotafiscalUsuario = usuarioBus.ExisteNota(Convert.ToInt32(id));
+                bool temFinanceiroUsuario = usuarioBus.ExisteFinanceiro(Convert.ToInt32(id));
+                bool temcConsultaUsuario = usuarioBus.ExisteConsulta(Convert.ToInt32(id));
+
+                if (temNotafiscalUsuario)
+                {
+                    Page.RegisterStartupScript("javascript", "<script>alert('Existem transações vinculadas a este usuário. Contacte o suporte!');</script>");
+                    return;
+                }
+
+                if (temFinanceiroUsuario || temcConsultaUsuario)
+                {
+                    Page.RegisterStartupScript("javascript", "<script>alert('Existem transações vinculadas a este usuário. Contacte o suporte!');</script>");
+                    return;
+                }
+
+                //if (temcConsultaUsuario)
+                //{
+                //    Page.RegisterStartupScript("javascript", "<script>alert('Existem transações vinculadas a este usuário. Contacte o suporte!');</script>");
+                //    return;
+                //}
+
+
+
                 bool executou = usuarioBus.ExcluirUsuario(Convert.ToInt32(id));
 
                 if (executou)

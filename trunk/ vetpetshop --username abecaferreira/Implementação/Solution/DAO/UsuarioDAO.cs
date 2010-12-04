@@ -550,6 +550,180 @@ namespace DAO
             }
         }
 
+
+        public bool ExisteNota(int id)
+        {
+            bool achou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+            int linhas = 0;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterNotasPorIdUsuario";
+
+                SqlParameter pId = new SqlParameter("@Id_Usuario", SqlDbType.Int, 4);
+
+
+                pId.Value = id;
+                
+
+
+                //DateTime datateste = Convert.ToDateTime(pData);
+                cmd.Parameters.Add(pId);
+                
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    linhas = dr.GetInt32(0);
+                }
+
+                dr.Close();
+
+                if (linhas > 0)
+                    achou = true;
+                else
+                    achou = false;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return achou;
+        }
+
+        public bool ExisteFinanceiro(int id)
+        {
+            bool achou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+            int linhas = 0;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterFinanceiroPorUsuario";
+
+                SqlParameter pId = new SqlParameter("@Id_Usuario", SqlDbType.Int, 4);
+
+
+                pId.Value = id;
+
+
+
+                //DateTime datateste = Convert.ToDateTime(pData);
+                cmd.Parameters.Add(pId);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    linhas = dr.GetInt32(0);
+                }
+
+                dr.Close();
+
+                if (linhas > 0)
+                    achou = true;
+                else
+                    achou = false;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return achou;
+        }
+
+        public bool ExisteConsulta(int id)
+        {
+            bool achou = false;
+            string stringConexao = databaseHelper.GetConnectionString("conexao");
+            SqlConnection conn = new SqlConnection(stringConexao);
+            int linhas = 0;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "spsObterConsultaPorUsuario";
+
+                SqlParameter pId = new SqlParameter("@Id_Usuario", SqlDbType.Int, 4);
+
+
+                pId.Value = id;
+
+
+
+                //DateTime datateste = Convert.ToDateTime(pData);
+                cmd.Parameters.Add(pId);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dr.Read())
+                {
+                    linhas = dr.GetInt32(0);
+                }
+
+                dr.Close();
+
+                if (linhas > 0)
+                    achou = true;
+                else
+                    achou = false;
+            }
+
+            catch (SqlException ex)
+            {
+                //throw new Exception("Servidor SQL Erro: " + ex.Number);
+                throw new Exception(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return achou;
+        }
     }
 
 }

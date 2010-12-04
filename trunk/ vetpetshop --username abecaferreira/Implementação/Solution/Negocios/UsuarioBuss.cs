@@ -80,5 +80,23 @@ namespace Negocios
             List<Usuario> lstUsuario = this.usuarioDAO.ObterUsuarioPorEmail(email);
             return lstUsuario;
         }
+
+        public bool ExisteNota(int id)
+        {
+            bool existe = this.usuarioDAO.ExisteNota(id);
+            return existe;
+        }
+
+        public bool ExisteFinanceiro(int id)
+        {
+            bool existe = this.usuarioDAO.ExisteFinanceiro(id);
+            return existe;
+        }
+
+        public bool ExisteConsulta(int id)
+        {
+            bool existe = this.usuarioDAO.ExisteConsulta(id);
+            return existe;
+        }
     }
 }
